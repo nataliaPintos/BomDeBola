@@ -13,9 +13,15 @@
             templateUrl: 'componentes/login/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
-        });
+        })
 
+        $routeProvider.when('/home', {
+            templateUrl: 'componentes/login/login.html',
+            controller: 'LoginController',
+            controllerAs: 'loginCtrl'
+        })
 
+        .otherwise('/home');
 
     }
 
