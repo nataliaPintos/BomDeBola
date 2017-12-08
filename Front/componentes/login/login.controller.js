@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller('loginCtrl', LoginController);
+        .controller('LoginController', LoginController);
 
     //LoginController.$inject = ['authservice'];
     // nos parâmetros coloco o que vou precisar utilizar
