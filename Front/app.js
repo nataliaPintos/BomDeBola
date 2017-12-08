@@ -4,7 +4,7 @@
     //Inicia o módulo e adiciona as dependências necessárias
     angular
         .module('app', [
-            'ngRoute'
+            'ngRoute', 'auth'
         ]);
 
 }());
