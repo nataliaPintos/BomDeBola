@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .service('UsuarioService', usuarioService);
+        .factory('UsuarioService', usuarioService);
 
     function usuarioService($http) {
 
@@ -18,7 +18,7 @@
         var urlBase = 'http://localhost:9090/usuario'; 
 
         function salvar(usuario) {
-            return $http.post(urlBase, usuario);
+            return $http.post(urlBase + '/novo-usuario', usuario);
         }
 
         function listar() {

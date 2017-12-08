@@ -9,19 +9,21 @@
     //Configuração das rotas
     function rotasConfig($routeProvider) {
 
-        $routeProvider.when('/', {
+        $routeProvider
+        
+        .when('/', {
             templateUrl: 'componentes/login/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
         })
 
-        $routeProvider.when('/home', {
+        .when('/home', {
             templateUrl: 'componentes/login/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
         }) 
 
-        $routeProvider.when('/grupo', {
+        .when('/grupo', {
             templateUrl: 'componentes/grupo/cadastroGrupo.html',
             controller: 'GrupoController',
             controllerAs: 'grupoCtrl'

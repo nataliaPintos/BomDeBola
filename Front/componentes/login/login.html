@@ -27,7 +27,7 @@
                         <div class="field">
                             <label class="label">Nome</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="text" placeholder="Nome Completo">
+                                <input class="input" type="text" placeholder="Nome Completo" ng-model="usuario.nome" name="nome" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-user"></i>
                                 </span>
@@ -42,7 +42,7 @@
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="email@email.com">
+                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -53,7 +53,7 @@
                         <div class="field">
                             <label class="label">Telefone</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="text" placeholder="(51)99999-9999">
+                                <input class="input" type="text" placeholder="(51)99999-9999" ng-model="usuario.telefone" name="telefone" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-phone-square"></i>
                                 </span>
@@ -65,7 +65,7 @@
                         <div class="field">
                             <label class="label">Senha</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Senha">
+                                <input class="input" type="password" placeholder="Senha" ng-model="usuario.senha" name="senha" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -74,11 +74,11 @@
 
                         <div class="field">
                             <label class="label">Data de Nascimento</label>
-                            <input class="input" type="date">
+                            <input class="input" type="date" ng-model="usuario.nascimento" name="nascimento" required>
                         </div>
 
                         <div class="control">
-                            <button class="button is-success">Cadastrar-se</button>
+                            <button class="button is-success" ng-click="cadastrar(usuario)">Cadastrar-se</button>
                         </div>
                     </form>
                 </div>
@@ -93,7 +93,7 @@
                             <label class="label">Email</label>
                             <p class="control has-icons-left has-icons-right">
 
-                                <input class="input" type="email" placeholder="Email">
+                                <input class="input" type="email" placeholder="Email" ng-model="usuarioRegistrado.login" name="login" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -106,7 +106,7 @@
                         <div class="field">
                             <label class="label">Senha</label>
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Senha">
+                                <input class="input" type="password" placeholder="Senha" ng-model="usuarioRegistrado.senha" name="senha" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="field">
                             <p class="control">
-                                <button class="button is-success">
+                                <button class="button is-success" ng-click="login(usuarioRegistrado)">
                                     Entrar
                                 </button>
                             </p>
