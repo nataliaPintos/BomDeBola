@@ -19,7 +19,13 @@
             templateUrl: 'componentes/login/login.html',
             controller: 'LoginController',
             controllerAs: 'loginCtrl'
-        })
+        }) 
+
+        $routeProvider.when('/grupo', {
+            templateUrl: 'componentes/grupo/cadastroGrupo.html',
+            controller: 'GrupoController',
+            controllerAs: 'grupoCtrl'
+        }) 
 
         .otherwise('/home');
 
