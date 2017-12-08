@@ -25,12 +25,11 @@ public class Usuario implements Serializable{
     
     private static final String SQ_USUARIO = "SQ_USUARIO";
     
-    public Usuario(String nome, String email, String telefone, String senha, String imagem_perfil, LocalDate nascimento){
+    public Usuario(String nome, String email, String telefone, String senha, LocalDate nascimento){
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
         this.senha = senha;
-        this.imagem_perfil = imagem_perfil;
         this.nascimento = nascimento;
         this.nota_geral = 0;
         this.partidas_jogadas = 0;
@@ -44,7 +43,7 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = SEQUENCE, generator = SQ_USUARIO)
 	@SequenceGenerator(name = SQ_USUARIO, sequenceName = SQ_USUARIO, allocationSize = 1)
-	@Column(name = "ID_USUARIO")
+	@Column(name = "ID")
 	private Long id;
     
         @Size

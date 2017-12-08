@@ -46,7 +46,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioService.findByEmail(usuarioModel.email);
             if(usuarioExistente == null){
-                Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.imagem_perfil, usuarioModel.nascimento);
+                Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
 		usuarioService.save(usuario);
 		return ResponseEntity.ok().body(usuario);
             }else{

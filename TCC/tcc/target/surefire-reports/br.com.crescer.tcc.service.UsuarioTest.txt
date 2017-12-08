@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+Test set: br.com.crescer.tcc.service.UsuarioTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.294 sec <<< FAILURE! - in br.com.crescer.tcc.service.UsuarioTest
+testarFindByEmail(br.com.crescer.tcc.service.UsuarioTest)  Time elapsed: 0.031 sec  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+Wanted but not invoked:
+usuarioRepository.save(
+    br.com.crescer.tcc.entity.Usuario@5bb21b69
+);
+-> at br.com.crescer.tcc.service.UsuarioTest.testarFindByEmail(UsuarioTest.java:46)
+
+However, there were other interactions with this mock:
+usuarioRepository.findByEmailIgnoreCase(
+    "luanparcival@gmail.com"
+);
+-> at br.com.crescer.tcc.service.UsuarioService.findByEmail(UsuarioService.java:26)
+
+
+	at br.com.crescer.tcc.service.UsuarioTest.testarFindByEmail(UsuarioTest.java:46)
+
