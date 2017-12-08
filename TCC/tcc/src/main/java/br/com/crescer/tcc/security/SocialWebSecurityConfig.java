@@ -49,7 +49,8 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/configuration/**",
 						"/swagger-ui.html/**",
 						"/webjars/**",
-                                                "/usuario/novo-usuario"
+                                                "/usuario/novo-usuario",
+                                                "/grupo/**"
 				);
 	}
 

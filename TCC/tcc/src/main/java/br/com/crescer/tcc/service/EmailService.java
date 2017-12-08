@@ -23,7 +23,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class EmailService {
     
-    public Session session(){
+    public void enviarEmail(List<Usuario> usuarios, String mensagem){
         Properties props = new Properties();
             /** Parâmetros de conexão com servidor Gmail */
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -39,10 +39,7 @@ public class EmailService {
                                    return new PasswordAuthentication("seuemail@gmail.com", "suasenha123");
                              }
                         });
-            return session;
-    }
-    
-    public void enviarEmail(Session session, List<Usuario> usuarios, String mensagem){
+            
         for(int i = 0; i < usuarios.size(); i++){
             session.setDebug(true);
             try {
