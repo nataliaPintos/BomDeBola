@@ -58,7 +58,7 @@ public class Usuario implements Serializable{
         
         @Size
 	@NotNull(message = "Campo obrigatório")
-	@Basic(optional = true)
+	@Basic(optional = false)
 	@Column(name = "TELEFONE")
 	private String telefone;
         
@@ -69,7 +69,6 @@ public class Usuario implements Serializable{
 	private String senha;
         
         @Size
-	@NotNull(message = "Campo obrigatório")
 	@Basic(optional = true)
 	@Column(name = "IMAGEM_PERFIL")
 	private String imagem_perfil;
@@ -81,12 +80,15 @@ public class Usuario implements Serializable{
         private LocalDate nascimento;
         
         @NotNull(message = "Campo obrigatório")
-	@Basic(optional = true)
-	@Column(name = "NOTA_TOTAL")
-	private double nota_total;
+	@Basic(optional = false)
+	@Column(name = "NOTA_GERAL")
+	private double nota_geral;
         
-        @NotNull(message = "Campo obrigatório")
 	@Basic(optional = true)
-	@Column(name = "NOTA_CONT")
-	private int nota_cont;
+	@Column(name = "PARTIDAS_JOGADAS")
+	private int partidas_jogadas;
+        
+	@Basic(optional = true)
+	@Column(name = "GOLS")
+	private int gols;
 }
