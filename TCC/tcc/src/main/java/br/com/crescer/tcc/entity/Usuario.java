@@ -32,6 +32,9 @@ public class Usuario implements Serializable{
         this.senha = senha;
         this.imagem_perfil = imagem_perfil;
         this.nascimento = nascimento;
+        this.nota_geral = 0;
+        this.partidas_jogadas = 0;
+        this.gols = 0;
     }
     
     public Usuario(){
