@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.crescer.tcc.service.UsuarioTest" time="0.031" tests="1" errors="0" skipped="0" failures="1">
+<testsuite name="br.com.crescer.tcc.service.UsuarioTest" time="0.466" tests="3" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -60,22 +60,25 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testarFindByEmail" classname="br.com.crescer.tcc.service.UsuarioTest" time="0.031">
-    <failure message="&#10;Wanted but not invoked:&#10;usuarioRepository.save(&#10;    br.com.crescer.tcc.entity.Usuario@5bb21b69&#10;);&#10;-&gt; at br.com.crescer.tcc.service.UsuarioTest.testarFindByEmail(UsuarioTest.java:46)&#10;&#10;However, there were other interactions with this mock:&#10;usuarioRepository.findByEmailIgnoreCase(&#10;    &quot;luanparcival@gmail.com&quot;&#10;);&#10;-&gt; at br.com.crescer.tcc.service.UsuarioService.findByEmail(UsuarioService.java:26)&#10;&#10;" type="org.mockito.exceptions.verification.WantedButNotInvoked">org.mockito.exceptions.verification.WantedButNotInvoked: 
-Wanted but not invoked:
-usuarioRepository.save(
-    br.com.crescer.tcc.entity.Usuario@5bb21b69
-);
--> at br.com.crescer.tcc.service.UsuarioTest.testarFindByEmail(UsuarioTest.java:46)
+  <testcase name="testarFindByEmail" classname="br.com.crescer.tcc.service.UsuarioTest" time="0.032"/>
+  <testcase name="salvar" classname="br.com.crescer.tcc.service.UsuarioTest" time="0.434">
+    <error message="&#10;Unfinished stubbing detected here:&#10;-&gt; at br.com.crescer.tcc.service.UsuarioTest.salvar(UsuarioTest.java:83)&#10;&#10;E.g. thenReturn() may be missing.&#10;Examples of correct stubbing:&#10;    when(mock.isOk()).thenReturn(true);&#10;    when(mock.isOk()).thenThrow(exception);&#10;    doThrow(exception).when(mock).someVoidMethod();&#10;Hints:&#10; 1. missing thenReturn()&#10; 2. you are trying to stub a final method, you naughty developer!&#10; 3: you are stubbing the behaviour of another mock inside before &apos;thenReturn&apos; instruction if completed&#10;" type="org.mockito.exceptions.misusing.UnfinishedStubbingException">org.mockito.exceptions.misusing.UnfinishedStubbingException: 
+Unfinished stubbing detected here:
+-> at br.com.crescer.tcc.service.UsuarioTest.salvar(UsuarioTest.java:83)
 
-However, there were other interactions with this mock:
-usuarioRepository.findByEmailIgnoreCase(
-    "luanparcival@gmail.com"
-);
--> at br.com.crescer.tcc.service.UsuarioService.findByEmail(UsuarioService.java:26)
+E.g. thenReturn() may be missing.
+Examples of correct stubbing:
+    when(mock.isOk()).thenReturn(true);
+    when(mock.isOk()).thenThrow(exception);
+    doThrow(exception).when(mock).someVoidMethod();
+Hints:
+ 1. missing thenReturn()
+ 2. you are trying to stub a final method, you naughty developer!
+ 3: you are stubbing the behaviour of another mock inside before 'thenReturn' instruction if completed
 
-
-	at br.com.crescer.tcc.service.UsuarioTest.testarFindByEmail(UsuarioTest.java:46)
-</failure>
+	at br.com.crescer.tcc.service.UsuarioService.save(UsuarioService.java:38)
+	at br.com.crescer.tcc.service.UsuarioTest.salvar(UsuarioTest.java:84)
+</error>
   </testcase>
+  <testcase name="testarLoadById" classname="br.com.crescer.tcc.service.UsuarioTest" time="0"/>
 </testsuite>
