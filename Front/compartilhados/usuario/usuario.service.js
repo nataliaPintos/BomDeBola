@@ -8,14 +8,28 @@
     function usuarioService($http) {
 
         var usuarioService = {
-            salvar: salvar
+            salvar: salvar,
+            listar: listar,
+            getUsuario: getUsuario
         }
 
         return usuarioService;
 
-        function salvar(natalia) {
-            return $http.post(url, natalia);
+        var urlBase = 'http://localhost:9090/usuario'; 
+
+        function salvar(usuario) {
+            return $http.post(urlBase, usuario);
         }
+
+        function listar() {
+            return $http.get(urlBase + '/lista');
+        }
+
+        function getUsuario(id) {
+            return $http.get(urlBase + "/" + id);
+        }
+
+
     }
 
 }());
