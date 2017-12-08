@@ -42,7 +42,7 @@ public class EmailService {
             return session;
     }
     
-    public void conviteGrupo(Session session, List<Usuario> usuarios){
+    public void enviarEmail(Session session, List<Usuario> usuarios, String mensagem){
         for(int i = 0; i < usuarios.size(); i++){
             session.setDebug(true);
             try {
@@ -52,9 +52,7 @@ public class EmailService {
                   Address[] toUser = InternetAddress //Destinatário(s)
                              .parse(usuarios.get(i).getEmail());  
                   message.setRecipients(Message.RecipientType.TO, toUser);
-                  message.setSubject("Você Recebeu Um Convite no Bom-de-Bola");//Assunto
-                  message.setText("Você foi convidado a participar de um novo grupo no Bom-de-Bola."
-                          + "/n Cadastre-se agora ou faça login para aceitar!");
+                  message.setSubject(mensagem);
                   /**Método para enviar a mensagem criada*/
                   Transport.send(message);
              } catch (MessagingException e) {
