@@ -4,7 +4,8 @@
     //Inicia o módulo e adiciona as dependências necessárias
     angular
         .module('app', [
-            'ngRoute', 'auth'
+            'ngRoute', 'auth', 
+            'angularModalService', 'ngAnimate'
         ]);
 
 }());

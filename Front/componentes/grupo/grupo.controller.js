@@ -5,13 +5,14 @@
         .module('app')
         .controller('GrupoController', GrupoController);
 
-    function GrupoController(authService, GrupoService, $routeParams, $scope, $location) {
+    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location) {
         var gr = this;
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
         gr.gruposUsuario;
         gr.grupo;
         gr.isAlterar = !!$routeParams.id;
+        gr.openModal = openModal;
 
         GrupoService.listarGrupos().then(response =>{
             gr.grupos = response.data;
@@ -52,6 +53,20 @@
             alert(mensagem);
             promise.then(promise => $location.path('/grupo'));
         }
+
+
+        function openModal() {
+            console.log('entrou aqui');
+          ModalService.showModal({
+            templateUrl: 'componentes/grupo/modal/modal.html',
+            controller: 'ModalController',
+            controllerAs: 'modalCtrl',
+            bodyClass: 'modal.is-active'
+           
+          });
+        }
+
+
 
     }
 
