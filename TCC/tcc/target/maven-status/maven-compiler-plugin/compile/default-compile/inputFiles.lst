@@ -1,4 +1,5 @@
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\GrupoController.java
+C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\Usuario_GrupoController.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Repository\UsuarioRepository.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\UsuarioService.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\Usuario_GrupoService.java
@@ -18,7 +19,9 @@ C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\GrupoModel.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\config\SwaggerConfig.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Run.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\HealthController.java
+C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\UsuarioLogadoModel.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\handler\HandlerException.java
+C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\UsuarioComponente.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\LoggedUserController.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\LocalDateConverter.java
 C:\DEV\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\LocalDateTimeConverter.java

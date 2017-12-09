@@ -47,6 +47,8 @@ public class GrupoController {
 	return grupoService.lista();
     }
     
+    //Cria o grupo e cria uma linha na tabela Usuario_Grupo onde armazena o participante do grupo como adm
+    //Todas outras interações entre usuarios e grupo estão na Usuario_GrupoController
     @PostMapping("/novo-grupo")
     public ResponseEntity<Grupo> save(@RequestBody @Valid GrupoModel grupoModel) {        
         Grupo grupo = new Grupo(grupoModel.nome, grupoModel.imagem, grupoModel.time_max, grupoModel.time_min, 
@@ -64,13 +66,14 @@ public class GrupoController {
     }
     
     @PutMapping("/atualizar-grupo/{id}")
-    public ResponseEntity<Grupo> update(@RequestBody @Valid GrupoModel grupoModel, Long id){
+    public ResponseEntity update(@RequestBody @Valid GrupoModel grupoModel, Long id){
         Grupo grupo = grupoService.loadById(id);
         if(grupo == null){
-            return (ResponseEntity<Grupo>) ResponseEntity.badRequest();
+            return (ResponseEntity) ResponseEntity.badRequest();
         }else{
             grupoService.update(grupoModel, grupo);
-            return ResponseEntity.ok().body(grupo);
+            return (ResponseEntity) ResponseEntity.ok();
         }
     }
+    
 }
