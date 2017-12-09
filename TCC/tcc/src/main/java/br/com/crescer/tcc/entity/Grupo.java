@@ -9,6 +9,7 @@ import br.com.crescer.tcc.utilitarios.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.validation.constraints.*;
@@ -109,4 +110,7 @@ public class Grupo implements Serializable{
     //@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     //@Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime tempo_avaliacao;
+    
+    @OneToMany(mappedBy="grupo")
+        private List<Usuario_Grupo> usuario_grupo;
 }
