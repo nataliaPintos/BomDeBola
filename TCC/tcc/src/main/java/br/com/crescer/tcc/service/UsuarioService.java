@@ -45,15 +45,15 @@ public class UsuarioService {
 		usuario = usuarioRepository.save(usuario);
 	}
         
-        public void update(UsuarioModel usuarioModel) {
+        public Usuario update(UsuarioModel usuarioModel) {
             Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
             usuario.setEmail(usuarioModel.email);
             usuario.setImagem_perfil(usuarioModel.imagem_perfil);
             usuario.setNascimento(usuarioModel.nascimento);
             usuario.setNome(usuarioModel.nome);
-            usuario.setSenha(usuarioModel.senha);
+            usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.senha));
             usuario.setTelefone(usuarioModel.telefone);
-            usuarioRepository.save(usuario);
+            return usuarioRepository.save(usuario);
 	}
         
         public void delete(Long id) {

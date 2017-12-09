@@ -36,7 +36,7 @@ public class GrupoService {
 		grupo = grupoRepository.save(grupo);
 	}
         
-        public void update(GrupoModel grupoModel, Grupo grupo) {
+        public Grupo update(GrupoModel grupoModel, Grupo grupo) {
             grupo.setDia_semana(grupoModel.dia_semana);
             grupo.setDias_confirmacao(grupoModel.dias_confirmacao);
             grupo.setHora_final(grupoModel.hora_final);
@@ -48,7 +48,7 @@ public class GrupoService {
             grupo.setNome(grupoModel.nome);
             grupo.setTime_max(grupoModel.time_max);
             grupo.setTime_min(grupoModel.time_min);
-            grupoRepository.save(grupo);
+            return grupoRepository.save(grupo);
 	}
         
         public void delete(Long id) {

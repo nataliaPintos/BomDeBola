@@ -66,13 +66,12 @@ public class GrupoController {
     }
     
     @PutMapping("/atualizar-grupo/{id}")
-    public ResponseEntity update(@RequestBody @Valid GrupoModel grupoModel, Long id){
+    public ResponseEntity<Grupo> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
         Grupo grupo = grupoService.loadById(id);
         if(grupo == null){
-            return (ResponseEntity) ResponseEntity.badRequest();
+            return (ResponseEntity<Grupo>) ResponseEntity.badRequest();
         }else{
-            grupoService.update(grupoModel, grupo);
-            return (ResponseEntity) ResponseEntity.ok();
+            return ResponseEntity.ok(grupoService.update(grupoModel, grupo));
         }
     }
     

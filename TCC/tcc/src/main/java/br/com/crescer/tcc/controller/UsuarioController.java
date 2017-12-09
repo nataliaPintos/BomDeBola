@@ -54,8 +54,7 @@ public class UsuarioController {
             }
 	}
         @PutMapping("/atualizar-usuario")
-	public ResponseEntity update(@RequestBody @Valid UsuarioModel usuarioModel) {
-                usuarioService.update(usuarioModel);
-                return (ResponseEntity) ResponseEntity.ok();
+	public ResponseEntity<Usuario> update(@RequestBody @Valid UsuarioModel usuarioModel) {
+                return ResponseEntity.ok(usuarioService.update(usuarioModel));
         }
 }
