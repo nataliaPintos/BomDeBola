@@ -6,6 +6,10 @@
 package br.com.crescer.tcc.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDateTime;
 
 /**
@@ -20,13 +24,18 @@ public class GrupoModel {
     public double latitude;
     public double longitude;
     public int dia_semana;
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    //@JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_inicio;
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_final;
     public int dias_confirmacao;
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime horas_confirmacao;
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime tempo_avaliacao;
 }

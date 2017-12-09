@@ -6,10 +6,12 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\GrupoModel.
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Run.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\security\SocialWebSecurityConfig.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\Grupo.java
+C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\LocalDateTimeConverter.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\HealthController.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\Usuario.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\component\LogTime.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\GrupoController.java
+C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\LocalDateConverter.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\GrupoService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\handler\HandlerException.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Repository\GrupoRepository.java
@@ -17,4 +19,3 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\LoggedU
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\security\SocialUserDetailsService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\config\SwaggerConfig.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\EmailService.java
-C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\LocalDateConverter.java

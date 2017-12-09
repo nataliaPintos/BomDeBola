@@ -1,11 +1,12 @@
 br\com\crescer\tcc\controller\UsuarioController.class
-br\com\crescer\tcc\entity\LocalDateConverter.class
 br\com\crescer\tcc\security\SocialUserDetailsService$CustomUserDetails.class
 br\com\crescer\tcc\Repository\UsuarioRepository.class
+br\com\crescer\tcc\utilitarios\LocalDateConverter.class
 br\com\crescer\tcc\Repository\GrupoRepository.class
 br\com\crescer\tcc\controller\LoggedUserController.class
 br\com\crescer\tcc\entity\Usuario.class
 br\com\crescer\tcc\security\SocialWebSecurityConfig$1.class
+br\com\crescer\tcc\utilitarios\LocalDateTimeConverter.class
 br\com\crescer\tcc\config\SwaggerConfig.class
 br\com\crescer\tcc\security\SocialWebSecurityConfig.class
 br\com\crescer\tcc\controller\GrupoController.class

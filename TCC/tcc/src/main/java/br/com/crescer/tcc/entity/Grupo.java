@@ -5,7 +5,7 @@
  */
 package br.com.crescer.tcc.entity;
 
-import br.com.crescer.social.utilitarios.LocalDateTimeConverter;
+import br.com.crescer.tcc.utilitarios.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -79,20 +79,16 @@ public class Grupo implements Serializable{
     @Column(name = "DIA_SEMANA")
     private int dia_semana;
     
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime hora_inicio;
     
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime hora_final;
     
     @NotNull(message = "Campo obrigatório")
@@ -100,19 +96,17 @@ public class Grupo implements Serializable{
     @Column(name = "DIA_CONFIRMACAO")
     private int dias_confirmacao;
     
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime horas_confirmacao;    
     
-    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
+    @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TEMPO_AVALIACAO")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    @Convert(converter = LocalDateTimeConverter.class)
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    //@Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime tempo_avaliacao;
 }
