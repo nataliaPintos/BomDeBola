@@ -63,4 +63,12 @@ public class Usuario_Grupo implements Serializable{
     @ManyToOne
     @JoinColumn(name = "ID_GRUPO")
     private Grupo grupo;
+    
+    public boolean getAdm(){
+        return this.adm;
+    }
+    
+    public boolean getSolicitacao(){
+        return this.solicitacao;
+    }
 }
