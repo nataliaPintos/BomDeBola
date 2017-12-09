@@ -32,8 +32,7 @@
         
         .when('/grupo/feed', {
             templateUrl: 'componentes/grupo/feedGrupo.html',
-            controller: 'GrupoController',
-            controllerAs: 'grupoCtrl'
+            controller: 'CustomController'
         }) 
 
         .otherwise('/home');
