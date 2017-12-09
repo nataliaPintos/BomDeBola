@@ -37,6 +37,7 @@ public class Usuario_Grupo implements Serializable{
     public Usuario_Grupo(Usuario usuario, Grupo grupo){
         this.usuario = usuario;
         this.grupo = grupo;
+        this.solicitacao = true;
     }
     
     @Id
@@ -49,6 +50,11 @@ public class Usuario_Grupo implements Serializable{
     @Basic(optional = false)
     @Column(name = "ADM")
     private boolean adm;
+    
+    @NotNull(message = "Campo obrigatório")
+    @Basic(optional = false)
+    @Column(name = "SOLICITACAO")
+    private boolean solicitacao;
     
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO")

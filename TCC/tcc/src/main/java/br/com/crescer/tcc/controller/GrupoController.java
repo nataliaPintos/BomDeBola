@@ -55,6 +55,7 @@ public class GrupoController {
         Usuario usuario = usuarioService.findByEmail(email);
         Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
         usuario_grupo.setAdm(true);
+        usuario_grupo.setSolicitacao(false);
         return ResponseEntity.ok().body(grupo);
     }
     
