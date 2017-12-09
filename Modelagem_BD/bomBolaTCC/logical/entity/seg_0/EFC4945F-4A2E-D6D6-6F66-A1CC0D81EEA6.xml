@@ -1,0 +1,192 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EFC4945F-4A2E-D6D6-6F66-A1CC0D81EEA6" name="PARTIDA">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>0BCA36A5-A45E-1F28-86A6-7367687E4ACE</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="64F15BE4-6424-A0C7-A637-1C4F2FF19005">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>EE08B9C2-FD3B-FA29-35BA-D18FBE91C93E</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HORARIO INICIO" id="ADE4D53D-DBE6-CC4B-BA22-D914272151BE">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>F4F18452-322B-1A4F-5791-A914B1F466C1</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HORARIO FINAL" id="16081814-C9FD-C2D3-60A5-FBB07BE91833">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>E7D65783-6F3B-2636-189C-8960A841842A</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DIA SEMANA" id="F3222845-662C-3B0C-9303-CC3F96B0F4B8">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>2B18054F-3F75-CBA1-656C-272F280B5A87</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LATITUDE" id="8DDE94E3-5E56-744E-36D4-CAC6FB3A4DE5">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>BEBB4813-5937-DC5B-D5B4-7501EAC2AFD1</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LONGITUDE" id="B0C1138C-ED21-F10E-3AA5-07CCD44F9B9A">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>F5D7B33A-3AB7-0748-66B1-C20211F281F1</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TIME MAX" id="FA354314-D4D8-15F9-3964-0A93560E55ED">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>F87E2E4E-9F65-879B-EB5C-8830D47A4A53</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TIME MIN" id="990C4D8A-D76D-5790-E5A2-667544865F10">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>A50765AD-FE66-219E-C82D-BD4C0D9B7573</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TEMPO AVALIACAO" id="70C51275-5E42-16E3-B58B-2147A855C16F">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>F980FC6E-D1E5-2571-3CC8-CB8931DA3CE2</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DIA CONFIRMACAO" id="CB415C92-6684-490B-BD65-B7515A7DE327">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>10292A25-6CEB-FD6D-7452-E6B8A529C0E5</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HORAS CONFIRMACAO" id="219971B6-263C-0DEF-81EA-C87A47D42A59">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>32D4B30E-9DDE-0E97-E05A-DE5DDDA70A5C</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CONFIRMADA" id="A224217A-9B36-FE2D-E28C-F9AAC49E78E9">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>A442EA8D-8BB8-13BC-22CC-0D337A7AABB0</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="GRUPO ID" id="8D7E8C85-6877-CFCD-3AA6-096138A504E6">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

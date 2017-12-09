@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="1C35A4A1-6EB5-AB12-DBA2-D87AF16CD0E3" containerWithKeyObject="4ED3ADAC-2508-EF64-CCD5-EF298488C71A" localFKIndex="2D989DCA-F162-ECAF-F2AD-942BDF82A936" name="USUARIO_PARTIDA_PARTIDA_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:19:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<referredTableLongName>PARTIDA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>0BCA36A5-A45E-1F28-86A6-7367687E4ACE</referredTableID>
+<keyObject>FC865E35-FABE-6AAC-1F18-3A1941C9D3FC</keyObject>
+<referredKeyID>FC865E35-FABE-6AAC-1F18-3A1941C9D3FC</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

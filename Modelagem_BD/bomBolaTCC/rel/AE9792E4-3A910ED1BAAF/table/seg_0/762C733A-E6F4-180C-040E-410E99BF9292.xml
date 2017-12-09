@@ -1,0 +1,108 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="762C733A-E6F4-180C-040E-410E99BF9292" name="USUARIO_GRUPO">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B6854006-60F6-91EA-B492-1C07B9021639">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:56:09 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USUARIO_ID" id="692B8EA8-AAB9-259A-572D-326FB3E2C978">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="23BEB0F2-AF11-8B8F-A5A7-B72DDB37DF37" referredColumn="3822B11F-8C0E-8549-DC93-D3D83B49F62F"/>
+</associations>
+</Column>
+<Column name="GRUPO_ID" id="06CB0EB0-956D-6403-9030-8BA9B080F0A7">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5213562C-08F1-3C92-2F47-36F9FCEFFF2A" referredColumn="A245EB03-9BC5-B0E1-CFBF-EC1111F0C226"/>
+</associations>
+</Column>
+<Column name="ADM" id="8B0DFAFE-C06C-A029-0887-F2B6F7060216">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:56:32 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SOLICITACAO" id="1CF45FB9-D423-1123-E954-0B87D10E5342">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:56:51 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4F4B640D-88B9-37AA-C417-B83A5518281B" name="USUARIO_GRUPO_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B6854006-60F6-91EA-B492-1C07B9021639"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD8FC7EA-F2BB-0C9B-5CB5-F5309E4FAA0E" name="USUARIO_GRUPO_USUARIO_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<generatorID>DEDCF2BF-510D-357B-9230-9C5F8284EB16</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="692B8EA8-AAB9-259A-572D-326FB3E2C978"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E2E38CA6-5501-B7FF-22BF-839C82A277BE" name="USUARIO_GRUPO_GRUPO_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:55:00 UTC</createdTime>
+<generatorID>DEDCF2BF-510D-357B-9230-9C5F8284EB16</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="06CB0EB0-956D-6403-9030-8BA9B080F0A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

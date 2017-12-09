@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8DB82BFA-35E0-451D-5A9C-ED273914F8E8" name="USUARIO">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:09:38 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="3822B11F-8C0E-8549-DC93-D3D83B49F62F">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:13:07 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="5DBD917F-0F9D-12C4-CA6E-56F40DF46AC9">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:16:06 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>130 CHAR</dataTypeSize>
+<ownDataTypeParameters>130 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="33C259BD-C106-8DAB-064B-072D2470AB02">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:19:03 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TELEFONE" id="8866C738-C1D6-9D5A-D09D-3183EACFA0E2">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:19:03 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 CHAR</dataTypeSize>
+<ownDataTypeParameters>15 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NASCIMENTO" id="47C71197-3903-FEDC-04D4-7B710105C197">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:20:27 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTA_GERAL" id="9F5ED34B-ACCA-89DF-F7A8-5784152918F0">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:21:51 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,4,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SCORE" id="5322631C-3676-84C6-F390-9047C3679A3A">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:23:48 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMAGEM_PERFIL" id="77473403-AB92-1420-6DB4-AB8743E97288">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:24:30 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PARTIDAS_JOGADAS" id="9D009A84-7F8D-0B23-996D-E47AF6B9FD64">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:24:56 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3FCA3384-552C-3F83-CAB4-28C63AEDF637" name="USUARIO_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:13:08 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3822B11F-8C0E-8549-DC93-D3D83B49F62F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

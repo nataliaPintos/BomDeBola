@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="USUARIO_GRUPO" directorySegmentName="seg_0" id="DEDCF2BF-510D-357B-9230-9C5F8284EB16">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:44:59 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>F5A6C8C9-F88F-1371-0886-E0A25060F814</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A6BF24F9-A528-38BD-F180-97C876133910</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="USUARIO ID" id="740E183E-BFDB-6FE7-2273-CEF96BE93B50">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="GRUPO ID" id="26F27D23-D75E-5DF5-EC67-A2D0B6C7F654">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</attribute>
+<attribute name="ADM" id="E5DCCB03-836F-51C6-C3D7-4C84BD80BCEF">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>8B0DFAFE-C06C-A029-0887-F2B6F7060216</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</attribute>
+<attribute name="SOLICITACAO" id="17641D00-E6A3-BA42-3000-EBEF86F38074">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>1CF45FB9-D423-1123-E954-0B87D10E5342</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

@@ -1,0 +1,159 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="200B6240-3F39-71D0-E047-68DE588F5318" name="GRUPO">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:25:07 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="A245EB03-9BC5-B0E1-CFBF-EC1111F0C226">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:25:46 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOME" id="F2B88816-7F5C-78B8-DD96-3040B61C90E0">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:26:22 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>130 CHAR</dataTypeSize>
+<ownDataTypeParameters>130 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORARIO_INICIO" id="CDB7DF27-7F4C-7C94-01C2-6979FC7FB204">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:27:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORARIO_FINAL" id="71562A67-5DF1-FC6C-0990-E07C4C0B8992">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:27:56 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIA_SEMANA" id="B00D73A8-9B92-9FDB-C81E-8E7EC825667B">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:34:30 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LATITUDE" id="FCAC8ECA-50B2-8178-AB6E-968BC139D6C4">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:35:16 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LONGITUDE" id="23307570-8607-F4F6-2F3A-C012418F6142">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:36:57 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIME_MAX" id="4CA043AD-C974-A204-E739-947E8F4A26D9">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:37:16 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIME_MIN" id="29DAB662-316B-4325-E85F-08B1F21F6985">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:37:27 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TEMPO_AVALIACAO" id="5E4B97BD-205A-FDD9-0F83-C8E094E81640">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:38:11 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIA_CONFIRMACAO" id="6C7EAED2-D132-D5C8-F4C7-9F59080056E9">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:38:11 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORAS_CONFIRMACAO" id="F5D70037-797A-64BC-23A1-919284B3631D">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:39:33 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMAGEM" id="A44971A7-49C1-9504-0A90-99E992B7C66B">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:40:05 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B2070234-50AF-A1BB-E564-6ECBE138E0DE" name="GRUPO_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:45:18 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="A245EB03-9BC5-B0E1-CFBF-EC1111F0C226"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

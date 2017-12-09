@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4ED3ADAC-2508-EF64-CCD5-EF298488C71A" name="USUARIO_PARTIDA">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:14:42 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="F922B60A-6A61-5515-A83D-08AFA68BDBFB">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:15:23 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTA_PARTIDA" id="2841D3C8-39D5-A2E5-140D-B10D6022713F">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:17:02 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,4,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SCORE_PARTIDA" id="43458AEF-0B94-E755-B2E2-3A58043FFB38">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:17:24 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TME" id="9DB11364-8C73-0A96-84DC-6D20042DC76B">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:18:28 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PARTIDA_ID" id="F6592FFD-37F2-1AA3-3935-43AC6002040D">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:19:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1C35A4A1-6EB5-AB12-DBA2-D87AF16CD0E3" referredColumn="EE08B9C2-FD3B-FA29-35BA-D18FBE91C93E"/>
+</associations>
+</Column>
+<Column name="USUARIO_GRUPO_ID" id="9699F4A9-319B-926B-6039-7832162F13B1">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:21:05 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EA6BA57C-0B43-14E4-EDCD-B5B6E92F0649" referredColumn="B6854006-60F6-91EA-B492-1C07B9021639"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6E1A0651-065A-1C54-7D49-0CC63F2D13C3" name="USUARIO_PARTIDA_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:20:13 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F922B60A-6A61-5515-A83D-08AFA68BDBFB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2D989DCA-F162-ECAF-F2AD-942BDF82A936" name="USUARIO_PARTIDA_PARTIDA_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:19:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F6592FFD-37F2-1AA3-3935-43AC6002040D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="61E21F52-2349-47AE-86A9-7711081C7EFD" name="USUARIO_PARTIDA_USUARIO_GRUPO_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:21:05 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9699F4A9-319B-926B-6039-7832162F13B1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

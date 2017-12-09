@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="71A7883A-7227-45F9-C2B0-AD513AE3352A" containerWithKeyObject="0BCA36A5-A45E-1F28-86A6-7367687E4ACE" localFKIndex="E1DD7E89-EA6F-1364-4C9F-2512DB1A705A" name="PARTIDA_GRUPO_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:09:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<referredTableLongName>GRUPO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>200B6240-3F39-71D0-E047-68DE588F5318</referredTableID>
+<keyObject>B2070234-50AF-A1BB-E564-6ECBE138E0DE</keyObject>
+<referredKeyID>B2070234-50AF-A1BB-E564-6ECBE138E0DE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

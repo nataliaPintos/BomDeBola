@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="26A5E33C-436A-30D4-8DE6-CA7DD0241E5F" name="USUARIO PARTIDA">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>4ED3ADAC-2508-EF64-CCD5-EF298488C71A</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="0AF5A839-8601-2CD9-10ED-CC470358939F">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>F922B60A-6A61-5515-A83D-08AFA68BDBFB</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOTA PARTIDA" id="EE54382B-EEC0-4E2C-3F22-3981058BA709">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>2841D3C8-39D5-A2E5-140D-B10D6022713F</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,4,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SCORE PARTIDA" id="BD072434-EF89-05D9-7C54-705551B7F807">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>43458AEF-0B94-E755-B2E2-3A58043FFB38</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TME" id="48751089-2634-0A5E-4C8C-8EE9A28B3229">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>9DB11364-8C73-0A96-84DC-6D20042DC76B</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PARTIDA ID" id="A8DFE768-29D0-5FDE-3FC7-A959F65EF742">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="USUARIO GRUPO ID" id="A0363BA5-76F9-F922-7327-9F068CA49719">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="523BBBFF-81ED-16AE-945D-321FBBE7A494" name="USUARIO PARTIDA PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>6E1A0651-065A-1C54-7D49-0CC63F2D13C3</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0AF5A839-8601-2CD9-10ED-CC470358939F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

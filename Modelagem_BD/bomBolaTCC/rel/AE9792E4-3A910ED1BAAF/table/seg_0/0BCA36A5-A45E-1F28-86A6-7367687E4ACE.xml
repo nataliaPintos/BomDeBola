@@ -1,0 +1,172 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0BCA36A5-A45E-1F28-86A6-7367687E4ACE" name="PARTIDA">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="EE08B9C2-FD3B-FA29-35BA-D18FBE91C93E">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORARIO_INICIO" id="F4F18452-322B-1A4F-5791-A914B1F466C1">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORARIO_FINAL" id="E7D65783-6F3B-2636-189C-8960A841842A">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIA_SEMANA" id="2B18054F-3F75-CBA1-656C-272F280B5A87">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LATITUDE" id="BEBB4813-5937-DC5B-D5B4-7501EAC2AFD1">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LONGITUDE" id="F5D7B33A-3AB7-0748-66B1-C20211F281F1">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIME_MAX" id="F87E2E4E-9F65-879B-EB5C-8830D47A4A53">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TIME_MIN" id="A50765AD-FE66-219E-C82D-BD4C0D9B7573">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TEMPO_AVALIACAO" id="F980FC6E-D1E5-2571-3CC8-CB8931DA3CE2">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIA_CONFIRMACAO" id="10292A25-6CEB-FD6D-7452-E6B8A529C0E5">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HORAS_CONFIRMACAO" id="32D4B30E-9DDE-0E97-E05A-DE5DDDA70A5C">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONFIRMADA" id="A442EA8D-8BB8-13BC-22CC-0D337A7AABB0">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:07:44 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GRUPO_ID" id="752F896E-F9C1-E301-0C03-B355C5BE3335">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:09:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="71A7883A-7227-45F9-C2B0-AD513AE3352A" referredColumn="A245EB03-9BC5-B0E1-CFBF-EC1111F0C226"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FC865E35-FABE-6AAC-1F18-3A1941C9D3FC" name="PARTIDA_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:57:36 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="EE08B9C2-FD3B-FA29-35BA-D18FBE91C93E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E1DD7E89-EA6F-1364-4C9F-2512DB1A705A" name="PARTIDA_GRUPO_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:09:49 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="752F896E-F9C1-E301-0C03-B355C5BE3335"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

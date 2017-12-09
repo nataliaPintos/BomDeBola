@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="AVALIACAO_USUARIO_PARTIDA_FK" directorySegmentName="seg_0" id="CE5A5618-CE15-B435-1C46-37F1956D3714">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:30:25 UTC</createdTime>
+<generatorID>396D4C23-7C51-0DCC-E345-185658853FBB</generatorID>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<engineerTo>
+<item key="AE9792E4-08D4-BAF6-2EAC-3A910ED1BAAF" value="true"/>
+</engineerTo>
+<sourcePk>523BBBFF-81ED-16AE-945D-321FBBE7A494</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>26A5E33C-436A-30D4-8DE6-CA7DD0241E5F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>152112F7-833E-3764-3BE6-46085DA95ED1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

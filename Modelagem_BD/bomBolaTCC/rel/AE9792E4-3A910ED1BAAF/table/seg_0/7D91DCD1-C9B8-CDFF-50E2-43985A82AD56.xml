@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7D91DCD1-C9B8-CDFF-50E2-43985A82AD56" name="USUARIO_AVALIACAO">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:22:02 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="D2459A13-10D7-FD43-7333-3F856D7A5035">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:22:31 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTA" id="A0ABB9C3-0C43-4D16-CA68-935D1BBE66E2">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:23:27 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USUARIO_PARTIDA_ID" id="938E8785-23C8-063E-8B50-5CE4CAEE0764">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:23:45 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="396D4C23-7C51-0DCC-E345-185658853FBB" referredColumn="F922B60A-6A61-5515-A83D-08AFA68BDBFB"/>
+</associations>
+</Column>
+<Column name="USUARIO_PARTIDA_AVALIADOR_ID" id="41F8954A-04A8-6C90-08D2-C52AEEAD681C">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:24:22 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="05EFE495-1EEA-2210-D691-08883005A9A9" referredColumn="F922B60A-6A61-5515-A83D-08AFA68BDBFB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ECCEC8F3-CBD9-6BDD-1590-C43DF65F3078" name="USUARIO_AVALIACAO_PK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:22:31 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D2459A13-10D7-FD43-7333-3F856D7A5035"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BCB40CEC-950B-2E2C-4D62-CF6B6DE19B4D" name="AVALIACAO_USUARIO_PARTIDA_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:23:45 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="938E8785-23C8-063E-8B50-5CE4CAEE0764"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CFF87CD4-08A7-131A-8BB7-85D0420D6D5D" name="AVALIACAO_USUARIO_PARTIDA_AVALIADOR_FK">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 05:24:22 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41F8954A-04A8-6C90-08D2-C52AEEAD681C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

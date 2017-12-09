@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="bomBolaTCC" id="1C39ADF1-BA1B-4949-D4E3-68C1BED1BFAE" version="3.5">
+<createdBy>Jacob Stein</createdBy>
+<createdTime>2017-12-09 04:08:50 UTC</createdTime>
+<ownerDesignName>bomBolaTCC</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1C39ADF1-BA1B-4949-D4E3-68C1BED1BFAE</designId>
+</OSDM_Design>
