@@ -13,12 +13,12 @@
             getUsuario: getUsuario
         }
 
-        return usuarioService;
-
         var urlBase = 'http://localhost:9090/usuario'; 
 
+        return usuarioService;
+
         function salvar(usuario) {
-            return $http.post('http://localhost:9090/usuario/novo-usuario', usuario);
+            return $http.post(urlBase + '/novo-usuario', usuario);
         }
 
         function listar() {

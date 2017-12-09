@@ -17,12 +17,12 @@
             excluirJogador: excluirJogador
         }
 
+        var urlBase = 'http://localhost:9090/grupo';
+
         return grupoService;
 
-        var urlBase = 'http://localhost:9090/grupo'; 
-
-        function criar(usuario) {
-            return $http.post('http://localhost:9090/usuario/novo-usuario', usuario);
+        function criar(grupo) {
+            return $http.post(urlBase + '/novo-grupo', grupo);
         }
 
         function listarGrupos() {
@@ -33,19 +33,19 @@
             return $http.get(urlBase + "/" + id);
         }
 
-        function alterar() {
+        function alterar(grupo) {
+            return $http.put(urlBase + '/atualizar-grupo/' + grupo.id, grupo);
+        }
+
+        function excluirGrupo(id) {
             return $http.get(urlBase + '/lista');
         }
 
-        function excluirGrupo() {
+        function convidar(email) {
             return $http.get(urlBase + '/lista');
         }
 
-        function convidar() {
-            return $http.get(urlBase + '/lista');
-        }
-
-        function excluirJogador() {
+        function excluirJogador(id) {
             return $http.get(urlBase + '/lista');
         }
 

@@ -14,7 +14,7 @@
         gr.isAlterar = !!$routeParams.id;
 
         GrupoService.listarGrupos().then(response =>{
-            gr.grupos = response.data;
+            gr.gruposUsuario = response.data;
         });
     
         if(gr.isAlterar){
