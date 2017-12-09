@@ -29,6 +29,13 @@
             controllerAs: 'grupoCtrl'
         }) 
 
+        
+        .when('/grupo/feed', {
+            templateUrl: 'componentes/grupo/feedGrupo.html',
+            controller: 'GrupoController',
+            controllerAs: 'grupoCtrl'
+        }) 
+
         .otherwise('/home');
 
     }
