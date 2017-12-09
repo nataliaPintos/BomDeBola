@@ -11,7 +11,6 @@ package br.com.crescer.tcc.Models;
  */
 public class Usuario_GrupoModel {
     
-    public boolean adm;
     public String email_usuario;
     public Long id_grupo;
     
