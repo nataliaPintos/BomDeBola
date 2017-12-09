@@ -11,6 +11,7 @@ import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.UsuarioService;
+import br.com.crescer.tcc.service.Usuario_GrupoService;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -35,6 +36,7 @@ public class GrupoController {
     
     private final GrupoService grupoService;
     private final UsuarioService usuarioService;
+    private final Usuario_GrupoService usuario_grupoService;
     
     @GetMapping("/{id}")
     public Grupo getGrupoById(@PathVariable Long id) {
@@ -56,6 +58,7 @@ public class GrupoController {
         Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
         usuario_grupo.setAdm(true);
         usuario_grupo.setSolicitacao(false);
+        usuario_grupoService.save(usuario_grupo);
         return ResponseEntity.ok().body(grupo);
     }
     
