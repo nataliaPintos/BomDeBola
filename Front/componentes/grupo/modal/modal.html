@@ -1,0 +1,35 @@
+<div class="modal" ng-class="{'is-active': modalCtrl.isModal }">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <div class="field">
+                            <label class="label">Email do Jogador</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <p class="buttons has-addons is-right">
+                                <button class="button is-success is-right">
+                                    Enviar Convite
+                                </button>
+                            </p>
+                        </div>
+
+                    </div>
+            </article>
+            </div>
+
+
+
+        </div>
+        <button class="modal-close is-large" ng-click="modalCtrl.closeModal()" aria-label="close"></button>
+    </div>
