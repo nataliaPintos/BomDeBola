@@ -5,11 +5,13 @@
  */
 package br.com.crescer.tcc.service;
 
+import br.com.crescer.tcc.Models.GrupoModel;
 import br.com.crescer.tcc.entity.Grupo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.GrupoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -19,6 +21,7 @@ import br.com.crescer.tcc.Repository.GrupoRepository;
 @Service
 @RequiredArgsConstructor
 public class GrupoService {
+        @Autowired
 	private final GrupoRepository grupoRepository;
         
         public Grupo loadById(Long id) {
@@ -31,6 +34,21 @@ public class GrupoService {
 
 	public void save(Grupo grupo) {
 		grupo = grupoRepository.save(grupo);
+	}
+        
+        public void update(GrupoModel grupoModel, Grupo grupo) {
+            grupo.setDia_semana(grupoModel.dia_semana);
+            grupo.setDias_confirmacao(grupoModel.dias_confirmacao);
+            grupo.setHora_final(grupoModel.hora_final);
+            grupo.setHora_inicio(grupoModel.hora_inicio);
+            grupo.setHoras_confirmacao(grupoModel.horas_confirmacao);
+            grupo.setImagem(grupoModel.imagem);
+            grupo.setLatitude(grupoModel.latitude);
+            grupo.setLongitude(grupoModel.longitude);
+            grupo.setNome(grupoModel.nome);
+            grupo.setTime_max(grupoModel.time_max);
+            grupo.setTime_min(grupoModel.time_min);
+            grupoRepository.save(grupo);
 	}
         
         public void delete(Long id) {

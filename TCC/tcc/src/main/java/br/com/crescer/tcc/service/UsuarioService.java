@@ -5,12 +5,15 @@
  */
 package br.com.crescer.tcc.service;
 
+import br.com.crescer.tcc.Models.UsuarioModel;
 import br.com.crescer.tcc.entity.Usuario;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
+import br.com.crescer.tcc.utilitarios.UsuarioComponente;
+import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  * @author luan.avila
@@ -18,7 +21,11 @@ import br.com.crescer.tcc.Repository.UsuarioRepository;
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
+        @Autowired
 	private final UsuarioRepository usuarioRepository;
+        
+        @Autowired
+        private final UsuarioComponente usuarioComponente;
 
 	public Usuario findByEmail(String username) {
 		return usuarioRepository.findByEmailIgnoreCase(username);
@@ -36,6 +43,17 @@ public class UsuarioService {
 		final String senha = usuario.getSenha();
 		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
 		usuario = usuarioRepository.save(usuario);
+	}
+        
+        public void update(UsuarioModel usuarioModel) {
+            Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
+            usuario.setEmail(usuarioModel.email);
+            usuario.setImagem_perfil(usuarioModel.imagem_perfil);
+            usuario.setNascimento(usuarioModel.nascimento);
+            usuario.setNome(usuarioModel.nome);
+            usuario.setSenha(usuarioModel.senha);
+            usuario.setTelefone(usuarioModel.telefone);
+            usuarioRepository.save(usuario);
 	}
         
         public void delete(Long id) {

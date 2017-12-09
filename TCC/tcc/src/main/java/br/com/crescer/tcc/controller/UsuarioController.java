@@ -53,4 +53,9 @@ public class UsuarioController {
                 return (ResponseEntity<Usuario>) ResponseEntity.badRequest();
             }
 	}
+        @PutMapping("/atualizar-usuario")
+	public ResponseEntity update(@RequestBody @Valid UsuarioModel usuarioModel) {
+                usuarioService.update(usuarioModel);
+                return (ResponseEntity) ResponseEntity.ok();
+        }
 }

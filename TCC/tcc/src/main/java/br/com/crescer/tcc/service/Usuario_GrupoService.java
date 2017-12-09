@@ -9,6 +9,7 @@ import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class Usuario_GrupoService {
+    @Autowired
     private final Usuario_GrupoRepository usuario_grupoRepository;
     
     public Usuario_Grupo loadById(Long id) {
