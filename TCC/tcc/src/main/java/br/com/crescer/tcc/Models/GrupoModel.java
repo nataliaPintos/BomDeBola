@@ -5,6 +5,7 @@
  */
 package br.com.crescer.tcc.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 /**
@@ -19,9 +20,13 @@ public class GrupoModel {
     public double latitude;
     public double longitude;
     public int dia_semana;
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     public LocalDateTime hora_inicio;
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     public LocalDateTime hora_final;
     public int dias_confirmacao;
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     public LocalDateTime horas_confirmacao;
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     public LocalDateTime tempo_avaliacao;
 }

@@ -5,6 +5,7 @@
  */
 package br.com.crescer.tcc.entity;
 
+import br.com.crescer.social.utilitarios.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.validation.constraints.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 /**
  *
  * @author luanp
@@ -81,12 +83,16 @@ public class Grupo implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime hora_inicio;
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime hora_final;
     
     @NotNull(message = "Campo obrigatório")
@@ -98,11 +104,15 @@ public class Grupo implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime horas_confirmacao;    
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TEMPO_AVALIACAO")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime tempo_avaliacao;
 }
