@@ -18,7 +18,7 @@
         var urlBase = 'http://localhost:9090/usuario'; 
 
         function salvar(usuario) {
-            return $http.post(urlBase + '/novo-usuario', usuario);
+            return $http.post('http://localhost:9090/usuario/novo-usuario', usuario);
         }
 
         function listar() {
