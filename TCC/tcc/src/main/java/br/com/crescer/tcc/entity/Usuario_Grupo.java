@@ -5,6 +5,7 @@
  */
 package br.com.crescer.tcc.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -30,6 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "USUARIO_GRUPO")
+@JsonIgnoreProperties({"usuario_grupo"})
 public class Usuario_Grupo implements Serializable{
     
     private static final String SQ_USUARIO_GRUPO = "SQ_USUARIO_GRUPO";

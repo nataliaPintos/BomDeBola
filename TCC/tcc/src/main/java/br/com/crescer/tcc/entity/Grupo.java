@@ -7,6 +7,7 @@ package br.com.crescer.tcc.entity;
 
 import br.com.crescer.tcc.utilitarios.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
 @Table(name = "GRUPO")
+@JsonIgnoreProperties({"usuario_grupo", "partida"})
 public class Grupo implements Serializable{
     
     private static final String SQ_GRUPO = "SQ_GRUPO";
@@ -80,13 +82,13 @@ public class Grupo implements Serializable{
     @Column(name = "DIA_SEMANA")
     private int dia_semana;
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
     private LocalDateTime hora_inicio;
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
