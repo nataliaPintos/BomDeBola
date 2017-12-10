@@ -13,6 +13,7 @@
         gr.grupo;
         gr.isAlterar = !!$routeParams.id;
         gr.openModal = openModal;
+        gr.openModalEdicao = openModalEdicao;
 
         // GrupoService.listarGrupos().then(response =>{
         //     gr.gruposUsuario = response.data;
@@ -67,9 +68,20 @@
 
 
         function openModal() {
-            console.log('entrou aqui');
+            console.log("entrou aqui");
           ModalService.showModal({
             templateUrl: 'componentes/grupo/modal/modal.html',
+            controller: 'ModalController',
+            controllerAs: 'modalCtrl',
+            bodyClass: 'modal.is-active'
+           
+          });
+        }
+
+        function openModalEdicao() {
+        console.log("entrou aqui");
+          ModalService.showModal({
+            templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
             controller: 'ModalController',
             controllerAs: 'modalCtrl',
             bodyClass: 'modal.is-active'

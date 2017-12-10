@@ -15,7 +15,6 @@ br\com\crescer\tcc\Run.class
 br\com\crescer\tcc\service\UsuarioService.class
 br\com\crescer\tcc\entity\Grupo.class
 br\com\crescer\tcc\Models\GrupoModel.class
-br\com\crescer\tcc\controller\Usuario_GrupoController.class
 br\com\crescer\tcc\Repository\Usuario_GrupoRepository.class
 br\com\crescer\tcc\service\EmailService$1.class
 br\com\crescer\tcc\Models\Usuario_GrupoModel.class
