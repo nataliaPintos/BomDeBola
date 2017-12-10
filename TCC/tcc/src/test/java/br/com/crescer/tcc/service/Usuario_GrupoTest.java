@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class Grupo_UsuarioTest {
+public class Usuario_GrupoTest {
     @Mock
     private Usuario_GrupoRepository usuario_grupoRepository;
     
@@ -61,7 +61,7 @@ public class Grupo_UsuarioTest {
         
         when(usuario_grupoRepository.findOne(1L)).thenReturn(ug);
         
-        final Usuario_Grupo ug2 = usuario_grupoRepository.findOne(1L);
+        final Usuario_Grupo ug2 = usuario_grupoService.loadById(1L);
         
         assertEquals(ug.getGrupo(), ug2.getGrupo());
         assertEquals(ug.getGrupo(), grupo);
@@ -70,4 +70,5 @@ public class Grupo_UsuarioTest {
         assertEquals(ug.getAdm(), ug2.getAdm());
         assertEquals(ug.getSolicitacao(), ug2.getSolicitacao());
     }
+    
 }

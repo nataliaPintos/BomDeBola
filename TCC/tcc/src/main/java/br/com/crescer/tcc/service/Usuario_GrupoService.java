@@ -6,6 +6,7 @@
 package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
+import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,16 @@ public class Usuario_GrupoService {
 		usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
 	}
         
+        public Usuario_Grupo update(Usuario_Grupo usuario_grupo) {
+            usuario_grupo.setSolicitacao(false);
+            return usuario_grupoRepository.save(usuario_grupo);
+	}
+        
         public void delete(Long id) {
                 usuario_grupoRepository.delete(id);
+	}
+        
+        public List<Usuario_Grupo> findByGrupo(Grupo grupo) {
+                return usuario_grupoRepository.findByGrupo(grupo);
 	}
 }

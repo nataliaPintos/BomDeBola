@@ -5,7 +5,9 @@
  */
 package br.com.crescer.tcc.Repository;
 
+import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Usuario_Partida;
+import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -13,5 +15,4 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author luanp
  */
 public interface Usuario_PartidaRepository extends PagingAndSortingRepository<Usuario_Partida, Long> {
-    
 }

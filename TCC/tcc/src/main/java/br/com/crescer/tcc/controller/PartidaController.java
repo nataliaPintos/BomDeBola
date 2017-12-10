@@ -8,8 +8,12 @@ package br.com.crescer.tcc.controller;
 import br.com.crescer.tcc.Models.PartidaModel;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
+import br.com.crescer.tcc.entity.Usuario;
+import br.com.crescer.tcc.entity.Usuario_Grupo;
+import br.com.crescer.tcc.entity.Usuario_Partida;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
+import br.com.crescer.tcc.service.Usuario_GrupoService;
 import br.com.crescer.tcc.service.Usuario_PartidaService;
 import java.util.List;
 import javax.validation.Valid;
@@ -33,6 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PartidaController {
     private final PartidaService partidaService;
     private final GrupoService grupoService;
+    private final Usuario_GrupoService usuario_grupoService;
     private final Usuario_PartidaService usuario_partidaService;
     
     @GetMapping("/{id}")
@@ -65,17 +70,12 @@ public class PartidaController {
         partidaModel.dias_confirmacao, partidaModel.horas_confirmacao, partidaModel.tempo_avaliacao, grupo);
         partidaService.save(partida);
         
-        //Carregar todos Usuario_Grupo onde Grupo = grupo para então gazer um for e criar um Usuario_Partida para casa Usuario no Usuario_Grupo carregado
-        return ResponseEntity.ok().body(partida);
-    }
-    
-    @PutMapping("/atualizar-partida/{id}")
-    public ResponseEntity<Partida> update(@PathVariable Long id, @RequestBody @Valid PartidaModel partidaModel){
-        Partida partida = partidaService.loadById(id);
-        if(partida == null){
-            return (ResponseEntity<Partida>) ResponseEntity.badRequest();
-        }else{
-            return ResponseEntity.ok(partidaService.update(partidaModel, partida));
+        //Carregar todos Usuario_Grupo onde Grupo = grupo para então gazer um for e criar um Usuario_Partida para cada Usuario_Grupo carregado
+        List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoService.findByGrupo(grupo);
+        for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
+            Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
+            usuario_partidaService.save(usuario_partida);
         }
+        return ResponseEntity.ok().body(partida);
     }
 }

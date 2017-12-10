@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,5 +54,12 @@ public class Usuario_GrupoController {
         Usuario_Grupo ug = new Usuario_Grupo(usuario, grupo);
         usuario_grupoService.save(ug);
         return ResponseEntity.ok().body(ug);
+    }
+    
+    @PutMapping("/aceitar-grupo")
+    public ResponseEntity<Usuario_Grupo> update(@RequestBody @Valid Long id) {
+        Usuario_Grupo usuario_grupo = usuario_grupoService.loadById(id);
+        return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));
+        
     }
 }
