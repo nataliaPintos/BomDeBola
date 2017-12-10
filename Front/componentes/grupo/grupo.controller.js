@@ -14,19 +14,21 @@
         gr.isAlterar = !!$routeParams.id;
         gr.openModal = openModal;
 
-        GrupoService.listarGrupos().then(response =>{
-            gr.gruposUsuario = response.data;
-        });
+        // GrupoService.listarGrupos().then(response =>{
+        //     gr.gruposUsuario = response.data;
+        // });
     
         if(gr.isAlterar){
             GrupoService.buscarPorId($routeParams.id)
                 .then(response =>{
-                    gr.grupo = response.data;
+                    console.log(response.data);
+                    console.log($routeParams.id);
+                    $scope.grupo = response.data;
             });
         }
     
         function alterarGrupo (grupo) {
-            if($scope.formGrupo.$invalid) return;
+            //if($scope.formGrupo.$invalid) return;
             if(!gr.isAlterar) {
                 criarGrupo(grupo);
                 return;

@@ -29,6 +29,11 @@
             controllerAs: 'grupoCtrl'
         }) 
 
+        .when('/grupo/altera/:id?', {
+            templateUrl: 'componentes/grupo/cadastroGrupo.html',
+            controller: 'GrupoController',
+            controllerAs: 'grupoCtrl'
+        })
         
         .when('/grupo/feed', {
             templateUrl: 'componentes/grupo/feedGrupo.html',
