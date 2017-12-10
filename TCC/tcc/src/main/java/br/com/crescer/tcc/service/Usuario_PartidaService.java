@@ -34,6 +34,11 @@ public class Usuario_PartidaService {
 		usuario_partida = usuario_partidaRepository.save(usuario_partida);
 	}
         
+        public Usuario_Partida update(Usuario_Partida usuario_partida) {
+            usuario_partida.setSolicitacao(false);
+            return usuario_partidaRepository.save(usuario_partida);
+	}
+        
         public void delete(Long id) {
                 usuario_partidaRepository.delete(id);
 	}

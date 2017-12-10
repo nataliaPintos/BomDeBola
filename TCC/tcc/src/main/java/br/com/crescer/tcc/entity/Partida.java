@@ -43,7 +43,7 @@ public class Partida implements Serializable{
         this.longitude = longitude; this.dia_semana = dia_semana; this.hora_inicio = hora_inicio; 
         this.hora_final = hora_final; this.dias_confirmacao = dias_confirmacao;
         this.horas_confirmacao = horas_confirmacao; this.tempo_avaliacao = tempo_avaliacao;
-        this.grupo = grupo;
+        this.time_atual = 0; this.grupo = grupo;
         this.confirmada = false;
     }
     
@@ -89,6 +89,11 @@ public class Partida implements Serializable{
     @Basic(optional = false)
     @Column(name = "TIME_MIN")
     private int time_min;
+    
+    @NotNull(message = "Campo obrigatório")
+    @Basic(optional = false)
+    @Column(name = "TIME_ATUAL")
+    private int time_atual;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)

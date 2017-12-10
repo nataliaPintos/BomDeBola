@@ -59,7 +59,6 @@ public class Usuario_GrupoController {
     @PutMapping("/aceitar-grupo")
     public ResponseEntity<Usuario_Grupo> update(@RequestBody @Valid Long id) {
         Usuario_Grupo usuario_grupo = usuario_grupoService.loadById(id);
-        return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));
-        
+        return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));        
     }
 }
