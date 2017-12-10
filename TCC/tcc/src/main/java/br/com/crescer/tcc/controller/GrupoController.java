@@ -6,10 +6,12 @@
 package br.com.crescer.tcc.controller;
 
 import br.com.crescer.tcc.Models.GrupoModel;
+import br.com.crescer.tcc.Models.Usuario_GrupoModel;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.service.GrupoService;
+import br.com.crescer.tcc.service.UsuarioService;
 import br.com.crescer.tcc.service.Usuario_GrupoService;
 import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import java.util.List;
@@ -36,6 +38,7 @@ public class GrupoController {
     private final GrupoService grupoService;
     private final Usuario_GrupoService usuario_grupoService;
     private final UsuarioComponente usuarioComponente;
+    private final UsuarioService usuarioService;
     
     @GetMapping("/{id}")
     public Grupo getGrupoById(@PathVariable Long id) {
@@ -75,4 +78,23 @@ public class GrupoController {
         }
     }
     
+    @GetMapping("/lista-usuarios")
+    public List<Usuario_Grupo> listaUsuarios() {
+	return usuario_grupoService.lista();
+    }
+    
+    @PostMapping("/adicionar-usuario")
+    public ResponseEntity<Usuario_Grupo> save(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
+        Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
+        Grupo grupo = grupoService.loadById(usuario_grupoModel.id_grupo);
+        Usuario_Grupo ug = new Usuario_Grupo(usuario, grupo);
+        usuario_grupoService.save(ug);
+        return ResponseEntity.ok().body(ug);
+    }
+    
+    @PutMapping("/aceitar-grupo")
+    public ResponseEntity<Usuario_Grupo> update(@RequestBody @Valid Long id) {
+        Usuario_Grupo usuario_grupo = usuario_grupoService.loadById(id);
+        return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));        
+    }
 }

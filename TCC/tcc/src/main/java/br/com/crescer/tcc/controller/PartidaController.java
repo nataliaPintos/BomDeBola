@@ -8,7 +8,6 @@ package br.com.crescer.tcc.controller;
 import br.com.crescer.tcc.Models.PartidaModel;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
-import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.entity.Usuario_Partida;
 import br.com.crescer.tcc.service.GrupoService;
@@ -77,5 +76,18 @@ public class PartidaController {
             usuario_partidaService.save(usuario_partida);
         }
         return ResponseEntity.ok().body(partida);
+    }
+    
+    @PutMapping("/aceitar-partida")
+    public ResponseEntity update(@RequestBody @Valid Long id) {
+        Usuario_Partida usuario_partida = usuario_partidaService.loadById(id);
+        Partida partida = usuario_partida.getPartida();
+        if(partida.getTime_atual() < partida.getTime_max()){
+            partida.setTime_atual(partida.getTime_atual() + 1);
+            partidaService.save(partida);
+            return ResponseEntity.ok(usuario_partidaService.update(usuario_partida));
+        }else{
+            return ResponseEntity.ok("Partida Lotada");
+        }
     }
 }
