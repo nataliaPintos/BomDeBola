@@ -16,6 +16,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface Usuario_GrupoRepository extends PagingAndSortingRepository<Usuario_Grupo, Long> {
     
-    List<Usuario_Grupo> findByGrupo(Grupo grupo);
+    List<Usuario_Grupo> findByGrupoAndSolicitacao(Grupo grupo, boolean solicitacao);
     
 }

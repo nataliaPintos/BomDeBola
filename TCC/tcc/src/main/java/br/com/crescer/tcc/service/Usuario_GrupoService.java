@@ -45,6 +45,6 @@ public class Usuario_GrupoService {
 	}
         
         public List<Usuario_Grupo> findByGrupo(Grupo grupo) {
-                return usuario_grupoRepository.findByGrupo(grupo);
+                return usuario_grupoRepository.findByGrupoAndSolicitacao(grupo, false);
 	}
 }
