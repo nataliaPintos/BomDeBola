@@ -10,6 +10,7 @@ import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
+import br.com.crescer.tcc.service.Usuario_PartidaService;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PartidaController {
     private final PartidaService partidaService;
     private final GrupoService grupoService;
+    private final Usuario_PartidaService usuario_partidaService;
     
     @GetMapping("/{id}")
     public Partida getPartidaById(@PathVariable Long id) {
@@ -62,6 +64,8 @@ public class PartidaController {
         partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
         partidaModel.dias_confirmacao, partidaModel.horas_confirmacao, partidaModel.tempo_avaliacao, grupo);
         partidaService.save(partida);
+        
+        //Carregar todos Usuario_Grupo onde Grupo = grupo para então gazer um for e criar um Usuario_Partida para casa Usuario no Usuario_Grupo carregado
         return ResponseEntity.ok().body(partida);
     }
     

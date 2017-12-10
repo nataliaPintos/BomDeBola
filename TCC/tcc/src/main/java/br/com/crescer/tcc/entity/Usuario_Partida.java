@@ -6,7 +6,6 @@
 package br.com.crescer.tcc.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -29,29 +27,38 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "USUARIO_GRUPO")
-public class Usuario_Grupo implements Serializable{
+@Table(name = "USUARIO_PARTIDA")
+public class Usuario_Partida implements Serializable{
+    private static final String SQ_PARTIDA = "SQ_PARTIDA";
     
-    private static final String SQ_USUARIO_GRUPO = "SQ_USUARIO_GRUPO";
+    public Usuario_Partida(){}
     
-    public Usuario_Grupo(){}
-    
-    public Usuario_Grupo(Usuario usuario, Grupo grupo){
-        this.usuario = usuario;
-        this.grupo = grupo;
+    public Usuario_Partida(Partida partida, Usuario_Grupo usuario_grupo){
+        this.partida = partida;
+        this.usuario_grupo = usuario_grupo;
         this.solicitacao = true;
     }
     
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = SQ_USUARIO_GRUPO)
-    @SequenceGenerator(name = SQ_USUARIO_GRUPO, sequenceName = SQ_USUARIO_GRUPO, allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator = SQ_PARTIDA)
+    @SequenceGenerator(name = SQ_PARTIDA, sequenceName = SQ_PARTIDA, allocationSize = 1)
     @Column(name = "ID")
     private Long id;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
-    @Column(name = "ADM")
-    private boolean adm;
+    @Column(name = "NOTA_PARTIDA")
+    private double nota_partida;
+    
+    @NotNull(message = "Campo obrigatório")
+    @Basic(optional = false)
+    @Column(name = "GOLS")
+    private int gols;
+    
+    @NotNull(message = "Campo obrigatório")
+    @Basic(optional = false)
+    @Column(name = "TIME")
+    private char time;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -59,21 +66,10 @@ public class Usuario_Grupo implements Serializable{
     private boolean solicitacao;
     
     @ManyToOne
-    @JoinColumn(name = "ID_USUARIO")
-    private Usuario usuario;
+    @JoinColumn(name = "ID_PARTIDA")
+    private Partida partida;
     
     @ManyToOne
-    @JoinColumn(name = "ID_GRUPO")
-    private Grupo grupo;
-    
-    @OneToMany(mappedBy="usuario_grupo")
-    private List<Usuario_Partida> usuario_partida;
-    
-    public boolean getAdm(){
-        return this.adm;
-    }
-    
-    public boolean getSolicitacao(){
-        return this.solicitacao;
-    }
+    @JoinColumn(name = "ID_USUARIO_GRUPO")
+    private Usuario_Grupo usuario_grupo;
 }
