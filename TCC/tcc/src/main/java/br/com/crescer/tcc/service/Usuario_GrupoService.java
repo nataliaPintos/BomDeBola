@@ -7,7 +7,9 @@ package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
+import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
+import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ import org.springframework.stereotype.Service;
 public class Usuario_GrupoService {
     @Autowired
     private final Usuario_GrupoRepository usuario_grupoRepository;
+    private final EmailService emailService;
+    private final UsuarioComponente usuarioComponente;
     
     public Usuario_Grupo loadById(Long id) {
 		return usuario_grupoRepository.findOne(id);
@@ -31,8 +35,10 @@ public class Usuario_GrupoService {
 		return (List<Usuario_Grupo>) usuario_grupoRepository.findAll();
 	}
 
-	public void save(Usuario_Grupo usuario_grupo) {
+	public void save(Usuario_Grupo usuario_grupo, Usuario usuario) {
 		usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
+                Usuario usuarioLogado = usuarioComponente.usuarioLogadoDetalhes();
+                emailService.enviarEmail(usuario.getEmail(), usuarioLogado.getNome()+emailService.grupo);
 	}
         
         public Usuario_Grupo update(Usuario_Grupo usuario_grupo) {

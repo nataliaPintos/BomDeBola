@@ -39,10 +39,16 @@ public class UsuarioService {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
 
-	public void save(Usuario usuario) {
+	public boolean save(Usuario usuario, UsuarioModel usuarioModel) {
+            Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.email);
+            if(usuarioExistente == null){
 		final String senha = usuario.getSenha();
 		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
 		usuario = usuarioRepository.save(usuario);
+                return true;
+            }else{
+                return false;
+            }
 	}
         
         public Usuario update(UsuarioModel usuarioModel) {

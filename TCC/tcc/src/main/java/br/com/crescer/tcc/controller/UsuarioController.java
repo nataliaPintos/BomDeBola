@@ -43,15 +43,9 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/novo-usuario")
-	public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioModel usuarioModel) {
-            Usuario usuarioExistente = usuarioService.findByEmail(usuarioModel.email);
-            if(usuarioExistente == null){
+	public ResponseEntity<Boolean> save(@RequestBody @Valid UsuarioModel usuarioModel) {
                 Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
-		usuarioService.save(usuario);
-		return ResponseEntity.ok().body(usuario);
-            }else{
-                return (ResponseEntity<Usuario>) ResponseEntity.badRequest();
-            }
+		return ResponseEntity.ok().body(usuarioService.save(usuario, usuarioModel));
 	}
         @PutMapping("/atualizar-usuario")
 	public ResponseEntity<Usuario> update(@RequestBody @Valid UsuarioModel usuarioModel) {

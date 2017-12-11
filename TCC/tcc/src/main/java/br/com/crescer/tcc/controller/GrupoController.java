@@ -13,7 +13,6 @@ import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.UsuarioService;
 import br.com.crescer.tcc.service.Usuario_GrupoService;
-import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,6 @@ public class GrupoController {
     
     private final GrupoService grupoService;
     private final Usuario_GrupoService usuario_grupoService;
-    private final UsuarioComponente usuarioComponente;
     private final UsuarioService usuarioService;
     
     @GetMapping("/{id}")
@@ -58,24 +56,13 @@ public class GrupoController {
                 grupoModel.latitude, grupoModel.longitude, grupoModel.dia_semana, grupoModel.hora_inicio,
                 grupoModel.hora_final, grupoModel.dias_confirmacao, grupoModel.horas_confirmacao, grupoModel.tempo_avaliacao);
         grupoService.save(grupo);
-        
-        Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
-        
-        Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
-        usuario_grupo.setAdm(true);
-        usuario_grupo.setSolicitacao(false);
-        usuario_grupoService.save(usuario_grupo);
         return ResponseEntity.ok().body(grupo);
     }
     
     @PutMapping("/alteracao/{id}")
-    public ResponseEntity<Grupo> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
+    public ResponseEntity<Boolean> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
         Grupo grupo = grupoService.loadById(id);
-        if(grupo == null){
-            return (ResponseEntity<Grupo>) ResponseEntity.badRequest();
-        }else{
             return ResponseEntity.ok(grupoService.update(grupoModel, grupo));
-        }
     }
     
     @GetMapping("/lista-usuarios")
@@ -84,15 +71,15 @@ public class GrupoController {
     }
     
     @PostMapping("/convite")
-    public ResponseEntity<Usuario_Grupo> save(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
+    public ResponseEntity<Usuario_Grupo> convite(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
         Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
         Grupo grupo = grupoService.loadById(usuario_grupoModel.id_grupo);
         Usuario_Grupo ug = new Usuario_Grupo(usuario, grupo);
-        usuario_grupoService.save(ug);
+        usuario_grupoService.save(ug, usuario);
         return ResponseEntity.ok().body(ug);
     }
     
-    @PutMapping("/aceite")
+    @PutMapping("/aceitar")
     public ResponseEntity<Usuario_Grupo> update(@RequestBody @Valid Long id) {
         Usuario_Grupo usuario_grupo = usuario_grupoService.loadById(id);
         return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));        
