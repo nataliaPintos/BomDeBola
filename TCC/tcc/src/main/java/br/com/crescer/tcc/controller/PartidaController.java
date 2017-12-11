@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PartidaController {
     private final PartidaService partidaService;
     private final GrupoService grupoService;
-    private final Usuario_GrupoService usuario_grupoService;
     private final Usuario_PartidaService usuario_partidaService;
     
     @GetMapping("/{id}")
@@ -55,8 +54,6 @@ public class PartidaController {
         partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
         partidaModel.dias_confirmacao, partidaModel.horas_confirmacao, partidaModel.tempo_avaliacao, grupo);
         partidaService.save(partida, grupo);
-        
-        
         return ResponseEntity.ok().body(partida);
     }
     
