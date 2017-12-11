@@ -68,7 +68,7 @@ public class GrupoController {
         return ResponseEntity.ok().body(grupo);
     }
     
-    @PutMapping("/atualizar-grupo/{id}")
+    @PutMapping("/alteracao/{id}")
     public ResponseEntity<Grupo> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
         Grupo grupo = grupoService.loadById(id);
         if(grupo == null){
@@ -83,7 +83,7 @@ public class GrupoController {
 	return usuario_grupoService.lista();
     }
     
-    @PostMapping("/adicionar-usuario")
+    @PostMapping("/convite")
     public ResponseEntity<Usuario_Grupo> save(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
         Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
         Grupo grupo = grupoService.loadById(usuario_grupoModel.id_grupo);
@@ -92,7 +92,7 @@ public class GrupoController {
         return ResponseEntity.ok().body(ug);
     }
     
-    @PutMapping("/aceitar-grupo")
+    @PutMapping("/aceite")
     public ResponseEntity<Usuario_Grupo> update(@RequestBody @Valid Long id) {
         Usuario_Grupo usuario_grupo = usuario_grupoService.loadById(id);
         return ResponseEntity.ok(usuario_grupoService.update(usuario_grupo));        

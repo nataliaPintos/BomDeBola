@@ -41,7 +41,7 @@
             controllerAs: 'grupoCtrl'
         }) 
 
-        .otherwise('/home');
+        .otherwise('/grupo/feed');
 
     }
 

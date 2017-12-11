@@ -1,2 +1,5 @@
 br\com\crescer\tcc\service\GrupoTest.class
+br\com\crescer\tcc\service\Usuario_PartidaTest.class
 br\com\crescer\tcc\service\UsuarioTest.class
+br\com\crescer\tcc\service\Usuario_GrupoTest.class
+br\com\crescer\tcc\service\PartidaTest.class

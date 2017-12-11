@@ -63,26 +63,51 @@
 
         function openModal() {
             console.log("entrou aqui");
-          ModalService.showModal({
-            templateUrl: 'componentes/grupo/modal/modal.html',
-            controller: 'ModalController',
-            controllerAs: 'modalCtrl',
-            bodyClass: 'modal.is-active'
-           
-          });
+            GrupoService.buscarPorId(25)
+                .then(response =>{
+                ModalService.showModal({
+                    templateUrl: 'componentes/grupo/modal/modal.html',
+                    controller: 'ModalController',
+                    controllerAs: 'modalCtrl',
+                    bodyClass: 'modal.is-active',
+                    inputs: {
+                        grupo: response.data
+                    }
+                });
+            });    
         }
 
         function openModalEdicao() {
-        console.log("entrou aqui");
-          ModalService.showModal({
-            templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
-            controller: 'ModalController',
-            controllerAs: 'modalCtrl',
-            bodyClass: 'modal.is-active'
-           
-          });
+            console.log("entrou aqui");
+            GrupoService.buscarPorId(25)
+                .then(response =>{
+                ModalService.showModal({
+                    templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
+                    controller: 'ModalController',
+                    controllerAs: 'modalCtrl',
+                    bodyClass: 'modal.is-active',
+                    inputs: {
+                        grupo: response.data
+                    }
+                });
+            });    
         }
 
+        function openModalNovaPartida() {
+            console.log("entrou aqui");
+            GrupoService.buscarPorId(25)
+                .then(response =>{
+                ModalService.showModal({
+                    templateUrl: 'componentes/grupo/modal/modalNovaPartida.html',
+                    controller: 'ModalController',
+                    controllerAs: 'modalCtrl',
+                    bodyClass: 'modal.is-active',
+                    inputs: {
+                        grupo: response.data
+                    }
+                });
+            });    
+        }
 
 
     }

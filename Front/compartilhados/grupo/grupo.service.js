@@ -29,27 +29,29 @@
             return $http.get(urlBase + '/lista');
         }
 
+        function listarUsuarios(id) {
+            return $http.get(urlBase + '/lista-usuarios/' + id);
+        }
+
         function buscarPorId(id) {
             return $http.get(urlBase + "/" + id);
         }
 
         function alterar(grupo) {
-            return $http.put(urlBase + '/atualizar-grupo/' + grupo.id, grupo);
+            return $http.put(urlBase + '/alteracao/' + grupo.id, grupo);
         }
 
         function excluirGrupo(id) {
             return $http.get(urlBase + '/lista');
         }
 
-        function convidar(email) {
-            return $http.get(urlBase + '/lista');
+        function convidar(usuarioGrupo) {
+            return $http.post(urlBase + '/convite', usuarioGrupo);
         }
 
         function excluirJogador(id) {
             return $http.get(urlBase + '/lista');
         }
-
-
 
     }
 

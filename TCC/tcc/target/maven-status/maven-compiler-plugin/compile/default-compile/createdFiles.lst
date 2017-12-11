@@ -1,4 +1,5 @@
 br\com\crescer\tcc\controller\UsuarioController.class
+br\com\crescer\tcc\Models\PartidaModel.class
 br\com\crescer\tcc\security\SocialUserDetailsService$CustomUserDetails.class
 br\com\crescer\tcc\Repository\UsuarioRepository.class
 br\com\crescer\tcc\utilitarios\LocalDateConverter.class
@@ -8,13 +9,17 @@ br\com\crescer\tcc\entity\Usuario.class
 br\com\crescer\tcc\security\SocialWebSecurityConfig$1.class
 br\com\crescer\tcc\utilitarios\LocalDateTimeConverter.class
 br\com\crescer\tcc\config\SwaggerConfig.class
+br\com\crescer\tcc\entity\Partida.class
 br\com\crescer\tcc\security\SocialWebSecurityConfig.class
 br\com\crescer\tcc\controller\GrupoController.class
 br\com\crescer\tcc\handler\HandlerException.class
 br\com\crescer\tcc\Run.class
 br\com\crescer\tcc\service\UsuarioService.class
+br\com\crescer\tcc\entity\Usuario_Partida.class
 br\com\crescer\tcc\entity\Grupo.class
+br\com\crescer\tcc\Repository\Usuario_PartidaRepository.class
 br\com\crescer\tcc\Models\GrupoModel.class
+br\com\crescer\tcc\service\Usuario_PartidaService.class
 br\com\crescer\tcc\Repository\Usuario_GrupoRepository.class
 br\com\crescer\tcc\service\EmailService$1.class
 br\com\crescer\tcc\Models\Usuario_GrupoModel.class
@@ -24,9 +29,12 @@ br\com\crescer\tcc\utilitarios\UsuarioComponente.class
 br\com\crescer\tcc\Models\UsuarioLogadoModel$UsuarioLogadoModelBuilder.class
 br\com\crescer\tcc\Models\UsuarioLogadoModel.class
 br\com\crescer\tcc\security\SocialUserDetailsService.class
+br\com\crescer\tcc\Repository\PartidaRepository.class
 br\com\crescer\tcc\handler\HandlerException$HandlerExceptionMessage.class
 br\com\crescer\tcc\entity\Usuario_Grupo.class
+br\com\crescer\tcc\service\PartidaService.class
 br\com\crescer\tcc\service\EmailService.class
+br\com\crescer\tcc\controller\PartidaController.class
 br\com\crescer\tcc\component\LogTime.class
 br\com\crescer\tcc\Models\UsuarioModel.class
 br\com\crescer\tcc\service\GrupoService.class

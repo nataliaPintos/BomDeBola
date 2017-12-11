@@ -8,7 +8,7 @@
                         <div class="field">
                             <label class="label">Email do Jogador</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
+                                <input class="input" type="email" placeholder="email@email.com" ng-model="email" name="email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -18,7 +18,7 @@
 
                         <div class="field">
                             <p class="buttons has-addons is-right">
-                                <button class="button is-success is-right">
+                                <button class="button is-success is-right" ng-click="modalCtrl.convidar(email)">
                                     Enviar Convite
                                 </button>
                             </p>

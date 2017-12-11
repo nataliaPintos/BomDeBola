@@ -82,13 +82,13 @@ public class Grupo implements Serializable{
     @Column(name = "DIA_SEMANA")
     private int dia_semana;
     
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
     private LocalDateTime hora_inicio;
     
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
@@ -99,13 +99,13 @@ public class Grupo implements Serializable{
     @Column(name = "DIA_CONFIRMACAO")
     private int dias_confirmacao;
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
     private LocalDateTime horas_confirmacao;    
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TEMPO_AVALIACAO")
