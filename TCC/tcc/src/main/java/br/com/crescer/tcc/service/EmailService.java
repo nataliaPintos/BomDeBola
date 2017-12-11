@@ -36,7 +36,7 @@ public class EmailService {
                         new javax.mail.Authenticator() {
                              protected PasswordAuthentication getPasswordAuthentication() 
                              {
-                                   return new PasswordAuthentication("seuemail@gmail.com", "suasenha123");
+                                   return new PasswordAuthentication("cwibomdebola@gmail.com", "BomDeBola");
                              }
                         });
             
@@ -44,7 +44,7 @@ public class EmailService {
             session.setDebug(true);
             try {
                   Message message = new MimeMessage(session);
-                  message.setFrom(new InternetAddress("seuemail@gmail.com")); //Remetente
+                  message.setFrom(new InternetAddress("cwibomdebola@gmail.com")); //Remetente
 
                   Address[] toUser = InternetAddress //Destinatário(s)
                              .parse(usuarios.get(i).getEmail());  
