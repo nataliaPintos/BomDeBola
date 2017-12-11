@@ -60,7 +60,7 @@ public class PartidaService {
         for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
             Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
             usuario_partidaRepository.save(usuario_partida);
-            emailService.enviarEmail(usuario_grupo.getUsuario(), grupo.getNome()+emailService.partida);
+            emailService.enviarEmail(usuario_grupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
         }
 	partida = partidaRepository.save(partida);
     }

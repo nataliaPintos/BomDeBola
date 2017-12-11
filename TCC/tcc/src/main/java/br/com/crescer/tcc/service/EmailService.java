@@ -30,7 +30,7 @@ public class EmailService {
     public String grupo = " convidou você para um novo grupo no Bom De Bola. Cadastre-se ou faça seu login agora para aceitar";
     public String partida = " tem uma nova partida no Bom De Bola. Faça seu login agora para aceitar";
     
-    public void enviarEmail(Usuario usuario, String mensagem){
+    public void enviarEmail(String email, String mensagem){
         Properties props = new Properties();
         /** Parâmetros de conexão com servidor Gmail */
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -49,9 +49,10 @@ public class EmailService {
                   message.setFrom(new InternetAddress("cwibomdebola@gmail.com")); //Remetente
 
                   //Destinatário(s)
-                  Address[] toUser = InternetAddress.parse(usuario.getEmail());
+                  Address[] toUser = InternetAddress.parse(email);
                   message.setRecipients(Message.RecipientType.TO, toUser);
-                  message.setSubject(mensagem);
+                  message.setSubject("Você Tem Um Convite");
+                  message.setText(mensagem);
                   /**Método para enviar a mensagem criada*/
                   Transport.send(message);
                 } catch (MessagingException e) {
