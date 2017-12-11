@@ -64,7 +64,7 @@
 
         function openModal() {
             console.log("entrou aqui");
-            GrupoService.buscarPorId(25)
+            GrupoService.buscarPorId(1)
                 .then(response =>{
                 ModalService.showModal({
                     templateUrl: 'componentes/grupo/modal/modal.html',
@@ -80,7 +80,7 @@
 
         function openModalEdicao() {
             console.log("entrou aqui");
-            GrupoService.buscarPorId(25)
+            GrupoService.buscarPorId(1)
                 .then(response =>{
                 ModalService.showModal({
                     templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
@@ -96,7 +96,7 @@
 
         function openModalNovaPartida() {
             console.log("entrou aqui");
-            GrupoService.buscarPorId(25)
+            GrupoService.buscarPorId(1)
                 .then(response =>{
                 ModalService.showModal({
                     templateUrl: 'componentes/grupo/modal/modalNovaPartida.html',

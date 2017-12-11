@@ -11,7 +11,7 @@ angular.module('app').constant('authConfig', {
     urlLogin: '/home',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
-    urlPrivado: '/grupo',
+    urlPrivado: '/grupo/feed',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     urlLogout: '/home'

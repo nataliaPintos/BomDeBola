@@ -38,18 +38,6 @@
 
                         </div>
 
-
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-
-                            </div>
-
-                        </div>
                         <div class="field">
                             <label class="label">Telefone</label>
                             <div class="control has-icons-left has-icons-right">
@@ -59,9 +47,19 @@
                                 </span>
                             
                             </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
 
                         </div>
 
+                        
                         <div class="field">
                             <label class="label">Senha</label>
                             <p class="control has-icons-left">
@@ -80,9 +78,10 @@
                         <div class="control">
                             <button class="button is-success" ng-click="loginCtrl.cadastrar(usuario)">Cadastrar-se</button>
                         </div>
+
                     </form>
                 </div>
-
+            </div>
 
 
                 <div class="column">
