@@ -10,7 +10,6 @@
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
         gr.gruposUsuario;
-        gr.grupo;
         gr.isAlterar = !!$routeParams.id;
         gr.openModal = openModal;
         gr.openModalEdicao = openModalEdicao;
@@ -19,21 +18,16 @@
         //     gr.gruposUsuario = response.data;
         // });
     
-        //possibilidade para mostrar time no formulário
-        var tempo_padrao = {
-            time: $filter('date')( new Date(), 'HH:mm')
-        };
-        //$scope.grupo.hora_inicio = tempo_padrao;
-
-
         if(gr.isAlterar){
             GrupoService.buscarPorId($routeParams.id)
                 .then(response =>{
                     console.log(response.data);
                     console.log($routeParams.id);
-                    gr.grupo = response.data;
-                    //gr.grupo.hora_inicio = $filter('date')( new Date(), 'HH:mm');
-                    $scope.grupo = gr.grupo;
+                    $scope.grupo = response.data;
+                    $scope.grupo.hora_inicio = new Date($scope.grupo.hora_inicio);    
+                    $scope.grupo.hora_final = new Date($scope.grupo.hora_final);    
+                    $scope.grupo.horas_confirmacao = new Date($scope.grupo.horas_confirmacao);    
+                    $scope.grupo.tempo_avaliacao = new Date($scope.grupo.tempo_avaliacao);    
             });
         }
     

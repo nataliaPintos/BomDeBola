@@ -3,7 +3,7 @@
     <h1 class="title">Cadastro de Grupo</h1>
     <h1 class="subtitle">*Obrigatório</h1>
 
-    
+    <form name="grupoForm" ng-controller="GrupoController">
     <div class="field">
 
       <label class="label">Nome do Grupo
@@ -19,12 +19,12 @@
 
     <div class="columns">
       <div class="column">
-        <label class="label">Horário de Inicio
+        <label class="label" for="hora_inicio">Horário de Inicio
           <small>*</small>
         </label>
 
         <div class="field">
-          <input class="input is-success" type="time" value={{gr.grupo.hora_inicio}} ng-model="grupo.hora_inicio" name="hora_inicio" required>
+          <input class="input is-success" id="hora_inicio" type="time" ng-model="grupo.hora_inicio" name="input" required>
         </div>
 
 
@@ -80,7 +80,7 @@
           <div class="field is-narrow">
             <div class="control">
               <div class="select is-fullwidth">
-                <select ng-model="grupo.dia_semana" name="dia_semana" require>
+                <select ng-model-options="grupo.dia_semana" name="dia_semana" require>
                   <option value="2">Segunda</option>
                   <option value="3">Terça</option>
                   <option value="4">Quarta</option>
@@ -106,7 +106,7 @@
           <div class="field is-narrow">
             <div class="control">
               <div class="select is-fullwidth">
-                <select ng-model="grupo.dias_confirmacao" name="dias_confirmacao" require>
+                <select ng-model-options="grupo.dias_confirmacao" name="dias_confirmacao" require>
                   <option value="2">Segunda</option>
                   <option value="3">Terça</option>
                   <option value="4">Quarta</option>
@@ -164,5 +164,5 @@
           </button>
       </p>
     </div>
-
+  </form>
 </div>
