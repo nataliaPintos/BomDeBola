@@ -52,7 +52,7 @@
                 longitude: $scope.grupo.longitude,
                 tempo_avaliacao: $scope.grupo.tempo_avaliacao,
                 time_max: $scope.grupo.time_max,
-                time_min: $scope.grupo.time
+                time_min: $scope.grupo.time_min
             };
             console.log(novaPartida);
             return novaPartida;
