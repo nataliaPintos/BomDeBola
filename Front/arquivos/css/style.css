@@ -9,3 +9,46 @@
     font-size: 25px;
     color: rgba(54, 54, 56, 0.774);
 }
+
+.top-bar{
+    width: 100%;
+    position: fixed;
+
+    z-index: 1;
+}
+.navbar{
+    position: relative;
+    width: 100%;
+    
+}
+
+.side-menu{
+    width:25%;
+    height: 100%;
+    position: fixed !important;
+    z-index: 2;
+
+}
+
+.is-success{
+    background-color: #46960D!important;  
+}
+
+.card{
+    background-color: hsl(0, 0%, 21%) !important;
+}
+
+.profile{
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    padding: 15px;
+    padding-left: 50px;
+ 
+
+}
+
+.image-profile{
+       
+ border-radius: 50%;
+}
