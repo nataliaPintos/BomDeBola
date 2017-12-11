@@ -13,7 +13,6 @@ import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.UsuarioService;
 import br.com.crescer.tcc.service.Usuario_GrupoService;
-import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,6 @@ public class GrupoController {
     
     private final GrupoService grupoService;
     private final Usuario_GrupoService usuario_grupoService;
-    private final UsuarioComponente usuarioComponente;
     private final UsuarioService usuarioService;
     
     @GetMapping("/{id}")
@@ -77,7 +75,7 @@ public class GrupoController {
         Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
         Grupo grupo = grupoService.loadById(usuario_grupoModel.id_grupo);
         Usuario_Grupo ug = new Usuario_Grupo(usuario, grupo);
-        usuario_grupoService.save(ug);
+        usuario_grupoService.save(ug, usuario);
         return ResponseEntity.ok().body(ug);
     }
     

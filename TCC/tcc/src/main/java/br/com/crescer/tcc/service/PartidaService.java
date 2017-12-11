@@ -29,6 +29,7 @@ public class PartidaService {
     private final PartidaRepository partidaRepository;
     private final Usuario_GrupoRepository usuario_grupoRepository;
     private final Usuario_PartidaRepository usuario_partidaRepository;
+    private final EmailService emailService;
     
     public Partida loadById(Long id) {
 	return partidaRepository.findOne(id);
@@ -59,6 +60,7 @@ public class PartidaService {
         for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
             Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
             usuario_partidaRepository.save(usuario_partida);
+            emailService.enviarEmail(usuario_grupo.getUsuario(), grupo.getNome()+emailService.partida);
         }
 	partida = partidaRepository.save(partida);
     }
