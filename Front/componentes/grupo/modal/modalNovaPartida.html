@@ -1,0 +1,159 @@
+<div class="modal" ng-class="{'is-active': modalCtrl.isModal}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <div class="modal-card-head">
+            <p class="modal-card-title">Criar Nova Partida</p>
+            <button class="delete" ng-click="modalCtrl.closeModal()" aria-label="close"></button>
+        </div>
+        <section class="modal-card-body">
+
+
+          <form name="grupoForm" ng-controller="GrupoController">
+            <div class="field">
+        
+            <div class="columns">
+              <div class="column">
+                <label class="label">Horário de Inicio
+                  <small>*</small>
+                </label>
+        
+                <div class="field">
+                  <input class="input is-success" type="time" ng-model="partida.hora_inicio" name="hora_inicio" required>
+                </div>
+        
+        
+        
+              </div>
+        
+              <div class="column">
+                <label class="label">Horário de Fim
+                  <small>*</small>
+                </label>
+        
+                <div class="field">
+                  <input class="input is-danger" type="time" ng-model="partida.hora_final" name="hora_final" required>
+                </div>
+              </div>
+            </div>
+        
+        
+            <div class="columns">
+              <div class="column">
+                <label class="label">Máximo de Jogadores
+                  <small>*</small>
+                </label>
+        
+        
+                <div class="field">
+                  <input class="input" type="number" ng-model="partida.time_max" name="time_max" required>
+                </div>
+        
+              </div>
+        
+              <div class="column">
+                <label class="label">Mínimo de Jogadores
+                  <small>*</small>
+                </label>
+        
+                <div class="field">
+                  <input class="input" type="number" ng-model="partida.time_min" name="time_min" required>
+                </div>
+              </div>
+            </div>
+        
+        
+            <div class="columns">
+              <div class="column">
+        
+                <div class="field">
+        
+                  <label class="label">Dia do Jogo
+                    <small>*</small>
+                  </label>
+        
+                  <div class="field is-narrow">
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select ng-model-options="partida.dia_semana" name="dia_semana" require>
+                          <option value="2">Segunda</option>
+                          <option value="3">Terça</option>
+                          <option value="4">Quarta</option>
+                          <option value="5">Quinta</option>
+                          <option value="6">Sexta</option>
+                          <option value="7">Sábado</option>
+                          <option value="1">Domingo</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="column">
+        
+                <div class="field">
+        
+                  <label class="label">Dia da Confirmação
+                    <small>*</small>
+                  </label>
+        
+                  <div class="field is-narrow">
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select ng-model-options="partida.dias_confirmacao" name="dias_confirmacao" require>
+                          <option value="2">Segunda</option>
+                          <option value="3">Terça</option>
+                          <option value="4">Quarta</option>
+                          <option value="5">Quinta</option>
+                          <option value="6">Sexta</option>
+                          <option value="7">Sábado</option>
+                          <option value="1">Domingo</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="columns">
+              <div class="column">
+                <label class="label">Tempo para Confirmação de Participação
+                  <small>*</small>
+                </label>
+        
+                <div class="field">
+                  <input class="input is-success" type="time" ng-model="partida.horas_confirmacao" name="horas_confirmacao" required>
+                </div>
+              </div>
+        
+        
+              <div class="column">
+                <label class="label">Tempo de Avaliação dos Jogadores
+                  <small>*</small>
+                </label>
+        
+                <div class="field">
+                  <input class="input is-success" type="time" ng-model="partida.tempo_avaliacao" name="tempo_avaliacao" required>
+                </div>
+              </div>
+            </div>
+        
+            <div class="field">
+              <label class="label">Endereço do Jogo</label>
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="Endereço" ng-model="partida.imagem" name="imagem" required>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-futbol-o"></i>
+                </span>
+              </p>
+            </div>
+          </form>
+
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" ng-click="modalCtrl.criarPartida(partida)">Criar Nova Partida</button>
+            <button class="button is-danger" ng-click="modalCtrl.closeModal()">Cancelar</button>
+        </footer>
+    </div>
+</div>

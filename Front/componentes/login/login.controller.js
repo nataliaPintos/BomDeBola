@@ -7,7 +7,7 @@
 
     //LoginController.$inject = ['authservice'];
     // nos parâmetros coloco o que vou precisar utilizar
-    function LoginController(authService, UsuarioService) {
+    function LoginController(authService, UsuarioService, toastr) {
         var vm = this;
         //Liberando para aceesso no html
         vm.helloWorld = helloWorld;
@@ -24,6 +24,7 @@
             .then(
                 response => {
                 console.log(response);
+                toastr.success("Dallleeeeeee");
                 
             },
                 response => {

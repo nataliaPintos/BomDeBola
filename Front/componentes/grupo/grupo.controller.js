@@ -5,7 +5,7 @@
         .module('app')
         .controller('GrupoController', GrupoController);
 
-    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location, $filter) {
+    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location, $filter, toastr) {
         var gr = this;
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
@@ -13,6 +13,7 @@
         gr.isAlterar = !!$routeParams.id;
         gr.openModal = openModal;
         gr.openModalEdicao = openModalEdicao;
+        gr.openModalNovaPartida = openModalNovaPartida;
 
         // GrupoService.listarGrupos().then(response =>{
         //     gr.gruposUsuario = response.data;
@@ -56,7 +57,7 @@
     
         function redirecionar(promise, mensagem){
             //futuro toaster
-            alert(mensagem);
+            toastr.success(mensagem);
             promise.then(promise => $location.path('/grupo'));
         }
 
