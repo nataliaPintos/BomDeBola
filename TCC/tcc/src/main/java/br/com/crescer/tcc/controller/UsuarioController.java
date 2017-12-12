@@ -47,7 +47,7 @@ public class UsuarioController {
                 Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
 		return ResponseEntity.ok().body(usuarioService.save(usuario, usuarioModel));
 	}
-        @PutMapping("/atualizar-usuario")
+        @PutMapping("/atualiza-usuario")
 	public ResponseEntity<Usuario> update(@RequestBody @Valid UsuarioModel usuarioModel) {
                 return ResponseEntity.ok(usuarioService.update(usuarioModel));
         }

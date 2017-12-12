@@ -53,7 +53,6 @@ public class Usuario_GrupoTest {
         usuario.setNascimento(nascimento);
         
         Usuario_Grupo ug = new Usuario_Grupo();
-        ug.setSolicitacao(false);
         ug.setAdm(true);
         ug.setGrupo(grupo);
         ug.setUsuario(usuario);
@@ -68,7 +67,6 @@ public class Usuario_GrupoTest {
         assertEquals(ug.getUsuario(), ug2.getUsuario());
         assertEquals(ug.getUsuario(), usuario);
         assertEquals(ug.getAdm(), ug2.getAdm());
-        assertEquals(ug.getSolicitacao(), ug2.getSolicitacao());
     }
     
 }

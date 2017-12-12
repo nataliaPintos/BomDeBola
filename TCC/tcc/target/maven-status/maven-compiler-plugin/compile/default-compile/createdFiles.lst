@@ -16,6 +16,7 @@ br\com\crescer\tcc\handler\HandlerException.class
 br\com\crescer\tcc\Run.class
 br\com\crescer\tcc\service\UsuarioService.class
 br\com\crescer\tcc\entity\Usuario_Partida.class
+br\com\crescer\tcc\controller\UiController.class
 br\com\crescer\tcc\entity\Grupo.class
 br\com\crescer\tcc\Repository\Usuario_PartidaRepository.class
 br\com\crescer\tcc\Models\GrupoModel.class

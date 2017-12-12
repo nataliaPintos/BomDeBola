@@ -7,6 +7,7 @@ package br.com.crescer.tcc.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Basic;
@@ -37,13 +38,12 @@ public class Partida implements Serializable{
     
     public Partida(){}
     public Partida(int time_max, int time_min, double latitude, double longitude, 
-            int dia_semana, LocalDateTime hora_inicio, LocalDateTime hora_final, int dias_confirmacao,
-            LocalDateTime horas_confirmacao, LocalDateTime tempo_avaliacao, Grupo grupo){
+            LocalDate dia_semana, LocalDateTime hora_inicio, LocalDateTime hora_final,
+            LocalDateTime tempo_confirmacao, LocalDateTime tempo_avaliacao, Grupo grupo){
         this.time_max = time_max; this.time_min = time_min; this.latitude = latitude; 
         this.longitude = longitude; this.dia_semana = dia_semana; this.hora_inicio = hora_inicio; 
-        this.hora_final = hora_final; this.dias_confirmacao = dias_confirmacao;
-        this.horas_confirmacao = horas_confirmacao; this.tempo_avaliacao = tempo_avaliacao;
-        this.time_atual = 0; this.grupo = grupo;
+        this.hora_final = hora_final; this.tempo_confirmacao = tempo_confirmacao; 
+        this.tempo_avaliacao = tempo_avaliacao; this.time_atual = 0; this.grupo = grupo;
         this.confirmada = false;
     }
     
@@ -75,10 +75,11 @@ public class Partida implements Serializable{
     @Column(name = "LONGITUDE")
     private double longitude;
     
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "DIA_SEMANA")
-    private int dia_semana;
+    private LocalDate dia_semana;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -95,16 +96,11 @@ public class Partida implements Serializable{
     @Column(name = "TIME_ATUAL")
     private int time_atual;
     
-    @NotNull(message = "Campo obrigatório")
-    @Basic(optional = false)
-    @Column(name = "DIA_CONFIRMACAO")
-    private int dias_confirmacao;
-    
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
-    private LocalDateTime horas_confirmacao;    
+    private LocalDateTime tempo_confirmacao;    
     
     @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")

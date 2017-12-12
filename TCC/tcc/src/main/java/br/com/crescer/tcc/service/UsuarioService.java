@@ -23,8 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UsuarioService {
         @Autowired
 	private final UsuarioRepository usuarioRepository;
-        
-        @Autowired
         private final UsuarioComponente usuarioComponente;
 
 	public Usuario findByEmail(String username) {

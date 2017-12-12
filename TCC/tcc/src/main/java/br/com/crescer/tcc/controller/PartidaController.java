@@ -11,7 +11,6 @@ import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.Usuario_Partida;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
-import br.com.crescer.tcc.service.Usuario_GrupoService;
 import br.com.crescer.tcc.service.Usuario_PartidaService;
 import java.util.List;
 import javax.validation.Valid;
@@ -52,12 +51,19 @@ public class PartidaController {
         Grupo grupo = grupoService.loadById(partidaModel.id_grupo);
         Partida partida = new Partida(partidaModel.time_max, partidaModel.time_min, partidaModel.latitude,
         partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
-        partidaModel.dias_confirmacao, partidaModel.horas_confirmacao, partidaModel.tempo_avaliacao, grupo);
+        partidaModel.tempo_confirmacao, partidaModel.tempo_avaliacao, grupo);
         partidaService.save(partida, grupo);
         return ResponseEntity.ok().body(partida);
     }
     
-    @PutMapping("/aceitar-partida")
+    @GetMapping("/nova-partida")
+    public PartidaModel getPartidaModel(@PathVariable Long id) {
+	Grupo grupo = grupoService.loadById(id);
+        PartidaModel partidaModel = new PartidaModel();
+        return partidaService.partidaModelRetorno(partidaModel, grupo);
+    }
+    
+    @PutMapping("/aceita-partida")
     public ResponseEntity<Boolean> update(@RequestBody @Valid Long id) {
         Usuario_Partida usuario_partida = usuario_partidaService.loadById(id);
         Partida partida = usuario_partida.getPartida();

@@ -41,8 +41,6 @@ public class PartidaTest {
         grupo.setTime_min(14);
         
         Partida partida = new Partida();
-        partida.setDia_semana(2);
-        partida.setDias_confirmacao(1);
         partida.setLatitude(12345);
         partida.setLongitude(54321);
         partida.setTime_max(16);
@@ -53,8 +51,6 @@ public class PartidaTest {
         
         final Partida partida2 = partidaService.loadById(1L);
         
-        assertEquals(partida.getDia_semana(), partida2.getDia_semana());
-        assertEquals(partida.getDias_confirmacao(), partida2.getDias_confirmacao());
         assertEquals(partida.getLatitude(), partida2.getLatitude(), 0.001);
         assertEquals(partida.getLongitude(), partida2.getLongitude(), 0.001);
         assertEquals(partida.getTime_max(), partida2.getTime_max());

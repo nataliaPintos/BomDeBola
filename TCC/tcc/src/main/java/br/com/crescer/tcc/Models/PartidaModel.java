@@ -7,8 +7,11 @@ package br.com.crescer.tcc.Models;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -20,17 +23,26 @@ public class PartidaModel {
     public int time_min;
     public double latitude;
     public double longitude;
-    public int dia_semana;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    public LocalDate dia_semana;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_inicio;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_final;
-    public int dias_confirmacao;
+    /*public int dias_confirmacao;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime horas_confirmacao;
+    public LocalDateTime horas_confirmacao;*/
+    
+    
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    public LocalDateTime tempo_confirmacao;
+    
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime tempo_avaliacao;

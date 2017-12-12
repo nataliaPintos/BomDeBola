@@ -13,6 +13,10 @@ import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import br.com.crescer.tcc.entity.Usuario_Partida;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,19 +48,8 @@ public class PartidaService {
     }
     
     public void save(Partida partida, Grupo grupo) {
-        if(partida.getHora_final() == null){partida.setHora_final(grupo.getHora_final());}
-        if(partida.getHora_inicio() == null){partida.setHora_inicio(grupo.getHora_inicio());}
-        if(partida.getHoras_confirmacao() == null){partida.setHoras_confirmacao(grupo.getHoras_confirmacao());}
-        if(partida.getTempo_avaliacao() == null){partida.setTempo_avaliacao(grupo.getTempo_avaliacao());}
-        if(partida.getDia_semana() == 0){partida.setDia_semana(grupo.getDia_semana());}
-        if(partida.getDias_confirmacao() == 0){partida.setDias_confirmacao(grupo.getDias_confirmacao());}
-        if(partida.getLatitude() == 0){partida.setLatitude(grupo.getLatitude());}
-        if(partida.getLongitude() == 0){partida.setLongitude(grupo.getLongitude());}
-        if(partida.getTime_max() == 0){partida.setTime_max(grupo.getTime_max());}
-        if(partida.getTime_min() == 0){partida.setTime_min(grupo.getTime_min());}
-        
         //Carregar todos Usuario_Grupo onde Grupo = grupo para então gazer um for e criar um Usuario_Partida para cada Usuario_Grupo carregado
-        List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupoAndSolicitacao(grupo, false);
+        List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupo(grupo);
         for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
             Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
             usuario_partidaRepository.save(usuario_partida);
@@ -65,12 +58,80 @@ public class PartidaService {
 	partida = partidaRepository.save(partida);
     }
     
+    public PartidaModel partidaModelRetorno(PartidaModel partidaModel, Grupo grupo){
+        partidaModel.hora_final = grupo.getHora_final();
+        partidaModel.hora_inicio = grupo.getHora_inicio();
+        partidaModel.id_grupo = grupo.getId();
+        partidaModel.latitude = grupo.getLatitude();
+        partidaModel.longitude = grupo.getLongitude();
+        partidaModel.tempo_avaliacao = grupo.getTempo_avaliacao();
+        partidaModel.time_max = grupo.getTime_max();
+        partidaModel.time_min = grupo.getTime_min();
+        
+        LocalDate diaDoJogo = LocalDate.now();
+        switch (grupo.getDia_semana()) {
+            case 1:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+                break;
+            case 2:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                break;
+            case 3:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+                break;
+            case 4:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+                break;
+            case 5:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+                break;
+            case 6:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+                break;
+            case 7:
+                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+                break;
+            default:
+                break;
+        }
+        
+        LocalDateTime diaDaConfirmacao = LocalDateTime.now();
+        switch (grupo.getDias_confirmacao()) {
+            case 1:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+                break;
+            case 2:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                break;
+            case 3:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+                break;
+            case 4:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+                break;
+            case 5:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+                break;
+            case 6:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+                break;
+            case 7:
+                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+                break;
+            default:
+                break;
+        }
+        diaDaConfirmacao.minusHours(grupo.getHoras_confirmacao().getHour());
+        diaDaConfirmacao.minusMinutes(grupo.getHoras_confirmacao().getMinute());
+        partidaModel.tempo_confirmacao = diaDaConfirmacao;
+        return partidaModel;
+    }
+    
     public Partida update(PartidaModel partidaModel, Partida partida) {
             partida.setDia_semana(partidaModel.dia_semana);
-            partida.setDias_confirmacao(partidaModel.dias_confirmacao);
+            partida.setTempo_confirmacao(partidaModel.tempo_confirmacao);
             partida.setHora_final(partidaModel.hora_final);
             partida.setHora_inicio(partidaModel.hora_inicio);
-            partida.setHoras_confirmacao(partidaModel.horas_confirmacao);
             partida.setLatitude(partidaModel.latitude);
             partida.setLongitude(partidaModel.longitude);
             partida.setTime_max(partidaModel.time_max);

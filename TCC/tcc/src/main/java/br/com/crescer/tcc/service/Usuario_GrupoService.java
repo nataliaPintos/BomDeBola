@@ -35,15 +35,10 @@ public class Usuario_GrupoService {
 		return (List<Usuario_Grupo>) usuario_grupoRepository.findAll();
 	}
 
-	public void save(Usuario_Grupo usuario_grupo, Usuario usuario) {
+	public void save(Usuario_Grupo usuario_grupo, String email) {
 		usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
                 Usuario usuarioLogado = usuarioComponente.usuarioLogadoDetalhes();
-                emailService.enviarEmail(usuario.getEmail(), usuarioLogado.getNome()+emailService.grupo);
-	}
-        
-        public Usuario_Grupo update(Usuario_Grupo usuario_grupo) {
-            usuario_grupo.setSolicitacao(false);
-            return usuario_grupoRepository.save(usuario_grupo);
+                emailService.enviarEmail(email, usuarioLogado.getNome()+emailService.grupo);
 	}
         
         public void delete(Long id) {
@@ -51,6 +46,6 @@ public class Usuario_GrupoService {
 	}
         
         public List<Usuario_Grupo> findByGrupo(Grupo grupo) {
-                return usuario_grupoRepository.findByGrupoAndSolicitacao(grupo, false);
+                return usuario_grupoRepository.findByGrupo(grupo);
 	}
 }

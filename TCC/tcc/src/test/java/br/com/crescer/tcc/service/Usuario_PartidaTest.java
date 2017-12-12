@@ -55,14 +55,11 @@ public class Usuario_PartidaTest {
         usuario.setNascimento(nascimento);
         
         Usuario_Grupo ug = new Usuario_Grupo();
-        ug.setSolicitacao(false);
         ug.setAdm(true);
         ug.setGrupo(grupo);
         ug.setUsuario(usuario);
         
         Partida partida = new Partida();
-        partida.setDia_semana(2);
-        partida.setDias_confirmacao(1);
         partida.setLatitude(12345);
         partida.setLongitude(54321);
         partida.setTime_max(16);

@@ -44,7 +44,6 @@ public class GrupoService {
                 Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
                 Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
                 usuario_grupo.setAdm(true);
-                usuario_grupo.setSolicitacao(false);
                 usuario_grupoRepository.save(usuario_grupo);
 	}
         

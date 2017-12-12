@@ -11,7 +11,6 @@ package br.com.crescer.tcc.service;
  */
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
-import java.time.LocalDate;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
