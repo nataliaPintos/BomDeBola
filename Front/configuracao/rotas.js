@@ -46,6 +46,11 @@
             controller: 'ImageController',
             controllerAs: 'imageCtrl'
         }) 
+        .when('/teste', {
+            templateUrl: 'componentes/teste/menu.html',
+            controller: 'ImageController',
+            controllerAs: 'imageCtrl'
+        }) 
 
         .otherwise('/grupo/feed');
 
