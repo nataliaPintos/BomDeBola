@@ -23,29 +23,42 @@
 }
 
 .side-menu{
-    width:25%;
+    width:18%;
+    margin-top: -15px;
     height: 100%;
     position: fixed !important;
     z-index: 2;
 
 }
 
-.is-success{
+.is-green{
     background-color: #46960D!important;  
 }
 
+#white{
+color: white;
+margin-top: -50px;
+margin-bottom: 15px;
+}
 .card{
     background-color: hsl(0, 0%, 21%) !important;
+    
+}
+
+#stars{
+    margin-top: -30px;
 }
 
 .profile{
     width: 250px;
     height: 250px;
-    margin: 20px;
-    padding: 15px;
-    padding-left: 50px;
- 
+    padding: 25%;
+  
 
+}
+
+.navbar-item{
+    margin-left: 250px;
 }
 
 .image-profile{
