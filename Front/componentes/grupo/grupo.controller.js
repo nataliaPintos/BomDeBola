@@ -5,7 +5,7 @@
         .module('app')
         .controller('GrupoController', GrupoController);
 
-    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location, $filter, toastr) {
+    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location, $filter, toastr, MapService) {
         var gr = this;
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
@@ -14,7 +14,13 @@
         gr.openModal = openModal;
         gr.openModalEdicao = openModalEdicao;
         gr.openModalNovaPartida = openModalNovaPartida;
-
+        gr.buscar = buscar;
+        $scope.local = {
+            latitude: 0,
+            longitude: 0
+        }
+        
+        autoComplete();
         // GrupoService.listarGrupos().then(response =>{
         //     gr.gruposUsuario = response.data;
         // });
@@ -34,8 +40,11 @@
     
         function alterarGrupo (grupo) {
             //if($scope.formGrupo.$invalid) return;
+            $scope.grupo = grupo;
+            $scope.grupo.latitude =  $scope.local.latitude;
+            $scope.grupo.longitude = $scope.local.longitude;
             if(!gr.isAlterar) {
-                criarGrupo(grupo);
+                criarGrupo($scope.grupo);
                 return;
             }
             let promise = GrupoService.alterar(grupo);
@@ -59,6 +68,27 @@
             //futuro toaster
             toastr.success(mensagem);
             promise.then(promise => $location.path('/grupo'));
+        }
+
+        function buscar(endereco) {
+            MapService.search(endereco).then(response => {
+                $scope.enderecos = response.data.predictions.map(e => e.description);
+                console.log($scope.enderecos);
+            });
+        }
+
+        function autoComplete() {
+            $scope.autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById('autocomplete'))
+            );
+            $scope.autocomplete.addListener('place_changed', obterCoordenadas);
+        }
+    
+          function obterCoordenadas() {
+            var place = $scope.autocomplete.getPlace();
+            $scope.local.latitude = place.geometry.location.lat();
+            $scope.local.longitude = place.geometry.location.lng();
+            return;
         }
 
 

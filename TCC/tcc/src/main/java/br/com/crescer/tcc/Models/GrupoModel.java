@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,7 +24,6 @@ public class GrupoModel {
     public double latitude;
     public double longitude;
     public int dia_semana;
-    //@JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss.SSSZ")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_inicio;

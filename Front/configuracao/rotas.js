@@ -41,6 +41,12 @@
             controllerAs: 'grupoCtrl'
         }) 
 
+        .when('/imagem', {
+            templateUrl: 'componentes/teste/imagem.html',
+            controller: 'ImageController',
+            controllerAs: 'imageCtrl'
+        }) 
+
         .otherwise('/grupo/feed');
 
     }

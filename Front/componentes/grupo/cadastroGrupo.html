@@ -148,15 +148,19 @@
 
 
     <div class="field">
-      <label class="label">Endereço do Jogo</label>
+      <label class="label" for="endereco">Endereço do Jogo</label>
       <p class="control is-expanded has-icons-left">
-        <input class="input" type="text" placeholder="Endereço" ng-model="grupo.imagem" name="imagem" required>
+        <input id="autocomplete" class="input" placeholder="Ex: Avenida Theodomiro Porto da Fonseca - Cristo Rei, São Leopoldo - RS, Brazil" class="form-control" type="text" ng-model="localizacao" required>
+        <!-- <input class="input" type="text" placeholder="Endereço" ng-model="endereco" ng-options="x for x in enderecos" name="endereco" required> -->
         <span class="icon is-small is-left">
           <i class="fa fa-futbol-o"></i>
         </span>
       </p>
     </div>
 
+   
+
+       
     <div class="field">
       <p class="control">
           <button class="button is-success" ng-click="grupoCtrl.alterarGrupo(grupo)">
