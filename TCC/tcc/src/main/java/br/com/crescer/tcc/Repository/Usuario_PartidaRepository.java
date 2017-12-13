@@ -15,4 +15,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author luanp
  */
 public interface Usuario_PartidaRepository extends PagingAndSortingRepository<Usuario_Partida, Long> {
+    
+    List<Usuario_Partida> findByIdAndSolicitacao(Long id, boolean solicitacao);
+    
 }

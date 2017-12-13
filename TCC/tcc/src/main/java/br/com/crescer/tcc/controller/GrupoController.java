@@ -66,8 +66,9 @@ public class GrupoController {
     }
     
     @GetMapping("/lista-usuarios")
-    public List<Usuario_Grupo> listaUsuarios() {
-	return usuario_grupoService.lista();
+    public List<Usuario_Grupo> listaUsuarios(Long id) {
+        Grupo grupo = grupoService.loadById(id);
+	return usuario_grupoService.findByGrupo(grupo);
     }
     
     @PostMapping("/inclui-usuario")
