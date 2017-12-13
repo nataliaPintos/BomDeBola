@@ -1,18 +1,29 @@
-angular.module('app')
-.directive('user', function ($rootScope) {
+angular.module('app').directive('user', function(){
+  
+      return {
+          scope: {
+              user: '=userItem'
+          },
+          templateUrl: 'componentes/userlist/userlist.html'
+      };
+  });
+  
+  
 
-  return {
+// .directive('user', function ($rootScope) {
 
-    restrict: 'E',
+//   return {
 
-    scope: {},
+//     restrict: 'E',
+
+//     scope: {user: '=userItem'},
     
-    templateUrl: 'componentes/userlist/userlist.html',
+//     templateUrl: 'componentes/userlist/userlist.html',
     
-    controller: function ($scope, authService) {
+//     controller: function ($scope, authService) {
 
     
-    }
-  }
+//     }
+//   }
 
-});
+//});

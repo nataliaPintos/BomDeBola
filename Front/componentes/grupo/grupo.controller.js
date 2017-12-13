@@ -23,8 +23,12 @@
         }
         
         autoComplete();
-        // GrupoService.listarGrupos().then(response =>{
-        //     gr.gruposUsuario = response.data;
+        var usuario = {
+            nome: "Meu Nome"
+        }
+        $scope.users = [usuario];
+        // GrupoService.listarUsuarios().then(response =>{
+        //     gr.users = response.data;
         // });
     
         if(gr.isAlterar){
@@ -109,68 +113,17 @@
         }
 
 
-        // function openModal() {
-        //     console.log("entrou aqui");
-        //     GrupoService.buscarPorId(1)
-        //         .then(response =>{
-        //         ModalService.showModal({
-        //             templateUrl: 'componentes/grupo/modal/modal.html',
-        //             controller: 'ModalController',
-        //             controllerAs: 'modalCtrl',
-        //             bodyClass: 'modal.is-active',
-        //             inputs: {
-        //                 grupo: response.data
-        //             }
-        //         });
-        //     });    
-        // }
-
-        // function openModalEdicao() {
-        //     console.log("entrou aqui");
-        //     GrupoService.buscarPorId(1)
-        //         .then(response =>{
-        //         ModalService.showModal({
-        //             templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
-        //             controller: 'ModalController',
-        //             controllerAs: 'modalCtrl',
-        //             bodyClass: 'modal.is-active',
-        //             inputs: {
-        //                 grupo: response.data
-        //             }
-        //         });
-        //     });    
-        // }
-
-        // function openModalNovaPartida() {
-        //     console.log("entrou aqui");
-        //     GrupoService.buscarPorId(1)
-        //         .then(response =>{
-        //         ModalService.showModal({
-        //             templateUrl: 'componentes/grupo/modal/modalNovaPartida.html',
-        //             controller: 'ModalController',
-        //             controllerAs: 'modalCtrl',
-        //             bodyClass: 'modal.is-active',
-        //             inputs: {
-        //                 grupo: response.data
-        //             }
-        //         });
-        //     });    
-        // }
-
-
-       function closeSideNav(e) {
+        function closeSideNav(e) {
             e.preventDefault();
             $("body").toggleClass("sidenav-toggled");
             $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
             $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
-          };
+        };
           // Force the toggled class to be removed when a collapsible nav link is clicked
-          $(".navbar-sidenav .nav-link-collapse").click(function(e) {
-            e.preventDefault();
-            $("body").removeClass("sidenav-toggled");
-          });
-
-
+            $(".navbar-sidenav .nav-link-collapse").click(function(e) {
+                e.preventDefault();
+                $("body").removeClass("sidenav-toggled");
+            });
     }
 
 }());

@@ -10,6 +10,7 @@
         var grupoService = {
             criar: criar,
             listarGrupos: listarGrupos,
+            listarUsuarios: listarUsuarios,
             alterar: alterar,
             excluirGrupo: excluirGrupo,
             buscarPorId: buscarPorId,
