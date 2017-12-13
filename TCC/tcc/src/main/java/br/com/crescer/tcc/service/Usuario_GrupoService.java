@@ -35,8 +35,7 @@ public class Usuario_GrupoService {
 
 	public void save(Usuario_Grupo usuario_grupo, String email) {
 		usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
-                Usuario usuario = usuario_grupo.getUsuario();
-                emailService.enviarEmail(email, usuario.getEmail()+emailService.grupo);
+                emailService.enviarEmail(email, emailService.grupo);
 	}
         
         public void delete(Long id) {
