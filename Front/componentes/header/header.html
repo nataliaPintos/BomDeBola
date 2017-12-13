@@ -10,7 +10,7 @@
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="#!/dashboard">
           <i class="fa fa-fw fa-soccer-ball-o"></i>
           <span class="nav-link-text">Dashboard</span>
         </a>
@@ -183,7 +183,7 @@
         </form>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+        <a ng-click="logout()" class="nav-link" data-toggle="modal" data-target="#exampleModal">
           <i class="fa fa-fw fa-sign-out"></i>Logout</a>
       </li>
     </ul>
