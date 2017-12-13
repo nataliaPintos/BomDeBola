@@ -74,4 +74,10 @@ public class PartidaController {
     public List<Usuario_Partida> listaJogadores(Long id) {
 	return usuario_partidaService.listaDeParticipantes(id);
     }
+    
+    @GetMapping("/sorteia-times")
+    public List<Usuario_Partida> sorteiaTimes(Long id) {
+        List<Usuario_Partida> lista = usuario_partidaService.listaDeParticipantes(id);
+	return usuario_partidaService.sortearTime(lista);
+    }
 }

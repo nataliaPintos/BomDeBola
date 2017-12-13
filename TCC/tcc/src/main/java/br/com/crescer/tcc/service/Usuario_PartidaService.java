@@ -9,7 +9,9 @@ import br.com.crescer.tcc.Repository.PartidaRepository;
 import br.com.crescer.tcc.Repository.Usuario_PartidaRepository;
 import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.Usuario_Partida;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +61,27 @@ public class Usuario_PartidaService {
         
         public List<Usuario_Partida> findByPartida(Partida partida) {
 		return usuario_partidaRepository.findByPartida(partida);
+	}
+        
+        public List<Usuario_Partida> sortearTime(List<Usuario_Partida> lista) {
+            int tamanho = lista.size();
+            Collections.shuffle(lista);
+            if(tamanho % 2 != 0){
+                Random gerador = new Random();
+                if(gerador.nextInt() % 2 == 0){
+                    lista.get(tamanho).setTime('A');
+                }else{
+                    lista.get(tamanho).setTime('B');
+                }
+                tamanho--;
+            }
+            for(int i = 0; i < tamanho; i++){
+                if(i % 2 == 0){
+                    lista.get(i).setTime('A');
+                }else{
+                    lista.get(i).setTime('B');
+                }
+            }
+            return lista;
 	}
 }
