@@ -5,40 +5,21 @@
         .module('app')
         .controller('PartidaController', partidaController);
 
-    function partidaController(close, $scope, GrupoService, PartidaService) {
+    function partidaController($scope, GrupoService, PartidaService, toastr) {
         var vm = this;
-        vm.isModal = true;
-        vm.closeModal = closeModal;
-        vm.salvar = salvar;
-        vm.convidar = convidar;
+        vm.carregarNovaPartida = carregarNovaPartida;
         vm.criarPartida = criarPartida;
+        vm.isformAtivo = true;
         
-        // grupo.hora_inicio = new Date(grupo.hora_inicio);    
-        // grupo.hora_final = new Date(grupo.hora_final);    
-        // grupo.horas_confirmacao = new Date(grupo.horas_confirmacao);    
-        // grupo.tempo_avaliacao = new Date(grupo.tempo_avaliacao);    
-        // $scope.grupo = grupo;
-        $scope.partida = carregarNovaPartida();
 
-        console.log (grupo);
+        carregarNovaPartida();
 
-
-        function carregarNovaPartida(grupo) {
-            var novaPartida = {
-                dia_semana: $scope.grupo.dia_semana,
-                dias_confirmacao: $scope.grupo.dias_confirmacao,
-                hora_final: $scope.grupo.hora_final,
-                hora_inicio: $scope.grupo.hora_inicio,
-                horas_confirmacao: $scope.grupo.horas_confirmacao,
-                id_grupo: $scope.grupo.id,
-                latitude: $scope.grupo.latitude,
-                longitude: $scope.grupo.longitude,
-                tempo_avaliacao: $scope.grupo.tempo_avaliacao,
-                time_max: $scope.grupo.time_max,
-                time_min: $scope.grupo.time_min
-            };
-            console.log(novaPartida);
-            return novaPartida;
+        function carregarNovaPartida() {
+            PartidaService.carregar(1).then(response => {
+                console.log(response.data);
+                $scope.partida = response.data;
+            });
+            
     
         } 
 
@@ -46,6 +27,7 @@
             PartidaService.criar(partida).then(response => {
                 console.log(response.data);
                 $location.path('/partida/feed');
+                toastr.success("Partida criar com sucesso");
             });
         }
 

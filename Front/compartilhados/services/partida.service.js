@@ -9,6 +9,7 @@
 
         var partidaService = {
             criar: criar,
+            carregar: carregar,
             listarTimes: listarTimes,
             alterar: alterar,
             cancelarPartida: cancelar,
@@ -22,6 +23,10 @@
 
         function criar(partida) {
             return $http.post(urlBase + '/nova-partida', partida);
+        }
+
+        function carregar(id) {
+            return $http.get(urlBase + '/nova-partida' + id);
         }
 
         function listarTimes() {
