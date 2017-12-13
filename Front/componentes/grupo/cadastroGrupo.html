@@ -1,162 +1,159 @@
 <div class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Grupo</a>
+    </li>
+    <li class="breadcrumb-item active">Cadastrar Grupo</li>
+  </ol>
   <section class="section">
-    <h1 class="title">Cadastro de Grupo</h1>
-    <h1 class="subtitle">*Obrigatório</h1>
+    <h1>Cadastro de Grupo</h1>
+    <h6>*Obrigatório</h6>
 
     <form name="grupoForm" ng-controller="GrupoController">
-    <div class="field">
+      <div class="field">
 
-      <label class="label">Nome do Grupo
-        <small>*</small>
-      </label>
-      <p class="control is-expanded has-icons-left">
-        <input class="input" type="text" placeholder="Name" ng-model="grupo.nome" name="nome" required>
-        <span class="icon is-small is-left">
-          <i class="fa fa-user"></i>
-        </span>
-      </p>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <label class="label">Horário de Inicio
+        <label class="label">Nome do Grupo
           <small>*</small>
         </label>
-
-        <div class="field">
-          <input class="input is-success" type="time" ng-model="grupo.hora_inicio" name="hora_inicio" required>
-        </div>
+        <p class="form-group">
+          <input class="form-control" type="text" placeholder="Name" ng-model="grupo.nome" name="nome" required>
+        </p>
       </div>
 
-      <div class="column">
-        <label class="label">Horário de Fim
-          <small>*</small>
-        </label>
-
-        <div class="field">
-          <input class="input is-danger" type="time" ng-model="grupo.hora_final" name="hora_final" required>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="columns">
-      <div class="column">
-        <label class="label">Máximo de Jogadores
-          <small>*</small>
-        </label>
-
-
-        <div class="field">
-          <input class="input" type="number" ng-model="grupo.time_max" name="time_max" required>
-        </div>
-
-      </div>
-
-      <div class="column">
-        <label class="label">Mínimo de Jogadores
-          <small>*</small>
-        </label>
-
-        <div class="field">
-          <input class="input" type="number" ng-model="grupo.time_min" name="time_min" required>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="columns">
-      <div class="column">
-
-        <div class="field">
-
-          <label class="label">Dia do Jogo
+      <div class="row">
+        <div class="col-sm">
+          <label class="label">Horário de Inicio
             <small>*</small>
           </label>
 
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select ng-model-options="grupo.dia_semana" name="dia_semana" require>
-                  <option value="2">Segunda</option>
-                  <option value="3">Terça</option>
-                  <option value="4">Quarta</option>
-                  <option value="5">Quinta</option>
-                  <option value="6">Sexta</option>
-                  <option value="7">Sábado</option>
-                  <option value="1">Domingo</option>
-                </select>
+          <div class="form-group">
+            <input class="form-control is-success" type="time" ng-model="grupo.hora_inicio" name="hora_inicio" required>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <label class="label">Horário de Fim
+            <small>*</small>
+          </label>
+
+          <div class="form-group">
+            <input class="form-control is-danger" type="time" ng-model="grupo.hora_final" name="hora_final" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm">
+          <label class="label">Máximo de Jogadores
+            <small>*</small>
+          </label>
+
+
+          <div class="form-group">
+            <input class="form-control" type="number" ng-model="grupo.time_max" name="time_max" required>
+          </div>
+
+        </div>
+
+        <div class="col-sm">
+          <label class="label">Mínimo de Jogadores
+            <small>*</small>
+          </label>
+
+          <div class="form-group">
+            <input class="form-control" type="number" ng-model="grupo.time_min" name="time_min" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm">
+
+          <div class="form-group">
+
+            <label class="label">Dia do Jogo
+              <small>*</small>
+            </label>
+
+            <div class="form-group">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select class="form-control" ng-model-options="grupo.dia_semana" name="dia_semana" require>
+                    <option value="2">Segunda</option>
+                    <option value="3">Terça</option>
+                    <option value="4">Quarta</option>
+                    <option value="5">Quinta</option>
+                    <option value="6">Sexta</option>
+                    <option value="7">Sábado</option>
+                    <option value="1">Domingo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm">
+
+          <div class="field">
+
+            <label class="label">Dia da Confirmação
+              <small>*</small>
+            </label>
+
+            <div class="form-group">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select class="form-control" ng-model-options="grupo.dias_confirmacao" name="dias_confirmacao" require>
+                    <option value="2">Segunda</option>
+                    <option value="3">Terça</option>
+                    <option value="4">Quarta</option>
+                    <option value="5">Quinta</option>
+                    <option value="6">Sexta</option>
+                    <option value="7">Sábado</option>
+                    <option value="1">Domingo</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="column">
-
-        <div class="field">
-
-          <label class="label">Dia da Confirmação
+      <div class="row">
+        <div class="col-sm">
+          <label class="label">Tempo para Confirmação de Participação
             <small>*</small>
           </label>
 
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select ng-model-options="grupo.dias_confirmacao" name="dias_confirmacao" require>
-                  <option value="2">Segunda</option>
-                  <option value="3">Terça</option>
-                  <option value="4">Quarta</option>
-                  <option value="5">Quinta</option>
-                  <option value="6">Sexta</option>
-                  <option value="7">Sábado</option>
-                  <option value="1">Domingo</option>
-                </select>
-              </div>
-            </div>
+          <div class="form-group">
+            <input class="form-control" type="time" ng-model="grupo.horas_confirmacao" name="horas_confirmacao" required>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <label class="label">Tempo de Avaliação dos Jogadores
+            <small>*</small>
+          </label>
+
+          <div class="form-group">
+            <input class="form-control" type="time" ng-model="grupo.tempo_avaliacao" name="tempo_avaliacao" required>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="columns">
-      <div class="column">
-        <label class="label">Tempo para Confirmação de Participação
-          <small>*</small>
-        </label>
+      <div class="form-group">
+        <label class="label" for="endereco">Endereço do Jogo</label>
 
-        <div class="field">
-          <input class="input is-success" type="time" ng-model="grupo.horas_confirmacao" name="horas_confirmacao" required>
-        </div>
+        <input id="autocomplete" class="form-control form-group" placeholder="Ex: Avenida Theodomiro Porto da Fonseca, 3601" class="form-control"
+          type="text" ng-model="localizacao" required>
       </div>
 
-      <div class="column">
-        <label class="label">Tempo de Avaliação dos Jogadores
-          <small>*</small>
-        </label>
 
-        <div class="field">
-          <input class="input is-success" type="time" ng-model="grupo.tempo_avaliacao" name="tempo_avaliacao" required>
-        </div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label" for="endereco">Endereço do Jogo</label>
-      <p class="control is-expanded has-icons-left">
-        <input id="autocomplete" class="input" placeholder="Ex: Avenida Theodomiro Porto da Fonseca, 3601" class="form-control" type="text" ng-model="localizacao" required>
-        <span class="icon is-small is-left">
-          <i class="fa fa-futbol-o"></i>
-        </span>
-      </p>
-    </div>
-
-    <div class="field">
-      <p class="control">
-          <button class="button is-success" ng-click="grupoCtrl.alterarGrupo(grupo)">
-              Salvar
-          </button>
-      </p>
-    </div>
-  </form>
+      <button type="submit" class="btn pull-right btn-success" ng-click="grupoCtrl.alterarGrupo(grupo)">
+        Salvar
+      </button>
+    </form>
 </div>

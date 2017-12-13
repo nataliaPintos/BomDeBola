@@ -65,8 +65,8 @@
             controllerAs: 'imageCtrl'
         }) 
         
-        .when('/teste', {
-            templateUrl: 'componentes/teste/menu.html',
+        .when('/dashboard', {
+            templateUrl: 'componentes/dashboard/dashBoard.html',
             controller: 'ImageController',
             controllerAs: 'imageCtrl'
         }) 
