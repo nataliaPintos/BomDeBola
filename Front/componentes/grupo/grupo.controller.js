@@ -10,6 +10,7 @@
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
         gr.gruposUsuario;
+        gr.convidar = convidar;
         gr.isAlterar = !!$routeParams.id;
         gr.buscar = buscar;
         gr.isAdicionarJogador = false;
@@ -95,7 +96,7 @@
         function convidar(email) {
             var usuarioGrupo = {
                 email_usuario: email,
-                id_grupo: grupo.id
+                id_grupo: 1 //grupo.id
             }
             GrupoService.convidar(usuarioGrupo).then(response =>{
                 console.log(response.data)

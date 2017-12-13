@@ -49,7 +49,7 @@
         <div class="hero">
             <div class="hero-body">
 
-                <a type="button" class="subtitle" ng-click="grupoCtrl.mostrarAdicionarJogador()">
+                <a type="button" class="btn btn-primary" ng-click="grupoCtrl.mostrarAdicionarJogador()">
                     <span class="icon  is-large fa fa-2x">
                         <i class="fa fa-users"></i>
                     </span>
@@ -57,7 +57,7 @@
                 </a>
 
 
-                <div ng-show="isAdicionarJogador">
+                <div ng-show="grupoCtrl.isAdicionarJogador">
                     <div class="field">
                         <label class="label">Email do Jogador</label>
                         <div class="control has-icons-left has-icons-right">
@@ -143,8 +143,20 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-group-item list-group-item-action" href="#">
-                        <i class="fa fa-user-plus"></i> Adicionar Integrante...</a>
+                    <a class="list-group-item list-group-item-action" ng-click="grupoCtrl.mostrarAdicionarJogador()">
+                        <i class="fa fa-user-plus"></i> <span ng-show="!grupoCtrl.isAdicionarJogador"> Adicionar Integrante...</span>
+                        
+                        <div ng-show="grupoCtrl.isAdicionarJogador">
+                                <label>Email do Jogador</label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="form-control" type="email" placeholder="email@email.com" ng-model="email" name="email" required>
+                                
+                                    <button class="btn btn-success" ng-click="grupoCtrl.convidar(email)">
+                                        Enviar Convite
+                                    </button>
+                                </div>    
+                        </div>
+                    </a>
                 </div>
                 <div class="card-footer small text-muted"></div>
             </div>
