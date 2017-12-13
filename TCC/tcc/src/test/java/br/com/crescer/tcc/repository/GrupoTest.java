@@ -5,9 +5,11 @@
  */
 package br.com.crescer.tcc.repository;
 
-import br.com.crescer.tcc.Repository.UsuarioRepository;
 import br.com.crescer.tcc.entity.Usuario;
+import br.com.crescer.tcc.Repository.GrupoRepository;
+import br.com.crescer.tcc.entity.Grupo;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import static java.util.stream.Collectors.toList;
 import java.util.stream.StreamSupport;
 import static org.junit.Assert.assertEquals;
@@ -23,19 +25,19 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author carloshenrique
+ *
+ * @author luan.avila
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-public class UsuarioTest {
-
-	@Autowired
+public class GrupoTest {
+    @Autowired
 	private TestEntityManager testEntityManager;
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private GrupoRepository grupoRepository;
 
 	/**
 	 * Test of save method, of class AtorService.
@@ -45,14 +47,16 @@ public class UsuarioTest {
 		LocalDate nascimento = LocalDate.of(1999, 05, 22);
 		final Usuario usuario = new Usuario("Luan", "luanparcival@gmail.com", "982580230",
                 "1234", nascimento);
-		usuarioRepository.save(usuario);
-		assertEquals(usuario.getNome(), testEntityManager.find(Usuario.class, usuario.getId()).getNome());
-                assertEquals(usuario.getEmail(), testEntityManager.find(Usuario.class, usuario.getId()).getEmail());
-                assertEquals(usuario.getTelefone(), testEntityManager.find(Usuario.class, usuario.getId()).getTelefone());
-                assertEquals(usuario.getSenha(), testEntityManager.find(Usuario.class, usuario.getId()).getSenha());
-                assertEquals(usuario.getNascimento(), testEntityManager.find(Usuario.class, usuario.getId()).getNascimento());
+                LocalDateTime inicio = LocalDateTime.of(1999, 05, 22, 19, 00, 00);
+                LocalDateTime finall = LocalDateTime.of(1999, 05, 22, 20, 00, 00);
+                LocalDateTime confirmacao = LocalDateTime.now(); confirmacao.plusDays(2); confirmacao.plusHours(12); confirmacao.plusMinutes(30);
+                LocalDateTime avaliacao = LocalDateTime.now(); avaliacao.plusHours(12); avaliacao.plusMinutes(30);
+                Grupo grupo = new Grupo("Grupo", "img", 16, 14, 8759, 8654864, 1, inicio, finall, 2,
+                confirmacao, avaliacao);
+		grupoRepository.save(grupo);
+		assertEquals(grupo.getNome(), testEntityManager.find(Grupo.class, grupo.getId()).getNome());
 	}
-
+/*
 	@Test
 	public void testFindAll() {
                 LocalDate nascimento = LocalDate.of(1999, 05, 22);
@@ -96,6 +100,6 @@ public class UsuarioTest {
                 assertEquals(usuario.getTelefone(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getTelefone());
                 assertEquals(usuario.getSenha(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getSenha());
                 assertEquals(usuario.getNascimento(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNascimento());
-	}
+	}*/
 
 }

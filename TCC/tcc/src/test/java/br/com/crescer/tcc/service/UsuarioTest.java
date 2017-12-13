@@ -21,14 +21,9 @@ public class UsuarioTest {
     
     @Test
     public void testeFindByEmail() {
-        Usuario usuario = new Usuario();
-        usuario.setNome("Luan");
-        usuario.setEmail("luanparcival@gmail.com");
-        usuario.setTelefone("982580230");
-        usuario.setSenha("1234");
-        usuario.setImagem_perfil("img");
         LocalDate nascimento = LocalDate.of(1999, 05, 22);
-        usuario.setNascimento(nascimento);
+	final Usuario usuario = new Usuario("Luan", "luanparcival@gmail.com", "982580230",
+        "1234", nascimento);
         
         when(usuarioRepository.findByEmailIgnoreCase("luanparcival@gmail.com")).thenReturn(usuario);
         
@@ -44,14 +39,9 @@ public class UsuarioTest {
     
     @Test
     public void testeLoadById() {
-        Usuario usuario = new Usuario();
-        usuario.setNome("Luan");
-        usuario.setEmail("luanparcival@gmail.com");
-        usuario.setTelefone("982580230");
-        usuario.setSenha("1234");
-        usuario.setImagem_perfil("img");
         LocalDate nascimento = LocalDate.of(1999, 05, 22);
-        usuario.setNascimento(nascimento);
+	final Usuario usuario = new Usuario("Luan", "luanparcival@gmail.com", "982580230",
+        "1234", nascimento);
         
         when(usuarioRepository.findOne(1L)).thenReturn(usuario);
         
