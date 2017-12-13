@@ -8,13 +8,11 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioTest {
-
     @Mock
     private UsuarioRepository usuarioRepository;
     
@@ -22,7 +20,7 @@ public class UsuarioTest {
     private UsuarioService usuarioService;
     
     @Test
-    public void testarFindByEmail() {
+    public void testeFindByEmail() {
         Usuario usuario = new Usuario();
         usuario.setNome("Luan");
         usuario.setEmail("luanparcival@gmail.com");
@@ -45,7 +43,7 @@ public class UsuarioTest {
     }
     
     @Test
-    public void testarLoadById() {
+    public void testeLoadById() {
         Usuario usuario = new Usuario();
         usuario.setNome("Luan");
         usuario.setEmail("luanparcival@gmail.com");
