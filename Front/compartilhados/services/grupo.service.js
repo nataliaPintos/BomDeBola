@@ -46,7 +46,7 @@
         }
 
         function convidar(usuarioGrupo) {
-            return $http.post(urlBase + '/convite', usuarioGrupo);
+            return $http.post(urlBase + '/inclui-usuario', usuarioGrupo);
         }
 
         function excluirJogador(id) {
