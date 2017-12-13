@@ -1,135 +1,110 @@
 <!DOCTYPE html>
 <html>
 
-<div class="hero is-light">
+<div class="jumbotron">
 
- <div class="hero-body">
-        <h1 class="title">
-                Seja Bem-Vindo!
-            </h1>
-            <h2 class="subtitle">
-                Já possui uma conta? Faça seu Login, ou
-                <strong>Cadastre-se.</strong>
-            </h2>
- </div>
+    <div class="hero-body">
+        <h1 class="display-4">
+            Seja Bem-Vindo!
+        </h1>
+        <h2 class="lead">
+            Já possui uma conta? Faça seu Login, ou
+            <strong>Cadastre-se.</strong>
+        </h2>
+    </div>
 
 </div>
 
 <body>
-    <section class="section">
-        <div class="container">
 
-            <div class="columns">
+    <div class="container">
 
-
-                <div class="column">
-                    <form>
-                        <div class="field">
-                            <label class="label">Nome</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="text" placeholder="Nome Completo" ng-model="usuario.nome" name="nome" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-user"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                    <i class="fa fa-check"></i>
-                                </span>
-                            </div>
+        <div class="row">
+            <div class="col-sm">
+                <form>
+                    <div class="form-group">
+                        <label class="label">Nome
+                        </label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="form-control" type="text" placeholder="Nome Completo" ng-model="usuario.nome" name="nome" required>
 
                         </div>
 
-                        <div class="field">
-                            <label class="label">Telefone</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="text" placeholder="(51)99999-9999" ng-model="usuario.telefone" name="telefone" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-phone-square"></i>
-                                </span>
-                            
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
+                    <div class="form-group">
+                        <label class="label"> Telefone
+                        </label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="form-control" type="text" placeholder="(51)99999-9999" ng-model="usuario.telefone" name="telefone" required>
 
                         </div>
+                    </div>
 
-                        
-                        <div class="field">
-                            <label class="label">Senha</label>
+                    <div class="form-group">
+                        <label class="label">Email
+                        </label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="form-control" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="label">Senha
+                            </label>
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Senha" ng-model="usuario.senha" name="senha" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-lock"></i>
-                                </span>
+                                <input class="form-control" type="password" placeholder="Senha" ng-model="usuario.senha" name="senha" required>
+
                             </p>
                         </div>
 
-                        <div class="field">
+                        <div class="form-group">
                             <label class="label">Data de Nascimento</label>
-                            <input class="input" type="date" ng-model="usuario.nascimento" name="nascimento" required>
+                            <input class="form-control" type="date" ng-model="usuario.nascimento" name="nascimento" required>
                         </div>
 
-                        <div class="control">
-                            <button class="button is-success" ng-click="loginCtrl.cadastrar(usuario)">Cadastrar-se</button>
+                        <div class="is-right">
+                            <button class="btn btn-primary" ng-click="loginCtrl.cadastrar(usuario)">Cadastrar-se</button>
                         </div>
 
-                    </form>
+                </form>
                 </div>
             </div>
 
 
-                <div class="column">
+            <div class="col-sm">
+                <form>
+                    <div class="form-group">
+                        <label>
+                            Email
+                        </label>
+                        <input class="form-control" type="email" placeholder="Email" ng-model="usuarioRegistrado.email" name="email" required>
+                    </div>
 
-                    <form>
+                    <div class="form-group">
+                        <label class="label">Senha</label>
+                        <input class="form-control" type="password" placeholder="Senha" ng-model="usuarioRegistrado.senha" name="senha" required>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <button class="btn btn-primary" ng-click="loginCtrl.login(usuarioRegistrado)">
+                                Entrar
+                            </button>
+                        </p>
+                    </div>
+                </form>
 
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <p class="control has-icons-left has-icons-right">
-
-                                <input class="input" type="email" placeholder="Email" ng-model="usuarioRegistrado.email" name="email" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                    <i class="fa fa-check"></i>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Senha</label>
-                            <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Senha" ng-model="usuarioRegistrado.senha" name="senha" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control">
-                                <button class="button is-success" ng-click="loginCtrl.login(usuarioRegistrado)">
-                                    Entrar
-                                </button>
-                            </p>
-                        </div>
-                    </form>
-
-
-                </div>
 
             </div>
-
 
         </div>
 
 
-    </section>
+    </div>
+
+
+
 </body>
 
 </html>
