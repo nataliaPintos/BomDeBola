@@ -41,18 +41,37 @@
             controllerAs: 'grupoCtrl'
         }) 
 
+        .when('/perfil', {
+            templateUrl: 'componentes/usuario/perfil.html',
+            controller: 'PerfilController',
+            controllerAs: 'perfilCtrl'
+        }) 
+        
+        .when('/partida', {
+            templateUrl: 'componentes/partida/novaPartida.html',
+            controller: 'PartidaController',
+            controllerAs: 'partidaCtrl'
+        })
+
+        .when('/partida/feed', {
+            templateUrl: 'componentes/partida/feedPartida.html',
+            controller: 'PartidaController',
+            controllerAs: 'partidaCtrl'
+        })
+                
         .when('/imagem', {
             templateUrl: 'componentes/teste/imagem.html',
             controller: 'ImageController',
             controllerAs: 'imageCtrl'
         }) 
+        
         .when('/teste', {
             templateUrl: 'componentes/teste/menu.html',
             controller: 'ImageController',
             controllerAs: 'imageCtrl'
         }) 
 
-        .otherwise('/grupo/feed');
+        .otherwise('/perfil');
 
     }
 

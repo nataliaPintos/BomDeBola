@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .controller('ModalController', modalController);
+        .controller('PartidaController', partidaController);
 
-    function modalController(close, grupo, $scope, GrupoService, PartidaService) {
+    function partidaController(close, $scope, GrupoService, PartidaService) {
         var vm = this;
         vm.isModal = true;
         vm.closeModal = closeModal;
@@ -13,32 +13,15 @@
         vm.convidar = convidar;
         vm.criarPartida = criarPartida;
         
-        grupo.hora_inicio = new Date(grupo.hora_inicio);    
-        grupo.hora_final = new Date(grupo.hora_final);    
-        grupo.horas_confirmacao = new Date(grupo.horas_confirmacao);    
-        grupo.tempo_avaliacao = new Date(grupo.tempo_avaliacao);    
-        $scope.grupo = grupo;
+        // grupo.hora_inicio = new Date(grupo.hora_inicio);    
+        // grupo.hora_final = new Date(grupo.hora_final);    
+        // grupo.horas_confirmacao = new Date(grupo.horas_confirmacao);    
+        // grupo.tempo_avaliacao = new Date(grupo.tempo_avaliacao);    
+        // $scope.grupo = grupo;
         $scope.partida = carregarNovaPartida();
 
         console.log (grupo);
 
-        function salvar(grupo) {
-            GrupoService.alterar(grupo).then(response => {
-                console.log(response.data)
-                closeModal();
-            });
-        } 
-
-        function convidar(email) {
-            var usuarioGrupo = {
-                email_usuario: email,
-                id_grupo: grupo.id
-            }
-            GrupoService.convidar(usuarioGrupo).then(response =>{
-                console.log(response.data)
-                closeModal();
-            });
-        }
 
         function carregarNovaPartida(grupo) {
             var novaPartida = {
@@ -62,14 +45,10 @@
         function criarPartida(partida) {
             PartidaService.criar(partida).then(response => {
                 console.log(response.data);
-                closeModal();
+                $location.path('/partida/feed');
             });
         }
 
-        function closeModal() {
-            vm.isModal = false;
-            close();
-        }
     }
 
 }());

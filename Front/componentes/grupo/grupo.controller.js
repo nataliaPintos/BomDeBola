@@ -3,18 +3,18 @@
 
     angular
         .module('app')
-        .controller('GrupoController', GrupoController);
+        .controller('GrupoController', grupoController);
 
-    function GrupoController(authService, GrupoService, ModalService, $routeParams, $scope, $location, $filter, toastr, MapService) {
+    function grupoController(authService, GrupoService, $routeParams, $scope, $location, $filter, toastr, MapService) {
         var gr = this;
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
         gr.gruposUsuario;
         gr.isAlterar = !!$routeParams.id;
-        gr.openModal = openModal;
-        gr.openModalEdicao = openModalEdicao;
-        gr.openModalNovaPartida = openModalNovaPartida;
         gr.buscar = buscar;
+        gr.isAdicionarJogador = false;
+        gr.mostrarAdicionarJogador = mostrarAdicionarJogador;
+
         $scope.local = {
             latitude: 0,
             longitude: 0
@@ -84,61 +84,76 @@
             $scope.autocomplete.addListener('place_changed', obterCoordenadas);
         }
     
-          function obterCoordenadas() {
+        function obterCoordenadas() {
             var place = $scope.autocomplete.getPlace();
             $scope.local.latitude = place.geometry.location.lat();
             $scope.local.longitude = place.geometry.location.lng();
             return;
         }
 
-
-        function openModal() {
-            console.log("entrou aqui");
-            GrupoService.buscarPorId(1)
-                .then(response =>{
-                ModalService.showModal({
-                    templateUrl: 'componentes/grupo/modal/modal.html',
-                    controller: 'ModalController',
-                    controllerAs: 'modalCtrl',
-                    bodyClass: 'modal.is-active',
-                    inputs: {
-                        grupo: response.data
-                    }
-                });
-            });    
+        function convidar(email) {
+            var usuarioGrupo = {
+                email_usuario: email,
+                id_grupo: grupo.id
+            }
+            GrupoService.convidar(usuarioGrupo).then(response =>{
+                console.log(response.data)
+                gr.isAdicionarJogador = false;
+            });
         }
 
-        function openModalEdicao() {
-            console.log("entrou aqui");
-            GrupoService.buscarPorId(1)
-                .then(response =>{
-                ModalService.showModal({
-                    templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
-                    controller: 'ModalController',
-                    controllerAs: 'modalCtrl',
-                    bodyClass: 'modal.is-active',
-                    inputs: {
-                        grupo: response.data
-                    }
-                });
-            });    
+        function mostrarAdicionarJogador(){
+            gr.isAdicionarJogador = true;
         }
 
-        function openModalNovaPartida() {
-            console.log("entrou aqui");
-            GrupoService.buscarPorId(1)
-                .then(response =>{
-                ModalService.showModal({
-                    templateUrl: 'componentes/grupo/modal/modalNovaPartida.html',
-                    controller: 'ModalController',
-                    controllerAs: 'modalCtrl',
-                    bodyClass: 'modal.is-active',
-                    inputs: {
-                        grupo: response.data
-                    }
-                });
-            });    
-        }
+
+        // function openModal() {
+        //     console.log("entrou aqui");
+        //     GrupoService.buscarPorId(1)
+        //         .then(response =>{
+        //         ModalService.showModal({
+        //             templateUrl: 'componentes/grupo/modal/modal.html',
+        //             controller: 'ModalController',
+        //             controllerAs: 'modalCtrl',
+        //             bodyClass: 'modal.is-active',
+        //             inputs: {
+        //                 grupo: response.data
+        //             }
+        //         });
+        //     });    
+        // }
+
+        // function openModalEdicao() {
+        //     console.log("entrou aqui");
+        //     GrupoService.buscarPorId(1)
+        //         .then(response =>{
+        //         ModalService.showModal({
+        //             templateUrl: 'componentes/grupo/modal/modalEditarGrupo.html',
+        //             controller: 'ModalController',
+        //             controllerAs: 'modalCtrl',
+        //             bodyClass: 'modal.is-active',
+        //             inputs: {
+        //                 grupo: response.data
+        //             }
+        //         });
+        //     });    
+        // }
+
+        // function openModalNovaPartida() {
+        //     console.log("entrou aqui");
+        //     GrupoService.buscarPorId(1)
+        //         .then(response =>{
+        //         ModalService.showModal({
+        //             templateUrl: 'componentes/grupo/modal/modalNovaPartida.html',
+        //             controller: 'ModalController',
+        //             controllerAs: 'modalCtrl',
+        //             bodyClass: 'modal.is-active',
+        //             inputs: {
+        //                 grupo: response.data
+        //             }
+        //         });
+        //     });    
+        // }
 
 
     }
