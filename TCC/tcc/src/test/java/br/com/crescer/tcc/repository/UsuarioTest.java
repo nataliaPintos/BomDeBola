@@ -51,6 +51,8 @@ public class UsuarioTest {
                 assertEquals(usuario.getTelefone(), testEntityManager.find(Usuario.class, usuario.getId()).getTelefone());
                 assertEquals(usuario.getSenha(), testEntityManager.find(Usuario.class, usuario.getId()).getSenha());
                 assertEquals(usuario.getNascimento(), testEntityManager.find(Usuario.class, usuario.getId()).getNascimento());
+                assertEquals(usuario.getGols(), testEntityManager.find(Usuario.class, usuario.getId()).getGols());
+                assertEquals(usuario.getNota_geral(), testEntityManager.find(Usuario.class, usuario.getId()).getNota_geral(), 0.001);
 	}
 
 	@Test
@@ -70,6 +72,10 @@ public class UsuarioTest {
 				.map(Usuario::getSenha).collect(toList()).contains(usuario.getSenha()));
                 assertTrue(StreamSupport.stream(usuarioRepository.findAll().spliterator(), false)
 				.map(Usuario::getNascimento).collect(toList()).contains(usuario.getNascimento()));
+                assertTrue(StreamSupport.stream(usuarioRepository.findAll().spliterator(), false)
+				.map(Usuario::getGols).collect(toList()).contains(usuario.getGols()));
+                assertTrue(StreamSupport.stream(usuarioRepository.findAll().spliterator(), false)
+				.map(Usuario::getNota_geral).collect(toList()).contains(usuario.getNota_geral()));
 	}
 
 	@Test
@@ -83,6 +89,8 @@ public class UsuarioTest {
                 assertEquals(usuario.getTelefone(), usuarioRepository.findOne(usuario.getId()).getTelefone());
                 assertEquals(usuario.getSenha(), usuarioRepository.findOne(usuario.getId()).getSenha());
                 assertEquals(usuario.getNascimento(), usuarioRepository.findOne(usuario.getId()).getNascimento());
+                assertEquals(usuario.getGols(), usuarioRepository.findOne(usuario.getId()).getGols());
+                assertEquals(usuario.getNota_geral(), usuarioRepository.findOne(usuario.getId()).getNota_geral(), 0.001);
 	}
         
         @Test
@@ -96,6 +104,8 @@ public class UsuarioTest {
                 assertEquals(usuario.getTelefone(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getTelefone());
                 assertEquals(usuario.getSenha(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getSenha());
                 assertEquals(usuario.getNascimento(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNascimento());
+                assertEquals(usuario.getGols(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getGols());
+                assertEquals(usuario.getNota_geral(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNota_geral(), 0.001);
 	}
 
 }
