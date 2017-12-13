@@ -121,8 +121,9 @@ public class PartidaService {
             default:
                 break;
         }
-        diaDaConfirmacao.minusHours(grupo.getHoras_confirmacao().getHour());
-        diaDaConfirmacao.minusMinutes(grupo.getHoras_confirmacao().getMinute());
+        diaDaConfirmacao.withHour(grupo.getHoras_confirmacao().getHour());
+        diaDaConfirmacao.withMinute(grupo.getHoras_confirmacao().getMinute());
+        diaDaConfirmacao.withSecond(grupo.getHoras_confirmacao().getSecond());
         partidaModel.tempo_confirmacao = diaDaConfirmacao;
         return partidaModel;
     }

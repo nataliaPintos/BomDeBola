@@ -6,8 +6,6 @@
 package br.com.crescer.tcc.service;
 
 
-import br.com.crescer.tcc.entity.Usuario;
-import java.util.List;
 import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.Message;
@@ -27,8 +25,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EmailService {
     
-    public String grupo = " convidou você para um novo grupo no Bom De Bola. Cadastre-se ou faça seu login agora para aceitar";
-    public String partida = " tem uma nova partida no Bom De Bola. Faça seu login agora para aceitar";
+    public String grupo = "Você foi convidado para um novo grupo no Bom De Bola. Cadastre-se ou faça seu login agora para aceitar";
+    public String partida = "Você foi convidado para uma nova partida no Bom De Bola. Faça seu login agora para aceitar";
     
     public void enviarEmail(String email, String mensagem){
         Properties props = new Properties();

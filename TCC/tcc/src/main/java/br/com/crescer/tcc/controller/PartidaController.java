@@ -69,4 +69,9 @@ public class PartidaController {
         Partida partida = usuario_partida.getPartida();
         return ResponseEntity.ok(usuario_partidaService.update(usuario_partida, partida));
     }
+    
+    @GetMapping("/lista-jogadores")
+    public List<Usuario_Partida> listaJogadores(Long id) {
+	return usuario_partidaService.listaDeParticipantes(id);
+    }
 }
