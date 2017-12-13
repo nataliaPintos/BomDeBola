@@ -12,10 +12,10 @@
         vm.isformAtivo = true;
         
 
-        carregarNovaPartida();
+        //carregarNovaPartida();
 
         function carregarNovaPartida() {
-            PartidaService.carregar(1).then(response => {
+            PartidaService.carregar().then(response => {
                 console.log(response.data);
                 $scope.partida = response.data;
             });
