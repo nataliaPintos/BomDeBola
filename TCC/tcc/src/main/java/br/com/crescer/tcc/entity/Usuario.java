@@ -97,6 +97,6 @@ public class Usuario implements Serializable{
 	@Column(name = "GOLS")
 	private int gols;
         
-        @OneToMany(mappedBy="usuario")
+        @OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
         private List<UsuarioGrupo> usuarioGrupo;
 }

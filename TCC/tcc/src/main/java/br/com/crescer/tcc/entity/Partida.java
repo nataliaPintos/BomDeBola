@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -117,6 +118,6 @@ public class Partida implements Serializable{
     @JoinColumn(name = "ID_GRUPO")
     private Grupo grupo;
     
-    @OneToMany(mappedBy="partida")
+    @OneToMany(mappedBy="partida", cascade=CascadeType.ALL)
     private List<UsuarioPartida> usuarioPartida;
 }

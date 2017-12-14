@@ -19,5 +19,6 @@ public interface UsuarioGrupoRepository extends PagingAndSortingRepository<Usuar
     
     List<UsuarioGrupo> findByGrupo(Grupo grupo);
     List<UsuarioGrupo> findByUsuario(Usuario usuario);
+    UsuarioGrupo findByUsuarioAndGrupo(Usuario usuario, Grupo grupo);
     
 }

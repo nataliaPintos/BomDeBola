@@ -5,7 +5,6 @@
  */
 package br.com.crescer.tcc.entity;
 
-import br.com.crescer.tcc.utilitarios.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -15,7 +14,6 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.validation.constraints.*;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 /**
  *
  * @author luanp
@@ -113,9 +111,9 @@ public class Grupo implements Serializable{
     //@Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime tempoAvaliacao;
     
-    @OneToMany(mappedBy="grupo")
+    @OneToMany(mappedBy="grupo", cascade=CascadeType.ALL)
     private List<UsuarioGrupo> usuarioGrupo;
     
-    @OneToMany(mappedBy="grupo")
+    @OneToMany(mappedBy="grupo", cascade=CascadeType.ALL)
     private List<Partida> partida;
 }

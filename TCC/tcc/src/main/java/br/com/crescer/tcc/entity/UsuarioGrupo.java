@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -62,7 +63,7 @@ public class UsuarioGrupo implements Serializable{
     @JoinColumn(name = "ID_GRUPO")
     private Grupo grupo;
     
-    @OneToMany(mappedBy="usuarioGrupo")
+    @OneToMany(mappedBy="usuarioGrupo", cascade=CascadeType.ALL)
     private List<UsuarioPartida> usuarioPartida;
     
     public boolean getAdm(){

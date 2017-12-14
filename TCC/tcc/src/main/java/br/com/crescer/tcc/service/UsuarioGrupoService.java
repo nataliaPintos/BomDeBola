@@ -43,14 +43,21 @@ public class UsuarioGrupoService {
 	public ResponseEntity save(UsuarioGrupoModel usuarioGrupoModel) {
             Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioGrupoModel.getEmailUsuario());
             Grupo grupo = grupoRepository.findOne(usuarioGrupoModel.getIdGrupo());
-            if(usuario == null || grupo == null){
-                return ResponseEntity.badRequest().body("Informações não cadastradas");
-            }else{
-                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
-                emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
-                usuarioGrupoRepository.save(usuarioGrupo);
-                return ResponseEntity.ok().body(usuarioGrupo);
-            }
+            UsuarioGrupo usuarioGrupo = usuarioGrupoRepository.findByUsuarioAndGrupo(usuario, grupo);
+            if(usuarioGrupo == null){
+                if(grupo == null){
+                    return ResponseEntity.badRequest().body("Grupo não cadastrado");
+                }else if(usuario == null){
+                    usuarioGrupoRepository.save(usuarioGrupo);
+                    return ResponseEntity.ok().body("Usuario convidado");
+                }else{
+                    emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
+                    usuarioGrupoRepository.save(usuarioGrupo);
+                    return ResponseEntity.ok().body(usuarioGrupo);
+                }
+                }else{
+                    return ResponseEntity.badRequest().body("O usuario já foi convidado");
+                }
 	}
         
         public void delete(Long id) {
