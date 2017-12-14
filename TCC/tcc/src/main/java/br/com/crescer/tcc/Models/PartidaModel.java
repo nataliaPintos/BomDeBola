@@ -5,6 +5,7 @@
  */
 package br.com.crescer.tcc.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -26,8 +27,9 @@ public class PartidaModel {
     public double latitude;
     public double longitude;
     
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+//    @JsonSerialize(using = LocalDateSerializer.class)
+//    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     public LocalDate dia_semana;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)

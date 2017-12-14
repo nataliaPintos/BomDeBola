@@ -47,11 +47,17 @@
             controllerAs: 'partidaCtrl'
         })
 
-        .when('/grupo/:id?/partida/:id?/feed', {
+        .when('/grupo/:id?/partida/feed', {
             templateUrl: 'componentes/partida/feedPartida.html',
             controller: 'FeedPartidaController',
             controllerAs: 'feedPartidaCtrl'
         })
+
+        .when('/grupo/:id?/partida/:idpartida?/times', {
+            templateUrl: 'componentes/partida/times.html',
+            controller: 'PartidaController',
+            controllerAs: 'partidaCtrl'
+        })  
                 
         .when('/imagem', {
             templateUrl: 'componentes/teste/imagem.html',
@@ -65,11 +71,7 @@
             controllerAs: 'perfilCtrl'
         }) 
 
-        .when('/partida/feed/times', {
-            templateUrl: 'componentes/partida/times.html',
-            controller: 'PartidaController',
-            controllerAs: 'partidaCtrl'
-        })
+        
 
         .otherwise('/dashboard');
 

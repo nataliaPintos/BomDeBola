@@ -26,7 +26,7 @@
         }
 
         function carregar(id) {
-            return $http.get(urlBase + '/nova-partida' + id);
+            return $http.get(urlBase + '/nova-partida/padrao/' + id);
         }
 
         function listarTimes() {

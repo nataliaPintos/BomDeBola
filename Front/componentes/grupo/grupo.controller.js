@@ -24,12 +24,11 @@
         
         autoComplete();
 
-        GrupoService.listarUsuarios($routeParams.id).then(response =>{
-            $scope.users = response.data;
-            console.log(response.data);
-        });
-    
         if(gr.isAlterar){
+            GrupoService.listarUsuarios($routeParams.id).then(response =>{
+                $scope.users = response.data;
+                console.log(response.data);
+            });
             GrupoService.buscarPorId($routeParams.id)
                 .then(response =>{
                     console.log(response.data);
@@ -49,6 +48,7 @@
             $scope.grupo.longitude = $scope.local.longitude;
             if(!gr.isAlterar) {
                 criarGrupo($scope.grupo);
+                console.log($scope.grupo);
                 return;
             }
             let promise = GrupoService.alterar(grupo);
@@ -90,8 +90,8 @@
     
         function obterCoordenadas() {
             var place = $scope.autocomplete.getPlace();
-            $scope.local.latitude = place.geometry.location.lat();
-            $scope.local.longitude = place.geometry.location.lng();
+            $scope.grupo.latitude = place.geometry.location.lat();
+            $scope.grupo.longitude = place.geometry.location.lng();
             return;
         }
 

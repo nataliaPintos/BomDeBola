@@ -56,27 +56,27 @@ public class PartidaController {
         return ResponseEntity.ok().body(partida);
     }
     
-    @GetMapping("/nova-partida")
+    @GetMapping("/nova-partida/padrao/{id}")
     public PartidaModel getPartidaModel(@PathVariable Long id) {
 	Grupo grupo = grupoService.loadById(id);
         PartidaModel partidaModel = new PartidaModel();
         return partidaService.partidaModelRetorno(partidaModel, grupo);
     }
     
-    @PutMapping("/aceita-partida")
+    @PutMapping("/aceita-partida/")
     public ResponseEntity<Boolean> update(@RequestBody @Valid Long id) {
         Usuario_Partida usuario_partida = usuario_partidaService.loadById(id);
         Partida partida = usuario_partida.getPartida();
         return ResponseEntity.ok(usuario_partidaService.update(usuario_partida, partida));
     }
     
-    @GetMapping("/lista-jogadores")
-    public List<Usuario_Partida> listaJogadores(Long id) {
+    @GetMapping("/lista-jogadores/{id}")
+    public List<Usuario_Partida> listaJogadores(@PathVariable Long id) {
 	return usuario_partidaService.listaDeParticipantes(id);
     }
     
-    @GetMapping("/sorteia-times")
-    public List<Usuario_Partida> sorteiaTimes(Long id) {
+    @GetMapping("/sorteia-times/{id}")
+    public List<Usuario_Partida> sorteiaTimes(@PathVariable Long id) {
         List<Usuario_Partida> lista = usuario_partidaService.listaDeParticipantes(id);
 	return usuario_partidaService.sortearTime(lista);
     }
