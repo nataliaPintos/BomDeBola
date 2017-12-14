@@ -1,58 +1,58 @@
 <div class="content-wrapper ng-scope">
-        <div class="container-fluid">
-<div class="container">
-    <h2>Altere os campos necessários ou confirme a partida padrão.</h2>
-
-    <form novalidate name="formPartida" ng-controller="PartidaController">
-        <div class="form-group">
-            <label class="label">Dia do Jogo</label>
-            <input class="form-control" type="date" ng-model="partida.dia_semana" name="dia_semana" required>
-        </div>
-        <div class="row">
-            <div class="col-sm">
+    <div class="container-fluid">
+        <div class="container">
+            <h2>Altere os campos necessários ou confirme a partida padrão.</h2>
+            <p ng-if="formPartida.$invalid && formPartida.$submitted" class="help">Formulário Inválido, preencha todos os campos e tente novamente :)</p>
+            <form novalidate name="formPartida" ng-controller="PartidaController">
                 <div class="form-group">
-                    <label class="label">Horário de Inicio</label>
-                    <input class="form-control" type="date" ng-model="partida.hora_inicio" name="hora_inicio" required>
+                    <label class="label">Dia do Jogo</label>
+                    <input class="form-control" type="date" ng-model="partida.dia_semana" name="dia_semana" required>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="label">Horário de Inicio</label>
+                            <input class="form-control" type="date" ng-model="partida.hora_inicio" name="hora_inicio" required>
+                        </div>
+                    </div>
 
 
-            <div class="col-sm">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="label">Horário de Fim</label>
+                            <input class="form-control" type="date" ng-model="partida.hora_final" name="hora_final" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="label">Máximo de Jogadores</label>
+                            <input class="form-control" min="1" type="number" ng-model="partida.time_max" name="time_max" required>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="label">Mínimo de Jogadores</label>
+                            <input class="form-control" min="1" type="number" ng-model="partida.time_min" name="time_min" required>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
-                    <label class="label">Horário de Fim</label>
-                    <input class="form-control" type="date" ng-model="partida.hora_final" name="hora_final" required>
+                    <label class="label">Data limite para confirmação de participação</label>
+                    <input class="form-control" type="date" ng-model="partida.horas_confirmacao" name="horas_confirmacao" required>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">
+
+
                 <div class="form-group">
-                    <label class="label">Máximo de Jogadores</label>
-                    <input class="form-control" type="number" ng-model="partida.time_max" name="time_max" required>
+                    <label class="label">Data limite para avaliação dos jogadores</label>
+                    <input class="form-control" type="date" ng-model="partida.tempo_avaliacao" name="tempo_avaliacao" required>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label class="label">Mínimo de Jogadores</label>
-                    <input class="form-control" type="number" ng-model="partida.time_min" name="time_min" required>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="label">Data limite para confirmação de participação</label>
-            <input class="form-control" type="date" ng-model="partida.horas_confirmacao" name="horas_confirmacao" required>
-        </div>
 
-
-        <div class="form-group">
-            <label class="label">Data limite para avaliação dos jogadores</label>
-            <input class="form-control" type="date" ng-model="partida.tempo_avaliacao" name="tempo_avaliacao" required>
+                <button class="btn btn-success" ng-disabled="!formPartida.$valid" ng-click="partidaCtrl.criarPartida(partida)">Criar Nova Partida</button>
+            </form>
         </div>
-
-        <button class="btn btn-success" ng-click="partidaCtrl.criarPartida(partida)">Criar Nova Partida</button>
-    </form>
-</div>
-</div>
+    </div>
 
 
 </div>
