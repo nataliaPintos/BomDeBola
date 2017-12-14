@@ -5,19 +5,19 @@
  */
 package br.com.crescer.tcc.service;
 
-import br.com.crescer.tcc.Models.Usuario_GrupoModel;
+import br.com.crescer.tcc.Models.UsuarioGrupoModel;
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
-import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Usuario;
-import br.com.crescer.tcc.entity.Usuario_Grupo;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 
 /**
  *
@@ -25,28 +25,28 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class Usuario_GrupoService {
+public class UsuarioGrupoService {
     @Autowired
-    private final Usuario_GrupoRepository usuario_grupoRepository;
+    private final UsuarioGrupoRepository usuario_grupoRepository;
     private final UsuarioRepository usuarioRepository;
     private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
-    public Usuario_Grupo loadById(Long id) {
+    public UsuarioGrupo loadById(Long id) {
 		return usuario_grupoRepository.findOne(id);
 	}
         
-        public List<Usuario_Grupo> lista() {
-		return (List<Usuario_Grupo>) usuario_grupoRepository.findAll();
+        public List<UsuarioGrupo> lista() {
+		return (List<UsuarioGrupo>) usuario_grupoRepository.findAll();
 	}
 
-	public ResponseEntity save(Usuario_GrupoModel usuario_grupoModel) {
-            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuario_grupoModel.email_usuario);
-            Grupo grupo = grupoRepository.findOne(usuario_grupoModel.id_grupo);
+	public ResponseEntity save(UsuarioGrupoModel usuario_grupoModel) {
+            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuario_grupoModel.getEmailUsuario());
+            Grupo grupo = grupoRepository.findOne(usuario_grupoModel.getIdGrupo());
             if(usuario == null || grupo == null){
                 return ResponseEntity.badRequest().body("Informações não cadastradas");
             }else{
-                Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
+                UsuarioGrupo usuario_grupo = new UsuarioGrupo(usuario, grupo);
                 emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
                 usuario_grupoRepository.save(usuario_grupo);
                 return ResponseEntity.ok().body(usuario_grupo);
@@ -57,7 +57,7 @@ public class Usuario_GrupoService {
                 usuario_grupoRepository.delete(id);
 	}
         
-        public List<Usuario_Grupo> findByGrupo(Long id) {
+        public List<UsuarioGrupo> findByGrupo(Long id) {
             Grupo grupo = grupoRepository.findOne(id);
                 return usuario_grupoRepository.findByGrupo(grupo);
 	}
@@ -65,8 +65,8 @@ public class Usuario_GrupoService {
         public List<Grupo> listaGrupo(Long id) {
                 Usuario usuario = usuarioRepository.findOne(id);
                 List<Grupo> listaGrupo = new ArrayList();
-                List<Usuario_Grupo> listaUG = usuario_grupoRepository.findByUsuario(usuario);
-                for(Usuario_Grupo usuario_grupo : listaUG){
+                List<UsuarioGrupo> listaUG = usuario_grupoRepository.findByUsuario(usuario);
+                for(UsuarioGrupo usuario_grupo : listaUG){
                     listaGrupo.add(usuario_grupo.getGrupo());
                 }
                 return listaGrupo;

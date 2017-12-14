@@ -37,13 +37,13 @@ public class Partida implements Serializable{
     private static final String SQ_PARTIDA = "SQ_PARTIDA";
     
     public Partida(){}
-    public Partida(int time_max, int time_min, double latitude, double longitude, 
-            LocalDate dia_semana, LocalDateTime hora_inicio, LocalDateTime hora_final,
-            LocalDateTime tempo_confirmacao, LocalDateTime tempo_avaliacao, Grupo grupo){
-        this.time_max = time_max; this.time_min = time_min; this.latitude = latitude; 
-        this.longitude = longitude; this.dia_semana = dia_semana; this.hora_inicio = hora_inicio; 
-        this.hora_final = hora_final; this.tempo_confirmacao = tempo_confirmacao; 
-        this.tempo_avaliacao = tempo_avaliacao; this.time_atual = 0; this.grupo = grupo;
+    public Partida(int timeMax, int timeMin, double latitude, double longitude, 
+            LocalDate diaSemana, LocalDateTime horaInicio, LocalDateTime horaFinal,
+            LocalDateTime tempoConfirmacao, LocalDateTime tempoAvaliacao, Grupo grupo){
+        this.timeMax = timeMax; this.timeMin = timeMin; this.latitude = latitude; 
+        this.longitude = longitude; this.diaSemana = diaSemana; this.horaInicio = horaInicio; 
+        this.horaFinal = horaFinal; this.tempoConfirmacao = tempoConfirmacao; 
+        this.tempoAvaliacao = tempoAvaliacao; this.timeAtual = 0; this.grupo = grupo;
         this.confirmada = false;
     }
     
@@ -57,13 +57,13 @@ public class Partida implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
-    private LocalDateTime hora_inicio;
+    private LocalDateTime horaInicio;
     
     @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
-    private LocalDateTime hora_final;
+    private LocalDateTime horaFinal;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -79,34 +79,34 @@ public class Partida implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "DIA_SEMANA")
-    private LocalDate dia_semana;
+    private LocalDate diaSemana;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TIME_MAX")
-    private int time_max;
+    private int timeMax;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TIME_MIN")
-    private int time_min;
+    private int timeMin;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TIME_ATUAL")
-    private int time_atual;
+    private int timeAtual;
     
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
-    private LocalDateTime tempo_confirmacao;    
+    private LocalDateTime tempoConfirmacao;    
     
     @JsonFormat(pattern = "HH:mm")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TEMPO_AVALIACAO")
-    private LocalDateTime tempo_avaliacao;
+    private LocalDateTime tempoAvaliacao;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -118,5 +118,5 @@ public class Partida implements Serializable{
     private Grupo grupo;
     
     @OneToMany(mappedBy="partida")
-    private List<Usuario_Partida> usuario_partida;
+    private List<UsuarioPartida> usuarioPartida;
 }

@@ -14,42 +14,46 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author luanp
  */
+@Getter
+@Setter
 public class PartidaModel {
     
-    public int time_max;
-    public int time_min;
+    private int timeMax;
+    private int timeMin;
     
-    public double latitude;
-    public double longitude;
+    private double latitude;
+    private double longitude;
     
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    public LocalDate dia_semana;
+    private LocalDate diaSemana;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
-    public LocalDateTime hora_inicio;
+    private LocalDateTime horaInicio;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
-    public LocalDateTime hora_final;    
+    private LocalDateTime horaFinal;    
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
-    public LocalDateTime tempo_confirmacao;
+    private LocalDateTime tempoConfirmacao;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
-    public LocalDateTime tempo_avaliacao;
+    private LocalDateTime tempoAvaliacao;
     
-    public Long id_grupo;
+    private Long idGrupo;
 }

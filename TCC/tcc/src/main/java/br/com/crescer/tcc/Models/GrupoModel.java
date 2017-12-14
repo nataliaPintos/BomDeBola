@@ -11,30 +11,34 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
  * @author luanp
  */
+@Getter
+@Setter
 public class GrupoModel {
-    public String nome;
-    public String imagem;
-    public int time_max;
-    public int time_min;
-    public double latitude;
-    public double longitude;
-    public int dia_semana;
+    private String nome;
+    private String imagem;
+    private int timeMax;
+    private int timeMin;
+    private double latitude;
+    private double longitude;
+    private int diaSemana;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime hora_inicio;
+    private LocalDateTime horaInicio;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime hora_final;
-    public int dias_confirmacao;
+    private LocalDateTime horaFinal;
+    private int diasConfirmacao;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime horas_confirmacao;
+    private LocalDateTime horasConfirmacao;
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime tempo_avaliacao;
+    private LocalDateTime tempoAvaliacao;
 }

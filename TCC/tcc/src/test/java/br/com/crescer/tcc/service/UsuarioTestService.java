@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UsuarioTest {
+public class UsuarioTestService {
     @Mock
     private UsuarioRepository usuarioRepository;
     
@@ -31,7 +31,7 @@ public class UsuarioTest {
         
         assertEquals(usuario.getNome(), usuario2.getNome());
         assertEquals(usuario.getEmail(), usuario2.getEmail());
-        assertEquals(usuario.getImagem_perfil(), usuario2.getImagem_perfil());
+        assertEquals(usuario.getImagemPerfil(), usuario2.getImagemPerfil());
         assertEquals(usuario.getTelefone(), usuario2.getTelefone());
         assertEquals(usuario.getSenha(), usuario2.getSenha());
         assertEquals(usuario.getNascimento(), usuario2.getNascimento());
@@ -49,7 +49,7 @@ public class UsuarioTest {
         
         assertEquals(usuario.getNome(), usuario2.getNome());
         assertEquals(usuario.getEmail(), usuario2.getEmail());
-        assertEquals(usuario.getImagem_perfil(), usuario2.getImagem_perfil());
+        assertEquals(usuario.getImagemPerfil(), usuario2.getImagemPerfil());
         assertEquals(usuario.getTelefone(), usuario2.getTelefone());
         assertEquals(usuario.getSenha(), usuario2.getSenha());
         assertEquals(usuario.getNascimento(), usuario2.getNascimento());

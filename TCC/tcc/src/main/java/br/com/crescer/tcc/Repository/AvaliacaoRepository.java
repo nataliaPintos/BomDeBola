@@ -6,7 +6,7 @@
 package br.com.crescer.tcc.Repository;
 
 import br.com.crescer.tcc.entity.Avaliacao;
-import br.com.crescer.tcc.entity.Usuario_Partida;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface AvaliacaoRepository extends PagingAndSortingRepository<Avaliacao, Long> {
     
-    Avaliacao findByAvaliador(Usuario_Partida usuario_partida);
+    Avaliacao findByAvaliador(UsuarioPartida usuario_partida);
     
 }

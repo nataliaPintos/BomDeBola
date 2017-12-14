@@ -34,8 +34,8 @@ public class Usuario implements Serializable{
         this.telefone = telefone;
         this.senha = senha;
         this.nascimento = nascimento;
-        this.nota_geral = 0;
-        this.partidas_jogadas = 0;
+        this.notaGeral = 0;
+        this.partidasJogadas = 0;
         this.gols = 0;
     }
     
@@ -76,7 +76,7 @@ public class Usuario implements Serializable{
         @Size
 	@Basic(optional = true)
 	@Column(name = "IMAGEM_PERFIL")
-	private String imagem_perfil;
+	private String imagemPerfil;
         
         @JsonFormat(pattern = "dd/MM/yyyy")
         @NotNull(message = "Campo obrigatório")
@@ -87,16 +87,16 @@ public class Usuario implements Serializable{
         @NotNull(message = "Campo obrigatório")
 	@Basic(optional = false)
 	@Column(name = "NOTA_GERAL")
-	private double nota_geral;
+	private double notaGeral;
         
 	@Basic(optional = true)
 	@Column(name = "PARTIDAS_JOGADAS")
-	private int partidas_jogadas;
+	private int partidasJogadas;
         
 	@Basic(optional = true)
 	@Column(name = "GOLS")
 	private int gols;
         
         @OneToMany(mappedBy="usuario")
-        private List<Usuario_Grupo> usuario_grupo;
+        private List<UsuarioGrupo> usuarioGrupo;
 }

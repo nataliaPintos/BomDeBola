@@ -6,9 +6,8 @@
 package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Repository.PartidaRepository;
-import br.com.crescer.tcc.Repository.Usuario_PartidaRepository;
 import br.com.crescer.tcc.entity.Partida;
-import br.com.crescer.tcc.entity.Usuario_Partida;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 
 /**
  *
@@ -23,29 +23,29 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class Usuario_PartidaService {
+public class UsuarioPartidaService {
     @Autowired
-    private final Usuario_PartidaRepository usuario_partidaRepository;
+    private final UsuarioPartidaRepository usuario_partidaRepository;
     private final PartidaRepository partidaRepository;
     
-    public Usuario_Partida loadById(Long id) {
+    public UsuarioPartida loadById(Long id) {
 		return usuario_partidaRepository.findOne(id);
 	}
         
-        public List<Usuario_Partida> lista() {
-		return (List<Usuario_Partida>) usuario_partidaRepository.findAll();
+        public List<UsuarioPartida> lista() {
+		return (List<UsuarioPartida>) usuario_partidaRepository.findAll();
 	}
 
-	public void save(Usuario_Partida usuario_partida) {
+	public void save(UsuarioPartida usuario_partida) {
 		usuario_partida = usuario_partidaRepository.save(usuario_partida);
 	}
         
         public ResponseEntity update(Long id) {
-            Usuario_Partida usuario_partida = usuario_partidaRepository.findOne(id);
+            UsuarioPartida usuario_partida = usuario_partidaRepository.findOne(id);
             Partida partida = usuario_partida.getPartida();
             if(usuario_partida == null){
-                if(partida.getTime_atual() < partida.getTime_max()){
-                    partida.setTime_atual(partida.getTime_atual() + 1);
+                if(partida.getTimeAtual() < partida.getTimeMax()){
+                    partida.setTimeAtual(partida.getTimeAtual() + 1);
                     partidaRepository.save(partida);
                     usuario_partida.setSolicitacao(false);
                     usuario_partidaRepository.save(usuario_partida);
@@ -62,16 +62,16 @@ public class Usuario_PartidaService {
                 usuario_partidaRepository.delete(id);
 	}
         
-        public List<Usuario_Partida> listaDeParticipantes(Long id) {
+        public List<UsuarioPartida> listaDeParticipantes(Long id) {
 		return usuario_partidaRepository.findByIdAndSolicitacao(id, false);
 	}
         
-        public List<Usuario_Partida> findByPartida(Partida partida) {
+        public List<UsuarioPartida> findByPartida(Partida partida) {
 		return usuario_partidaRepository.findByPartida(partida);
 	}
         
-        public List<Usuario_Partida> sortearTime(Long id) {
-            List<Usuario_Partida> lista = usuario_partidaRepository.findByIdAndSolicitacao(id, false);
+        public List<UsuarioPartida> sortearTime(Long id) {
+            List<UsuarioPartida> lista = usuario_partidaRepository.findByIdAndSolicitacao(id, false);
             int tamanho = lista.size();
             Collections.shuffle(lista);
             if(tamanho % 2 != 0){

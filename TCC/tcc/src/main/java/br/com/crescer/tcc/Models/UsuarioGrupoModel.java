@@ -5,13 +5,18 @@
  */
 package br.com.crescer.tcc.Models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author luanp
  */
-public class Usuario_GrupoModel {
+@Getter
+@Setter
+public class UsuarioGrupoModel {
     
-    public String email_usuario;
-    public Long id_grupo;
+    private String emailUsuario;
+    private Long idGrupo;
     
 }

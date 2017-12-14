@@ -10,14 +10,18 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UsuarioModel {
-    public String nome;
-    public String email;
-    public String senha;
-    public String imagem_perfil;
-    public String telefone;
+    private String nome;
+    private String email;
+    private String senha;
+    private String imagem_perfil;
+    private String telefone;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    public LocalDate nascimento;
+    private LocalDate nascimento;
 }

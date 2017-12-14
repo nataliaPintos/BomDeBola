@@ -31,13 +31,13 @@ public class Grupo implements Serializable{
     
     public Grupo(){}
     
-    public Grupo(String nome, String imagem, int time_max, int time_min, double latitude, double longitude, 
-            int dia_semana, LocalDateTime hora_inicio, LocalDateTime hora_final, int dias_confirmacao,
-            LocalDateTime horas_confirmacao, LocalDateTime tempo_avaliacao){
-        this.nome = nome; this.imagem = imagem; this.time_max = time_max; this.time_min = time_min;
-        this.latitude = latitude; this.longitude = longitude; this.dia_semana = dia_semana; 
-        this.hora_inicio = hora_inicio; this.hora_final = hora_final; this.dias_confirmacao = dias_confirmacao;
-        this.horas_confirmacao = horas_confirmacao; this.tempo_avaliacao = tempo_avaliacao;
+    public Grupo(String nome, String imagem, int timeMax, int timeMin, double latitude, double longitude, 
+            int diaSemana, LocalDateTime horaInicio, LocalDateTime horaFinal, int diasConfirmacao,
+            LocalDateTime horasConfirmacao, LocalDateTime tempoAvaliacao){
+        this.nome = nome; this.imagem = imagem; this.timeMax = timeMax; this.timeMin = timeMin;
+        this.latitude = latitude; this.longitude = longitude; this.diaSemana = diaSemana; 
+        this.horaInicio = horaInicio; this.horaFinal = horaFinal; this.diasConfirmacao = diasConfirmacao;
+        this.horasConfirmacao = horasConfirmacao; this.tempoAvaliacao = tempoAvaliacao;
     }
     
     @Id
@@ -60,12 +60,12 @@ public class Grupo implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TIME_MAX")
-    private int time_max;
+    private int timeMax;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "TIME_MIN")
-    private int time_min;
+    private int timeMin;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -80,30 +80,30 @@ public class Grupo implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "DIA_SEMANA")
-    private int dia_semana;
+    private int diaSemana;
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
-    private LocalDateTime hora_inicio;
+    private LocalDateTime horaInicio;
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
-    private LocalDateTime hora_final;
+    private LocalDateTime horaFinal;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "DIA_CONFIRMACAO")
-    private int dias_confirmacao;
+    private int diasConfirmacao;
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")
-    private LocalDateTime horas_confirmacao;    
+    private LocalDateTime horasConfirmacao;    
     
     @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
@@ -111,10 +111,10 @@ public class Grupo implements Serializable{
     @Column(name = "TEMPO_AVALIACAO")
     //@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     //@Convert(converter = LocalDateTimeConverter.class)
-    private LocalDateTime tempo_avaliacao;
+    private LocalDateTime tempoAvaliacao;
     
     @OneToMany(mappedBy="grupo")
-    private List<Usuario_Grupo> usuario_grupo;
+    private List<UsuarioGrupo> usuarioGrupo;
     
     @OneToMany(mappedBy="grupo")
     private List<Partida> partida;

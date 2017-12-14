@@ -39,9 +39,9 @@ public class UsuarioService {
 	}
 
 	public ResponseEntity save(UsuarioModel usuarioModel) {
-            Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.email);
+            Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());
             if(usuarioExistente == null){
-                Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
+                Usuario usuario = new Usuario(usuarioModel.getNome(), usuarioModel.getEmail(), usuarioModel.getTelefone(), usuarioModel.getSenha(), usuarioModel.getNascimento());
 		final String senha = usuario.getSenha();
 		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
 		usuario = usuarioRepository.save(usuario);
@@ -54,12 +54,12 @@ public class UsuarioService {
         public ResponseEntity update(UsuarioModel usuarioModel) {
             Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
             if(usuario != null){
-                usuario.setEmail(usuarioModel.email);
-                usuario.setImagem_perfil(usuarioModel.imagem_perfil);
-                usuario.setNascimento(usuarioModel.nascimento);
-                usuario.setNome(usuarioModel.nome);
-                usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.senha));
-                usuario.setTelefone(usuarioModel.telefone);
+                usuario.setEmail(usuarioModel.getEmail());
+                usuario.setImagemPerfil(usuarioModel.getImagem_perfil());
+                usuario.setNascimento(usuarioModel.getNascimento());
+                usuario.setNome(usuarioModel.getNome());
+                usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));
+                usuario.setTelefone(usuarioModel.getTelefone());
                 usuarioRepository.save(usuario);
                 return ResponseEntity.ok().body(usuario);
             }else{
