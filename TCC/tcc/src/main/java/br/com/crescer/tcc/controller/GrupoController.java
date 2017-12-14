@@ -71,6 +71,11 @@ public class GrupoController {
 	return usuario_grupoService.findByGrupo(grupo);
     }
     
+    @GetMapping("/lista-grupos")
+    public List<Grupo> listaGrupos(Long id) {
+	return usuario_grupoService.listaGrupo(id);
+    }
+    
     @PostMapping("/inclui-usuario")
     public ResponseEntity<Usuario_Grupo> convite(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
         Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
