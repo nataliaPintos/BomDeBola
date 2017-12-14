@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GrupoTest {
+public class GrupoTestService {
     @Mock
     private GrupoRepository grupoRepository;
     
@@ -31,26 +31,26 @@ public class GrupoTest {
     @Test
     public void testarLoadById() {
         Grupo grupo = new Grupo();
-        grupo.setDia_semana(2);
-        grupo.setDias_confirmacao(1);
+        grupo.setDiaSemana(2);
+        grupo.setDiasConfirmacao(1);
         grupo.setImagem("img_grupo");
         grupo.setLatitude(12345);
         grupo.setLongitude(54321);
         grupo.setNome("Grupo");
-        grupo.setTime_max(16);
-        grupo.setTime_min(14);
+        grupo.setTimeMax(16);
+        grupo.setTimeMin(14);
         
         when(grupoRepository.findOne(1L)).thenReturn(grupo);
         
         final Grupo grupo2 = grupoService.loadById(1L);
         
-        assertEquals(grupo.getDia_semana(), grupo2.getDia_semana());
-        assertEquals(grupo.getDias_confirmacao(), grupo2.getDias_confirmacao());
+        assertEquals(grupo.getDiaSemana(), grupo2.getDiaSemana());
+        assertEquals(grupo.getDiasConfirmacao(), grupo2.getDiasConfirmacao());
         assertEquals(grupo.getImagem(), grupo2.getImagem());
         assertEquals(grupo.getLatitude(), grupo2.getLatitude(), 0.001);
         assertEquals(grupo.getLongitude(), grupo2.getLongitude(), 0.001);
         assertEquals(grupo.getNome(), grupo2.getNome());
-        assertEquals(grupo.getTime_max(), grupo2.getTime_max());
-        assertEquals(grupo.getTime_min(), grupo2.getTime_min());
+        assertEquals(grupo.getTimeMax(), grupo2.getTimeMax());
+        assertEquals(grupo.getTimeMin(), grupo2.getTimeMin());
     }
 }

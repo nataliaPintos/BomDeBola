@@ -22,16 +22,17 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author carloshenrique
  */
-@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-public class UsuarioTest {
+public class UsuarioTestRepository {
 
 	@Autowired
 	private TestEntityManager testEntityManager;
@@ -54,7 +55,7 @@ public class UsuarioTest {
                 assertEquals(usuario.getSenha(), testEntityManager.find(Usuario.class, usuario.getId()).getSenha());
                 assertEquals(usuario.getNascimento(), testEntityManager.find(Usuario.class, usuario.getId()).getNascimento());
                 assertEquals(usuario.getGols(), testEntityManager.find(Usuario.class, usuario.getId()).getGols());
-                assertEquals(usuario.getNota_geral(), testEntityManager.find(Usuario.class, usuario.getId()).getNota_geral(), 0.001);
+                assertEquals(usuario.getNotaGeral(), testEntityManager.find(Usuario.class, usuario.getId()).getNotaGeral(), 0.001);
 	}
 
 	@Test
@@ -77,7 +78,7 @@ public class UsuarioTest {
                 assertTrue(StreamSupport.stream(usuarioRepository.findAll().spliterator(), false)
 				.map(Usuario::getGols).collect(toList()).contains(usuario.getGols()));
                 assertTrue(StreamSupport.stream(usuarioRepository.findAll().spliterator(), false)
-				.map(Usuario::getNota_geral).collect(toList()).contains(usuario.getNota_geral()));
+				.map(Usuario::getNotaGeral).collect(toList()).contains(usuario.getNotaGeral()));
 	}
 
 	@Test
@@ -92,7 +93,7 @@ public class UsuarioTest {
                 assertEquals(usuario.getSenha(), usuarioRepository.findOne(usuario.getId()).getSenha());
                 assertEquals(usuario.getNascimento(), usuarioRepository.findOne(usuario.getId()).getNascimento());
                 assertEquals(usuario.getGols(), usuarioRepository.findOne(usuario.getId()).getGols());
-                assertEquals(usuario.getNota_geral(), usuarioRepository.findOne(usuario.getId()).getNota_geral(), 0.001);
+                assertEquals(usuario.getNotaGeral(), usuarioRepository.findOne(usuario.getId()).getNotaGeral(), 0.001);
 	}
         
         @Test
@@ -107,7 +108,7 @@ public class UsuarioTest {
                 assertEquals(usuario.getSenha(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getSenha());
                 assertEquals(usuario.getNascimento(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNascimento());
                 assertEquals(usuario.getGols(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getGols());
-                assertEquals(usuario.getNota_geral(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNota_geral(), 0.001);
+                assertEquals(usuario.getNotaGeral(), usuarioRepository.findByEmailIgnoreCase(usuario.getEmail()).getNotaGeral(), 0.001);
 	}
 
 }

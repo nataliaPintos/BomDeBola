@@ -11,12 +11,13 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.GrupoRepository;
-import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Usuario;
-import br.com.crescer.tcc.entity.Usuario_Grupo;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioRepository;
 
 /**
  *
@@ -28,8 +29,8 @@ import org.springframework.http.ResponseEntity;
 public class GrupoService {
         @Autowired
 	private final GrupoRepository grupoRepository;
-        private final Usuario_GrupoRepository usuario_grupoRepository;
-        private final UsuarioComponente usuarioComponente;
+        private final UsuarioGrupoRepository usuarioGrupoRepository;
+        private final UsuarioRepository usuarioRepository;
         
         public Grupo loadById(Long id) {
 		return grupoRepository.findOne(id);
@@ -40,15 +41,15 @@ public class GrupoService {
 	}
 
 	public ResponseEntity save(GrupoModel grupoModel) {
-                Grupo grupo = new Grupo(grupoModel.nome, grupoModel.imagem, grupoModel.time_max, grupoModel.time_min, 
-                grupoModel.latitude, grupoModel.longitude, grupoModel.dia_semana, grupoModel.hora_inicio,
-                grupoModel.hora_final, grupoModel.dias_confirmacao, grupoModel.horas_confirmacao, grupoModel.tempo_avaliacao);
+                Grupo grupo = new Grupo(grupoModel.getNome(), grupoModel.getImagem(), grupoModel.getTimeMax(), grupoModel.getTimeMin(), 
+                grupoModel.getLatitude(), grupoModel.getLongitude(), grupoModel.getDiaSemana(), grupoModel.getHoraInicio(),
+                grupoModel.getHoraFinal(), grupoModel.getDiasConfirmacao(), grupoModel.getHorasConfirmacao(), grupoModel.getTempoAvaliacao());
                 
 		grupoRepository.save(grupo);
-                Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
-                Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
-                usuario_grupo.setAdm(true);
-                usuario_grupoRepository.save(usuario_grupo);
+                Usuario usuario = usuarioRepository.findOne(grupoModel.getIdUsuario());
+                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
+                usuarioGrupo.setAdm(true);
+                usuarioGrupoRepository.save(usuarioGrupo);
                 
                 return ResponseEntity.ok().body(grupo);
 	}
@@ -58,17 +59,17 @@ public class GrupoService {
             if(grupo == null){
                 return ResponseEntity.badRequest().body("Grupo não cadastrado");
             }else{
-                grupo.setDia_semana(grupoModel.dia_semana);
-                grupo.setDias_confirmacao(grupoModel.dias_confirmacao);
-                grupo.setHora_final(grupoModel.hora_final);
-                grupo.setHora_inicio(grupoModel.hora_inicio);
-                grupo.setHoras_confirmacao(grupoModel.horas_confirmacao);
-                grupo.setImagem(grupoModel.imagem);
-                grupo.setLatitude(grupoModel.latitude);
-                grupo.setLongitude(grupoModel.longitude);
-                grupo.setNome(grupoModel.nome);
-                grupo.setTime_max(grupoModel.time_max);
-                grupo.setTime_min(grupoModel.time_min);
+                grupo.setDiaSemana(grupoModel.getDiaSemana());
+                grupo.setDiasConfirmacao(grupoModel.getDiasConfirmacao());
+                grupo.setHoraFinal(grupoModel.getHoraFinal());
+                grupo.setHoraInicio(grupoModel.getHoraInicio());
+                grupo.setHorasConfirmacao(grupoModel.getHorasConfirmacao());
+                grupo.setImagem(grupoModel.getImagem());
+                grupo.setLatitude(grupoModel.getLatitude());
+                grupo.setLongitude(grupoModel.getLongitude());
+                grupo.setNome(grupoModel.getNome());
+                grupo.setTimeMax(grupoModel.getTimeMax());
+                grupo.setTimeMin(grupoModel.getTimeMin());
                 grupoRepository.save(grupo);
                 return ResponseEntity.ok().body(grupo);
             }

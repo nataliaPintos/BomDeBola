@@ -22,6 +22,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -31,8 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-@Ignore
-public class GrupoTest {
+public class GrupoTestRepository {
     @Autowired
 	private TestEntityManager testEntityManager;
 
@@ -53,15 +54,15 @@ public class GrupoTest {
 		grupoRepository.save(grupo);
 		assertEquals(grupo.getNome(), testEntityManager.find(Grupo.class, grupo.getId()).getNome());
                 assertEquals(grupo.getImagem(), testEntityManager.find(Grupo.class, grupo.getId()).getImagem());
-                assertEquals(grupo.getTime_max(), testEntityManager.find(Grupo.class, grupo.getId()).getTime_max());
-                assertEquals(grupo.getTime_min(), testEntityManager.find(Grupo.class, grupo.getId()).getTime_min());
+                assertEquals(grupo.getTimeMax(), testEntityManager.find(Grupo.class, grupo.getId()).getTimeMax());
+                assertEquals(grupo.getTimeMin(), testEntityManager.find(Grupo.class, grupo.getId()).getTimeMin());
                 assertEquals(grupo.getLatitude(), testEntityManager.find(Grupo.class, grupo.getId()).getLatitude(), 0.001);
                 assertEquals(grupo.getLongitude(), testEntityManager.find(Grupo.class, grupo.getId()).getLongitude(), 0.001);
-                assertEquals(grupo.getDia_semana(), testEntityManager.find(Grupo.class, grupo.getId()).getDia_semana());
-                assertEquals(grupo.getHora_inicio(), testEntityManager.find(Grupo.class, grupo.getId()).getHora_inicio());
-                assertEquals(grupo.getHora_final(), testEntityManager.find(Grupo.class, grupo.getId()).getHora_final());
-                assertEquals(grupo.getDias_confirmacao(), testEntityManager.find(Grupo.class, grupo.getId()).getDias_confirmacao());
-                assertEquals(grupo.getTempo_avaliacao(), testEntityManager.find(Grupo.class, grupo.getId()).getTempo_avaliacao());
+                assertEquals(grupo.getDiaSemana(), testEntityManager.find(Grupo.class, grupo.getId()).getDiaSemana());
+                assertEquals(grupo.getHoraInicio(), testEntityManager.find(Grupo.class, grupo.getId()).getHoraInicio());
+                assertEquals(grupo.getHoraFinal(), testEntityManager.find(Grupo.class, grupo.getId()).getHoraFinal());
+                assertEquals(grupo.getDiasConfirmacao(), testEntityManager.find(Grupo.class, grupo.getId()).getDiasConfirmacao());
+                assertEquals(grupo.getTempoAvaliacao(), testEntityManager.find(Grupo.class, grupo.getId()).getTempoAvaliacao());
 	}
 
 	@Test
@@ -79,25 +80,25 @@ public class GrupoTest {
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
 				.map(Grupo::getImagem).collect(toList()).contains(grupo.getImagem()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getTime_max).collect(toList()).contains(grupo.getTime_max()));
+				.map(Grupo::getTimeMax).collect(toList()).contains(grupo.getTimeMax()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getTime_min).collect(toList()).contains(grupo.getTime_min()));
+				.map(Grupo::getTimeMin).collect(toList()).contains(grupo.getTimeMin()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
 				.map(Grupo::getLatitude).collect(toList()).contains(grupo.getLatitude()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
 				.map(Grupo::getLongitude).collect(toList()).contains(grupo.getLongitude()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getDia_semana).collect(toList()).contains(grupo.getDia_semana()));
+				.map(Grupo::getDiaSemana).collect(toList()).contains(grupo.getDiaSemana()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getHora_inicio).collect(toList()).contains(grupo.getHora_inicio()));
+				.map(Grupo::getHoraInicio).collect(toList()).contains(grupo.getHoraInicio()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getHora_final).collect(toList()).contains(grupo.getHora_final()));
+				.map(Grupo::getHoraFinal).collect(toList()).contains(grupo.getHoraFinal()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getDias_confirmacao).collect(toList()).contains(grupo.getDias_confirmacao()));
+				.map(Grupo::getDiasConfirmacao).collect(toList()).contains(grupo.getDiasConfirmacao()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getHoras_confirmacao).collect(toList()).contains(grupo.getHoras_confirmacao()));
+				.map(Grupo::getHorasConfirmacao).collect(toList()).contains(grupo.getHorasConfirmacao()));
                 assertTrue(StreamSupport.stream(grupoRepository.findAll().spliterator(), false)
-				.map(Grupo::getTempo_avaliacao).collect(toList()).contains(grupo.getTempo_avaliacao()));
+				.map(Grupo::getTempoAvaliacao).collect(toList()).contains(grupo.getTempoAvaliacao()));
 	}
 
 	@Test
@@ -111,15 +112,15 @@ public class GrupoTest {
 		testEntityManager.persist(grupo);
 		assertEquals(grupo.getNome(), grupoRepository.findOne(grupo.getId()).getNome());
                 assertEquals(grupo.getImagem(), grupoRepository.findOne(grupo.getId()).getImagem());
-                assertEquals(grupo.getTime_max(), grupoRepository.findOne(grupo.getId()).getTime_max());
-                assertEquals(grupo.getTime_min(), grupoRepository.findOne(grupo.getId()).getTime_min());
+                assertEquals(grupo.getTimeMax(), grupoRepository.findOne(grupo.getId()).getTimeMax());
+                assertEquals(grupo.getTimeMin(), grupoRepository.findOne(grupo.getId()).getTimeMin());
                 assertEquals(grupo.getLatitude(), grupoRepository.findOne(grupo.getId()).getLatitude(), 0.001);
                 assertEquals(grupo.getLongitude(), grupoRepository.findOne(grupo.getId()).getLongitude(), 0.001);
-                assertEquals(grupo.getDia_semana(), grupoRepository.findOne(grupo.getId()).getDia_semana());
-                assertEquals(grupo.getHora_inicio(), grupoRepository.findOne(grupo.getId()).getHora_inicio());
-                assertEquals(grupo.getHora_final(), grupoRepository.findOne(grupo.getId()).getHora_final());
-                assertEquals(grupo.getDias_confirmacao(), grupoRepository.findOne(grupo.getId()).getDias_confirmacao());
-                assertEquals(grupo.getTempo_avaliacao(), grupoRepository.findOne(grupo.getId()).getTempo_avaliacao());
+                assertEquals(grupo.getDiaSemana(), grupoRepository.findOne(grupo.getId()).getDiaSemana());
+                assertEquals(grupo.getHoraInicio(), grupoRepository.findOne(grupo.getId()).getHoraInicio());
+                assertEquals(grupo.getHoraFinal(), grupoRepository.findOne(grupo.getId()).getHoraFinal());
+                assertEquals(grupo.getDiasConfirmacao(), grupoRepository.findOne(grupo.getId()).getDiasConfirmacao());
+                assertEquals(grupo.getTempoAvaliacao(), grupoRepository.findOne(grupo.getId()).getTempoAvaliacao());
 	}
 
 }

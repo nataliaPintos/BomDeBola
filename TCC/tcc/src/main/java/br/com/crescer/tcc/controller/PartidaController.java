@@ -8,10 +8,11 @@ package br.com.crescer.tcc.controller;
 import br.com.crescer.tcc.Models.PartidaModel;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
-import br.com.crescer.tcc.entity.Usuario_Partida;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
-import br.com.crescer.tcc.service.Usuario_PartidaService;
+import br.com.crescer.tcc.service.UsuarioPartidaService;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PartidaController {
     private final PartidaService partidaService;
     private final GrupoService grupoService;
-    private final Usuario_PartidaService usuario_partidaService;
+    private final UsuarioPartidaService usuario_partidaService;
     
     @GetMapping("/{id}")
     public Partida getPartidaById(@PathVariable Long id) {
@@ -52,8 +53,8 @@ public class PartidaController {
     }
     
     @GetMapping("/nova-partida/padrao/{id}")
-    public PartidaModel getPartidaModel(@PathVariable Long idGrupo) {
-        return partidaService.partidaModelRetorno(idGrupo);
+    public PartidaModel getPartidaModel(@PathVariable Long id) {
+        return partidaService.partidaModelRetorno(id);
     }
     
     @PutMapping("/aceita-partida/")
@@ -62,12 +63,12 @@ public class PartidaController {
     }
     
     @GetMapping("/lista-jogadores/{id}")
-    public List<Usuario_Partida> listaJogadores(@PathVariable Long id) {
+    public List<UsuarioPartida> listaJogadores(@PathVariable Long id) {
 	return usuario_partidaService.listaDeParticipantes(id);
     }
     
     @GetMapping("/sorteia-times/{id}")
-    public List<Usuario_Partida> sorteiaTimes(@PathVariable Long id) {
+    public List<UsuarioPartida> sorteiaTimes(@PathVariable Long id) {
 	return usuario_partidaService.sortearTime(id);
     }
 }

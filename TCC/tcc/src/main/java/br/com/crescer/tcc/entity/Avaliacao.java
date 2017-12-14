@@ -33,7 +33,7 @@ public class Avaliacao implements Serializable{
     
     public Avaliacao(){}
     
-    public Avaliacao(int nota, Usuario_Partida avaliador, Usuario_Partida avaliado){
+    public Avaliacao(int nota, UsuarioPartida avaliador, UsuarioPartida avaliado){
         this.nota = nota;
         this.avaliador = avaliador;
         this.avaliado = avaliado;
@@ -52,9 +52,9 @@ public class Avaliacao implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "ID_AVALIADOR")
-    private Usuario_Partida avaliador;
+    private UsuarioPartida avaliador;
     
     @ManyToOne
     @JoinColumn(name = "ID_AVALIADO")
-    private Usuario_Partida avaliado;
+    private UsuarioPartida avaliado;
 }

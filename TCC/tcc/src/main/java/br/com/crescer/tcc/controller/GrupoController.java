@@ -6,13 +6,12 @@
 package br.com.crescer.tcc.controller;
 
 import br.com.crescer.tcc.Models.GrupoModel;
-import br.com.crescer.tcc.Models.Usuario_GrupoModel;
+import br.com.crescer.tcc.Models.UsuarioGrupoModel;
 import br.com.crescer.tcc.entity.Grupo;
-import br.com.crescer.tcc.entity.Usuario;
-import br.com.crescer.tcc.entity.Usuario_Grupo;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.UsuarioService;
-import br.com.crescer.tcc.service.Usuario_GrupoService;
+import br.com.crescer.tcc.service.UsuarioGrupoService;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GrupoController {
     
     private final GrupoService grupoService;
-    private final Usuario_GrupoService usuario_grupoService;
+    private final UsuarioGrupoService usuario_grupoService;
     private final UsuarioService usuarioService;
     
     @GetMapping("/{id}")
@@ -48,7 +47,7 @@ public class GrupoController {
 	return grupoService.lista();
     }
     
-    //Cria o grupo e cria uma linha na tabela Usuario_Grupo onde armazena o participante do grupo como adm
+    //Cria o grupo e cria uma linha na tabela UsuarioGrupo onde armazena o participante do grupo como adm
     //Todas outras interações entre usuarios e grupo estão na Usuario_GrupoController
     @PostMapping("/novo-grupo")
     public ResponseEntity save(@RequestBody @Valid GrupoModel grupoModel) {
@@ -61,7 +60,7 @@ public class GrupoController {
     }
     
     @GetMapping("/lista-usuarios/{id}")
-    public List<Usuario_Grupo> listaUsuarios(@PathVariable Long id) {
+    public List<UsuarioGrupo> listaUsuarios(@PathVariable Long id) {
 	return usuario_grupoService.findByGrupo(id);
     }
     
@@ -71,7 +70,7 @@ public class GrupoController {
     }
     
     @PostMapping("/inclui-usuario")
-    public ResponseEntity convite(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
+    public ResponseEntity convite(@RequestBody @Valid UsuarioGrupoModel usuario_grupoModel) {
         return usuario_grupoService.save(usuario_grupoModel);
     }
 }

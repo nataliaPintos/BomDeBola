@@ -24,17 +24,18 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
  * @author luan.avila
  */
-@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-public class PartidaTest {
+public class PartidaTestRepository {
     @Autowired
 	private TestEntityManager testEntityManager;
 
@@ -56,15 +57,15 @@ public class PartidaTest {
                 LocalDate semana = LocalDate.of(2017, 05, 12);
                 Partida partida = new Partida(16, 14, 8759, 8654864, semana, inicio, finall, confirmacao, avaliacao, grupo);
 		partidaRepository.save(partida);
-                assertEquals(partida.getTime_max(), testEntityManager.find(Partida.class, partida.getId()).getTime_max());
-                assertEquals(partida.getTime_min(), testEntityManager.find(Partida.class, partida.getId()).getTime_min());
+                assertEquals(partida.getTimeMax(), testEntityManager.find(Partida.class, partida.getId()).getTimeMax());
+                assertEquals(partida.getTimeMin(), testEntityManager.find(Partida.class, partida.getId()).getTimeMin());
                 assertEquals(partida.getLatitude(), testEntityManager.find(Partida.class, partida.getId()).getLatitude(), 0.001);
                 assertEquals(partida.getLongitude(), testEntityManager.find(Partida.class, partida.getId()).getLongitude(), 0.001);
-                assertEquals(partida.getDia_semana(), testEntityManager.find(Partida.class, partida.getId()).getDia_semana());
-                assertEquals(partida.getHora_inicio(), testEntityManager.find(Partida.class, partida.getId()).getHora_inicio());
-                assertEquals(partida.getHora_final(), testEntityManager.find(Partida.class, partida.getId()).getHora_final());
-                assertEquals(partida.getTempo_confirmacao(), testEntityManager.find(Partida.class, partida.getId()).getTempo_confirmacao());
-                assertEquals(partida.getTempo_avaliacao(), testEntityManager.find(Partida.class, partida.getId()).getTempo_avaliacao());
+                assertEquals(partida.getDiaSemana(), testEntityManager.find(Partida.class, partida.getId()).getDiaSemana());
+                assertEquals(partida.getHoraInicio(), testEntityManager.find(Partida.class, partida.getId()).getHoraInicio());
+                assertEquals(partida.getHoraFinal(), testEntityManager.find(Partida.class, partida.getId()).getHoraFinal());
+                assertEquals(partida.getTempoConfirmacao(), testEntityManager.find(Partida.class, partida.getId()).getTempoConfirmacao());
+                assertEquals(partida.getTempoAvaliacao(), testEntityManager.find(Partida.class, partida.getId()).getTempoAvaliacao());
 	}
         
         @Test
@@ -81,23 +82,23 @@ public class PartidaTest {
                 testEntityManager.persist(partida);
 
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getTime_max).collect(toList()).contains(partida.getTime_max()));
+				.map(Partida::getTimeMax).collect(toList()).contains(partida.getTimeMax()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getTime_min).collect(toList()).contains(partida.getTime_min()));
+				.map(Partida::getTimeMin).collect(toList()).contains(partida.getTimeMin()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
 				.map(Partida::getLatitude).collect(toList()).contains(partida.getLatitude()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
 				.map(Partida::getLongitude).collect(toList()).contains(partida.getLongitude()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getDia_semana).collect(toList()).contains(partida.getDia_semana()));
+				.map(Partida::getDiaSemana).collect(toList()).contains(partida.getDiaSemana()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getHora_inicio).collect(toList()).contains(partida.getHora_inicio()));
+				.map(Partida::getHoraInicio).collect(toList()).contains(partida.getHoraInicio()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getHora_final).collect(toList()).contains(partida.getHora_final()));
+				.map(Partida::getHoraFinal).collect(toList()).contains(partida.getHoraFinal()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getTempo_confirmacao).collect(toList()).contains(partida.getTempo_confirmacao()));
+				.map(Partida::getTempoConfirmacao).collect(toList()).contains(partida.getTempoConfirmacao()));
                 assertTrue(StreamSupport.stream(partidaRepository.findAll().spliterator(), false)
-				.map(Partida::getTempo_avaliacao).collect(toList()).contains(partida.getTempo_avaliacao()));
+				.map(Partida::getTempoAvaliacao).collect(toList()).contains(partida.getTempoAvaliacao()));
 	}
         
         @Test
@@ -113,14 +114,14 @@ public class PartidaTest {
                 Partida partida = new Partida(16, 14, 8759, 8654864, semana, inicio, finall, confirmacao, avaliacao, grupo);
                 testEntityManager.persist(partida);
                 
-                assertEquals(partida.getTime_max(), partidaRepository.findOne(partida.getId()).getTime_max());
-                assertEquals(partida.getTime_min(), partidaRepository.findOne(partida.getId()).getTime_min());
+                assertEquals(partida.getTimeMax(), partidaRepository.findOne(partida.getId()).getTimeMax());
+                assertEquals(partida.getTimeMin(), partidaRepository.findOne(partida.getId()).getTimeMin());
                 assertEquals(partida.getLatitude(), partidaRepository.findOne(partida.getId()).getLatitude(), 0.001);
                 assertEquals(partida.getLongitude(), partidaRepository.findOne(partida.getId()).getLongitude(), 0.001);
-                assertEquals(partida.getDia_semana(), partidaRepository.findOne(partida.getId()).getDia_semana());
-                assertEquals(partida.getHora_inicio(), partidaRepository.findOne(partida.getId()).getHora_inicio());
-                assertEquals(partida.getHora_final(), partidaRepository.findOne(partida.getId()).getHora_final());
-                assertEquals(partida.getTempo_confirmacao(), partidaRepository.findOne(partida.getId()).getTempo_confirmacao());
-                assertEquals(partida.getTempo_avaliacao(), partidaRepository.findOne(partida.getId()).getTempo_avaliacao());
+                assertEquals(partida.getDiaSemana(), partidaRepository.findOne(partida.getId()).getDiaSemana());
+                assertEquals(partida.getHoraInicio(), partidaRepository.findOne(partida.getId()).getHoraInicio());
+                assertEquals(partida.getHoraFinal(), partidaRepository.findOne(partida.getId()).getHoraFinal());
+                assertEquals(partida.getTempoConfirmacao(), partidaRepository.findOne(partida.getId()).getTempoConfirmacao());
+                assertEquals(partida.getTempoAvaliacao(), partidaRepository.findOne(partida.getId()).getTempoAvaliacao());
 	}
 }

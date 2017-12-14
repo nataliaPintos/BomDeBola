@@ -8,12 +8,10 @@ package br.com.crescer.tcc.service;
 import br.com.crescer.tcc.Models.PartidaModel;
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.Repository.PartidaRepository;
-import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
-import br.com.crescer.tcc.Repository.Usuario_PartidaRepository;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
-import br.com.crescer.tcc.entity.Usuario_Grupo;
-import br.com.crescer.tcc.entity.Usuario_Partida;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 
 /**
  *
@@ -33,8 +33,8 @@ import org.springframework.stereotype.Service;
 public class PartidaService {
     @Autowired
     private final PartidaRepository partidaRepository;
-    private final Usuario_GrupoRepository usuario_grupoRepository;
-    private final Usuario_PartidaRepository usuario_partidaRepository;
+    private final UsuarioGrupoRepository usuarioGrupoRepository;
+    private final UsuarioPartidaRepository usuarioPartidaRepository;
     private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
@@ -47,21 +47,21 @@ public class PartidaService {
     }
 
     public ResponseEntity save(PartidaModel partidaModel) {
-        Grupo grupo = grupoRepository.findOne(partidaModel.id_grupo);
+        Grupo grupo = grupoRepository.findOne(partidaModel.getIdGrupo());
         if(grupo == null){
             return ResponseEntity.badRequest().body("Grupo não cadastrado");
         }else{
-            Partida partida = new Partida(partidaModel.time_max, partidaModel.time_min, partidaModel.latitude,
-                partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
-                partidaModel.tempo_confirmacao, partidaModel.tempo_avaliacao, grupo);
+            Partida partida = new Partida(partidaModel.getTimeMax(), partidaModel.getTimeMin(), partidaModel.getLatitude(),
+                partidaModel.getLongitude(), partidaModel.getDiaSemana(), partidaModel.getHoraInicio(), partidaModel.getHoraFinal(),
+                partidaModel.getTempoConfirmacao(), partidaModel.getTempoAvaliacao(), grupo);
             partidaRepository.save(partida);
             
-            //Carregar todos Usuario_Grupo onde Grupo = grupo para então fazer um for e criar um Usuario_Partida para cada Usuario_Grupo carregado
-            List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupo(grupo);
-            for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
-                Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
-                usuario_partidaRepository.save(usuario_partida);
-                emailService.enviarEmail(usuario_grupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
+            //Carregar todos UsuarioGrupo onde Grupo = grupo para então fazer um for e criar um UsuarioPartida para cada UsuarioGrupo carregado
+            List<UsuarioGrupo> listaUsuarioGrupo = usuarioGrupoRepository.findByGrupo(grupo);
+            for(UsuarioGrupo usuariogrupo : listaUsuarioGrupo){
+                UsuarioPartida usuariopartida = new UsuarioPartida(partida, usuariogrupo);
+                usuarioPartidaRepository.save(usuariopartida);
+                emailService.enviarEmail(usuariogrupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
             }
             return ResponseEntity.ok().body(partida);
         }
@@ -70,17 +70,17 @@ public class PartidaService {
     public PartidaModel partidaModelRetorno(Long idGrupo){
         Grupo grupo = grupoRepository.findOne(idGrupo);
         PartidaModel partidaModel = new PartidaModel();
-        partidaModel.hora_final = grupo.getHora_final();
-        partidaModel.hora_inicio = grupo.getHora_inicio();
-        partidaModel.id_grupo = grupo.getId();
-        partidaModel.latitude = grupo.getLatitude();
-        partidaModel.longitude = grupo.getLongitude();
-        partidaModel.tempo_avaliacao = grupo.getTempo_avaliacao();
-        partidaModel.time_max = grupo.getTime_max();
-        partidaModel.time_min = grupo.getTime_min();
+        partidaModel.setHoraFinal(grupo.getHoraFinal());
+        partidaModel.setHoraInicio(grupo.getHoraInicio());
+        partidaModel.setIdGrupo(grupo.getId());
+        partidaModel.setLatitude(grupo.getLatitude());
+        partidaModel.setLongitude(grupo.getLongitude());
+        partidaModel.setTempoAvaliacao(grupo.getTempoAvaliacao());
+        partidaModel.setTimeMax(grupo.getTimeMax());
+        partidaModel.setTimeMin(grupo.getTimeMin());
         
         LocalDate diaDoJogo = LocalDate.now();
-        switch (grupo.getDia_semana()) {
+        switch (grupo.getDiaSemana()) {
             case 1:
                 diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
                 break;
@@ -107,7 +107,7 @@ public class PartidaService {
         }
         
         LocalDateTime diaDaConfirmacao = LocalDateTime.now();
-        switch (grupo.getDias_confirmacao()) {
+        switch (grupo.getDiasConfirmacao()) {
             case 1:
                 diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
                 break;
@@ -132,22 +132,22 @@ public class PartidaService {
             default:
                 break;
         }
-        diaDaConfirmacao.withHour(grupo.getHoras_confirmacao().getHour());
-        diaDaConfirmacao.withMinute(grupo.getHoras_confirmacao().getMinute());
-        diaDaConfirmacao.withSecond(grupo.getHoras_confirmacao().getSecond());
-        partidaModel.tempo_confirmacao = diaDaConfirmacao;
+        diaDaConfirmacao.withHour(grupo.getHorasConfirmacao().getHour());
+        diaDaConfirmacao.withMinute(grupo.getHorasConfirmacao().getMinute());
+        diaDaConfirmacao.withSecond(grupo.getHorasConfirmacao().getSecond());
+        partidaModel.setTempoConfirmacao(diaDaConfirmacao);
         return partidaModel;
     }
     
     public Partida update(PartidaModel partidaModel, Partida partida) {
-            partida.setDia_semana(partidaModel.dia_semana);
-            partida.setTempo_confirmacao(partidaModel.tempo_confirmacao);
-            partida.setHora_final(partidaModel.hora_final);
-            partida.setHora_inicio(partidaModel.hora_inicio);
-            partida.setLatitude(partidaModel.latitude);
-            partida.setLongitude(partidaModel.longitude);
-            partida.setTime_max(partidaModel.time_max);
-            partida.setTime_min(partidaModel.time_min);
+            partida.setDiaSemana(partidaModel.getDiaSemana());
+            partida.setTempoConfirmacao(partidaModel.getTempoConfirmacao());
+            partida.setHoraFinal(partidaModel.getHoraFinal());
+            partida.setHoraInicio(partidaModel.getHoraInicio());
+            partida.setLatitude(partidaModel.getLatitude());
+            partida.setLongitude(partidaModel.getLongitude());
+            partida.setTimeMax(partidaModel.getTimeMax());
+            partida.setTimeMin(partidaModel.getTimeMin());
             return partidaRepository.save(partida);
     }
     

@@ -5,12 +5,17 @@
  */
 package br.com.crescer.tcc.Models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author luanp
  */
+@Getter
+@Setter
 public class AvaliacaoModel {
-    public int nota;
-    public Long id_avaliador;
-    public Long id_avaliado;
+    private int nota;
+    private Long idAvaliador;
+    private Long idAvaliado;
 }

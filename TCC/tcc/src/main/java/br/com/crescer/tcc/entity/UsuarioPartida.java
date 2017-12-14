@@ -30,16 +30,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "USUARIO_PARTIDA")
-public class Usuario_Partida implements Serializable{
+public class UsuarioPartida implements Serializable{
     private static final String SQ_USUARIO_PARTIDA = "SQ_USUARIO_PARTIDA";
     
-    public Usuario_Partida(){}
+    public UsuarioPartida(){}
     
-    public Usuario_Partida(Partida partida, Usuario_Grupo usuario_grupo){
+    public UsuarioPartida(Partida partida, UsuarioGrupo usuarioGrupo){
         this.partida = partida;
-        this.nota_partida = 0;
+        this.notaPartida = 0;
         this.avaliacoes = 0;
-        this.usuario_grupo = usuario_grupo;
+        this.usuarioGrupo = usuarioGrupo;
         this.solicitacao = true;
     }
     
@@ -52,7 +52,7 @@ public class Usuario_Partida implements Serializable{
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "NOTA_PARTIDA")
-    private double nota_partida;
+    private double notaPartida;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -80,5 +80,5 @@ public class Usuario_Partida implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO_GRUPO")
-    private Usuario_Grupo usuario_grupo;
+    private UsuarioGrupo usuarioGrupo;
 }

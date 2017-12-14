@@ -7,14 +7,14 @@ package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Models.AvaliacaoModel;
 import br.com.crescer.tcc.Repository.AvaliacaoRepository;
-import br.com.crescer.tcc.Repository.Usuario_PartidaRepository;
 import br.com.crescer.tcc.entity.Avaliacao;
-import br.com.crescer.tcc.entity.Usuario_Partida;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 
 /**
  *
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 public class AvaliacaoService {
     @Autowired
 	private final AvaliacaoRepository avaliacaoRepository;
-        private final Usuario_PartidaRepository usuario_partidaRepository;
+        private final UsuarioPartidaRepository usuarioPartidaRepository;
     
     public Avaliacao loadById(Long id) {
 	return avaliacaoRepository.findOne(id);
@@ -36,20 +36,20 @@ public class AvaliacaoService {
     }
     
     public Avaliacao loadByUsuario(Long id) {
-        Usuario_Partida usuario_partida = usuario_partidaRepository.findOne(id);
-	return avaliacaoRepository.findByAvaliador(usuario_partida);
+        UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
+	return avaliacaoRepository.findByAvaliador(usuarioPartida);
     }
     
     public ResponseEntity save(AvaliacaoModel avaliacaoModel){
-        Usuario_Partida avaliador = usuario_partidaRepository.findOne(avaliacaoModel.id_avaliador);
+        UsuarioPartida avaliador = usuarioPartidaRepository.findOne(avaliacaoModel.getIdAvaliador());
         Avaliacao avaliacaoExistente = avaliacaoRepository.findByAvaliador(avaliador);
         if(avaliacaoExistente == null){
-            Usuario_Partida avaliado = usuario_partidaRepository.findOne(avaliacaoModel.id_avaliado);
-            Avaliacao avaliacao = new Avaliacao(avaliacaoModel.nota, avaliador, avaliado);
+            UsuarioPartida avaliado = usuarioPartidaRepository.findOne(avaliacaoModel.getIdAvaliado());
+            Avaliacao avaliacao = new Avaliacao(avaliacaoModel.getNota(), avaliador, avaliado);
             avaliado.setAvaliacoes(avaliado.getAvaliacoes()+1);
-            avaliado.setNota_partida((avaliado.getNota_partida()+avaliacaoModel.nota)/avaliado.getAvaliacoes());
+            avaliado.setNotaPartida((avaliado.getNotaPartida()+avaliacaoModel.getNota())/avaliado.getAvaliacoes());
             avaliacaoRepository.save(avaliacao);
-            usuario_partidaRepository.save(avaliado);
+            usuarioPartidaRepository.save(avaliado);
             return ResponseEntity.ok().body(avaliacao);
         }else{
             return ResponseEntity.badRequest().body("Usuario já avaliado");
