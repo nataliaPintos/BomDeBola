@@ -27,47 +27,47 @@ import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 @RequiredArgsConstructor
 public class UsuarioGrupoService {
     @Autowired
-    private final UsuarioGrupoRepository usuario_grupoRepository;
+    private final UsuarioGrupoRepository usuarioGrupoRepository;
     private final UsuarioRepository usuarioRepository;
     private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
     public UsuarioGrupo loadById(Long id) {
-		return usuario_grupoRepository.findOne(id);
+		return usuarioGrupoRepository.findOne(id);
 	}
         
         public List<UsuarioGrupo> lista() {
-		return (List<UsuarioGrupo>) usuario_grupoRepository.findAll();
+		return (List<UsuarioGrupo>) usuarioGrupoRepository.findAll();
 	}
 
-	public ResponseEntity save(UsuarioGrupoModel usuario_grupoModel) {
-            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuario_grupoModel.getEmailUsuario());
-            Grupo grupo = grupoRepository.findOne(usuario_grupoModel.getIdGrupo());
+	public ResponseEntity save(UsuarioGrupoModel usuarioGrupoModel) {
+            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioGrupoModel.getEmailUsuario());
+            Grupo grupo = grupoRepository.findOne(usuarioGrupoModel.getIdGrupo());
             if(usuario == null || grupo == null){
                 return ResponseEntity.badRequest().body("Informações não cadastradas");
             }else{
-                UsuarioGrupo usuario_grupo = new UsuarioGrupo(usuario, grupo);
+                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
                 emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
-                usuario_grupoRepository.save(usuario_grupo);
-                return ResponseEntity.ok().body(usuario_grupo);
+                usuarioGrupoRepository.save(usuarioGrupo);
+                return ResponseEntity.ok().body(usuarioGrupo);
             }
 	}
         
         public void delete(Long id) {
-                usuario_grupoRepository.delete(id);
+                usuarioGrupoRepository.delete(id);
 	}
         
         public List<UsuarioGrupo> findByGrupo(Long id) {
             Grupo grupo = grupoRepository.findOne(id);
-                return usuario_grupoRepository.findByGrupo(grupo);
+                return usuarioGrupoRepository.findByGrupo(grupo);
 	}
         
         public List<Grupo> listaGrupo(Long id) {
                 Usuario usuario = usuarioRepository.findOne(id);
                 List<Grupo> listaGrupo = new ArrayList();
-                List<UsuarioGrupo> listaUG = usuario_grupoRepository.findByUsuario(usuario);
-                for(UsuarioGrupo usuario_grupo : listaUG){
-                    listaGrupo.add(usuario_grupo.getGrupo());
+                List<UsuarioGrupo> listaUG = usuarioGrupoRepository.findByUsuario(usuario);
+                for(UsuarioGrupo usuarioGrupo : listaUG){
+                    listaGrupo.add(usuarioGrupo.getGrupo());
                 }
                 return listaGrupo;
 	}

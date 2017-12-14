@@ -33,8 +33,8 @@ import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 public class PartidaService {
     @Autowired
     private final PartidaRepository partidaRepository;
-    private final UsuarioGrupoRepository usuario_grupoRepository;
-    private final UsuarioPartidaRepository usuario_partidaRepository;
+    private final UsuarioGrupoRepository usuarioGrupoRepository;
+    private final UsuarioPartidaRepository usuarioPartidaRepository;
     private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
@@ -57,11 +57,11 @@ public class PartidaService {
             partidaRepository.save(partida);
             
             //Carregar todos UsuarioGrupo onde Grupo = grupo para então fazer um for e criar um UsuarioPartida para cada UsuarioGrupo carregado
-            List<UsuarioGrupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupo(grupo);
-            for(UsuarioGrupo usuario_grupo : listaUsuario_Grupo){
-                UsuarioPartida usuario_partida = new UsuarioPartida(partida, usuario_grupo);
-                usuario_partidaRepository.save(usuario_partida);
-                emailService.enviarEmail(usuario_grupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
+            List<UsuarioGrupo> listaUsuarioGrupo = usuarioGrupoRepository.findByGrupo(grupo);
+            for(UsuarioGrupo usuariogrupo : listaUsuarioGrupo){
+                UsuarioPartida usuariopartida = new UsuarioPartida(partida, usuariogrupo);
+                usuarioPartidaRepository.save(usuariopartida);
+                emailService.enviarEmail(usuariogrupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
             }
             return ResponseEntity.ok().body(partida);
         }

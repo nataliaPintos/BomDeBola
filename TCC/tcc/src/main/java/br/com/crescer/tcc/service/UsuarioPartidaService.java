@@ -25,31 +25,31 @@ import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 @RequiredArgsConstructor
 public class UsuarioPartidaService {
     @Autowired
-    private final UsuarioPartidaRepository usuario_partidaRepository;
+    private final UsuarioPartidaRepository usuarioPartidaRepository;
     private final PartidaRepository partidaRepository;
     
     public UsuarioPartida loadById(Long id) {
-		return usuario_partidaRepository.findOne(id);
+		return usuarioPartidaRepository.findOne(id);
 	}
         
         public List<UsuarioPartida> lista() {
-		return (List<UsuarioPartida>) usuario_partidaRepository.findAll();
+		return (List<UsuarioPartida>) usuarioPartidaRepository.findAll();
 	}
 
-	public void save(UsuarioPartida usuario_partida) {
-		usuario_partida = usuario_partidaRepository.save(usuario_partida);
+	public void save(UsuarioPartida usuarioPartida) {
+		usuarioPartida = usuarioPartidaRepository.save(usuarioPartida);
 	}
         
         public ResponseEntity update(Long id) {
-            UsuarioPartida usuario_partida = usuario_partidaRepository.findOne(id);
-            Partida partida = usuario_partida.getPartida();
-            if(usuario_partida == null){
+            UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
+            Partida partida = usuarioPartida.getPartida();
+            if(usuarioPartida == null){
                 if(partida.getTimeAtual() < partida.getTimeMax()){
                     partida.setTimeAtual(partida.getTimeAtual() + 1);
                     partidaRepository.save(partida);
-                    usuario_partida.setSolicitacao(false);
-                    usuario_partidaRepository.save(usuario_partida);
-                    return ResponseEntity.ok().body(usuario_partida);
+                    usuarioPartida.setSolicitacao(false);
+                    usuarioPartidaRepository.save(usuarioPartida);
+                    return ResponseEntity.ok().body(usuarioPartida);
                 }else{
                     return ResponseEntity.badRequest().body("O time já está cheio");
                 }
@@ -59,19 +59,19 @@ public class UsuarioPartidaService {
 	}
         
         public void delete(Long id) {
-                usuario_partidaRepository.delete(id);
+                usuarioPartidaRepository.delete(id);
 	}
         
         public List<UsuarioPartida> listaDeParticipantes(Long id) {
-		return usuario_partidaRepository.findByIdAndSolicitacao(id, false);
+		return usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
 	}
         
         public List<UsuarioPartida> findByPartida(Partida partida) {
-		return usuario_partidaRepository.findByPartida(partida);
+		return usuarioPartidaRepository.findByPartida(partida);
 	}
         
         public List<UsuarioPartida> sortearTime(Long id) {
-            List<UsuarioPartida> lista = usuario_partidaRepository.findByIdAndSolicitacao(id, false);
+            List<UsuarioPartida> lista = usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
             int tamanho = lista.size();
             Collections.shuffle(lista);
             if(tamanho % 2 != 0){

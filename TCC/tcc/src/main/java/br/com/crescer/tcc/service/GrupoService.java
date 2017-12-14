@@ -17,6 +17,7 @@ import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioRepository;
 
 /**
  *
@@ -28,8 +29,8 @@ import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 public class GrupoService {
         @Autowired
 	private final GrupoRepository grupoRepository;
-        private final UsuarioGrupoRepository usuario_grupoRepository;
-        private final UsuarioComponente usuarioComponente;
+        private final UsuarioGrupoRepository usuarioGrupoRepository;
+        private final UsuarioRepository usuarioRepository;
         
         public Grupo loadById(Long id) {
 		return grupoRepository.findOne(id);
@@ -45,10 +46,10 @@ public class GrupoService {
                 grupoModel.getHoraFinal(), grupoModel.getDiasConfirmacao(), grupoModel.getHorasConfirmacao(), grupoModel.getTempoAvaliacao());
                 
 		grupoRepository.save(grupo);
-                Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
-                UsuarioGrupo usuario_grupo = new UsuarioGrupo(usuario, grupo);
-                usuario_grupo.setAdm(true);
-                usuario_grupoRepository.save(usuario_grupo);
+                Usuario usuario = usuarioRepository.findOne(grupoModel.getIdUsuario());
+                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
+                usuarioGrupo.setAdm(true);
+                usuarioGrupoRepository.save(usuarioGrupo);
                 
                 return ResponseEntity.ok().body(grupo);
 	}

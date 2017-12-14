@@ -19,7 +19,7 @@ public class UsuarioModel {
     private String nome;
     private String email;
     private String senha;
-    private String imagem_perfil;
+    private String imagemPerfil;
     private String telefone;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)

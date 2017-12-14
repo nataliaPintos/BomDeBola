@@ -25,7 +25,7 @@ import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 public class AvaliacaoService {
     @Autowired
 	private final AvaliacaoRepository avaliacaoRepository;
-        private final UsuarioPartidaRepository usuario_partidaRepository;
+        private final UsuarioPartidaRepository usuarioPartidaRepository;
     
     public Avaliacao loadById(Long id) {
 	return avaliacaoRepository.findOne(id);
@@ -36,20 +36,20 @@ public class AvaliacaoService {
     }
     
     public Avaliacao loadByUsuario(Long id) {
-        UsuarioPartida usuario_partida = usuario_partidaRepository.findOne(id);
-	return avaliacaoRepository.findByAvaliador(usuario_partida);
+        UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
+	return avaliacaoRepository.findByAvaliador(usuarioPartida);
     }
     
     public ResponseEntity save(AvaliacaoModel avaliacaoModel){
-        UsuarioPartida avaliador = usuario_partidaRepository.findOne(avaliacaoModel.getIdAvaliador());
+        UsuarioPartida avaliador = usuarioPartidaRepository.findOne(avaliacaoModel.getIdAvaliador());
         Avaliacao avaliacaoExistente = avaliacaoRepository.findByAvaliador(avaliador);
         if(avaliacaoExistente == null){
-            UsuarioPartida avaliado = usuario_partidaRepository.findOne(avaliacaoModel.getIdAvaliado());
+            UsuarioPartida avaliado = usuarioPartidaRepository.findOne(avaliacaoModel.getIdAvaliado());
             Avaliacao avaliacao = new Avaliacao(avaliacaoModel.getNota(), avaliador, avaliado);
             avaliado.setAvaliacoes(avaliado.getAvaliacoes()+1);
             avaliado.setNotaPartida((avaliado.getNotaPartida()+avaliacaoModel.getNota())/avaliado.getAvaliacoes());
             avaliacaoRepository.save(avaliacao);
-            usuario_partidaRepository.save(avaliado);
+            usuarioPartidaRepository.save(avaliado);
             return ResponseEntity.ok().body(avaliacao);
         }else{
             return ResponseEntity.badRequest().body("Usuario já avaliado");

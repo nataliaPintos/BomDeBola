@@ -24,7 +24,6 @@ import org.springframework.http.ResponseEntity;
 public class UsuarioService {
         @Autowired
 	private final UsuarioRepository usuarioRepository;
-        private final UsuarioComponente usuarioComponente;
 
 	public Usuario findByEmail(String username) {
 		return usuarioRepository.findByEmailIgnoreCase(username);
@@ -52,10 +51,10 @@ public class UsuarioService {
 	}
         
         public ResponseEntity update(UsuarioModel usuarioModel) {
-            Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
+            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());
             if(usuario != null){
                 usuario.setEmail(usuarioModel.getEmail());
-                usuario.setImagemPerfil(usuarioModel.getImagem_perfil());
+                usuario.setImagemPerfil(usuarioModel.getImagemPerfil());
                 usuario.setNascimento(usuarioModel.getNascimento());
                 usuario.setNome(usuarioModel.getNome());
                 usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.getSenha()));

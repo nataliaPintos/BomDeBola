@@ -8,7 +8,6 @@ package br.com.crescer.tcc.controller;
 import br.com.crescer.tcc.Models.GrupoModel;
 import br.com.crescer.tcc.Models.UsuarioGrupoModel;
 import br.com.crescer.tcc.entity.Grupo;
-import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.UsuarioService;

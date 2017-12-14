@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
 @Table(name = "GRUPO")
-@JsonIgnoreProperties({"usuario_grupo", "partida"})
+@JsonIgnoreProperties({"usuarioGrupo", "partida"})
 public class Grupo implements Serializable{
     
     private static final String SQ_GRUPO = "SQ_GRUPO";

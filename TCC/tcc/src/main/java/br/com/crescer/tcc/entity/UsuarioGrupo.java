@@ -31,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "USUARIO_GRUPO")
-@JsonIgnoreProperties({"usuario_grupo"})
+@JsonIgnoreProperties({"usuarioGrupo"})
 public class UsuarioGrupo implements Serializable{
     
     private static final String SQ_USUARIO_GRUPO = "SQ_USUARIO_GRUPO";
@@ -62,7 +62,7 @@ public class UsuarioGrupo implements Serializable{
     @JoinColumn(name = "ID_GRUPO")
     private Grupo grupo;
     
-    @OneToMany(mappedBy="usuario_grupo")
+    @OneToMany(mappedBy="usuarioGrupo")
     private List<UsuarioPartida> usuarioPartida;
     
     public boolean getAdm(){

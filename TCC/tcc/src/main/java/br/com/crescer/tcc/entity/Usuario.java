@@ -23,7 +23,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "USUARIO")
-@JsonIgnoreProperties({"usuario_grupo"})
+@JsonIgnoreProperties({"usuarioGrupo"})
 public class Usuario implements Serializable{
     
     private static final String SQ_USUARIO = "SQ_USUARIO";

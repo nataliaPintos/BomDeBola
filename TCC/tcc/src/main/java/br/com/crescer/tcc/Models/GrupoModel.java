@@ -41,4 +41,5 @@ public class GrupoModel {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime tempoAvaliacao;
+    private Long idUsuario;
 }
