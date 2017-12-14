@@ -71,8 +71,6 @@
             controllerAs: 'perfilCtrl'
         }) 
 
-        
-
         .otherwise('/dashboard');
 
     }

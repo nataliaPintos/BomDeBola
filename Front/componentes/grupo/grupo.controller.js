@@ -71,7 +71,7 @@
         function redirecionar(promise, mensagem){
             //futuro toaster
             toastr.success(mensagem);
-            promise.then(promise => $location.path('/grupo/'+$scope.grupo.id+'/feed'));
+            promise.then(response => $location.path('/grupo/'+$scope.grupo.id+'/feed'));//response.data.grupo.id
         }
 
         function buscar(endereco) {

@@ -39,7 +39,7 @@
         }
 
         function alterar(grupo) {
-            return $http.put(urlBase + '/alteracao/' + grupo.id, grupo);
+            return $http.put(urlBase + '/altera/' + grupo.id, grupo);
         }
 
         function excluirGrupo(id) {
