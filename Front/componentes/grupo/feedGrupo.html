@@ -1,15 +1,16 @@
 <div class="content-wrapper ng-scope">
-        <div class="container-fluid">
+<div class="container-fluid">
 <div class="container">
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="#">Grupo</a>
+            <a href="#!/dashboard">Dashboard</a>
         </li>
         <li class="breadcrumb-item">Meus Grupos</li>
-        <li class="breadcrumb-item active">Nome do Grupo Aqui</li>
+        <li class="breadcrumb-item active">{{grupo.nome}}</li>
     </ol>
     <div class="row">
+    
 
         <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-success o-hidden">
@@ -19,8 +20,8 @@
                     </div>
                     <div class="mr-5">Nova Partida!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#!/partida">
-                    <span class="float-left">Adicionar</span>
+                <a href="#!/grupo/nova-partida" class="card-footer text-white clearfix small z-1">
+                    <span class="float-left">Marcar Jogo</span>
                     <span class="float-right">
                         <i class="fa fa-angle-right"></i>
                     </span>
@@ -36,14 +37,14 @@
                     </div>
                     <div class="mr-5">Partidas Anteriores</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#!/">
+                <a href="#!/grupo/{{grupo.id}}/feed" class="card-footer text-white clearfix small z-1">
                     <span class="float-left">Veja Mais</span>
                     <span class="float-right">
                         <i class="fa fa-angle-right"></i>
                     </span>
                 </a>
             </div>
-        </div>
+        </div>   
 
         <div class="col-xl-3 col-sm-6 mb-3">
                 <div class="card text-white bg-success o-hidden">
@@ -53,45 +54,43 @@
                         </div>
                         <div class="mr-5">Editar Grupo</div>
                     </div>
-                    <a class="card-footer text-white clearfix small z-1" href="#!/partida">
-                        <span class="float-left"></span>
+                    <a href="#!/grupo/{{grupo.id}}/altera" class="card-footer text-white clearfix small z-1">
+                        <span class="float-left">Dados e configuração</span>
                         <span class="float-right">
                             <i class="fa fa-angle-right"></i>
                         </span>
                     </a>
                 </div>
             </div>
-
+        </div>
     </div>
 
     <div class="column">
         <div class="hero">
-            <div class="hero-body">
-
-            
+            <div class="hero-body">          
         </div>
-       <div class="container">
+        <div class="container">
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-users"></i> Participantes do Grupo</div>
-                <div class="list-group list-group-flush small">
-                    <div ng-repeat="user in users">
-                            <user user-item="user"></user>   
-                    </div>
-                    
-                    
-                    <a class="list-group-item list-group-item-action" ng-click="grupoCtrl.mostrarAdicionarJogador()">
-                        <i class="fa fa-user-plus"></i> <span ng-show="!grupoCtrl.isAdicionarJogador"> Adicionar Integrante...</span>
-                        
-                        <div ng-show="grupoCtrl.isAdicionarJogador">
+                    <i class="fa fa-users"></i>Participantes do Grupo</div>
+                    <div class="list-group list-group-flush small">
+                        <a class="list-group-item list-group-item-action" ng-click="grupoCtrl.mostrarAdicionarJogador()">
+                            <i class="fa fa-user-plus"></i> <span ng-show="!grupoCtrl.isAdicionarJogador"> Adicionar Integrante...</span>
+                            
+                            <div ng-show="grupoCtrl.isAdicionarJogador">
                                 <label>Email do Jogador</label>
                                 <div class="form-group">
                                     <input class="form-control" type="email" placeholder="email@email.com" ng-model="email" name="email" required>
                                 </div>  
                                     <input type="button" class="btn btn-success" ng-click="grupoCtrl.convidar(email)" value="Enviar Convite">   
-                        </div>
-                    </a>
-                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Lista de partitipantes do grupo -->
+                    <div ng-repeat="user in users">
+                        <user user-item="user"></user>   
+                    </div>
+                    
                 <div class="card-footer small text-muted"></div>
             </div>
         </div>
@@ -99,11 +98,7 @@
 
         
 </div>
-
-
-
 </div>
 </div>
-
 </div>
 </div>

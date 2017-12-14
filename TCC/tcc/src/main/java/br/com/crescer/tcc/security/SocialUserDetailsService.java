@@ -25,12 +25,14 @@ public class SocialUserDetailsService implements UserDetailsService {
 
         @Getter
         @Setter
-        private String nome;
+        //private String nome;
+        private Long nome;
 
         public CustomUserDetails(Usuario usuario, Collection<? extends GrantedAuthority> authorities
         ) {
             super(usuario.getEmail(), usuario.getSenha(), authorities);
-            this.nome = usuario.getNome();
+            this.nome = usuario.getId();
+            //this.id = usuario.getId();
         }
 
     }

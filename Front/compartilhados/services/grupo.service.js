@@ -26,8 +26,8 @@
             return $http.post(urlBase + '/novo-grupo', grupo);
         }
 
-        function listarGrupos() {
-            return $http.get(urlBase + '/lista');
+        function listarGrupos(id) {
+            return $http.get(urlBase + '/lista-grupos/' + id);
         }
 
         function listarUsuarios(id) {

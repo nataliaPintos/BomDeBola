@@ -23,13 +23,11 @@
         }
         
         autoComplete();
-        var usuario = {
-            nome: "Meu Nome"
-        }
-        $scope.users = [usuario];
-        // GrupoService.listarUsuarios().then(response =>{
-        //     gr.users = response.data;
-        // });
+
+        GrupoService.listarUsuarios($routeParams.id).then(response =>{
+            $scope.users = response.data;
+            console.log(response.data);
+        });
     
         if(gr.isAlterar){
             GrupoService.buscarPorId($routeParams.id)
@@ -73,7 +71,7 @@
         function redirecionar(promise, mensagem){
             //futuro toaster
             toastr.success(mensagem);
-            promise.then(promise => $location.path('/grupo'));
+            promise.then(promise => $location.path('/grupo/'+$scope.grupo.id+'/feed'));
         }
 
         function buscar(endereco) {
@@ -111,7 +109,6 @@
         function mostrarAdicionarJogador(){
             gr.isAdicionarJogador = true;
         }
-
 
         function closeSideNav(e) {
             e.preventDefault();

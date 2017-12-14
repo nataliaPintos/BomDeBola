@@ -65,14 +65,14 @@ public class GrupoController {
             return ResponseEntity.ok(grupoService.update(grupoModel, grupo));
     }
     
-    @GetMapping("/lista-usuarios")
-    public List<Usuario_Grupo> listaUsuarios(Long id) {
+    @GetMapping("/lista-usuarios/{id}")
+    public List<Usuario_Grupo> listaUsuarios(@PathVariable Long id) {
         Grupo grupo = grupoService.loadById(id);
 	return usuario_grupoService.findByGrupo(grupo);
     }
     
-    @GetMapping("/lista-grupos")
-    public List<Grupo> listaGrupos(Long id) {
+    @GetMapping("/lista-grupos/{id}")
+    public List<Grupo> listaGrupos(@PathVariable Long id) {
 	return usuario_grupoService.listaGrupo(id);
     }
     

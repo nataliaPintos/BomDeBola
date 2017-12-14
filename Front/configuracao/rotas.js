@@ -11,12 +11,6 @@
 
         $routeProvider
         
-        .when('/', {
-            templateUrl: 'componentes/login/login.html',
-            controller: 'LoginController',
-            controllerAs: 'loginCtrl'
-        })
-
         .when('/home', {
             templateUrl: 'componentes/login/login.html',
             controller: 'LoginController',
@@ -29,13 +23,13 @@
             controllerAs: 'grupoCtrl'
         }) 
 
-        .when('/grupo/altera/:id?', {
+        .when('/grupo/:id?/altera', {
             templateUrl: 'componentes/grupo/cadastroGrupo.html',
             controller: 'GrupoController',
             controllerAs: 'grupoCtrl'
         })
         
-        .when('/grupo/feed', {
+        .when('/grupo/:id?/feed', {
             templateUrl: 'componentes/grupo/feedGrupo.html',
             controller: 'GrupoController',
             controllerAs: 'grupoCtrl'
@@ -47,16 +41,16 @@
             controllerAs: 'perfilCtrl'
         }) 
         
-        .when('/partida', {
+        .when('/grupo/:id?/nova-partida', {
             templateUrl: 'componentes/partida/novaPartida.html',
             controller: 'PartidaController',
             controllerAs: 'partidaCtrl'
         })
 
-        .when('/partida/feed', {
+        .when('/grupo/:id?/partida/:id?/feed', {
             templateUrl: 'componentes/partida/feedPartida.html',
-            controller: 'PartidaController',
-            controllerAs: 'partidaCtrl'
+            controller: 'FeedPartidaController',
+            controllerAs: 'feedPartidaCtrl'
         })
                 
         .when('/imagem', {
@@ -67,11 +61,11 @@
         
         .when('/dashboard', {
             templateUrl: 'componentes/dashboard/dashBoard.html',
-            controller: 'ImageController',
-            controllerAs: 'imageCtrl'
+            controller: 'PerfilController',
+            controllerAs: 'perfilCtrl'
         }) 
 
-        .otherwise('/perfil');
+        .otherwise('/dashboard');
 
     }
 
