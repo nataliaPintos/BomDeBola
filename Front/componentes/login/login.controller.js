@@ -24,12 +24,13 @@
             .then(
                 response => {
                 console.log(response);
-                toastr.success("Dallleeeeeee");
+                toastr.success("Login com Sucesso!");
                 
             },
                 response => {
                 console.log(response);
                 vm.msgErroLogin = "Usuário ou senha incorretos";
+                toastr.error("Usuário ou senha incorretos");
                 }
             );
         }

@@ -21,13 +21,14 @@
 
         <div class="row">
             <div class="col-sm card">
-                <form class="card-body">
+                <form name="formCadastro" class="card-body" novalidate>
                     <div class="form-group">
                         <label class="label">Nome
                         </label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="form-control" type="text" placeholder="Nome Completo" ng-model="usuario.nome" name="nome" required>
-
+                            <input class="form-control" type="text" placeholder="Nome Completo" ng-model="usuario.nome" name="nome" ng-minlength=3 ng-maxlength=255
+                                required>
+                            <p ng-if="formCadastro.nome.$invalid && formCadastro.$submitted" class="help">Nome inválido</p>
                         </div>
 
                     </div>
@@ -36,8 +37,9 @@
                         <label class="label"> Telefone
                         </label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="form-control" type="text" placeholder="(51)99999-9999" ng-model="usuario.telefone" name="telefone" required>
-
+                            <input class="form-control" type="text" placeholder="(51)99999-9999" ng-model="usuario.telefone" name="telefone" ng-minlength=3
+                                ng-maxlength=20 required>
+                            <p ng-if="formCadastro.telefone.$invalid && formCadastro.$submitted" class="help">Telefone inválido</p>
                         </div>
                     </div>
 
@@ -45,8 +47,9 @@
                         <label class="label">Email
                         </label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="form-control" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" required>
-
+                            <input class="form-control" type="email" placeholder="email@email.com" ng-model="usuario.email" name="email" ng-minlength=3
+                                ng-maxlength=128 required>
+                            <p ng-if="formCadastro.email.$invalid && formCadastro.$submitted" class="help">Telefone inválido</p>
                         </div>
 
 
@@ -54,18 +57,21 @@
                             <label class="label">Senha
                             </label>
                             <p class="control has-icons-left">
-                                <input class="form-control" type="password" placeholder="Senha" ng-model="usuario.senha" name="senha" required>
-
+                                <input class="form-control" type="password" placeholder="Senha" ng-model="usuario.senha" name="senha" ng-minlength=3 ng-maxlength=255
+                                    required>
+                                <p ng-if="formCadastro.email.$invalid && formCadastro.$submitted" class="help">Senha inválida</p>
                             </p>
                         </div>
 
                         <div class="form-group">
                             <label class="label">Data de Nascimento</label>
                             <input class="form-control" type="date" ng-model="usuario.nascimento" name="nascimento" required>
+                            <p ng-if="formCadastro.nascimento.$invalid && formCadastro.$submitted" class="help">Data inválida</p>
+
                         </div>
 
                         <div class="is-right">
-                            <button class="btn btn-primary" ng-click="loginCtrl.cadastrar(usuario)">Cadastrar-se</button>
+                            <button class="btn btn-primary" ng-disabled="!formCadastro.$valid" ng-click="loginCtrl.cadastrar(usuario)">Cadastrar-se</button>
                         </div>
 
                 </form>
@@ -74,7 +80,7 @@
 
 
             <div class="col-sm card">
-                <form class="card-body">
+                <form name="formLogin" novalidate class="card-body">
                     <div class="form-group">
                         <label>
                             Email
