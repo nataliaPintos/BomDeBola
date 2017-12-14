@@ -6,6 +6,7 @@
 package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Models.PartidaModel;
+import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.Repository.PartidaRepository;
 import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.Repository.Usuario_PartidaRepository;
@@ -20,6 +21,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -33,6 +35,7 @@ public class PartidaService {
     private final PartidaRepository partidaRepository;
     private final Usuario_GrupoRepository usuario_grupoRepository;
     private final Usuario_PartidaRepository usuario_partidaRepository;
+    private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
     public Partida loadById(Long id) {
@@ -43,22 +46,30 @@ public class PartidaService {
 	return (List<Partida>) partidaRepository.findAll();
     }
 
-    public void save(Partida partida) {
-	partida = partidaRepository.save(partida);
-    }
-    
-    public void save(Partida partida, Grupo grupo) {
-        //Carregar todos Usuario_Grupo onde Grupo = grupo para então gazer um for e criar um Usuario_Partida para cada Usuario_Grupo carregado
-        List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupo(grupo);
-        for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
-            Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
-            usuario_partidaRepository.save(usuario_partida);
-            emailService.enviarEmail(usuario_grupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
+    public ResponseEntity save(PartidaModel partidaModel) {
+        Grupo grupo = grupoRepository.findOne(partidaModel.id_grupo);
+        if(grupo == null){
+            return ResponseEntity.badRequest().body("Grupo não cadastrado");
+        }else{
+            Partida partida = new Partida(partidaModel.time_max, partidaModel.time_min, partidaModel.latitude,
+                partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
+                partidaModel.tempo_confirmacao, partidaModel.tempo_avaliacao, grupo);
+            partidaRepository.save(partida);
+            
+            //Carregar todos Usuario_Grupo onde Grupo = grupo para então fazer um for e criar um Usuario_Partida para cada Usuario_Grupo carregado
+            List<Usuario_Grupo> listaUsuario_Grupo = usuario_grupoRepository.findByGrupo(grupo);
+            for(Usuario_Grupo usuario_grupo : listaUsuario_Grupo){
+                Usuario_Partida usuario_partida = new Usuario_Partida(partida, usuario_grupo);
+                usuario_partidaRepository.save(usuario_partida);
+                emailService.enviarEmail(usuario_grupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
+            }
+            return ResponseEntity.ok().body(partida);
         }
-	partida = partidaRepository.save(partida);
     }
     
-    public PartidaModel partidaModelRetorno(PartidaModel partidaModel, Grupo grupo){
+    public PartidaModel partidaModelRetorno(Long idGrupo){
+        Grupo grupo = grupoRepository.findOne(idGrupo);
+        PartidaModel partidaModel = new PartidaModel();
         partidaModel.hora_final = grupo.getHora_final();
         partidaModel.hora_inicio = grupo.getHora_inicio();
         partidaModel.id_grupo = grupo.getId();

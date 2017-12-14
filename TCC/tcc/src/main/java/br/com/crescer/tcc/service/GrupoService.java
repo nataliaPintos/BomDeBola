@@ -39,17 +39,24 @@ public class GrupoService {
 		return (List<Grupo>) grupoRepository.findAll();
 	}
 
-	public void save(Grupo grupo) {
-		grupo = grupoRepository.save(grupo);
+	public ResponseEntity save(GrupoModel grupoModel) {
+                Grupo grupo = new Grupo(grupoModel.nome, grupoModel.imagem, grupoModel.time_max, grupoModel.time_min, 
+                grupoModel.latitude, grupoModel.longitude, grupoModel.dia_semana, grupoModel.hora_inicio,
+                grupoModel.hora_final, grupoModel.dias_confirmacao, grupoModel.horas_confirmacao, grupoModel.tempo_avaliacao);
+                
+		grupoRepository.save(grupo);
                 Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
                 Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
                 usuario_grupo.setAdm(true);
                 usuario_grupoRepository.save(usuario_grupo);
+                
+                return ResponseEntity.ok().body(grupo);
 	}
         
-        public boolean update(GrupoModel grupoModel, Grupo grupo) {
+        public ResponseEntity update(GrupoModel grupoModel, Long id) {
+            Grupo grupo = grupoRepository.findOne(id);
             if(grupo == null){
-                return false;
+                return ResponseEntity.badRequest().body("Grupo não cadastrado");
             }else{
                 grupo.setDia_semana(grupoModel.dia_semana);
                 grupo.setDias_confirmacao(grupoModel.dias_confirmacao);
@@ -63,7 +70,7 @@ public class GrupoService {
                 grupo.setTime_max(grupoModel.time_max);
                 grupo.setTime_min(grupoModel.time_min);
                 grupoRepository.save(grupo);
-                return true;
+                return ResponseEntity.ok().body(grupo);
             }
 	}
         

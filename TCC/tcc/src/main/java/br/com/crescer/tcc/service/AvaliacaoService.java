@@ -50,9 +50,9 @@ public class AvaliacaoService {
             avaliado.setNota_partida((avaliado.getNota_partida()+avaliacaoModel.nota)/avaliado.getAvaliacoes());
             avaliacaoRepository.save(avaliacao);
             usuario_partidaRepository.save(avaliado);
-            return (ResponseEntity) ResponseEntity.ok();
+            return ResponseEntity.ok().body(avaliacao);
         }else{
-            return (ResponseEntity) ResponseEntity.badRequest();
+            return ResponseEntity.badRequest().body("Usuario já avaliado");
         }
     }
 }

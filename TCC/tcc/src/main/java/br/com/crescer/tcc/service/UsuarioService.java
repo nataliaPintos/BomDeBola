@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
 import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 /**
  *
  * @author luan.avila
@@ -37,27 +38,33 @@ public class UsuarioService {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
 
-	public boolean save(Usuario usuario, UsuarioModel usuarioModel) {
+	public ResponseEntity save(UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.email);
             if(usuarioExistente == null){
+                Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
 		final String senha = usuario.getSenha();
 		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
 		usuario = usuarioRepository.save(usuario);
-                return true;
+                return ResponseEntity.ok(usuario);
             }else{
-                return false;
+                return ResponseEntity.badRequest().body("Usuario já existente");
             }
 	}
         
-        public Usuario update(UsuarioModel usuarioModel) {
+        public ResponseEntity update(UsuarioModel usuarioModel) {
             Usuario usuario = usuarioComponente.usuarioLogadoDetalhes();
-            usuario.setEmail(usuarioModel.email);
-            usuario.setImagem_perfil(usuarioModel.imagem_perfil);
-            usuario.setNascimento(usuarioModel.nascimento);
-            usuario.setNome(usuarioModel.nome);
-            usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.senha));
-            usuario.setTelefone(usuarioModel.telefone);
-            return usuarioRepository.save(usuario);
+            if(usuario != null){
+                usuario.setEmail(usuarioModel.email);
+                usuario.setImagem_perfil(usuarioModel.imagem_perfil);
+                usuario.setNascimento(usuarioModel.nascimento);
+                usuario.setNome(usuarioModel.nome);
+                usuario.setSenha(new BCryptPasswordEncoder().encode(usuarioModel.senha));
+                usuario.setTelefone(usuarioModel.telefone);
+                usuarioRepository.save(usuario);
+                return ResponseEntity.ok().body(usuario);
+            }else{
+                return ResponseEntity.badRequest().body("Usuario inexistente");
+            }
 	}
         
         public void delete(Long id) {

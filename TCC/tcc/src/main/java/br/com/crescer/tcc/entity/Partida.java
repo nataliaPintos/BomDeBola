@@ -53,13 +53,13 @@ public class Partida implements Serializable{
     @Column(name = "ID")
     private Long id;
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_INICIO")
     private LocalDateTime hora_inicio;
     
-    @JsonFormat(pattern = "HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORA_FINAL")
@@ -96,7 +96,7 @@ public class Partida implements Serializable{
     @Column(name = "TIME_ATUAL")
     private int time_atual;
     
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
     @Column(name = "HORAS_CONFIRMACAO")

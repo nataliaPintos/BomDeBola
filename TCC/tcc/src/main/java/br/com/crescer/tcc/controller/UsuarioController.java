@@ -43,12 +43,11 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/novo-usuario")
-	public ResponseEntity<Boolean> save(@RequestBody @Valid UsuarioModel usuarioModel) {
-                Usuario usuario = new Usuario(usuarioModel.nome, usuarioModel.email, usuarioModel.telefone, usuarioModel.senha, usuarioModel.nascimento);
-		return ResponseEntity.ok().body(usuarioService.save(usuario, usuarioModel));
+	public ResponseEntity save(@RequestBody @Valid UsuarioModel usuarioModel) {
+		return usuarioService.save(usuarioModel);
 	}
         @PutMapping("/atualiza-usuario")
 	public ResponseEntity<Usuario> update(@RequestBody @Valid UsuarioModel usuarioModel) {
-                return ResponseEntity.ok(usuarioService.update(usuarioModel));
+                return usuarioService.update(usuarioModel);
         }
 }

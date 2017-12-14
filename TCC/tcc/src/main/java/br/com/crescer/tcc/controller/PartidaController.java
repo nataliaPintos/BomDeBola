@@ -48,26 +48,17 @@ public class PartidaController {
     
     @PostMapping("/nova-partida")
     public ResponseEntity<Partida> save(@RequestBody @Valid PartidaModel partidaModel) {
-        Grupo grupo = grupoService.loadById(partidaModel.id_grupo);
-        Partida partida = new Partida(partidaModel.time_max, partidaModel.time_min, partidaModel.latitude,
-        partidaModel.longitude, partidaModel.dia_semana, partidaModel.hora_inicio, partidaModel.hora_final,
-        partidaModel.tempo_confirmacao, partidaModel.tempo_avaliacao, grupo);
-        partidaService.save(partida, grupo);
-        return ResponseEntity.ok().body(partida);
+        return partidaService.save(partidaModel);
     }
     
     @GetMapping("/nova-partida/padrao/{id}")
-    public PartidaModel getPartidaModel(@PathVariable Long id) {
-	Grupo grupo = grupoService.loadById(id);
-        PartidaModel partidaModel = new PartidaModel();
-        return partidaService.partidaModelRetorno(partidaModel, grupo);
+    public PartidaModel getPartidaModel(@PathVariable Long idGrupo) {
+        return partidaService.partidaModelRetorno(idGrupo);
     }
     
     @PutMapping("/aceita-partida/")
-    public ResponseEntity<Boolean> update(@RequestBody @Valid Long id) {
-        Usuario_Partida usuario_partida = usuario_partidaService.loadById(id);
-        Partida partida = usuario_partida.getPartida();
-        return ResponseEntity.ok(usuario_partidaService.update(usuario_partida, partida));
+    public ResponseEntity<Boolean> update(@RequestBody @Valid Long idUsuario_Partida) {
+        return usuario_partidaService.update(idUsuario_Partida);
     }
     
     @GetMapping("/lista-jogadores/{id}")
@@ -77,7 +68,6 @@ public class PartidaController {
     
     @GetMapping("/sorteia-times/{id}")
     public List<Usuario_Partida> sorteiaTimes(@PathVariable Long id) {
-        List<Usuario_Partida> lista = usuario_partidaService.listaDeParticipantes(id);
-	return usuario_partidaService.sortearTime(lista);
+	return usuario_partidaService.sortearTime(id);
     }
 }
