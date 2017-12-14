@@ -6,6 +6,7 @@
 package br.com.crescer.tcc.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -29,19 +31,21 @@ import lombok.Setter;
 @Setter
 @Table(name = "USUARIO_PARTIDA")
 public class Usuario_Partida implements Serializable{
-    private static final String SQ_PARTIDA = "SQ_PARTIDA";
+    private static final String SQ_USUARIO_PARTIDA = "SQ_USUARIO_PARTIDA";
     
     public Usuario_Partida(){}
     
     public Usuario_Partida(Partida partida, Usuario_Grupo usuario_grupo){
         this.partida = partida;
+        this.nota_partida = 0;
+        this.avaliacoes = 0;
         this.usuario_grupo = usuario_grupo;
         this.solicitacao = true;
     }
     
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = SQ_PARTIDA)
-    @SequenceGenerator(name = SQ_PARTIDA, sequenceName = SQ_PARTIDA, allocationSize = 1)
+    @GeneratedValue(strategy = SEQUENCE, generator = SQ_USUARIO_PARTIDA)
+    @SequenceGenerator(name = SQ_USUARIO_PARTIDA, sequenceName = SQ_USUARIO_PARTIDA, allocationSize = 1)
     @Column(name = "ID")
     private Long id;
     
@@ -49,6 +53,11 @@ public class Usuario_Partida implements Serializable{
     @Basic(optional = false)
     @Column(name = "NOTA_PARTIDA")
     private double nota_partida;
+    
+    @NotNull(message = "Campo obrigatório")
+    @Basic(optional = false)
+    @Column(name = "AVALIACOES")
+    private int avaliacoes;
     
     @NotNull(message = "Campo obrigatório")
     @Basic(optional = false)
@@ -72,4 +81,10 @@ public class Usuario_Partida implements Serializable{
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO_GRUPO")
     private Usuario_Grupo usuario_grupo;
+    
+    @OneToMany(mappedBy="usuario_partida")
+    private List<Avaliacao> avaliadores;
+    
+    @OneToMany(mappedBy="usuario_partida")
+    private List<Avaliacao> avaliados;
 }
