@@ -82,9 +82,9 @@ public class Usuario_Partida implements Serializable{
     @JoinColumn(name = "ID_USUARIO_GRUPO")
     private Usuario_Grupo usuario_grupo;
     
-    @OneToMany(mappedBy="usuario_partida")
-    private List<Avaliacao> avaliadores;
-    
-    @OneToMany(mappedBy="usuario_partida")
-    private List<Avaliacao> avaliados;
+//    @OneToMany(mappedBy="usuario_partida")
+//    private List<Usuario_Partida> avaliadores;
+//    
+//    @OneToMany(mappedBy="usuario_partida")
+//    private List<Usuario_Partida> avaliados;
 }
