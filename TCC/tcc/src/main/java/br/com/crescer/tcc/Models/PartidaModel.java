@@ -19,32 +19,32 @@ import java.time.LocalDateTime;
  * @author luanp
  */
 public class PartidaModel {
+    
     public int time_max;
     public int time_min;
+    
     public double latitude;
     public double longitude;
+    
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     public LocalDate dia_semana;
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime hora_inicio;
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime hora_final;
-    /*public int dias_confirmacao;
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    public LocalDateTime horas_confirmacao;*/
     
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    public LocalDateTime hora_final;    
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime tempo_confirmacao;
     
-    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime tempo_avaliacao;
+    
     public Long id_grupo;
 }
