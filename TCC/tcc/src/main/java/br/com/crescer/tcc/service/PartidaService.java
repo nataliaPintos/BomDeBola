@@ -82,25 +82,25 @@ public class PartidaService {
         LocalDate diaDoJogo = LocalDate.now();
         switch (grupo.getDiaSemana()) {
             case 1:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
                 break;
             case 2:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
                 break;
             case 3:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
                 break;
             case 4:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
                 break;
             case 5:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
                 break;
             case 6:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
                 break;
             case 7:
-                diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
                 break;
             default:
                 break;
@@ -110,25 +110,25 @@ public class PartidaService {
         LocalDateTime diaDaConfirmacao = LocalDateTime.now();
         switch (grupo.getDiasConfirmacao()) {
             case 1:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
                 break;
             case 2:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
                 break;
             case 3:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
                 break;
             case 4:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
                 break;
             case 5:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
                 break;
             case 6:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
                 break;
             case 7:
-                diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
                 break;
             default:
                 break;

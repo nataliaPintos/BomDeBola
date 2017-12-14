@@ -1,8 +1,8 @@
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\GrupoTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\GrupoTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\PartidaTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\PartidaTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\Usuario_PartidaTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\Usuario_GrupoTest.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioTest.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\PartidaTestService.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioPartidaTestService.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\PartidaTestRepository.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioTestRepository.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioGrupoTestService.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\GrupoTestRepository.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\GrupoTestService.java
+C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioTestService.java
