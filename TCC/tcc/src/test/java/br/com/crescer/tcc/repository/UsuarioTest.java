@@ -12,6 +12,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.stream.StreamSupport;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author carloshenrique
  */
+@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)

@@ -1,6 +1,7 @@
 br\com\crescer\tcc\controller\UsuarioController.class
 br\com\crescer\tcc\Models\PartidaModel.class
 br\com\crescer\tcc\security\SocialUserDetailsService$CustomUserDetails.class
+br\com\crescer\tcc\entity\Avaliacao.class
 br\com\crescer\tcc\Repository\UsuarioRepository.class
 br\com\crescer\tcc\utilitarios\LocalDateConverter.class
 br\com\crescer\tcc\Repository\GrupoRepository.class
@@ -13,6 +14,7 @@ br\com\crescer\tcc\entity\Partida.class
 br\com\crescer\tcc\security\SocialWebSecurityConfig.class
 br\com\crescer\tcc\controller\GrupoController.class
 br\com\crescer\tcc\handler\HandlerException.class
+br\com\crescer\tcc\Models\AvaliacaoModel.class
 br\com\crescer\tcc\Run.class
 br\com\crescer\tcc\service\UsuarioService.class
 br\com\crescer\tcc\entity\Usuario_Partida.class
@@ -25,6 +27,7 @@ br\com\crescer\tcc\Repository\Usuario_GrupoRepository.class
 br\com\crescer\tcc\service\EmailService$1.class
 br\com\crescer\tcc\Models\Usuario_GrupoModel.class
 br\com\crescer\tcc\service\Usuario_GrupoService.class
+br\com\crescer\tcc\Repository\AvaliacaoRepository.class
 br\com\crescer\tcc\controller\HealthController.class
 br\com\crescer\tcc\utilitarios\UsuarioComponente.class
 br\com\crescer\tcc\Models\UsuarioLogadoModel$UsuarioLogadoModelBuilder.class
@@ -36,6 +39,8 @@ br\com\crescer\tcc\entity\Usuario_Grupo.class
 br\com\crescer\tcc\service\PartidaService.class
 br\com\crescer\tcc\service\EmailService.class
 br\com\crescer\tcc\controller\PartidaController.class
+br\com\crescer\tcc\controller\AvaliacaoController.class
 br\com\crescer\tcc\component\LogTime.class
 br\com\crescer\tcc\Models\UsuarioModel.class
+br\com\crescer\tcc\service\AvaliacaoService.class
 br\com\crescer\tcc\service\GrupoService.class
