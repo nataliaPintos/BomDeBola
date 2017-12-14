@@ -105,6 +105,7 @@ public class PartidaService {
             default:
                 break;
         }
+        partidaModel.setDiaSemana(diaDoJogo);
         
         LocalDateTime diaDaConfirmacao = LocalDateTime.now();
         switch (grupo.getDiasConfirmacao()) {

@@ -33,6 +33,7 @@ public class PartidaModel {
     
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate diaSemana;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
