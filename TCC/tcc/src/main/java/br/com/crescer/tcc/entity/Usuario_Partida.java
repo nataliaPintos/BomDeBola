@@ -81,10 +81,4 @@ public class Usuario_Partida implements Serializable{
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO_GRUPO")
     private Usuario_Grupo usuario_grupo;
-    
-//    @OneToMany(mappedBy="usuario_partida")
-//    private List<Usuario_Partida> avaliadores;
-//    
-//    @OneToMany(mappedBy="usuario_partida")
-//    private List<Usuario_Partida> avaliados;
 }

@@ -51,24 +51,18 @@ public class GrupoController {
     //Cria o grupo e cria uma linha na tabela Usuario_Grupo onde armazena o participante do grupo como adm
     //Todas outras interações entre usuarios e grupo estão na Usuario_GrupoController
     @PostMapping("/novo-grupo")
-    public ResponseEntity<Grupo> save(@RequestBody @Valid GrupoModel grupoModel) {        
-        Grupo grupo = new Grupo(grupoModel.nome, grupoModel.imagem, grupoModel.time_max, grupoModel.time_min, 
-                grupoModel.latitude, grupoModel.longitude, grupoModel.dia_semana, grupoModel.hora_inicio,
-                grupoModel.hora_final, grupoModel.dias_confirmacao, grupoModel.horas_confirmacao, grupoModel.tempo_avaliacao);
-        grupoService.save(grupo);
-        return ResponseEntity.ok().body(grupo);
+    public ResponseEntity save(@RequestBody @Valid GrupoModel grupoModel) {
+        return grupoService.save(grupoModel);
     }
     
     @PutMapping("/altera/{id}")
     public ResponseEntity<Boolean> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
-        Grupo grupo = grupoService.loadById(id);
-            return ResponseEntity.ok(grupoService.update(grupoModel, grupo));
+        return grupoService.update(grupoModel, id);
     }
     
     @GetMapping("/lista-usuarios/{id}")
     public List<Usuario_Grupo> listaUsuarios(@PathVariable Long id) {
-        Grupo grupo = grupoService.loadById(id);
-	return usuario_grupoService.findByGrupo(grupo);
+	return usuario_grupoService.findByGrupo(id);
     }
     
     @GetMapping("/lista-grupos/{id}")
@@ -77,11 +71,7 @@ public class GrupoController {
     }
     
     @PostMapping("/inclui-usuario")
-    public ResponseEntity<Usuario_Grupo> convite(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
-        Usuario usuario = usuarioService.findByEmail(usuario_grupoModel.email_usuario);
-        Grupo grupo = grupoService.loadById(usuario_grupoModel.id_grupo);
-        Usuario_Grupo ug = new Usuario_Grupo(usuario, grupo);
-        usuario_grupoService.save(ug, usuario_grupoModel.email_usuario);
-        return ResponseEntity.ok().body(ug);
+    public ResponseEntity convite(@RequestBody @Valid Usuario_GrupoModel usuario_grupoModel) {
+        return usuario_grupoService.save(usuario_grupoModel);
     }
 }

@@ -5,6 +5,8 @@
  */
 package br.com.crescer.tcc.service;
 
+import br.com.crescer.tcc.Models.Usuario_GrupoModel;
+import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
 import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,6 +29,7 @@ public class Usuario_GrupoService {
     @Autowired
     private final Usuario_GrupoRepository usuario_grupoRepository;
     private final UsuarioRepository usuarioRepository;
+    private final GrupoRepository grupoRepository;
     private final EmailService emailService;
     
     public Usuario_Grupo loadById(Long id) {
@@ -36,16 +40,25 @@ public class Usuario_GrupoService {
 		return (List<Usuario_Grupo>) usuario_grupoRepository.findAll();
 	}
 
-	public void save(Usuario_Grupo usuario_grupo, String email) {
-            emailService.enviarEmail(email, emailService.grupo);
-            usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
+	public ResponseEntity save(Usuario_GrupoModel usuario_grupoModel) {
+            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuario_grupoModel.email_usuario);
+            Grupo grupo = grupoRepository.findOne(usuario_grupoModel.id_grupo);
+            if(usuario == null || grupo == null){
+                return ResponseEntity.badRequest().body("Informações não cadastradas");
+            }else{
+                Usuario_Grupo usuario_grupo = new Usuario_Grupo(usuario, grupo);
+                emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
+                usuario_grupoRepository.save(usuario_grupo);
+                return ResponseEntity.ok().body(usuario_grupo);
+            }
 	}
         
         public void delete(Long id) {
                 usuario_grupoRepository.delete(id);
 	}
         
-        public List<Usuario_Grupo> findByGrupo(Grupo grupo) {
+        public List<Usuario_Grupo> findByGrupo(Long id) {
+            Grupo grupo = grupoRepository.findOne(id);
                 return usuario_grupoRepository.findByGrupo(grupo);
 	}
         

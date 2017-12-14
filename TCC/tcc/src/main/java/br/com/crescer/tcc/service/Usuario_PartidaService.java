@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -39,15 +40,21 @@ public class Usuario_PartidaService {
 		usuario_partida = usuario_partidaRepository.save(usuario_partida);
 	}
         
-        public boolean update(Usuario_Partida usuario_partida, Partida partida) {
-            if(partida.getTime_atual() < partida.getTime_max()){
-                partida.setTime_atual(partida.getTime_atual() + 1);
-                partidaRepository.save(partida);
-                usuario_partida.setSolicitacao(false);
-                usuario_partidaRepository.save(usuario_partida);
-                return true;
+        public ResponseEntity update(Long id) {
+            Usuario_Partida usuario_partida = usuario_partidaRepository.findOne(id);
+            Partida partida = usuario_partida.getPartida();
+            if(usuario_partida == null){
+                if(partida.getTime_atual() < partida.getTime_max()){
+                    partida.setTime_atual(partida.getTime_atual() + 1);
+                    partidaRepository.save(partida);
+                    usuario_partida.setSolicitacao(false);
+                    usuario_partidaRepository.save(usuario_partida);
+                    return ResponseEntity.ok().body(usuario_partida);
+                }else{
+                    return ResponseEntity.badRequest().body("O time já está cheio");
+                }
             }else{
-                return false;
+                return ResponseEntity.badRequest().body("Usuario não está registrado na partida");
             }
 	}
         
@@ -63,7 +70,8 @@ public class Usuario_PartidaService {
 		return usuario_partidaRepository.findByPartida(partida);
 	}
         
-        public List<Usuario_Partida> sortearTime(List<Usuario_Partida> lista) {
+        public List<Usuario_Partida> sortearTime(Long id) {
+            List<Usuario_Partida> lista = usuario_partidaRepository.findByIdAndSolicitacao(id, false);
             int tamanho = lista.size();
             Collections.shuffle(lista);
             if(tamanho % 2 != 0){
