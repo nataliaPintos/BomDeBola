@@ -7,7 +7,6 @@ package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Repository.Usuario_GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
-import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.Usuario_Grupo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +33,8 @@ public class Usuario_GrupoService {
 	}
 
 	public void save(Usuario_Grupo usuario_grupo, String email) {
-		usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
-                emailService.enviarEmail(email, emailService.grupo);
+            emailService.enviarEmail(email, emailService.grupo);
+            usuario_grupo = usuario_grupoRepository.save(usuario_grupo);
 	}
         
         public void delete(Long id) {
