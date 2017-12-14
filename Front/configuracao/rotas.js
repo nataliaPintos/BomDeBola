@@ -71,6 +71,12 @@
             controllerAs: 'imageCtrl'
         }) 
 
+        .when('/partida/feed/times', {
+            templateUrl: 'componentes/partida/times.html',
+            controller: 'PartidaController',
+            controllerAs: 'partidaCtrl'
+        })
+
         .otherwise('/perfil');
 
     }
