@@ -9,9 +9,9 @@
         var vm = this;
         vm.criarPartida = criarPartida;
         vm.isformAtivo = true;
-        vm.id_grupo = $routeParams.id;
+        vm.idGrupo = $routeParams.id;
         
-        if(vm.id_grupo) {
+        if(vm.idGrupo) {
             carregarNovaPartida();
         } else {
             $location.path('/dashboard');
@@ -19,18 +19,23 @@
         
 
         function carregarNovaPartida() {
-            PartidaService.carregar(vm.id_grupo).then(response => {
+            PartidaService.carregar(vm.idGrupo).then(response => {
                 console.log(response.data);
                 var partidaModel = response.data;
-                partidaModel.hora_inicio = new Date(partidaModel.hora_inicio);
+                partidaModel.diaSemana = new Date(partidaModel.diaSemana);
+                partidaModel.horaInicio = new Date(response.data.horaInicio);
+                partidaModel.horaFinal = new Date(response.data.horaFinal);    
+                partidaModel.tempoConfirmacao = new Date(response.data.tempoConfirmacao);    
+                partidaModel.tempoAvaliacao = new Date(response.data.tempoAvaliacao); 
                 $scope.partida = partidaModel;
             });
         } 
 
         function criarPartida(partida) {
+            console.log(partida);
             PartidaService.criar(partida).then(response => {
                 console.log(response.data);
-                $location.path('grupo/'+vm.id_grupo+'/feed');
+                $location.path('grupo/'+vm.idGrupo+'/feed');
                 toastr.success("Partida criar com sucesso");
             });
         }
