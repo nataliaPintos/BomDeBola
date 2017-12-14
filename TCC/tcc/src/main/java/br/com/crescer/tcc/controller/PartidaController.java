@@ -12,6 +12,7 @@ import br.com.crescer.tcc.entity.Usuario_Partida;
 import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
 import br.com.crescer.tcc.service.Usuario_PartidaService;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -52,8 +53,8 @@ public class PartidaController {
     }
     
     @GetMapping("/nova-partida/padrao/{id}")
-    public PartidaModel getPartidaModel(@PathVariable Long idGrupo) {
-        return partidaService.partidaModelRetorno(idGrupo);
+    public PartidaModel getPartidaModel(@PathVariable Long id) {
+        return partidaService.partidaModelRetorno(id);
     }
     
     @PutMapping("/aceita-partida/")
@@ -69,5 +70,12 @@ public class PartidaController {
     @GetMapping("/sorteia-times/{id}")
     public List<Usuario_Partida> sorteiaTimes(@PathVariable Long id) {
 	return usuario_partidaService.sortearTime(id);
+    }
+    
+    @GetMapping("/nova-partida/teste")
+    public PartidaModel teste() {
+        PartidaModel partida = new PartidaModel();
+        partida.hora_inicio = LocalDateTime.now();
+        return partida;
     }
 }

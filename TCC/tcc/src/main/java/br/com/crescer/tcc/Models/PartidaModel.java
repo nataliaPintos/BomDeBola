@@ -27,25 +27,28 @@ public class PartidaModel {
     public double latitude;
     public double longitude;
     
-//    @JsonSerialize(using = LocalDateSerializer.class)
-//    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     public LocalDate dia_semana;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     public LocalDateTime hora_inicio;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     public LocalDateTime hora_final;    
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     public LocalDateTime tempo_confirmacao;
     
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "dd-MM-yyyy@HH:mm:ss")
     public LocalDateTime tempo_avaliacao;
     
     public Long id_grupo;

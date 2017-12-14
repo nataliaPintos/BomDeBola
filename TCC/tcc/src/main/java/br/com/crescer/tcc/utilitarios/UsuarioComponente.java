@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class UsuarioComponente {
 
     @Autowired
-    UsuarioService usuarioServico;
+    UsuarioService usuarioService;
 
     public UsuarioLogadoModel usuarioLogado() {
         return Optional
@@ -37,7 +37,7 @@ public class UsuarioComponente {
         return Optional
                 .ofNullable(user())
                 .map(User::getUsername)
-                .map(usuarioServico::findByEmail)
+                .map(usuarioService::findByEmail)
                 .orElse(null);
     }
 

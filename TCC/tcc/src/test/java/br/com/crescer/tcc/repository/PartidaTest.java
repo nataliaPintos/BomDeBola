@@ -29,7 +29,6 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author luan.avila
  */
-@Ignore
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)

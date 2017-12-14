@@ -31,7 +31,6 @@ import org.springframework.transaction.annotation.Transactional;
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-@Ignore
 public class GrupoTest {
     @Autowired
 	private TestEntityManager testEntityManager;
