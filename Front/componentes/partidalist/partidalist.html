@@ -1,0 +1,22 @@
+<a class="list-group-item list-group-item-action" href="#!/grupo/{{id}}/partida/{{partida.id}}/times">
+<div class="row">
+    <div class="col-sm-6 col-10">
+        <div class="media">
+            <img class="d-flex mr-3 rounded-circle" ng-src="arquivos/imagens/bola.png" width="50px" height="45px" alt="">
+            <div class="media-body">
+                <strong>{{partida.diaSemana}} </strong>
+                
+                <div class="text-muted smaller">Início da Partida: {{partida.horaInicio}}</div>
+                <div ng-if="partida.confirmada" class="text-muted smaller">CONFIRMADA!</div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="col-sm-3 col-1">
+        gols
+    </div>
+    <div class="col-sm-3 col-1">
+        nota    
+    </div>
+</div>
+</a>

@@ -30,7 +30,7 @@
         }
 
         function listar(id) {
-            return $http.get(urlBase + '/lista' + id);
+            return $http.get(urlBase + '/lista/' + id);
         }
 
         function buscarPorId(id) {
