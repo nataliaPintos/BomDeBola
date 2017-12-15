@@ -128,18 +128,18 @@
             </span>
           </a>
           <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">New Alerts:</h6>
+            <h6 class="dropdown-header">Novas Partidas</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#self">
 
               <div ng-repeat="notificacao in notificacoes">
                   <span class="text-success">
                     <strong>
-                      Nova Partida {{notificacao.diaSemana}} 
-                      <button class="btn btn-success" ng-click="confirmar(notificacao.id)">
+                      Nova Partida {{notificacao.grupo.nome}} 
+                      <button class="btn btn-success" ng-click="confirmar(notificacao.usuarioPartida.id)">
                       Vou!
                     </button>
-                    <button class="btn btn-danger" ng-click="recusar(notificacao.id)">
+                    <button class="btn btn-danger" ng-click="recusar(notificacao.usuarioPartida.id)">
                       Não Vou!
                     </button>
                     </strong>
