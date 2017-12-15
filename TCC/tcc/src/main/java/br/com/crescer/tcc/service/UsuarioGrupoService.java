@@ -43,14 +43,15 @@ public class UsuarioGrupoService {
 	public ResponseEntity save(UsuarioGrupoModel usuarioGrupoModel) {
             Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioGrupoModel.getEmailUsuario());
             Grupo grupo = grupoRepository.findOne(usuarioGrupoModel.getIdGrupo());
-            UsuarioGrupo usuarioGrupo = usuarioGrupoRepository.findByUsuarioAndGrupo(usuario, grupo);
-            if(usuarioGrupo == null){
+            UsuarioGrupo usuarioGrupoExistente = usuarioGrupoRepository.findByUsuarioAndGrupo(usuario, grupo);
+            if(usuarioGrupoExistente == null){
                 if(grupo == null){
                     return ResponseEntity.badRequest().body("Grupo não cadastrado");
                 }else if(usuario == null){
-                    usuarioGrupoRepository.save(usuarioGrupo);
+                    emailService.enviarEmail(usuarioGrupoModel.getEmailUsuario(), emailService.grupo);
                     return ResponseEntity.ok().body("Usuario convidado");
                 }else{
+                    UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
                     emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
                     usuarioGrupoRepository.save(usuarioGrupo);
                     return ResponseEntity.ok().body(usuarioGrupo);
