@@ -36,7 +36,7 @@
         }
 
         function cadastrar(usuario) {
-            usuario.imagem = 'http://www.pequenaeva.com/uploads/userfiles/images/xbola-de-futebol-2_pngBola-redonda-entenda-por-que-ela-tem-este-formato.png.pagespeed.ic.gWQmlCZ4Si.png';
+            usuario.imagemPerfil = 'ddadasdada';//'http://www.pequenaeva.com/uploads/userfiles/images/xbola-de-futebol-2_pngBola-redonda-entenda-por-que-ela-tem-este-formato.png.pagespeed.ic.gWQmlCZ4Si.png';
             UsuarioService.salvar(usuario).then(
                 response => {
                 console.log(response);               

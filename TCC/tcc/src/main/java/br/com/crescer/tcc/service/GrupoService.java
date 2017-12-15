@@ -29,8 +29,15 @@ import br.com.crescer.tcc.Repository.UsuarioRepository;
 public class GrupoService {
         @Autowired
 	private final GrupoRepository grupoRepository;
+        
+        @Autowired
         private final UsuarioGrupoRepository usuarioGrupoRepository;
+        
+        @Autowired
         private final UsuarioRepository usuarioRepository;
+        
+        @Autowired
+        private final UsuarioComponente usuarioComponente;
         
         public Grupo loadById(Long id) {
 		return grupoRepository.findOne(id);
@@ -47,7 +54,7 @@ public class GrupoService {
                 
 		grupoRepository.save(grupo);
                 Usuario usuario = usuarioRepository.findOne(grupoModel.getIdUsuario());
-                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
+                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuarioComponente.usuarioLogadoDetalhes(), grupo);
                 usuarioGrupo.setAdm(true);
                 usuarioGrupoRepository.save(usuarioGrupo);
                 

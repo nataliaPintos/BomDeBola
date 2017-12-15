@@ -85,7 +85,7 @@ public class Usuario implements Serializable{
         private LocalDate nascimento;
         
         @NotNull(message = "Campo obrigatório")
-	@Basic(optional = false)
+	@Basic(optional = true)
 	@Column(name = "NOTA_GERAL")
 	private double notaGeral;
         
