@@ -34,49 +34,49 @@ public class UsuarioGrupoService {
     
     public UsuarioGrupo loadById(Long id) {
 		return usuarioGrupoRepository.findOne(id);
-	}
-        
-        public List<UsuarioGrupo> lista() {
-		return (List<UsuarioGrupo>) usuarioGrupoRepository.findAll();
-	}
+    }
 
-	public ResponseEntity save(UsuarioGrupoModel usuarioGrupoModel) {
-            Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioGrupoModel.getEmailUsuario());
-            Grupo grupo = grupoRepository.findOne(usuarioGrupoModel.getIdGrupo());
-            UsuarioGrupo usuarioGrupoExistente = usuarioGrupoRepository.findByUsuarioAndGrupo(usuario, grupo);
-            if(usuarioGrupoExistente == null){
-                if(grupo == null){
-                    return ResponseEntity.badRequest().body("Grupo não cadastrado");
-                }else if(usuario == null){
-                    emailService.enviarEmail(usuarioGrupoModel.getEmailUsuario(), emailService.grupo);
-                    return ResponseEntity.ok().body("Usuario convidado");
-                }else{
-                    UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
-                    emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
-                    usuarioGrupoRepository.save(usuarioGrupo);
-                    return ResponseEntity.ok().body(usuarioGrupo);
-                }
-                }else{
-                    return ResponseEntity.badRequest().body("O usuario já foi convidado");
-                }
-	}
-        
-        public void delete(Long id) {
-                usuarioGrupoRepository.delete(id);
-	}
-        
-        public List<UsuarioGrupo> findByGrupo(Long id) {
-            Grupo grupo = grupoRepository.findOne(id);
-                return usuarioGrupoRepository.findByGrupo(grupo);
-	}
-        
-        public List<Grupo> listaGrupo(Long id) {
-                Usuario usuario = usuarioRepository.findOne(id);
-                List<Grupo> listaGrupo = new ArrayList();
-                List<UsuarioGrupo> listaUG = usuarioGrupoRepository.findByUsuario(usuario);
-                for(UsuarioGrupo usuarioGrupo : listaUG){
-                    listaGrupo.add(usuarioGrupo.getGrupo());
-                }
-                return listaGrupo;
-	}
+    public List<UsuarioGrupo> lista() {
+            return (List<UsuarioGrupo>) usuarioGrupoRepository.findAll();
+    }
+
+    public ResponseEntity save(UsuarioGrupoModel usuarioGrupoModel) {
+        Usuario usuario = usuarioRepository.findByEmailIgnoreCase(usuarioGrupoModel.getEmailUsuario());
+        Grupo grupo = grupoRepository.findOne(usuarioGrupoModel.getIdGrupo());
+        UsuarioGrupo usuarioGrupoExistente = usuarioGrupoRepository.findByUsuarioAndGrupo(usuario, grupo);
+        if(usuarioGrupoExistente == null){
+            if(grupo == null){
+                return ResponseEntity.badRequest().body("Grupo não cadastrado");
+            }else if(usuario == null){
+                emailService.enviarEmail(usuarioGrupoModel.getEmailUsuario(), emailService.grupo);
+                return ResponseEntity.ok().body("Usuario convidado");
+            }else{
+                UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuario, grupo);
+                emailService.enviarEmail(usuario.getEmail(), emailService.grupo);
+                usuarioGrupoRepository.save(usuarioGrupo);
+                return ResponseEntity.ok().body(usuarioGrupo);
+            }
+            }else{
+                return ResponseEntity.badRequest().body("O usuario já foi convidado");
+            }
+    }
+
+    public void delete(Long id) {
+            usuarioGrupoRepository.delete(id);
+    }
+
+    public List<UsuarioGrupo> findByGrupo(Long id) {
+        Grupo grupo = grupoRepository.findOne(id);
+            return usuarioGrupoRepository.findByGrupo(grupo);
+    }
+
+    public List<Grupo> listaGrupo(Long id) {
+            Usuario usuario = usuarioRepository.findOne(id);
+            List<Grupo> listaGrupo = new ArrayList();
+            List<UsuarioGrupo> listaUG = usuarioGrupoRepository.findByUsuario(usuario);
+            for(UsuarioGrupo usuarioGrupo : listaUG){
+                listaGrupo.add(usuarioGrupo.getGrupo());
+            }
+            return listaGrupo;
+    }
 }

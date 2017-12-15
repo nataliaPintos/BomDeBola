@@ -63,8 +63,9 @@ public class PartidaService {
 	return partidaRepository.findOne(id);
     }
         
-    public List<Partida> lista() {
-	return (List<Partida>) partidaRepository.findAll();
+    public List<Partida> lista(Long idGrupo) {
+        Grupo grupo = grupoRepository.findOne(idGrupo);
+	return (List<Partida>) partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo);
     }
 
     public ResponseEntity save(PartidaModelPost partidaModel) {

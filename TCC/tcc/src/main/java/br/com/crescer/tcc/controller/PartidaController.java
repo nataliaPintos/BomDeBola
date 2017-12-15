@@ -50,9 +50,9 @@ public class PartidaController {
 	return partidaService.loadById(id);
     }
     
-    @GetMapping("/lista")
-    public List<Partida> list() {
-	return partidaService.lista();
+    @GetMapping("/lista/{id}")
+    public List<Partida> list(@PathVariable Long id) {
+	return partidaService.lista(id);
     }
     
     @PostMapping("/nova-partida")

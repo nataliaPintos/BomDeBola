@@ -10,7 +10,7 @@
         var partidaService = {
             criar: criar,
             carregar: carregar,
-            listarTimes: listarTimes,
+            listar: listar,
             alterar: alterar,
             cancelarPartida: cancelar,
             buscarPorId: buscarPorId,
@@ -29,8 +29,8 @@
             return $http.get(urlBase + '/nova-partida/padrao/' + id);
         }
 
-        function listarTimes() {
-            return $http.get(urlBase + '/lista');
+        function listar(id) {
+            return $http.get(urlBase + '/lista' + id);
         }
 
         function buscarPorId(id) {

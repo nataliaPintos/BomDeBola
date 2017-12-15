@@ -35,7 +35,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "PARTIDA")
-@JsonIgnoreProperties({"usuarioPartida"})
+@JsonIgnoreProperties({"usuarioPartida", "grupo"})
 public class Partida implements Serializable{
     private static final String SQ_PARTIDA = "SQ_PARTIDA";
     
