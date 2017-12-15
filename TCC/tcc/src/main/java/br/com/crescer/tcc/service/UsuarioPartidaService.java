@@ -43,7 +43,7 @@ public class UsuarioPartidaService {
         public ResponseEntity update(Long id) {
             UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
             Partida partida = usuarioPartida.getPartida();
-            if(usuarioPartida == null){
+            if(usuarioPartida != null){
                 if(partida.getTimeAtual() < partida.getTimeMax()){
                     partida.setTimeAtual(partida.getTimeAtual() + 1);
                     partidaRepository.save(partida);
