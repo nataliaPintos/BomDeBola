@@ -5,7 +5,7 @@
         .module('app')
         .controller('GrupoController', grupoController);
 
-    function grupoController(authService, GrupoService, $routeParams, $scope, $location, $filter, toastr, MapService) {
+    function grupoController(authService, GrupoService, $routeParams, $scope, $location, $filter, toastr, MapService, $route) {
         var gr = this;
         gr.alterarGrupo = alterarGrupo;
         gr.excluirGrupo = excluirGrupo;
@@ -106,6 +106,7 @@
             GrupoService.convidar(usuarioGrupo).then(response =>{
                 console.log(response.data)
                 gr.isAdicionarJogador = false;
+                $route.reload();
             });
         }
 

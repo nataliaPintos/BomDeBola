@@ -5,7 +5,8 @@
  */
 package br.com.crescer.tcc.controller;
 
-import br.com.crescer.tcc.Models.PartidaModel;
+import br.com.crescer.tcc.Models.PartidaModelGet;
+import br.com.crescer.tcc.Models.PartidaModelPost;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.UsuarioPartida;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +35,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/partida")
 @RequiredArgsConstructor
 public class PartidaController {
+    
+    @Autowired
     private final PartidaService partidaService;
+    
+    @Autowired
     private final GrupoService grupoService;
+    
+    @Autowired
     private final UsuarioPartidaService usuario_partidaService;
     
     @GetMapping("/{id}")
@@ -48,12 +56,12 @@ public class PartidaController {
     }
     
     @PostMapping("/nova-partida")
-    public ResponseEntity<Partida> save(@RequestBody @Valid PartidaModel partidaModel) {
+    public ResponseEntity<Partida> save(@RequestBody @Valid PartidaModelPost partidaModel) {
         return partidaService.save(partidaModel);
     }
     
     @GetMapping("/nova-partida/padrao/{id}")
-    public PartidaModel getPartidaModel(@PathVariable Long id) {
+    public PartidaModelGet getPartidaModel(@PathVariable Long id) {
         return partidaService.partidaModelRetorno(id);
     }
     

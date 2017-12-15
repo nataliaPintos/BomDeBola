@@ -5,7 +5,8 @@
  */
 package br.com.crescer.tcc.service;
 
-import br.com.crescer.tcc.Models.PartidaModel;
+import br.com.crescer.tcc.Models.PartidaModelGet;
+import br.com.crescer.tcc.Models.PartidaModelPost;
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.Repository.PartidaRepository;
 import br.com.crescer.tcc.entity.Grupo;
@@ -31,12 +32,32 @@ import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 @Service
 @RequiredArgsConstructor
 public class PartidaService {
+    
     @Autowired
     private final PartidaRepository partidaRepository;
+
+    @Autowired    
     private final UsuarioGrupoRepository usuarioGrupoRepository;
+    
+    @Autowired
     private final UsuarioPartidaRepository usuarioPartidaRepository;
+    
+    @Autowired
     private final GrupoRepository grupoRepository;
+    
+    @Autowired
     private final EmailService emailService;
+    
+    
+    public enum DiaSemana {
+        DOMINGO,
+        SEGUNDA_FEIRA,
+        TERCA_FEIRA,
+        QUARTA_FEIRA,
+        QUINTA_FEIRA,
+        SEXTA_FEIRA,
+        SABADO;
+    }
     
     public Partida loadById(Long id) {
 	return partidaRepository.findOne(id);
@@ -46,7 +67,7 @@ public class PartidaService {
 	return (List<Partida>) partidaRepository.findAll();
     }
 
-    public ResponseEntity save(PartidaModel partidaModel) {
+    public ResponseEntity save(PartidaModelPost partidaModel) {
         Grupo grupo = grupoRepository.findOne(partidaModel.getIdGrupo());
         if(grupo == null){
             return ResponseEntity.badRequest().body("Grupo não cadastrado");
@@ -67,9 +88,9 @@ public class PartidaService {
         }
     }
     
-    public PartidaModel partidaModelRetorno(Long idGrupo){
+    public PartidaModelGet partidaModelRetorno(Long idGrupo){
         Grupo grupo = grupoRepository.findOne(idGrupo);
-        PartidaModel partidaModel = new PartidaModel();
+        PartidaModelGet partidaModel = new PartidaModelGet();
         partidaModel.setHoraFinal(grupo.getHoraFinal());
         partidaModel.setHoraInicio(grupo.getHoraInicio());
         partidaModel.setIdGrupo(grupo.getId());
@@ -140,7 +161,7 @@ public class PartidaService {
         return partidaModel;
     }
     
-    public Partida update(PartidaModel partidaModel, Partida partida) {
+    public Partida update(PartidaModelPost partidaModel, Partida partida) {
             partida.setDiaSemana(partidaModel.getDiaSemana());
             partida.setTempoConfirmacao(partidaModel.getTempoConfirmacao());
             partida.setHoraFinal(partidaModel.getHoraFinal());

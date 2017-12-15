@@ -14,7 +14,10 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -23,7 +26,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class PartidaModel {
+@AllArgsConstructor
+@NoArgsConstructor
+public class PartidaModelPost {
     
     private int timeMax;
     private int timeMin;

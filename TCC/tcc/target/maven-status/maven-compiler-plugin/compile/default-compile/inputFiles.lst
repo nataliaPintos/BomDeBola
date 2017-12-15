@@ -1,6 +1,7 @@
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\UsuarioGrupo.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\Avaliacao.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\UsuarioService.java
+C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\PartidaModelPost.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\UsuarioLogadoModel.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\UsuarioPartidaService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\UsuarioController.java
@@ -11,6 +12,7 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\HealthC
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\Usuario.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\component\LogTime.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Repository\PartidaRepository.java
+C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\PartidaModelGet.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\GrupoService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\handler\HandlerException.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Repository\GrupoRepository.java
@@ -36,6 +38,5 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\UiContr
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\LoggedUserController.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\security\SocialUserDetailsService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\config\SwaggerConfig.java
-C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\Models\PartidaModel.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\PartidaController.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\AvaliacaoService.java
