@@ -7,6 +7,7 @@ package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Models.AvaliacaoModel;
 import br.com.crescer.tcc.Repository.AvaliacaoRepository;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 import br.com.crescer.tcc.entity.Avaliacao;
 import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.util.List;
@@ -15,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
+import br.com.crescer.tcc.Repository.UsuarioRepository;
+import br.com.crescer.tcc.entity.Usuario;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
 
 /**
  *
@@ -26,6 +30,8 @@ public class AvaliacaoService {
     @Autowired
 	private final AvaliacaoRepository avaliacaoRepository;
         private final UsuarioPartidaRepository usuarioPartidaRepository;
+        private final UsuarioGrupoRepository usuarioGrupoRepository;
+        private final UsuarioRepository usuarioRepository;
     
     public Avaliacao loadById(Long id) {
 	return avaliacaoRepository.findOne(id);
@@ -45,6 +51,10 @@ public class AvaliacaoService {
         Avaliacao avaliacaoExistente = avaliacaoRepository.findByAvaliador(avaliador);
         if(avaliacaoExistente == null){
             UsuarioPartida avaliado = usuarioPartidaRepository.findOne(avaliacaoModel.getIdAvaliado());
+            UsuarioGrupo usuarioGrupo = avaliado.getUsuarioGrupo();
+            Usuario usuario = usuarioGrupo.getUsuario();
+            usuario.setPartidasJogadas(usuario.getPartidasJogadas()+1);
+            usuario.setNotaGeral((usuario.getNotaGeral()+avaliacaoModel.getNota())/usuario.getPartidasJogadas());
             Avaliacao avaliacao = new Avaliacao(avaliacaoModel.getNota(), avaliador, avaliado);
             avaliado.setAvaliacoes(avaliado.getAvaliacoes()+1);
             avaliado.setNotaPartida((avaliado.getNotaPartida()+avaliacaoModel.getNota())/avaliado.getAvaliacoes());
