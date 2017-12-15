@@ -65,8 +65,8 @@ public class PartidaController {
         return partidaService.partidaModelRetorno(id);
     }
     
-    @PutMapping("/aceita-partida/{id}")
-    public ResponseEntity<Boolean> update(@RequestBody @Valid Long id) {
+    @GetMapping("/aceita-partida/{id}")
+    public ResponseEntity<Boolean> update(@PathVariable Long id) {
         return usuario_partidaService.update(id);
     }
     

@@ -9,11 +9,12 @@ angular.module('app')
     
     templateUrl: 'componentes/header/header.html',
     
-    controller: function ($scope, authService, UsuarioService) {
+    controller: function ($scope, authService, PartidaService, UsuarioService, toastr) {
 
       atualizarUsuario();
 
       $scope.logout = authService.logout;
+      $scope.confirmar = confirmar;
 
       $rootScope.$on('authLoginSuccess', function () {
         atualizarUsuario();
@@ -31,6 +32,13 @@ angular.module('app')
           $scope.notificacoes = response.data;
         });
         
+      }
+
+      function confirmar(id) {
+        console.log("confirmacao");
+        PartidaService.confirmar(id).then(response => {
+          toastr.success("Partida confirmada!");
+        })
       }
     }
   }

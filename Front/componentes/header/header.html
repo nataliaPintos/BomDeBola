@@ -136,7 +136,7 @@
                   <span class="text-success">
                     <strong>
                       Nova Partida {{notificacao.grupo.nome}} 
-                      <button class="btn btn-success" ng-click="confirmar(notificacao.usuarioPartida.id)">
+                      <button class="btn btn-success" ng-click="confirmar(notificacao.usuarioPartida[0].id)">
                       Vou!
                     </button>
                     <button class="btn btn-danger" ng-click="recusar(notificacao.usuarioPartida.id)">
@@ -144,7 +144,7 @@
                     </button>
                     </strong>
                   </span>
-                
+               
 
             </a>
             <div class="dropdown-divider"></div>

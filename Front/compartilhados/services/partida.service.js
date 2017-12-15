@@ -50,8 +50,8 @@
             return $http.get(urlBase + '/lista');
         }
 
-        function confirmarPartida(id) {
-            return $http.put(urlBase + '/aceita-partida/' + id);
+        function confirmar(id) {
+            return $http.get(urlBase + '/aceita-partida/' + id);
         }
 
 
