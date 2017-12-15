@@ -14,7 +14,8 @@
             alterar: alterar,
             cancelarPartida: cancelar,
             buscarPorId: buscarPorId,
-            excluirPartida: excluir
+            excluirPartida: excluir,
+            confirmar: confirmar
         }
 
         var urlBase = 'http://localhost:9090/partida';
@@ -47,6 +48,10 @@
 
         function excluir(id) {
             return $http.get(urlBase + '/lista');
+        }
+
+        function confirmarPartida(id) {
+            return $http.put(urlBase + '/aceita-partida/' + id);
         }
 
 
