@@ -21,18 +21,19 @@ public class SocialUserDetailsService implements UserDetailsService {
   @Autowired
     private UsuarioService usuarioService;
 
+    @Getter
+    @Setter
     public static class CustomUserDetails extends User {
 
-        @Getter
-        @Setter
-        //private String nome;
-        private Long nome;
+        
+        private String nome;
+        private Long id;
 
         public CustomUserDetails(Usuario usuario, Collection<? extends GrantedAuthority> authorities
         ) {
             super(usuario.getEmail(), usuario.getSenha(), authorities);
-            this.nome = usuario.getId();
-            //this.id = usuario.getId();
+            this.nome = usuario.getNome();
+            this.id = usuario.getId();
         }
 
     }

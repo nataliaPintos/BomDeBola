@@ -47,24 +47,23 @@ public class GrupoService {
 		return (List<Grupo>) grupoRepository.findAll();
 	}
 
-	public ResponseEntity save(GrupoModel grupoModel) {
+	public ResponseEntity<Grupo> save(GrupoModel grupoModel) {
                 Grupo grupo = new Grupo(grupoModel.getNome(), grupoModel.getImagem(), grupoModel.getTimeMax(), grupoModel.getTimeMin(), 
                 grupoModel.getLatitude(), grupoModel.getLongitude(), grupoModel.getDiaSemana(), grupoModel.getHoraInicio(),
                 grupoModel.getHoraFinal(), grupoModel.getDiasConfirmacao(), grupoModel.getHorasConfirmacao(), grupoModel.getTempoAvaliacao());
                 
-		grupoRepository.save(grupo);
-                Usuario usuario = usuarioRepository.findOne(grupoModel.getIdUsuario());
+		Grupo result = grupoRepository.save(grupo);
                 UsuarioGrupo usuarioGrupo = new UsuarioGrupo(usuarioComponente.usuarioLogadoDetalhes(), grupo);
                 usuarioGrupo.setAdm(true);
                 usuarioGrupoRepository.save(usuarioGrupo);
                 
-                return ResponseEntity.ok().body(grupo);
+                return ResponseEntity.ok().body(result);
 	}
         
-        public ResponseEntity update(GrupoModel grupoModel, Long id) {
+        public ResponseEntity<Grupo> update(GrupoModel grupoModel, Long id) {
             Grupo grupo = grupoRepository.findOne(id);
             if(grupo == null){
-                return ResponseEntity.badRequest().body("Grupo não cadastrado");
+                return (ResponseEntity<Grupo>) ResponseEntity.badRequest();
             }else{
                 grupo.setDiaSemana(grupoModel.getDiaSemana());
                 grupo.setDiasConfirmacao(grupoModel.getDiasConfirmacao());
@@ -77,8 +76,7 @@ public class GrupoService {
                 grupo.setNome(grupoModel.getNome());
                 grupo.setTimeMax(grupoModel.getTimeMax());
                 grupo.setTimeMin(grupoModel.getTimeMin());
-                grupoRepository.save(grupo);
-                return ResponseEntity.ok().body(grupo);
+                return ResponseEntity.ok().body(grupoRepository.save(grupo));
             }
 	}
         

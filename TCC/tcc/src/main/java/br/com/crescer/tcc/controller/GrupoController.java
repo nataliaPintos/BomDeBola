@@ -50,12 +50,12 @@ public class GrupoController {
     //Cria o grupo e cria uma linha na tabela UsuarioGrupo onde armazena o participante do grupo como adm
     //Todas outras interações entre usuarios e grupo estão na Usuario_GrupoController
     @PostMapping("/novo-grupo")
-    public ResponseEntity save(@RequestBody @Valid GrupoModel grupoModel) {
+    public ResponseEntity<Grupo> save(@RequestBody @Valid GrupoModel grupoModel) {
         return grupoService.save(grupoModel);
     }
     
     @PutMapping("/altera/{id}")
-    public ResponseEntity<Boolean> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
+    public ResponseEntity<Grupo> update(@PathVariable Long id, @RequestBody @Valid GrupoModel grupoModel){
         return grupoService.update(grupoModel, id);
     }
     

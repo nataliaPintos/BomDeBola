@@ -34,10 +34,10 @@
                     console.log(response.data);
                     console.log($routeParams.id);
                     $scope.grupo = response.data;
-                    $scope.grupo.hora_inicio = new Date($scope.grupo.hora_inicio);    
-                    $scope.grupo.hora_final = new Date($scope.grupo.hora_final);    
-                    $scope.grupo.horas_confirmacao = new Date($scope.grupo.horas_confirmacao);    
-                    $scope.grupo.tempo_avaliacao = new Date($scope.grupo.tempo_avaliacao);    
+                    $scope.grupo.horaInicio = new Date($scope.grupo.horaInicio);    
+                    $scope.grupo.horaFinal = new Date($scope.grupo.horaFinal);    
+                    $scope.grupo.horasConfirmacao = new Date($scope.grupo.horasConfirmacao);    
+                    $scope.grupo.tempoAvaliacao = new Date($scope.grupo.tempoAvaliacao);    
             });
         }
     
@@ -71,7 +71,10 @@
         function redirecionar(promise, mensagem){
             //futuro toaster
             toastr.success(mensagem);
-            promise.then(response => $location.path('/grupo/'+$scope.grupo.id+'/feed'));//response.data.grupo.id
+            promise.then(response => {
+                console.log(response.data);
+                $location.path('/grupo/'+response.data.id+'/feed');
+            });
         }
 
         function buscar(endereco) {
@@ -90,15 +93,15 @@
     
         function obterCoordenadas() {
             var place = $scope.autocomplete.getPlace();
-            $scope.grupo.latitude = place.geometry.location.lat();
-            $scope.grupo.longitude = place.geometry.location.lng();
+            $scope.local.latitude = place.geometry.location.lat();
+            $scope.local.longitude = place.geometry.location.lng();
             return;
         }
 
         function convidar(email) {
             var usuarioGrupo = {
-                email_usuario: email,
-                id_grupo: 1 //grupo.id
+                emailUsuario: email,
+                idGrupo: $scope.grupo.id
             }
             GrupoService.convidar(usuarioGrupo).then(response =>{
                 console.log(response.data)
