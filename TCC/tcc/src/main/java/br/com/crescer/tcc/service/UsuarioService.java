@@ -37,7 +37,7 @@ public class UsuarioService {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
 
-	public ResponseEntity save(UsuarioModel usuarioModel) {
+	public ResponseEntity<Usuario> save(UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());
             if(usuarioExistente == null){
                 Usuario usuario = new Usuario(usuarioModel.getNome(), usuarioModel.getEmail(), usuarioModel.getTelefone(), usuarioModel.getSenha(), usuarioModel.getNascimento());
@@ -46,7 +46,7 @@ public class UsuarioService {
 		usuario = usuarioRepository.save(usuario);
                 return ResponseEntity.ok(usuario);
             }else{
-                return ResponseEntity.badRequest().body("Usuario já existente");
+                return (ResponseEntity<Usuario>) ResponseEntity.badRequest();
             }
 	}
         
