@@ -9,7 +9,7 @@ angular.module('app')
     
     templateUrl: 'componentes/header/header.html',
     
-    controller: function ($scope, authService, PartidaService) {
+    controller: function ($scope, authService, UsuarioService) {
 
       atualizarUsuario();
 
@@ -25,6 +25,12 @@ angular.module('app')
 
       function atualizarUsuario() {
         $scope.usuario = authService.getUsuario();
+        console.log($scope.usuario.id);
+        UsuarioService.notificacoes($scope.usuario.id).then(response => {
+          console.log(response.data);
+          $scope.notificacoes = response.data;
+        });
+        
       }
     }
   }

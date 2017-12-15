@@ -10,7 +10,8 @@
         var usuarioService = {
             salvar: salvar,
             listar: listar,
-            getUsuario: getUsuario
+            getUsuario: getUsuario,
+            notificacoes: notificacoes
         }
 
         var urlBase = 'http://localhost:9090/usuario'; 
@@ -29,7 +30,9 @@
             return $http.get(urlBase + "/" + id);
         }
 
-
+        function notificacoes(id) {
+            return $http.get(urlBase + '/notificacoes/' + id);
+        }
     }
 
 }());

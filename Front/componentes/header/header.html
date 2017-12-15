@@ -131,20 +131,24 @@
             <h6 class="dropdown-header">New Alerts:</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#self">
-              <span class="text-success">
-                <strong>
-                  Nova Partida de (nomegrupo)
-                  <button class="btn btn-success" ng-click="confirmar(partida.id)">
-                  Vou!
-                </button>
-                <button class="btn btn-danger" ng-click="recusar(partida.id)">
-                  Não Vou!
-                </button>
-                </strong>
-              </span>
+
+              <div ng-repeat="notificacao in notificacoes">
+                  <span class="text-success">
+                    <strong>
+                      Nova Partida {{notificacao.diaSemana}} 
+                      <button class="btn btn-success" ng-click="confirmar(notificacao.id)">
+                      Vou!
+                    </button>
+                    <button class="btn btn-danger" ng-click="recusar(notificacao.id)">
+                      Não Vou!
+                    </button>
+                    </strong>
+                  </span>
+                
+
             </a>
             <div class="dropdown-divider"></div>
-          
+          </div>
             <a class="dropdown-item small" href="#self">View all alerts</a>
           </div>
         </li>
