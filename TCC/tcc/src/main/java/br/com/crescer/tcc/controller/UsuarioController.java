@@ -7,6 +7,8 @@ package br.com.crescer.tcc.controller;
 
 import br.com.crescer.tcc.Models.UsuarioModel;
 import br.com.crescer.tcc.entity.Usuario;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import br.com.crescer.tcc.service.UsuarioService;
 import java.util.List;
 import javax.validation.Valid;
@@ -50,5 +52,10 @@ public class UsuarioController {
         @PutMapping("/atualiza-usuario")
 	public ResponseEntity<Usuario> update(@RequestBody @Valid UsuarioModel usuarioModel) {
                 return usuarioService.update(usuarioModel);
+        }
+        
+        @GetMapping("/notificacoes/{id}")
+	public List<UsuarioGrupo> notificacoes(Long id) {
+                return usuarioService.getNotificacoes(id);
         }
 }

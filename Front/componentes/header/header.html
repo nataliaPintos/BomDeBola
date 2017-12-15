@@ -118,7 +118,7 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#self" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-bell"></i>
             <span class="d-lg-none">Alerts
               <span class="badge badge-pill badge-warning">6 New</span>
@@ -130,22 +130,22 @@
           <div class="dropdown-menu" aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">New Alerts:</h6>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="#self">
               <span class="text-success">
                 <strong>
                   Nova Partida de (nomegrupo)
-                  <button class="btn btn-success" ng-click="funcaoconfirmar">
-                    Vou!
+                  <button class="btn btn-success" ng-click="confirmar(partida.id)">
+                  Vou!
                 </button>
-                <button class="btn btn-danger" ng-click="funcaorecusar">
+                <button class="btn btn-danger" ng-click="recusar(partida.id)">
                   Não Vou!
-              </button>
+                </button>
                 </strong>
               </span>
             </a>
             <div class="dropdown-divider"></div>
           
-            <a class="dropdown-item small" href="#">View all alerts</a>
+            <a class="dropdown-item small" href="#self">View all alerts</a>
           </div>
         </li>
         <li class="nav-item">

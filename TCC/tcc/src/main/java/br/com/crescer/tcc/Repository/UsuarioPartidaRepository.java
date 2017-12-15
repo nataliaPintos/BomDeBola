@@ -6,6 +6,7 @@
 package br.com.crescer.tcc.Repository;
 
 import br.com.crescer.tcc.entity.Partida;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -19,5 +20,9 @@ public interface UsuarioPartidaRepository extends PagingAndSortingRepository<Usu
     List<UsuarioPartida> findByIdAndSolicitacao(Long id, boolean solicitacao);
     
     List<UsuarioPartida> findByPartida(Partida partida);
+    
+    List<UsuarioPartida> findByUsuarioGrupoAndSolicitacao(UsuarioGrupo usuarioGrupo, boolean solicitacao);
+
+
     
 }

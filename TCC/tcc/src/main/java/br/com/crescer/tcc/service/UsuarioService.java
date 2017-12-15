@@ -6,13 +6,18 @@
 package br.com.crescer.tcc.service;
 
 import br.com.crescer.tcc.Models.UsuarioModel;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 import br.com.crescer.tcc.entity.Usuario;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
+import br.com.crescer.tcc.entity.UsuarioPartida;
 import br.com.crescer.tcc.utilitarios.UsuarioComponente;
+import java.util.LinkedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 /**
@@ -22,8 +27,17 @@ import org.springframework.http.ResponseEntity;
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
+    
         @Autowired
 	private final UsuarioRepository usuarioRepository;
+        
+        @Autowired
+	private final UsuarioGrupoRepository usuarioGrupoRepository;
+        
+        @Autowired
+	private final UsuarioPartidaRepository usuarioPartidaRepository;
+        
+        private UsuarioComponente usuarioComponente;
 
 	public Usuario findByEmail(String username) {
 		return usuarioRepository.findByEmailIgnoreCase(username);
@@ -36,6 +50,24 @@ public class UsuarioService {
         public List<Usuario> lista() {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
+        
+        public List<UsuarioGrupo> getNotificacoes(Long id){
+                Usuario usuario = usuarioRepository.findOne(id); //);
+                List<UsuarioGrupo> usuarioGrupoList = usuarioGrupoRepository.findByUsuario(usuario);
+                
+//                usuarioGrupoList = usuario.getUsuarioGrupo();
+//                List<UsuarioPartida> notificacoes = null;
+//                usuarioGrupoList.forEach((_item) -> {
+//                    //    temp = usuarioPartidaRepository.findByUsuarioGrupoAndSolicitacao(usuarioGrupo, true);
+//                    _item.getUsuarioPartida().forEach((userPartida) -> {
+//                        notificacoes.add(userPartida);
+//                    });
+//                });
+//                    
+                                
+                return usuarioGrupoList;
+           
+        }
 
 	public ResponseEntity<Usuario> save(UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());

@@ -9,7 +9,7 @@ angular.module('app')
     
     templateUrl: 'componentes/header/header.html',
     
-    controller: function ($scope, authService) {
+    controller: function ($scope, authService, PartidaService) {
 
       atualizarUsuario();
 
