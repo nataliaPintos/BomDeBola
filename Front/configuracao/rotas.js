@@ -43,8 +43,8 @@
         
         .when('/grupo/:id?/nova-partida', {
             templateUrl: 'componentes/partida/novaPartida.html',
-            controller: 'PartidaController',
-            controllerAs: 'partidaCtrl'
+            controller: 'NovaPartidaController',
+            controllerAs: 'novaPartidaCtrl'
         })
 
         .when('/grupo/:id?/partida/feed', {
@@ -53,7 +53,7 @@
             controllerAs: 'feedPartidaCtrl'
         })
 
-        .when('/grupo/:id?/partida/:idpartida?/times', {
+        .when('/grupo/:id?/partida/:partidaId?/times', {
             templateUrl: 'componentes/partida/times.html',
             controller: 'PartidaController',
             controllerAs: 'partidaCtrl'

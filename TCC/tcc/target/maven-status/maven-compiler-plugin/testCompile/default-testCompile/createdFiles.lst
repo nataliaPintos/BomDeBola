@@ -9,3 +9,4 @@ br\com\crescer\tcc\repository\UsuarioGrupoTestRepository.class
 br\com\crescer\tcc\service\UsuarioGrupoTestService.class
 br\com\crescer\tcc\service\UsuarioTestService.class
 br\com\crescer\tcc\repository\UsuarioTestRepository.class
+br\com\crescer\tcc\service\AvaliacaoTestService.class
