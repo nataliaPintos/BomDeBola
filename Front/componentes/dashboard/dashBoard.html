@@ -12,10 +12,10 @@
       <h1>Minha DashBoard</h1>
       <!-- Icon Cards-->
 
-      <div ng-repeat="grupo in perfilCtrl.grupos">
+    
       <div class="row">
      
-          <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="col-xl-3 col-sm-6 mb-3" ng-repeat="grupo in perfilCtrl.grupos">
             <div class="card text-white bg-success o-hidden">
               <div class="card-body">
                 <div class="card-body-icon">
@@ -29,13 +29,9 @@
                   <i class="fa fa-angle-right"></i>
                 </span>
               </a>
-            </div>
           </div>
         </div>
       </div>
-
-      <!-- /.container-fluid-->
-      <!-- /.content-wrapper-->
       <footer class="sticky-footer">
         <div class="container">
           <div class="text-center">
@@ -43,7 +39,7 @@
           </div>
         </div>
       </footer>
-      <!-- Scroll to Top Button-->
+    
     </body>
   </div>
 </div>

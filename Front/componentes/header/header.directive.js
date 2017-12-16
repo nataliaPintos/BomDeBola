@@ -30,6 +30,7 @@ angular.module('app')
         UsuarioService.notificacoes($scope.usuario.id).then(response => {
           console.log(response.data);
           $scope.notificacoes = response.data;
+          $scope.$apply();
         });
         
       }
