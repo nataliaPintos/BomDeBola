@@ -45,8 +45,8 @@
 
 
                 <div class="form-group">
-                    <label class="label">Data limite para avaliação dos jogadores</label>
-                    <input class="form-control" type="datetime-local" ng-model="partida.tempoAvaliacao" name="tempoAvaliacao" required>
+                    <label class="label">Horas limite para avaliação dos jogadores</label>
+                    <input class="form-control" type="time" ng-model="partida.tempoAvaliacao" name="tempoAvaliacao" required>
                 </div>
 
                 <button class="btn btn-success" ng-disabled="!formPartida.$valid" ng-click="partidaCtrl.criarPartida(partida)">Criar Nova Partida</button>

@@ -127,28 +127,25 @@
               <i class="fa fa-fw fa-circle"></i>
             </span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">Novas Partidas</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#self">
-
+          <div class="dropdown-menu">
+              <h6 class="dropdown-header">Novas Partidas</h6>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-item">
               <div ng-repeat="notificacao in notificacoes">
-                  <span class="text-success">
-                    <strong>
-                      Nova Partida {{notificacao.grupo.nome}} 
-                      <button class="btn btn-success" ng-click="confirmar(notificacao.usuarioPartida[0].id)">
-                      Vou!
-                    </button>
-                    <button class="btn btn-danger" ng-click="recusar(notificacao.usuarioPartida.id)">
-                      Não Vou!
-                    </button>
-                    </strong>
-                  </span>
-               
-
-            </a>
-            <div class="dropdown-divider"></div>
-          </div>
+              <div style="margin: 10px" ng-repeat="partida in notificacao.usuarioPartida">
+              <span ng-if="partida.solicitacao" class="text-success">
+              <strong>
+              Nova Partida {{ notificacao.grupo.nome }} 
+              <button type="button" class="btn btn-success" ng-click="confirmar(partida.id)">
+              Vou!
+              </button>
+              <button type="button" class="btn btn-danger" ng-click="recusar(partida.id)">
+              Não Vou!
+              </button>
+              </strong>
+              </span>
+              </div>
+              </div>
             <a class="dropdown-item small" href="#self">View all alerts</a>
           </div>
         </li>
