@@ -11,8 +11,10 @@ package br.com.crescer.tcc.service;
  */
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
+import java.time.LocalDateTime;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -30,15 +32,12 @@ public class GrupoTestService {
     
     @Test
     public void testarLoadById() {
-        Grupo grupo = new Grupo();
-        grupo.setDiaSemana(2);
-        grupo.setDiasConfirmacao(1);
-        grupo.setImagem("img_grupo");
-        grupo.setLatitude(12345);
-        grupo.setLongitude(54321);
-        grupo.setNome("Grupo");
-        grupo.setTimeMax(16);
-        grupo.setTimeMin(14);
+        LocalDateTime inicio = LocalDateTime.of(1999, 05, 22, 19, 00, 00);
+        LocalDateTime finall = LocalDateTime.of(1999, 05, 22, 20, 00, 00);
+        LocalDateTime confirmacao = LocalDateTime.now(); confirmacao.plusDays(2); confirmacao.plusHours(12); confirmacao.plusMinutes(30);
+        LocalDateTime avaliacao = LocalDateTime.now(); avaliacao.plusHours(12); avaliacao.plusMinutes(30);
+        Grupo grupo = new Grupo("Grupo", "img", 16, 14, 8759, 8654864, 1, inicio, finall, 2,
+        confirmacao, avaliacao);
         
         when(grupoRepository.findOne(1L)).thenReturn(grupo);
         
@@ -52,5 +51,9 @@ public class GrupoTestService {
         assertEquals(grupo.getNome(), grupo2.getNome());
         assertEquals(grupo.getTimeMax(), grupo2.getTimeMax());
         assertEquals(grupo.getTimeMin(), grupo2.getTimeMin());
+        assertEquals(grupo.getHoraFinal(), grupo2.getHoraFinal());
+        assertEquals(grupo.getHoraInicio(), grupo2.getHoraInicio());
+        assertEquals(grupo.getHorasConfirmacao(), grupo2.getHorasConfirmacao());
+        assertEquals(grupo.getTempoAvaliacao(), grupo2.getTempoAvaliacao());
     }
 }

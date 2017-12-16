@@ -5,6 +5,7 @@ import br.com.crescer.tcc.entity.Usuario;
 import java.time.LocalDate;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

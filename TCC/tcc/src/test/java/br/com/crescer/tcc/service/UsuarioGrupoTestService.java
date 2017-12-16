@@ -22,6 +22,7 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import org.junit.Ignore;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioGrupoTestService {

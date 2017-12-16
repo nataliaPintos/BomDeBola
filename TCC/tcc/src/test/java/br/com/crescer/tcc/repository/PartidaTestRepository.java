@@ -124,4 +124,37 @@ public class PartidaTestRepository {
                 assertEquals(partida.getTempoConfirmacao(), partidaRepository.findOne(partida.getId()).getTempoConfirmacao());
                 assertEquals(partida.getTempoAvaliacao(), partidaRepository.findOne(partida.getId()).getTempoAvaliacao());
 	}
+        
+        @Test
+	public void testFindByGrupo() {
+                LocalDateTime inicio = LocalDateTime.of(1999, 05, 22, 19, 00, 00);
+                LocalDateTime finall = LocalDateTime.of(1999, 05, 22, 20, 00, 00);
+                LocalDateTime confirmacao = LocalDateTime.now(); confirmacao.plusDays(2); confirmacao.plusHours(12); confirmacao.plusMinutes(30);
+                LocalDateTime avaliacao = LocalDateTime.now(); avaliacao.plusHours(12); avaliacao.plusMinutes(30);
+                Grupo grupo = new Grupo("Grupo", "img", 16, 14, 8759, 8654864, 1, inicio, finall, 2,
+                confirmacao, avaliacao);
+                testEntityManager.persist(grupo);
+                LocalDate semana = LocalDate.of(2017, 05, 12);
+                Partida partida = new Partida(16, 14, 8759, 8654864, semana, inicio, finall, confirmacao, avaliacao, grupo);
+                testEntityManager.persist(partida);
+
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getTimeMax).collect(toList()).contains(partida.getTimeMax()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getTimeMin).collect(toList()).contains(partida.getTimeMin()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getLatitude).collect(toList()).contains(partida.getLatitude()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getLongitude).collect(toList()).contains(partida.getLongitude()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getDiaSemana).collect(toList()).contains(partida.getDiaSemana()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getHoraInicio).collect(toList()).contains(partida.getHoraInicio()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getHoraFinal).collect(toList()).contains(partida.getHoraFinal()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getTempoConfirmacao).collect(toList()).contains(partida.getTempoConfirmacao()));
+                assertTrue(StreamSupport.stream(partidaRepository.findByGrupoOrderByDiaSemanaDesc(grupo).spliterator(), false)
+				.map(Partida::getTempoAvaliacao).collect(toList()).contains(partida.getTempoAvaliacao()));
+	}
 }

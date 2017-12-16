@@ -10,9 +10,6 @@ import br.com.crescer.tcc.entity.Grupo;
 import java.time.LocalDateTime;
 import static java.util.stream.Collectors.toList;
 import java.util.stream.StreamSupport;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,7 @@ import static org.junit.Assert.assertTrue;
  *
  * @author luan.avila
  */
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)

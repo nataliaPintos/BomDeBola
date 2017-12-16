@@ -1,8 +1,11 @@
 br\com\crescer\tcc\repository\PartidaTestRepository.class
+br\com\crescer\tcc\repository\GrupoTestRepository.class
+br\com\crescer\tcc\service\UsuarioPartidaTestService.class
+br\com\crescer\tcc\repository\UsuarioPartidaTestRepository.class
 br\com\crescer\tcc\service\PartidaTestService.class
 br\com\crescer\tcc\service\GrupoTestService.class
-br\com\crescer\tcc\repository\GrupoTestRepository.class
+br\com\crescer\tcc\repository\AvaliacaoTestRepository.class
+br\com\crescer\tcc\repository\UsuarioGrupoTestRepository.class
 br\com\crescer\tcc\service\UsuarioGrupoTestService.class
-br\com\crescer\tcc\service\UsuarioPartidaTestService.class
 br\com\crescer\tcc\service\UsuarioTestService.class
 br\com\crescer\tcc\repository\UsuarioTestRepository.class

@@ -20,6 +20,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
 
 /**
  *
