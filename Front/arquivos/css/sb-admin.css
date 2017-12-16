@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - SB Admin v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/sb-admin)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
- */
 
 html {
   position: relative;
@@ -161,8 +156,6 @@ body.sticky-footer .content-wrapper {
     left: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     margin-top: 56px;
   }
@@ -219,8 +212,6 @@ body.sticky-footer .content-wrapper {
     display: flex;
     overflow-x: hidden;
     overflow-y: auto;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     margin-top: calc(100vh - 56px);
   }
@@ -259,14 +250,6 @@ body.sidenav-toggled #mainNav.fixed-top .sidenav-toggler .nav-link {
   width: 55px !important;
 }
 
-body.sidenav-toggled #mainNav.fixed-top #sidenavToggler i {
-  -webkit-transform: scaleX(-1);
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: 'FlipH';
-}
 
 #mainNav.static-top .sidenav-toggler {
   display: none;
@@ -278,14 +261,6 @@ body.sidenav-toggled #mainNav.fixed-top #sidenavToggler i {
   }
 }
 
-body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
-  -webkit-transform: scaleX(-1);
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: 'FlipH';
-}
 
 .content-wrapper {
   overflow-x: hidden;
@@ -298,10 +273,6 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
   }
 }
 
-#sidenavToggler i {
-  font-weight: 800;
-  margin-bottom: 10px;
-}
 
 .navbar-sidenav-tooltip.show {
   display: none;
@@ -434,8 +405,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   top: -25px;
   right: -25px;
   font-size: 5rem;
-  -webkit-transform: rotate(15deg);
-  -ms-transform: rotate(15deg);
   transform: rotate(15deg);
 }
 
@@ -486,7 +455,6 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
-
-.notificacoes{
+.not{
   margin-right: 1000px;
 }
