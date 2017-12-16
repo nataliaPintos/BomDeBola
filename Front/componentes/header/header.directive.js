@@ -30,7 +30,8 @@ angular.module('app')
         UsuarioService.notificacoes($scope.usuario.id).then(response => {
           console.log(response.data);
           $scope.notificacoes = response.data;
-          $scope.$apply();
+          atualizarUsuario();
+        
         });
         
       }
@@ -39,6 +40,7 @@ angular.module('app')
         console.log("confirmacao");
         PartidaService.confirmar(id).then(response => {
           toastr.success("Partida confirmada!");
+       
         })
       }
     }
