@@ -86,6 +86,7 @@ public class UsuarioPartidaService {
                 lista.get(i).setTime('B');
             }
         }
+        usuarioPartidaRepository.save(lista);
         return lista;
     }
 }

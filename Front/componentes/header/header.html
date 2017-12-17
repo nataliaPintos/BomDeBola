@@ -69,19 +69,17 @@
             <div class="dropdown-divider"></div>
             <div class="dropdown-item">
               <div ng-repeat="notificacao in notificacoes">
-                <div style="margin: 10px" ng-repeat="partida in notificacao.usuarioPartida">
-                  <span ng-if="partida.solicitacao" class="text-success">
+                  <span ng-if="notificacao.solicitacao" class="text-success">
                     <strong>
-                      Nova Partida {{ notificacao.grupo.nome }}
-                      <button type="button" class="btn btn-success" ng-click="confirmar(partida.id)">
+                      Nova Partida {{ notificacao.partida.diaSemana }}
+                      <button type="button" class="btn btn-success" ng-click="confirmar(notificacao.id)">
                         Vou!
                       </button>
-                      <button type="button" class="btn btn-danger" ng-click="recusar(partida.id)">
+                      <button type="button" class="btn btn-danger" ng-click="recusar(notificacao.id)">
                         Não Vou!
                       </button>
                     </strong>
                   </span>
-                </div>
               </div>
               <a class="dropdown-item small" href="#self">View all alerts</a>
             </div>
