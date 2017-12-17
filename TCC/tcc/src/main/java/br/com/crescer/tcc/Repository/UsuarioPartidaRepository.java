@@ -21,6 +21,9 @@ public interface UsuarioPartidaRepository extends PagingAndSortingRepository<Usu
     
     List<UsuarioPartida> findByPartida(Partida partida);
     
+    
+    List<UsuarioPartida> findByPartidaIdAndSolicitacao(Long id, boolean solicitacao);
+    
     List<UsuarioPartida> findByUsuarioGrupoAndSolicitacao(UsuarioGrupo usuarioGrupo, boolean solicitacao);
 
 

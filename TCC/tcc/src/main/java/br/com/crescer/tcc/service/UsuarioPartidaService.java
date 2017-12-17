@@ -65,6 +65,10 @@ public class UsuarioPartidaService {
         public List<UsuarioPartida> listaDeParticipantes(Long id) {
 		return usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
 	}
+          public List<UsuarioPartida> listaDeParticipantesPartida(Long id) {
+		return usuarioPartidaRepository.findByPartidaIdAndSolicitacao(id, false);
+	}
+        
         
         public List<UsuarioPartida> findByPartida(Partida partida) {
 		return usuarioPartidaRepository.findByPartida(partida);
