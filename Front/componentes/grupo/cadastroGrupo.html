@@ -13,7 +13,7 @@
         <p ng-if="grupoForm.$invalid && grupoForm.$submitted" class="help">Formulário Inválido, preencha todos os campos com atenção e tente novamente.</p>
         <form name="grupoForm" ng-controller="GrupoController">
           <div class="field">
-            <label class="label">Nome do Grupo
+            <label class="label">Nome do grupo:
           <small>*</small>
         </label>
             <p class="form-group">
@@ -25,7 +25,7 @@
 
           <div class="row">
             <div class="col-sm">
-              <label class="label">Horário de Inicio
+              <label class="label">Horário de inicio das partidas:
             <small>*</small>
           </label>
 
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-sm">
-              <label class="label">Horário de Fim
+              <label class="label">Horário de término:
             <small>*</small>
           </label>
 
@@ -45,34 +45,33 @@
             </div>
           </div>
 
-
           <div class="row">
-            <div class="col-sm">
-              <label class="label">Máximo de Jogadores
-            <small>*</small>
-          </label>
-              <div class="form-group">
-                <input class="form-control" min="1" type="number" ng-model="grupo.timeMax" name="timeMax" required>
-              </div>
-            </div>
-
-            <div class="col-sm">
-              <label class="label">Mínimo de Jogadores
+          <div class="col-sm">
+              <label class="label">Mínimo de jogadores:
             <small>*</small>
           </label>
               <div class="form-group">
                 <input class="form-control" type="number" min="1" ng-model="grupo.timeMin" name="timeMin" required>
               </div>
             </div>
-          </div>
+          
 
+            <div class="col-sm">
+              <label class="label">Máximo de jogadores:
+            <small>*</small>
+          </label>
+              <div class="form-group">
+                <input class="form-control" min="1" type="number" ng-model="grupo.timeMax" name="timeMax" required>
+              </div>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-sm">
 
               <div class="form-group">
 
-                <label class="label">Dia do Jogo
+                <label class="label">Dia das partidas:
               <small>*</small>
             </label>
 
@@ -80,13 +79,13 @@
                   <div class="control">
                     <div class="select is-fullwidth">
                       <select class="form-control" ng-model="grupo.diaSemana" name="diaSemana" required>
-                    <option value="2">Segunda</option>
-                    <option value="3">Terça</option>
-                    <option value="4">Quarta</option>
-                    <option value="5">Quinta</option>
-                    <option value="6">Sexta</option>
-                    <option value="7">Sábado</option>
-                    <option value="1">Domingo</option>
+                        <option value="1">Segunda</option>
+                        <option value="2">Terça</option>
+                        <option value="3">Quarta</option>
+                        <option value="4">Quinta</option>
+                        <option value="5">Sexta</option>
+                        <option value="6">Sábado</option>
+                        <option value="7">Domingo</option>
                   </select>
                     </div>
                   </div>
@@ -98,7 +97,7 @@
 
               <div class="field">
 
-                <label class="label">Dia da Confirmação
+                <label class="label">Dia limite para confirmar partida:
               <small>*</small>
             </label>
 
@@ -106,13 +105,13 @@
                   <div class="control">
                     <div class="select is-fullwidth">
                       <select class="form-control" ng-model="grupo.diasConfirmacao" name="diasConfirmacao" required>
-                    <option value="2">Segunda</option>
-                    <option value="3">Terça</option>
-                    <option value="4">Quarta</option>
-                    <option value="5">Quinta</option>
-                    <option value="6">Sexta</option>
-                    <option value="7">Sábado</option>
-                    <option value="1">Domingo</option>
+                    <option value="1">Segunda</option>
+                    <option value="2">Terça</option>
+                    <option value="3">Quarta</option>
+                    <option value="4">Quinta</option>
+                    <option value="5">Sexta</option>
+                    <option value="6">Sábado</option>
+                    <option value="7">Domingo</option>
                   </select>
                     </div>
                   </div>
@@ -123,7 +122,7 @@
 
           <div class="row">
             <div class="col-sm">
-              <label class="label">Tempo para Confirmação de Participação
+              <label class="label">Hora limite para confirmar participação:
             <small>*</small>
           </label>
 
@@ -133,7 +132,7 @@
             </div>
 
             <div class="col-sm">
-              <label class="label">Tempo de Avaliação dos Jogadores
+              <label class="label">Tempo para avaliação dos jogadores (mantenha 00:00 para 24h):
             <small>*</small>
           </label>
 
@@ -144,10 +143,9 @@
           </div>
 
           <div class="form-group">
-            <label class="label" for="endereco">Endereço do Jogo</label>
+            <label class="label" for="endereco">Endereço dos Jogos:</label>
 
-            <input id="autocomplete" class="form-control form-group" placeholder="Ex: Avenida Theodomiro Porto da Fonseca, 3601" class="form-control"
-              type="text" ng-model="localizacao" required>
+            <input id="autocomplete" class="form-control form-group" placeholder="Ex: Avenida Theodomiro Porto da Fonseca, 3601" class="form-control" type="text" ng-model="localizacao" required>
           </div>
 
           <button type="submit" ng-disabled="!grupoForm.$valid" class="btn pull-right btn-success" ng-click="grupoCtrl.alterarGrupo(grupo)">

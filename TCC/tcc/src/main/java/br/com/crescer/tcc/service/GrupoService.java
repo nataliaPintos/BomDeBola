@@ -76,6 +76,7 @@ public class GrupoService {
                 grupo.setNome(grupoModel.getNome());
                 grupo.setTimeMax(grupoModel.getTimeMax());
                 grupo.setTimeMin(grupoModel.getTimeMin());
+                grupo.setTempoAvaliacao(grupoModel.getTempoAvaliacao());
                 return ResponseEntity.ok().body(grupoRepository.save(grupo));
             }
 	}

@@ -24,6 +24,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
+import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.MINUTES;
+import static java.time.temporal.ChronoUnit.SECONDS;
 
 /**
  *
@@ -97,68 +100,36 @@ public class PartidaService {
         partidaModel.setIdGrupo(grupo.getId());
         partidaModel.setLatitude(grupo.getLatitude());
         partidaModel.setLongitude(grupo.getLongitude());
-        partidaModel.setTempoAvaliacao(grupo.getTempoAvaliacao());
         partidaModel.setTimeMax(grupo.getTimeMax());
         partidaModel.setTimeMin(grupo.getTimeMin());
         
-        LocalDate diaDoJogo = LocalDate.now();
-        switch (grupo.getDiaSemana()) {
-            case 1:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
-                break;
-            case 2:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-                break;
-            case 3:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-                break;
-            case 4:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
-                break;
-            case 5:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
-                break;
-            case 6:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
-                break;
-            case 7:
-                diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
-                break;
-            default:
-                break;
-        }
+        //calcula proximo dia do jogo
+        LocalDateTime diaDoJogo = LocalDateTime.now().truncatedTo(DAYS);
+        diaDoJogo = diaDoJogo.with(TemporalAdjusters.next(DayOfWeek.of(grupo.getDiaSemana())));
         partidaModel.setDiaSemana(diaDoJogo);
         
-        LocalDateTime diaDaConfirmacao = LocalDateTime.now();
-        switch (grupo.getDiasConfirmacao()) {
-            case 1:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
-                break;
-            case 2:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-                break;
-            case 3:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-                break;
-            case 4:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
-                break;
-            case 5:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
-                break;
-            case 6:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
-                break;
-            case 7:
-                diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
-                break;
-            default:
-                break;
+        //calcula a data e hora limite para avaliacao - de acordo com o numero de horas estabelecidas
+        LocalDateTime dataLimiteAvaliacao = LocalDateTime.now().truncatedTo(DAYS);
+        dataLimiteAvaliacao = dataLimiteAvaliacao.with(TemporalAdjusters.next(DayOfWeek.of(grupo.getDiaSemana())));
+        
+        if ((grupo.getTempoAvaliacao().getMinute() + grupo.getTempoAvaliacao().getHour()) == 0){
+            dataLimiteAvaliacao = dataLimiteAvaliacao.with(TemporalAdjusters.next(DayOfWeek.of(grupo.getDiaSemana()+1)));
+            dataLimiteAvaliacao = dataLimiteAvaliacao.withHour(grupo.getHoraFinal().getHour());
+            dataLimiteAvaliacao = dataLimiteAvaliacao.withMinute(grupo.getHoraFinal().getMinute());
+        } else {
+            dataLimiteAvaliacao = dataLimiteAvaliacao.withHour(grupo.getHoraFinal().getHour() + grupo.getTempoAvaliacao().getHour());
+            dataLimiteAvaliacao = dataLimiteAvaliacao.withMinute(grupo.getHoraFinal().getMinute() + grupo.getTempoAvaliacao().getMinute());
         }
-        diaDaConfirmacao.withHour(grupo.getHorasConfirmacao().getHour());
-        diaDaConfirmacao.withMinute(grupo.getHorasConfirmacao().getMinute());
-        diaDaConfirmacao.withSecond(grupo.getHorasConfirmacao().getSecond());
+        
+        partidaModel.setTempoAvaliacao(dataLimiteAvaliacao);
+        
+        //calcula a data e hora limite cofirmar a participação na partida 
+        LocalDateTime diaDaConfirmacao = LocalDateTime.now().truncatedTo(DAYS);
+        diaDaConfirmacao = diaDaConfirmacao.with(TemporalAdjusters.next(DayOfWeek.of(grupo.getDiasConfirmacao())));
+        diaDaConfirmacao = diaDaConfirmacao.withHour(grupo.getHorasConfirmacao().getHour());
+        diaDaConfirmacao = diaDaConfirmacao.withMinute(grupo.getHorasConfirmacao().getMinute());
         partidaModel.setTempoConfirmacao(diaDaConfirmacao);
+        
         return partidaModel;
     }
     

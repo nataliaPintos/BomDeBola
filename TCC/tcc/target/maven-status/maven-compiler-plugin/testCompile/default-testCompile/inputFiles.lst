@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\GrupoTestRepository.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioPartidaTestRepository.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioGrupoTestRepository.java
@@ -11,17 +10,3 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\PartidaTes
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioTestService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\AvaliacaoTestService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\GrupoTestService.java
-=======
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\PartidaTestService.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioPartidaTestService.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\PartidaTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioGrupoTestService.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioGrupoTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\GrupoTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\UsuarioPartidaTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\AvaliacaoTestService.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\repository\AvaliacaoTestRepository.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\GrupoTestService.java
-C:\DEV\BomDeBola\TCC\tcc\src\test\java\br\com\crescer\tcc\service\UsuarioTestService.java
->>>>>>> d67fafb28d2bdcc6c55f359a23bdc1b2562fb4b4

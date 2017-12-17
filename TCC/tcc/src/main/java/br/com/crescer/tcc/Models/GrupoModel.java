@@ -28,18 +28,21 @@ public class GrupoModel {
     private double latitude;
     private double longitude;
     private int diaSemana;
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime horaInicio;
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime horaFinal;
     private int diasConfirmacao;
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime horasConfirmacao;
+    
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime tempoAvaliacao;
-    private Long idUsuario;
 }
