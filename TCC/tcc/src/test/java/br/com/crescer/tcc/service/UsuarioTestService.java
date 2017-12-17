@@ -1,5 +1,6 @@
 package br.com.crescer.tcc.service;
 
+import br.com.crescer.tcc.Models.UsuarioModel;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
 import br.com.crescer.tcc.entity.Usuario;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.http.ResponseEntity;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioTestService {
