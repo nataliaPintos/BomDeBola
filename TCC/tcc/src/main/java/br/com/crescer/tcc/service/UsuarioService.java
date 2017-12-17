@@ -64,7 +64,7 @@ public class UsuarioService {
            
         }
 
-	public ResponseEntity save(UsuarioModel usuarioModel) {
+	public ResponseEntity<Usuario> save(UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());
             if(usuarioExistente == null){
                 Usuario usuario = new Usuario(usuarioModel.getNome(), usuarioModel.getEmail(), usuarioModel.getTelefone(), usuarioModel.getSenha(), usuarioModel.getNascimento());
