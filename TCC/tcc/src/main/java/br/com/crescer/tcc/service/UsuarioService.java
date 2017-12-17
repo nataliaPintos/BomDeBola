@@ -18,6 +18,7 @@ import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.entity.UsuarioPartida;
 import br.com.crescer.tcc.utilitarios.UsuarioComponente;
 import java.util.LinkedList;
+import java.util.function.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 /**
@@ -51,21 +52,15 @@ public class UsuarioService {
 		return (List<Usuario>) usuarioRepository.findAll();
 	}
         
-        public List<UsuarioGrupo> getNotificacoes(Long id){
+        public List<UsuarioPartida> getNotificacoes(Long id){
                 Usuario usuario = usuarioRepository.findOne(id); //);
                 List<UsuarioGrupo> usuarioGrupoList = usuarioGrupoRepository.findByUsuario(usuario);
-                
-//                usuarioGrupoList = usuario.getUsuarioGrupo();
-//                List<UsuarioPartida> notificacoes = null;
-//                usuarioGrupoList.forEach((_item) -> {
-//                    //    temp = usuarioPartidaRepository.findByUsuarioGrupoAndSolicitacao(usuarioGrupo, true);
-//                    _item.getUsuarioPartida().forEach((userPartida) -> {
-//                        notificacoes.add(userPartida);
-//                    });
-//                });
-//                    
-                                
-                return usuarioGrupoList;
+                List<UsuarioPartida> usuarioPartidaList = new LinkedList<>();
+                usuarioGrupoList.forEach((UsuarioGrupo item) -> {
+                    usuarioPartidaRepository.findByUsuarioGrupoAndSolicitacao(item, true).forEach(usuarioPartidaList::add);
+                });
+                              
+                return usuarioPartidaList;
            
         }
 

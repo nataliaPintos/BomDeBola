@@ -17,15 +17,19 @@
 
         function listaJogadores() {
             PartidaService.listaJogadores(vm.idPartida).then(response =>{
-                $scope.users = response.data;
-                console.log($scope.users);
+                $scope.jogadores = response.data;
+                console.log($scope.jogadores);
             });
         }  
         
         function sortearTimes() {
             PartidaService.sortear(vm.idPartida).then(response =>{
-                $scope.users = response.data;
+                $scope.jogadores = response.data;
+                $scope.timea = response.data.filter(player => player.time === "A");
+                $scope.timeb = response.data.filter(player => player.time === "B");
                 console.log(response.data);
+                console.log($scope.timea);
+                console.log($scope.timeb);
             });
         }  
 

@@ -32,7 +32,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "USUARIO_GRUPO")
-//@JsonIgnoreProperties({"usuarioPartida"})
+@JsonIgnoreProperties({"usuarioPartida"})
 public class UsuarioGrupo implements Serializable{
     
     private static final String SQ_USUARIO_GRUPO = "SQ_USUARIO_GRUPO";

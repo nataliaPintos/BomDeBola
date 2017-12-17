@@ -55,7 +55,7 @@ public class UsuarioController {
         }
         
         @GetMapping("/notificacoes/{id}")
-	public List<UsuarioGrupo> notificacoes(@PathVariable Long id) {
+	public List<UsuarioPartida> notificacoes(@PathVariable Long id) {
                 return usuarioService.getNotificacoes(id);
         }
 }

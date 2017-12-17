@@ -7,13 +7,10 @@ package br.com.crescer.tcc.controller;
 
 import br.com.crescer.tcc.Models.PartidaModelGet;
 import br.com.crescer.tcc.Models.PartidaModelPost;
-import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.UsuarioPartida;
-import br.com.crescer.tcc.service.GrupoService;
 import br.com.crescer.tcc.service.PartidaService;
 import br.com.crescer.tcc.service.UsuarioPartidaService;
-import java.time.LocalDateTime;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,12 +34,9 @@ public class PartidaController {
     
     @Autowired
     private final PartidaService partidaService;
-    
+       
     @Autowired
-    private final GrupoService grupoService;
-    
-    @Autowired
-    private final UsuarioPartidaService usuario_partidaService;
+    private final UsuarioPartidaService usuarioPartidaService;
     
     @GetMapping("/{id}")
     public Partida getPartidaById(@PathVariable Long id) {
@@ -67,16 +60,16 @@ public class PartidaController {
     
     @GetMapping("/aceita-partida/{id}")
     public ResponseEntity<Boolean> update(@PathVariable Long id) {
-        return usuario_partidaService.update(id);
+        return usuarioPartidaService.update(id);
     }
     
     @GetMapping("/lista-jogadores/{id}")
     public List<UsuarioPartida> listaJogadores(@PathVariable Long id) {
-	return usuario_partidaService.listaDeParticipantesPartida(id);
+	return usuarioPartidaService.listaDeParticipantesPartida(id);
     }
     
     @GetMapping("/sorteia-times/{id}")
     public List<UsuarioPartida> sorteiaTimes(@PathVariable Long id) {
-	return usuario_partidaService.sortearTime(id);
+	return usuarioPartidaService.sortearTime(id);
     }
 }

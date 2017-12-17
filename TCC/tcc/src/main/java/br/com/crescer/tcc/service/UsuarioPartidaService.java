@@ -29,71 +29,63 @@ public class UsuarioPartidaService {
     private final PartidaRepository partidaRepository;
     
     public UsuarioPartida loadById(Long id) {
-		return usuarioPartidaRepository.findOne(id);
-	}
-        
-        public List<UsuarioPartida> lista() {
-		return (List<UsuarioPartida>) usuarioPartidaRepository.findAll();
-	}
+            return usuarioPartidaRepository.findOne(id);
+    }
 
-	public void save(UsuarioPartida usuarioPartida) {
-		usuarioPartida = usuarioPartidaRepository.save(usuarioPartida);
-	}
-        
-        public ResponseEntity update(Long id) {
-            UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
-            Partida partida = usuarioPartida.getPartida();
-            if(usuarioPartida != null){
-                if(partida.getTimeAtual() < partida.getTimeMax()){
-                    partida.setTimeAtual(partida.getTimeAtual() + 1);
-                    partidaRepository.save(partida);
-                    usuarioPartida.setSolicitacao(false);
-                    usuarioPartidaRepository.save(usuarioPartida);
-                    return ResponseEntity.ok().body(usuarioPartida);
-                }else{
-                    return ResponseEntity.badRequest().body("O time já está cheio");
-                }
+    public List<UsuarioPartida> lista() {
+            return (List<UsuarioPartida>) usuarioPartidaRepository.findAll();
+    }
+
+    public void save(UsuarioPartida usuarioPartida) {
+            usuarioPartida = usuarioPartidaRepository.save(usuarioPartida);
+    }
+
+    public ResponseEntity update(Long id) {
+        UsuarioPartida usuarioPartida = usuarioPartidaRepository.findOne(id);
+        Partida partida = usuarioPartida.getPartida();
+        if(usuarioPartida != null){
+            if(partida.getTimeAtual() < partida.getTimeMax()){
+                partida.setTimeAtual(partida.getTimeAtual() + 1);
+                partidaRepository.save(partida);
+                usuarioPartida.setSolicitacao(false);
+                usuarioPartidaRepository.save(usuarioPartida);
+                return ResponseEntity.ok().body(usuarioPartida);
             }else{
-                return ResponseEntity.badRequest().body("Usuario não está registrado na partida");
+                return ResponseEntity.badRequest().body("O time já está cheio");
             }
-	}
-        
-        public void delete(Long id) {
-                usuarioPartidaRepository.delete(id);
-	}
-        
-        public List<UsuarioPartida> listaDeParticipantes(Long id) {
-		return usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
-	}
-          public List<UsuarioPartida> listaDeParticipantesPartida(Long id) {
-		return usuarioPartidaRepository.findByPartidaIdAndSolicitacao(id, false);
-	}
-        
-        
-        public List<UsuarioPartida> findByPartida(Partida partida) {
-		return usuarioPartidaRepository.findByPartida(partida);
-	}
-        
-        public List<UsuarioPartida> sortearTime(Long id) {
-            List<UsuarioPartida> lista = usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
-            int tamanho = lista.size();
-            Collections.shuffle(lista);
-            if(tamanho % 2 != 0){
-                Random gerador = new Random();
-                if(gerador.nextInt() % 2 == 0){
-                    lista.get(tamanho).setTime('A');
-                }else{
-                    lista.get(tamanho).setTime('B');
-                }
-                tamanho--;
+        }else{
+            return ResponseEntity.badRequest().body("Usuario não está registrado na partida");
+        }
+    }
+
+    public void delete(Long id) {
+            usuarioPartidaRepository.delete(id);
+    }
+
+    public List<UsuarioPartida> listaDeParticipantes(Long id) {
+            return usuarioPartidaRepository.findByIdAndSolicitacao(id, false);
+    }
+
+    public List<UsuarioPartida> listaDeParticipantesPartida(Long id) {
+            return usuarioPartidaRepository.findByPartidaIdAndSolicitacao(id, false);
+    }
+
+    public List<UsuarioPartida> findByPartida(Partida partida) {
+            return usuarioPartidaRepository.findByPartida(partida);
+    }
+
+    public List<UsuarioPartida> sortearTime(Long id) {
+        List<UsuarioPartida> lista = usuarioPartidaRepository.findByPartidaIdAndSolicitacao(id, false);
+        int tamanho = lista.size();
+        Collections.shuffle(lista);
+
+        for(int i = 0; i < tamanho; i++){
+            if(i % 2 == 0){
+                lista.get(i).setTime('A');
+            }else{
+                lista.get(i).setTime('B');
             }
-            for(int i = 0; i < tamanho; i++){
-                if(i % 2 == 0){
-                    lista.get(i).setTime('A');
-                }else{
-                    lista.get(i).setTime('B');
-                }
-            }
-            return lista;
-	}
+        }
+        return lista;
+    }
 }
