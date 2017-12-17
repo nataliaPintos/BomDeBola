@@ -58,13 +58,7 @@
             controller: 'PartidaController',
             controllerAs: 'partidaCtrl'
         })  
-                
-        .when('/imagem', {
-            templateUrl: 'componentes/teste/imagem.html',
-            controller: 'ImageController',
-            controllerAs: 'imageCtrl'
-        }) 
-        
+
         .when('/dashboard', {
             templateUrl: 'componentes/dashboard/dashBoard.html',
             controller: 'PerfilController',
