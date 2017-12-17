@@ -23,7 +23,6 @@ br\com\crescer\tcc\security\SocialUserDetailsService$CustomUserDetails.class
 br\com\crescer\tcc\entity\Avaliacao.class
 br\com\crescer\tcc\Repository\UsuarioRepository.class
 br\com\crescer\tcc\utilitarios\LocalDateConverter.class
-br\com\crescer\tcc\service\PartidaService$DiaSemana.class
 br\com\crescer\tcc\Repository\GrupoRepository.class
 br\com\crescer\tcc\controller\LoggedUserController.class
 br\com\crescer\tcc\entity\Usuario.class

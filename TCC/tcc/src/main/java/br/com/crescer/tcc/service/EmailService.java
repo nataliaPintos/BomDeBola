@@ -49,7 +49,7 @@ public class EmailService {
                   //Destinatário(s)
                   Address[] toUser = InternetAddress.parse(email);
                   message.setRecipients(Message.RecipientType.TO, toUser);
-                  message.setSubject("Você Tem Um Convite");
+                  message.setSubject("Bom de Bola - convite pra você");
                   message.setText(mensagem);
                   /**Método para enviar a mensagem criada*/
                   Transport.send(message);

@@ -14,7 +14,6 @@ import br.com.crescer.tcc.entity.Partida;
 import br.com.crescer.tcc.entity.UsuarioGrupo;
 import br.com.crescer.tcc.entity.UsuarioPartida;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
@@ -25,8 +24,6 @@ import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 import static java.time.temporal.ChronoUnit.DAYS;
-import static java.time.temporal.ChronoUnit.MINUTES;
-import static java.time.temporal.ChronoUnit.SECONDS;
 
 /**
  *
@@ -50,17 +47,7 @@ public class PartidaService {
     
     @Autowired
     private final EmailService emailService;
-    
-    
-    public enum DiaSemana {
-        DOMINGO,
-        SEGUNDA_FEIRA,
-        TERCA_FEIRA,
-        QUARTA_FEIRA,
-        QUINTA_FEIRA,
-        SEXTA_FEIRA,
-        SABADO;
-    }
+
     
     public Partida loadById(Long id) {
 	return partidaRepository.findOne(id);
@@ -144,6 +131,17 @@ public class PartidaService {
             partida.setTimeMin(partidaModel.getTimeMin());
             return partidaRepository.save(partida);
     }
+    
+    public Partida confirmarPartida(Long id) {
+        Partida partida = partidaRepository.findOne(id);
+        if(partida != null) {
+            partida.setConfirmada(true);
+            return partidaRepository.save(partida);
+        } else {
+            return null;
+        }
+    }
+    
     
     public void delete(Long id) {
         partidaRepository.delete(id);

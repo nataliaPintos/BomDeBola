@@ -12,6 +12,7 @@ import br.com.crescer.tcc.entity.UsuarioPartida;
 import br.com.crescer.tcc.service.PartidaService;
 import br.com.crescer.tcc.service.UsuarioPartidaService;
 import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +72,10 @@ public class PartidaController {
     @GetMapping("/sorteia-times/{id}")
     public List<UsuarioPartida> sorteiaTimes(@PathVariable Long id) {
 	return usuarioPartidaService.sortearTime(id);
+    }
+    
+    @GetMapping("/confirma-partida/{id}")
+    public Partida confirmarPartida(@PathVariable Long id) {
+	return partidaService.confirmarPartida(id);
     }
 }
