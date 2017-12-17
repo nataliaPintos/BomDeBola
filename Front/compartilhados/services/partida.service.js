@@ -15,7 +15,10 @@
             cancelarPartida: cancelar,
             buscarPorId: buscarPorId,
             excluirPartida: excluir,
-            confirmar: confirmar
+            confirmar: confirmar,
+            sortear: sortear,
+            listaJogadores: listaJogadores
+
         }
 
         var urlBase = 'http://localhost:9090/partida';
@@ -52,6 +55,14 @@
 
         function confirmar(id) {
             return $http.get(urlBase + '/aceita-partida/' + id);
+        }
+
+        function sortear(id) {
+            return $http.get(urlBase + '/sorteia-times/' + id);
+        }
+
+        function listaJogadores(id) {
+            return $http.get(urlBase + '/lista-jogadores/' + id);
         }
 
 

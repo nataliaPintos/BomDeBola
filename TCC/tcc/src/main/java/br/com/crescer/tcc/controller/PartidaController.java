@@ -72,7 +72,7 @@ public class PartidaController {
     
     @GetMapping("/lista-jogadores/{id}")
     public List<UsuarioPartida> listaJogadores(@PathVariable Long id) {
-	return usuario_partidaService.listaDeParticipantes(id);
+	return usuario_partidaService.listaDeParticipantesPartida(id);
     }
     
     @GetMapping("/sorteia-times/{id}")

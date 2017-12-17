@@ -3,7 +3,7 @@
         <div class="container">
             <h2>Altere os campos necessários ou confirme a partida padrão.</h2>
             <p ng-if="formPartida.$invalid && formPartida.$submitted" class="help">Formulário Inválido, preencha todos os campos e tente novamente :)</p>
-            <form novalidate name="formPartida" ng-controller="PartidaController">
+            <form novalidate name="formPartida" ng-controller="NovaPartidaController">
                 <div class="form-group">
                     <label class="label">Dia do Jogo</label>
                     <input class="form-control" type="date" ng-model="partida.diaSemana" name="diaSemana" required>
@@ -49,7 +49,7 @@
                     <input class="form-control" type="time" ng-model="partida.tempoAvaliacao" name="tempoAvaliacao" required>
                 </div>
 
-                <button class="btn btn-success" ng-disabled="!formPartida.$valid" ng-click="partidaCtrl.criarPartida(partida)">Criar Nova Partida</button>
+                <button class="btn btn-success" ng-disabled="!formPartida.$valid" ng-click="novaPartidaCtrl.criarPartida(partida)">Criar Nova Partida</button>
             </form>
         </div>
     </div>
