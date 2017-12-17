@@ -17,7 +17,8 @@
             excluirPartida: excluir,
             confirmar: confirmar,
             sortear: sortear,
-            listaJogadores: listaJogadores
+            listaJogadores: listaJogadores,
+            confirmarPartida : confirmarPartida
 
         }
 
@@ -63,6 +64,10 @@
 
         function listaJogadores(id) {
             return $http.get(urlBase + '/lista-jogadores/' + id);
+        }
+
+        function confirmarPartida(id) {
+            return $http.get(urlBase + '/confirma-partida/' + id);
         }
 
 

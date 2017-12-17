@@ -1,8 +1,7 @@
 <div class="content-wrapper ng-scope">
     <div class="container-fluid">
         <div class="container">
-
-            <ol class="breadcrumb">
+           <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#!/dashboard">Dashboard</a>
                 </li>
@@ -10,8 +9,6 @@
                 <li class="breadcrumb-item active">{{grupo.nome}}</li>
             </ol>
             <div class="row">
-
-
                 <div class="col-xl-3 col-sm-6 mb-3">
                     <div class="card text-white bg-success o-hidden">
                         <div class="card-body">
@@ -88,18 +85,13 @@
                             </a>
                         </div>
                         <!-- Lista de partitipantes do grupo -->
-                        <div ng-repeat="user in users">
+                        <div ng-repeat="user in users | filter: search">
                             <user user-item="user"></user>
                         </div>
-
                         <div class="card-footer small text-muted"></div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-</div>
-</div>
 </div>

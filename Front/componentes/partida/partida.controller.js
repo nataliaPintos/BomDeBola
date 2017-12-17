@@ -11,6 +11,8 @@
         vm.idGrupo = $routeParams.id;
         vm.idPartida = $routeParams.partidaId;
         vm.sortearTimes = sortearTimes;
+        vm.confirmarPartida = confirmarPartida;
+        var jaSorteou = false;
         console.log("Partida Id: " + $routeParams.partidaId);
 
         listaJogadores();
@@ -30,8 +32,17 @@
                 console.log(response.data);
                 console.log($scope.timea);
                 console.log($scope.timeb);
+                vm.jaSorteou = true;
             });
-        }  
+        }
+
+        function confirmarPartida() {
+            PartidaService.confirmarPartida(vm.idPartida).then(response => {
+                $location.path('grupo/'+vm.idGrupo+'/feed');
+                toastr.success("Partida confirmada Com Sucesso!");
+            });
+        }
+
 
 
     }

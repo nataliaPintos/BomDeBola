@@ -37,7 +37,7 @@
             PartidaService.criar(partida).then(response => {
                 console.log(response.data);
                 $location.path('grupo/'+vm.idGrupo+'/feed');
-                toastr.success("Partida criar com sucesso");
+                toastr.success("Partida criada com sucesso");
             });
         }
 

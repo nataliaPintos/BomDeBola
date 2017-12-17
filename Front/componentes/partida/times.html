@@ -8,7 +8,6 @@
                     <a href="#">Grupo</a>
                 </li>
                 <li class="breadcrumb-item">Meus Grupos</li>
-                <li class="breadcrumb-item">Nome do Grupo Aqui</li>
                 <li class="breadcrumb-item">Partida</li>
                 <li class="breadcrumb-item active">Times</li>
             </ol>
@@ -23,7 +22,7 @@
                                 <i class="fa fa-shield"></i> Time 1</div>
                             <div class="list-group list-group-flush small">
                                 <div ng-repeat="jogador in timea">
-                                    <timea timea-item="jogador"></timea>   
+                                    <timea timea-item="jogador"></timea>
                                 </div>
                             </div>
                             <div class="card-footer small text-muted"></div>
@@ -38,7 +37,7 @@
                                 <i class="fa fa-shield"></i> Time 2</div>
                             <div class="list-group list-group-flush small">
                                 <div ng-repeat="jogador in timeb">
-                                    <timeb timeb-item="jogador"></timeb>   
+                                    <timeb timeb-item="jogador"></timeb>
                                 </div>
                             </div>
                             <div class="card-footer small text-muted"></div>
@@ -46,8 +45,15 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <button class="btn btn-success btn-lg" ng-click="partidaCtrl.sortearTimes()">Sortear Times</button>
+            <div class="row">
+                <div class="col-sm">
+                    <button class="btn btn-primary btn-lg" ng-click="partidaCtrl.sortearTimes()">Sortear Times</button>
+                </div>
+
+                <div class="col-sm" ng-if="partidaCtrl.jaSorteou">
+                    <button class="btn btn-success btn-lg" ng-click="partidaCtrl.confirmarPartida()">Confirmar Partida</button>
+                </div>
+
             </div>
 
             <div class="container">
@@ -56,16 +62,16 @@
                         <i class="fa fa-users"></i> Jogadores da Partida</div>
                     <div class="list-group list-group-flush small">
                         <div ng-repeat="jogador in jogadores">
-                            <jogador jogador-item="jogador"></jogador>   
+                            <jogador jogador-item="jogador"></jogador>
                         </div>
-              
+
                     </div>
                     <div class="card-footer small text-muted"></div>
                 </div>
             </div>
         </div>
 
-        </div>
-
     </div>
+
+</div>
 </div>
