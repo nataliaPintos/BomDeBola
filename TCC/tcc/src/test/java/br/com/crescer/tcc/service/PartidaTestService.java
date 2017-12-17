@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
+import static org.mockito.Mockito.verify;
 
 /**
  *
@@ -60,5 +61,11 @@ public class PartidaTestService {
         assertEquals(partida.getGrupo(), partida2.getGrupo());
         assertEquals(partida.getGrupo(), grupo);
         assertEquals(partida2.getGrupo(), grupo);
+    }
+    
+    @Test
+    public void testeDelete() {
+        partidaService.delete(1L);
+        verify(partidaRepository).delete(1L);
     }
 }
