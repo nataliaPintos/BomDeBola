@@ -69,12 +69,17 @@ public class PartidaService {
             partidaRepository.save(partida);
             
             //Carregar todos UsuarioGrupo onde Grupo = grupo para então fazer um for e criar um UsuarioPartida para cada UsuarioGrupo carregado
+            
             List<UsuarioGrupo> listaUsuarioGrupo = usuarioGrupoRepository.findByGrupo(grupo);
-            for(UsuarioGrupo usuariogrupo : listaUsuarioGrupo){
+            StringBuilder cc = new StringBuilder();
+            listaUsuarioGrupo.forEach((usuariogrupo) -> {
                 UsuarioPartida usuariopartida = new UsuarioPartida(partida, usuariogrupo);
                 usuarioPartidaRepository.save(usuariopartida);
-                emailService.enviarEmail(usuariogrupo.getUsuario().getEmail(), grupo.getNome()+emailService.partida);
-            }
+                cc.append(usuariogrupo.getUsuario().getEmail());
+                cc.append(';');
+            });
+            cc.delete(cc.length()-1, cc.length()-1);
+            emailService.enviarEmail(cc.toString(), grupo.getNome()+emailService.partida);
             return ResponseEntity.ok().body(partida);
         }
     }
@@ -121,15 +126,15 @@ public class PartidaService {
     }
     
     public Partida update(PartidaModelPost partidaModel, Partida partida) {
-            partida.setDiaSemana(partidaModel.getDiaSemana());
-            partida.setTempoConfirmacao(partidaModel.getTempoConfirmacao());
-            partida.setHoraFinal(partidaModel.getHoraFinal());
-            partida.setHoraInicio(partidaModel.getHoraInicio());
-            partida.setLatitude(partidaModel.getLatitude());
-            partida.setLongitude(partidaModel.getLongitude());
-            partida.setTimeMax(partidaModel.getTimeMax());
-            partida.setTimeMin(partidaModel.getTimeMin());
-            return partidaRepository.save(partida);
+        partida.setDiaSemana(partidaModel.getDiaSemana());
+        partida.setTempoConfirmacao(partidaModel.getTempoConfirmacao());
+        partida.setHoraFinal(partidaModel.getHoraFinal());
+        partida.setHoraInicio(partidaModel.getHoraInicio());
+        partida.setLatitude(partidaModel.getLatitude());
+        partida.setLongitude(partidaModel.getLongitude());
+        partida.setTimeMax(partidaModel.getTimeMax());
+        partida.setTimeMin(partidaModel.getTimeMin());
+        return partidaRepository.save(partida);
     }
     
     public Partida confirmarPartida(Long id) {
