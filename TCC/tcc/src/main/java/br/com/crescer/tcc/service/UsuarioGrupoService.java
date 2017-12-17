@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import java.util.Collection;
 
 /**
  *
