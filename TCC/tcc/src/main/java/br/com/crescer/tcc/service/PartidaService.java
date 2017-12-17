@@ -76,7 +76,7 @@ public class PartidaService {
                 UsuarioPartida usuariopartida = new UsuarioPartida(partida, usuariogrupo);
                 usuarioPartidaRepository.save(usuariopartida);
                 cc.append(usuariogrupo.getUsuario().getEmail());
-                cc.append(';');
+                cc.append(',');
             });
             cc.delete(cc.length()-1, cc.length()-1);
             emailService.enviarEmail(cc.toString(), grupo.getNome()+emailService.partida);
