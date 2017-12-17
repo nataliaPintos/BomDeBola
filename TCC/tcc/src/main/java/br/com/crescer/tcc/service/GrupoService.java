@@ -47,7 +47,10 @@ public class GrupoService {
 		return (List<Grupo>) grupoRepository.findAll();
 	}
 
-	public ResponseEntity<Grupo> save(GrupoModel grupoModel) {
+	public ResponseEntity save(GrupoModel grupoModel) {
+            if(grupoModel.getTimeMin()>grupoModel.getTimeMax()){
+                return ResponseEntity.badRequest().body("Time minimo não pode ser maior que time maximo");
+            }else{
                 Grupo grupo = new Grupo(grupoModel.getNome(), grupoModel.getImagem(), grupoModel.getTimeMax(), grupoModel.getTimeMin(), 
                 grupoModel.getLatitude(), grupoModel.getLongitude(), grupoModel.getDiaSemana(), grupoModel.getHoraInicio(),
                 grupoModel.getHoraFinal(), grupoModel.getDiasConfirmacao(), grupoModel.getHorasConfirmacao(), grupoModel.getTempoAvaliacao());
@@ -57,7 +60,8 @@ public class GrupoService {
                 usuarioGrupo.setAdm(true);
                 usuarioGrupoRepository.save(usuarioGrupo);
                 
-                return ResponseEntity.ok().body(result);
+                return ResponseEntity.ok().body(grupo);
+            }
 	}
         
         public ResponseEntity<Grupo> update(GrupoModel grupoModel, Long id) {

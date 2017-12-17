@@ -62,6 +62,8 @@ public class PartidaService {
         Grupo grupo = grupoRepository.findOne(partidaModel.getIdGrupo());
         if(grupo == null){
             return ResponseEntity.badRequest().body("Grupo não cadastrado");
+        }else if(partidaModel.getTimeMin()>partidaModel.getTimeMax()){
+            return ResponseEntity.badRequest().body("Time minimo não pode ser maior que time maximo");
         }else{
             Partida partida = new Partida(partidaModel.getTimeMax(), partidaModel.getTimeMin(), partidaModel.getLatitude(),
                 partidaModel.getLongitude(), partidaModel.getDiaSemana(), partidaModel.getHoraInicio(), partidaModel.getHoraFinal(),
