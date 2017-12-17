@@ -10,6 +10,8 @@ import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
@@ -56,5 +58,20 @@ public class UsuarioTestService {
         assertEquals(usuario.getTelefone(), usuario2.getTelefone());
         assertEquals(usuario.getSenha(), usuario2.getSenha());
         assertEquals(usuario.getNascimento(), usuario2.getNascimento());
+    }
+    
+    @Test
+    public void testeSave() {
+        LocalDate nascimento = LocalDate.of(1999, 05, 22);
+
+        UsuarioModel usuarioModel = new UsuarioModel();
+        usuarioModel.setNome("Luan");
+        usuarioModel.setEmail("luanparcival@gmail.com");
+        usuarioModel.setTelefone("982580230");
+        usuarioModel.setSenha("1234");
+        usuarioModel.setNascimento(nascimento);
+        
+        usuarioService.save(usuarioModel);
+        verify(usuarioRepository).save((Usuario) usuarioService.save(usuarioModel).getBody());
     }
 }

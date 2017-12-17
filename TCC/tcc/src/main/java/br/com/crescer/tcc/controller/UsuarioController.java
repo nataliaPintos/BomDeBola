@@ -45,7 +45,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/novo-usuario")
-	public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioModel usuarioModel) {
+	public ResponseEntity save(@RequestBody @Valid UsuarioModel usuarioModel) {
 		return usuarioService.save(usuarioModel);
 	}
         

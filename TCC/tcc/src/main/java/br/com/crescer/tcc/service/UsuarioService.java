@@ -64,7 +64,7 @@ public class UsuarioService {
            
         }
 
-	public ResponseEntity<Usuario> save(UsuarioModel usuarioModel) {
+	public ResponseEntity save(UsuarioModel usuarioModel) {
             Usuario usuarioExistente = usuarioRepository.findByEmailIgnoreCase(usuarioModel.getEmail());
             if(usuarioExistente == null){
                 Usuario usuario = new Usuario(usuarioModel.getNome(), usuarioModel.getEmail(), usuarioModel.getTelefone(), usuarioModel.getSenha(), usuarioModel.getNascimento());
@@ -73,7 +73,7 @@ public class UsuarioService {
 		usuario = usuarioRepository.save(usuario);
                 return ResponseEntity.ok(usuario);
             }else{
-                return (ResponseEntity) ResponseEntity.badRequest();
+                return ResponseEntity.badRequest().body("Usuario com email já cadastrado");
             }
 	}
         
