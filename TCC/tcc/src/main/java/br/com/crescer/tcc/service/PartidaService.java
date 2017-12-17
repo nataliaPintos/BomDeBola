@@ -141,7 +141,17 @@ public class PartidaService {
         Partida partida = partidaRepository.findOne(id);
         if(partida != null) {
             partida.setConfirmada(true);
-            return partidaRepository.save(partida);
+            partida = partidaRepository.save(partida);
+            StringBuilder cc = new StringBuilder();
+            partida.getUsuarioPartida().forEach(jogador -> {
+                if(!jogador.isSolicitacao()) {
+                    cc.append(jogador.getUsuarioGrupo().getUsuario().getEmail());
+                    cc.append(',');
+                }
+            });
+            cc.delete(cc.length()-1, cc.length()-1);
+            emailService.enviarEmail(cc.toString(), partida.getGrupo().getNome()+ " confirmou sua partida no dia " + partida.getDiaSemana());
+            return partida;
         } else {
             return null;
         }
