@@ -11,11 +11,10 @@
         var vm = this;
 
         vm.usuario = authService.getUsuario();
-        console.log(vm.usuario.id);
 
         GrupoService.listarGrupos(vm.usuario.id).then(response => {
             vm.grupos = response.data;
-            console.log(response.data);
+           
         });
 
     }

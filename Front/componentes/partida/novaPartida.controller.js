@@ -20,7 +20,6 @@
 
         function carregarNovaPartida() {
             PartidaService.carregar(vm.idGrupo).then(response => {
-                console.log(response.data);
                 var partidaModel = response.data;
                 partidaModel.diaSemana = new Date(response.data.diaSemana);
                 partidaModel.horaInicio = new Date(response.data.horaInicio);
@@ -32,10 +31,8 @@
         } 
 
         function criarPartida(partida) {
-            console.log(partida);
             partida.idGrupo = vm.idGrupo;
             PartidaService.criar(partida).then(response => {
-                console.log(response.data);
                 $location.path('grupo/'+vm.idGrupo+'/feed');
                 toastr.success("Partida criada com sucesso");
             });

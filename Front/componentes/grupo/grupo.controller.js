@@ -27,12 +27,11 @@
         if(gr.isAlterar){
             GrupoService.listarUsuarios($routeParams.id).then(response =>{
                 $scope.users = response.data;
-                console.log(response.data);
+              
             });
             GrupoService.buscarPorId($routeParams.id)
                 .then(response =>{
-                    console.log(response.data);
-                    console.log($routeParams.id);
+            
                     $scope.grupo = response.data;
                     $scope.grupo.horaInicio = new Date($scope.grupo.horaInicio);    
                     $scope.grupo.horaFinal = new Date($scope.grupo.horaFinal);    
@@ -48,7 +47,6 @@
             $scope.grupo.longitude = $scope.local.longitude;
             if(!gr.isAlterar) {
                 criarGrupo($scope.grupo);
-                console.log($scope.grupo);
                 return;
             }
             let promise = GrupoService.alterar(grupo);
@@ -72,7 +70,6 @@
             //futuro toaster
             toastr.success(mensagem);
             promise.then(response => {
-                console.log(response.data);
                 $location.path('/grupo/'+response.data.id+'/feed');
             });
         }
@@ -80,7 +77,6 @@
         function buscar(endereco) {
             MapService.search(endereco).then(response => {
                 $scope.enderecos = response.data.predictions.map(e => e.description);
-                console.log($scope.enderecos);
             });
         }
 
@@ -104,7 +100,6 @@
                 idGrupo: $scope.grupo.id
             }
             GrupoService.convidar(usuarioGrupo).then(response =>{
-                console.log(response.data)
                 gr.isAdicionarJogador = false;
                 $route.reload();
             });
