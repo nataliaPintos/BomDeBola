@@ -5,7 +5,7 @@
         .module('app')
         .controller('PartidaController', partidaController);
 
-    function partidaController($scope, GrupoService, PartidaService, toastr, $routeParams, $location) {
+    function partidaController($scope, GrupoService, PartidaService, toastr, $routeParams, $location, AvaliacaoService, authService) {
         var vm = this;
         vm.isAdmin = true;
         vm.idGrupo = $routeParams.id;
@@ -13,14 +13,14 @@
         vm.sortearTimes = sortearTimes;
         vm.confirmarPartida = confirmarPartida;
         var jaSorteou = false;
-        console.log("Partida Id: " + $routeParams.partidaId);
+        $scope.idGrupo = $routeParams.id;
+    
 
         listaJogadores();
 
         function listaJogadores() {
             PartidaService.listaJogadores(vm.idPartida).then(response =>{
                 $scope.jogadores = response.data;
-                console.log($scope.jogadores);
             });
         }  
         
@@ -29,9 +29,6 @@
                 $scope.jogadores = response.data;
                 $scope.timea = response.data.filter(player => player.time === "A");
                 $scope.timeb = response.data.filter(player => player.time === "B");
-                console.log(response.data);
-                console.log($scope.timea);
-                console.log($scope.timeb);
                 vm.jaSorteou = true;
             });
         }
@@ -42,6 +39,9 @@
                 toastr.success("Partida confirmada Com Sucesso!");
             });
         }
+
+
+    
 
 
 

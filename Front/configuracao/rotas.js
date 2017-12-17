@@ -57,7 +57,13 @@
             templateUrl: 'componentes/partida/times.html',
             controller: 'PartidaController',
             controllerAs: 'partidaCtrl'
-        })  
+        })
+        
+        .when('/grupo/:id?/partida/:partidaId?/times/avaliacao', {
+            templateUrl: 'componentes/avaliacao/avaliacao.html',
+            controller: 'PartidaController',
+            controllerAs: 'partidaCtrl'
+        })
                 
         .when('/imagem', {
             templateUrl: 'componentes/teste/imagem.html',

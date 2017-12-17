@@ -8,14 +8,25 @@
                     <a href="#">Grupo</a>
                 </li>
                 <li class="breadcrumb-item">Meus Grupos</li>
-                <li class="breadcrumb-item">Nome do Grupo Aqui</li>
                 <li class="breadcrumb-item">Partida</li>
                 <li class="breadcrumb-item active">Avaliações</li>
             </ol>
+            <h2>Faça sua avaliação (nota de 1 a 5) :</h2>
             <div class="row">
                 <div class="col-sm">
-
-                   
+                        <div class="container">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <i class="fa fa-users"></i> Jogadores da Partida</div>
+                                    <div class="list-group list-group-flush small">
+                                        <div ng-repeat="jogador in jogadores">
+                                            <jogador jogador-item="jogador" is-avaliacao="true"></jogador>
+                                        </div>
+                
+                                    </div>
+                                    <div class="card-footer small text-muted"></div>
+                                </div>
+                            </div>                 
                 </div>
             </div>
         </div>

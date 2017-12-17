@@ -23,12 +23,11 @@
             authService.login(usuarioRegistrado)
             .then(
                 response => {
-                console.log(response);
                 toastr.success("Login com Sucesso!");
                 
             },
                 response => {
-                console.log(response);
+
                 vm.msgErroLogin = "Usuário ou senha incorretos";
                 toastr.error("Usuário ou senha incorretos");
                 }
@@ -39,7 +38,7 @@
             usuario.imagemPerfil = 'ddadasdada';
             UsuarioService.salvar(usuario).then(
                 response => {
-                console.log(response);               
+                toastr.success("Cadastro com Sucesso!");    
             });
         }
 
