@@ -9,6 +9,10 @@ package br.com.crescer.tcc.service;
  *
  * @author luanp
  */
+import br.com.crescer.tcc.Models.GrupoModel;
+import br.com.crescer.tcc.Models.UsuarioGrupoModel;
+import br.com.crescer.tcc.Models.UsuarioModel;
+import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Usuario;
 import br.com.crescer.tcc.entity.UsuarioGrupo;
@@ -22,15 +26,37 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioRepository;
 import org.junit.Ignore;
+import static org.mockito.Mockito.verify;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@Transactional(propagation = Propagation.REQUIRED)
+@ActiveProfiles("test")
 public class UsuarioGrupoTestService {
     @Mock
-    private UsuarioGrupoRepository usuario_grupoRepository;
+    private UsuarioGrupoRepository usuarioGrupoRepository;
+    
+    @Mock
+    private UsuarioRepository usuarioRepository;
+    
+    @Mock
+    private GrupoRepository grupoRepository;
     
     @InjectMocks
-    private UsuarioGrupoService usuario_grupoService;
+    private UsuarioGrupoService usuarioGrupoService;
+    
+    @InjectMocks
+    private UsuarioService usuarioService;
+    
+    @InjectMocks
+    private GrupoService grupoService;
     
     @Test
     public void testarLoadById() {
@@ -59,9 +85,9 @@ public class UsuarioGrupoTestService {
         ug.setUsuario(usuario);
         
         
-        when(usuario_grupoRepository.findOne(1L)).thenReturn(ug);
+        when(usuarioGrupoRepository.findOne(1L)).thenReturn(ug);
         
-        final UsuarioGrupo ug2 = usuario_grupoService.loadById(1L);
+        final UsuarioGrupo ug2 = usuarioGrupoService.loadById(1L);
         
         assertEquals(ug.getGrupo(), ug2.getGrupo());
         assertEquals(ug.getGrupo(), grupo);
@@ -70,4 +96,9 @@ public class UsuarioGrupoTestService {
         assertEquals(ug.getAdm(), ug2.getAdm());
     }
     
+    @Test
+    public void testeDelete() {
+        usuarioGrupoService.delete(1L);
+        verify(usuarioGrupoRepository).delete(1L);
+    }
 }

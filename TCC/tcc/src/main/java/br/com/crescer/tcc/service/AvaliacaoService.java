@@ -65,4 +65,8 @@ public class AvaliacaoService {
             return ResponseEntity.badRequest().body("Usuario já avaliado");
         }
     }
+    
+    public void delete(Long id) {
+                avaliacaoRepository.delete(id);
+	}
 }

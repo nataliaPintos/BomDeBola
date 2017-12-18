@@ -74,4 +74,10 @@ public class UsuarioTestService {
         usuarioService.save(usuarioModel);
         verify(usuarioRepository).save((Usuario) usuarioService.save(usuarioModel).getBody());
     }
+    
+    @Test
+    public void testeDelete() {
+        usuarioService.delete(1L);
+        verify(usuarioRepository).delete(1L);
+    }
 }

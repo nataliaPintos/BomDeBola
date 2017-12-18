@@ -15,6 +15,7 @@ import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -59,5 +60,11 @@ public class AvaliacaoTestService {
         assertEquals(avaliacao1.getNota(), avaliacao2.getNota());
         assertEquals(avaliacao1.getAvaliador(), avaliacao2.getAvaliador());
         assertEquals(avaliacao1.getAvaliado(), avaliacao2.getAvaliado());
+    }
+    
+    @Test
+    public void testeDelete() {
+        avaliacaoService.delete(1L);
+        verify(avaliacaoRepository).delete(1L);
     }
 }
