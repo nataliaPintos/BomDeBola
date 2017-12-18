@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -55,5 +56,11 @@ public class GrupoTestService {
         assertEquals(grupo.getHoraInicio(), grupo2.getHoraInicio());
         assertEquals(grupo.getHorasConfirmacao(), grupo2.getHorasConfirmacao());
         assertEquals(grupo.getTempoAvaliacao(), grupo2.getTempoAvaliacao());
+    }
+    
+    @Test
+    public void testeDelete() {
+        grupoService.delete(1L);
+        verify(grupoRepository).delete(1L);
     }
 }

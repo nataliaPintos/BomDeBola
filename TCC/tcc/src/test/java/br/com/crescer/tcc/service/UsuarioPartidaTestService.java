@@ -21,6 +21,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
+import static org.mockito.Mockito.verify;
 
 /**
  *
@@ -30,10 +31,10 @@ import org.junit.Ignore;
 public class UsuarioPartidaTestService {
     
     @Mock
-    private UsuarioPartidaRepository usuario_partidaRepository;
+    private UsuarioPartidaRepository usuarioPartidaRepository;
     
     @InjectMocks
-    private UsuarioPartidaService usuario_partidaService;
+    private UsuarioPartidaService usuarioPartidaService;
     
     @Test
     public void testarLoadById() {
@@ -75,14 +76,20 @@ public class UsuarioPartidaTestService {
         up.setNotaPartida(4);
         up.setSolicitacao(false);
         up.setTime('A');
-        when(usuario_partidaRepository.findOne(1L)).thenReturn(up);
+        when(usuarioPartidaRepository.findOne(1L)).thenReturn(up);
         
-        final UsuarioPartida up2 = usuario_partidaService.loadById(1L);
+        final UsuarioPartida up2 = usuarioPartidaService.loadById(1L);
         
         assertEquals(up.getGols(), up2.getGols());
         assertEquals(up.getNotaPartida(), up2.getNotaPartida(), 0.001);
         assertEquals(up.getTime(), up2.getTime());
         assertEquals(up.getPartida(), up2.getPartida());
         assertEquals(up.getUsuarioGrupo(), up2.getUsuarioGrupo());
+    }
+    
+    @Test
+    public void testeDelete() {
+        usuarioPartidaService.delete(1L);
+        verify(usuarioPartidaRepository).delete(1L);
     }
 }
