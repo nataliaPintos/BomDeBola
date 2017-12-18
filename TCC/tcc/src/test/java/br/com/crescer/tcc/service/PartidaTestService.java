@@ -8,6 +8,10 @@ package br.com.crescer.tcc.service;
 import br.com.crescer.tcc.Repository.PartidaRepository;
 import br.com.crescer.tcc.entity.Grupo;
 import br.com.crescer.tcc.entity.Partida;
+import br.com.crescer.tcc.entity.Usuario;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +22,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *

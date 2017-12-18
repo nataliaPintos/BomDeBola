@@ -12,6 +12,8 @@ package br.com.crescer.tcc.service;
 import br.com.crescer.tcc.Repository.GrupoRepository;
 import br.com.crescer.tcc.entity.Grupo;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -62,5 +64,23 @@ public class GrupoTestService {
     public void testeDelete() {
         grupoService.delete(1L);
         verify(grupoRepository).delete(1L);
+    }
+    
+    @Test
+    public void testFindAll() {
+        LocalDateTime inicio = LocalDateTime.of(1999, 05, 22, 19, 00, 00);
+        LocalDateTime finall = LocalDateTime.of(1999, 05, 22, 20, 00, 00);
+        LocalDateTime confirmacao = LocalDateTime.now(); confirmacao.plusDays(2); confirmacao.plusHours(12); confirmacao.plusMinutes(30);
+        LocalDateTime avaliacao = LocalDateTime.now(); avaliacao.plusHours(12); avaliacao.plusMinutes(30);
+        Grupo grupo = new Grupo("Grupo", "img", 16, 14, 8759, 8654864, 1, inicio, finall, 2,
+        confirmacao, avaliacao);
+                
+        List all = new ArrayList();
+        all.add(grupo);
+        
+        when(grupoRepository.findAll()).thenReturn(all); 
+                
+        grupoService.lista();
+        verify(grupoRepository).findAll();
     }
 }

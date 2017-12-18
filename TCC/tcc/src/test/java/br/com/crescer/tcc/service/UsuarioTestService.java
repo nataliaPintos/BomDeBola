@@ -4,6 +4,10 @@ import br.com.crescer.tcc.Models.UsuarioModel;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
 import br.com.crescer.tcc.entity.Usuario;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import static java.util.stream.Collectors.toList;
+import java.util.stream.StreamSupport;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -79,5 +83,20 @@ public class UsuarioTestService {
     public void testeDelete() {
         usuarioService.delete(1L);
         verify(usuarioRepository).delete(1L);
+    }
+    
+    @Test
+    public void testFindAll() {
+        LocalDate nascimento = LocalDate.of(1999, 05, 22);
+	final Usuario usuario = new Usuario("Luan", "luanparcival@gmail.com", "982580230",
+        "1234", nascimento);
+                
+        List all = new ArrayList();
+        all.add(usuario);
+        
+        when(usuarioRepository.findAll()).thenReturn(all); 
+                
+        usuarioService.lista();
+        verify(usuarioRepository).findAll();
     }
 }

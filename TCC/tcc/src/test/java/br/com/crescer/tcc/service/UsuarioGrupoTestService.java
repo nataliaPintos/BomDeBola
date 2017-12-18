@@ -27,18 +27,18 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioRepository;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Ignore;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
-@Transactional(propagation = Propagation.REQUIRED)
-@ActiveProfiles("test")
+@RunWith(MockitoJUnitRunner.class)
 public class UsuarioGrupoTestService {
     @Mock
     private UsuarioGrupoRepository usuarioGrupoRepository;
@@ -100,5 +100,40 @@ public class UsuarioGrupoTestService {
     public void testeDelete() {
         usuarioGrupoService.delete(1L);
         verify(usuarioGrupoRepository).delete(1L);
+    }
+    
+    @Test
+    public void testFindAll() {
+        Grupo grupo = new Grupo();
+        grupo.setDiaSemana(2);
+        grupo.setDiasConfirmacao(1);
+        grupo.setImagem("img_grupo");
+        grupo.setLatitude(12345);
+        grupo.setLongitude(54321);
+        grupo.setNome("Grupo");
+        grupo.setTimeMax(16);
+        grupo.setTimeMin(14);
+        
+        Usuario usuario = new Usuario();
+        usuario.setNome("Luan");
+        usuario.setEmail("luanparcival@gmail.com");
+        usuario.setTelefone("982580230");
+        usuario.setSenha("1234");
+        usuario.setImagemPerfil("img");
+        LocalDate nascimento = LocalDate.of(1999, 05, 22);
+        usuario.setNascimento(nascimento);
+        
+        UsuarioGrupo ug = new UsuarioGrupo();
+        ug.setAdm(true);
+        ug.setGrupo(grupo);
+        ug.setUsuario(usuario);
+                
+        List all = new ArrayList();
+        all.add(ug);
+        
+        when(usuarioGrupoRepository.findAll()).thenReturn(all); 
+                
+        usuarioGrupoService.lista();
+        verify(usuarioGrupoRepository).findAll();
     }
 }
