@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GrupoTestService {
+public class GrupoServiceTest {
     @Mock
     private GrupoRepository grupoRepository;
     

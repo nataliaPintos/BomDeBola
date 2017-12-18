@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AvaliacaoTestService {
+public class AvaliacaoServiceTest {
     @Mock
     private AvaliacaoRepository avaliacaoRepository;
     

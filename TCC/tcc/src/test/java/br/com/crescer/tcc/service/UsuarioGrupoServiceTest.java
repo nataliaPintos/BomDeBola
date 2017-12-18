@@ -5,39 +5,58 @@
  */
 package br.com.crescer.tcc.service;
 
-import br.com.crescer.tcc.entity.Grupo;
-import br.com.crescer.tcc.entity.Partida;
-import br.com.crescer.tcc.entity.Usuario;
-import br.com.crescer.tcc.entity.UsuarioGrupo;
-import br.com.crescer.tcc.entity.UsuarioPartida;
-import java.time.LocalDate;
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import static org.mockito.Mockito.when;
-import org.mockito.runners.MockitoJUnitRunner;
-import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
-import java.util.ArrayList;
-import java.util.List;
-import static org.junit.Assert.assertEquals;
-import org.junit.Ignore;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 /**
  *
  * @author luanp
  */
+import br.com.crescer.tcc.Models.GrupoModel;
+import br.com.crescer.tcc.Models.UsuarioGrupoModel;
+import br.com.crescer.tcc.Models.UsuarioModel;
+import br.com.crescer.tcc.Repository.GrupoRepository;
+import br.com.crescer.tcc.entity.Grupo;
+import br.com.crescer.tcc.entity.Usuario;
+import br.com.crescer.tcc.entity.UsuarioGrupo;
+import java.time.LocalDate;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
+import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
+import br.com.crescer.tcc.Repository.UsuarioRepository;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Ignore;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 @RunWith(MockitoJUnitRunner.class)
-public class UsuarioPartidaTestService {
+public class UsuarioGrupoServiceTest {
+    @Mock
+    private UsuarioGrupoRepository usuarioGrupoRepository;
     
     @Mock
-    private UsuarioPartidaRepository usuarioPartidaRepository;
+    private UsuarioRepository usuarioRepository;
+    
+    @Mock
+    private GrupoRepository grupoRepository;
     
     @InjectMocks
-    private UsuarioPartidaService usuarioPartidaService;
+    private UsuarioGrupoService usuarioGrupoService;
+    
+    @InjectMocks
+    private UsuarioService usuarioService;
+    
+    @InjectMocks
+    private GrupoService grupoService;
     
     @Test
     public void testarLoadById() {
@@ -65,35 +84,22 @@ public class UsuarioPartidaTestService {
         ug.setGrupo(grupo);
         ug.setUsuario(usuario);
         
-        Partida partida = new Partida();
-        partida.setLatitude(12345);
-        partida.setLongitude(54321);
-        partida.setTimeMax(16);
-        partida.setTimeMin(14);
-        partida.setGrupo(grupo);
         
-        UsuarioPartida up = new UsuarioPartida();
-        up.setPartida(partida);
-        up.setUsuarioGrupo(ug);
-        up.setGols(2);
-        up.setNotaPartida(4);
-        up.setSolicitacao(false);
-        up.setTime('A');
-        when(usuarioPartidaRepository.findOne(1L)).thenReturn(up);
+        when(usuarioGrupoRepository.findOne(1L)).thenReturn(ug);
         
-        final UsuarioPartida up2 = usuarioPartidaService.loadById(1L);
+        final UsuarioGrupo ug2 = usuarioGrupoService.loadById(1L);
         
-        assertEquals(up.getGols(), up2.getGols());
-        assertEquals(up.getNotaPartida(), up2.getNotaPartida(), 0.001);
-        assertEquals(up.getTime(), up2.getTime());
-        assertEquals(up.getPartida(), up2.getPartida());
-        assertEquals(up.getUsuarioGrupo(), up2.getUsuarioGrupo());
+        assertEquals(ug.getGrupo(), ug2.getGrupo());
+        assertEquals(ug.getGrupo(), grupo);
+        assertEquals(ug.getUsuario(), ug2.getUsuario());
+        assertEquals(ug.getUsuario(), usuario);
+        assertEquals(ug.getAdm(), ug2.getAdm());
     }
     
     @Test
     public void testeDelete() {
-        usuarioPartidaService.delete(1L);
-        verify(usuarioPartidaRepository).delete(1L);
+        usuarioGrupoService.delete(1L);
+        verify(usuarioGrupoRepository).delete(1L);
     }
     
     @Test
@@ -121,28 +127,13 @@ public class UsuarioPartidaTestService {
         ug.setAdm(true);
         ug.setGrupo(grupo);
         ug.setUsuario(usuario);
-        
-        Partida partida = new Partida();
-        partida.setLatitude(12345);
-        partida.setLongitude(54321);
-        partida.setTimeMax(16);
-        partida.setTimeMin(14);
-        partida.setGrupo(grupo);
-        
-        UsuarioPartida up = new UsuarioPartida();
-        up.setPartida(partida);
-        up.setUsuarioGrupo(ug);
-        up.setGols(2);
-        up.setNotaPartida(4);
-        up.setSolicitacao(false);
-        up.setTime('A');
                 
         List all = new ArrayList();
-        all.add(up);
+        all.add(ug);
         
-        when(usuarioPartidaRepository.findAll()).thenReturn(all); 
+        when(usuarioGrupoRepository.findAll()).thenReturn(all); 
                 
-        usuarioPartidaService.lista();
-        verify(usuarioPartidaRepository).findAll();
+        usuarioGrupoService.lista();
+        verify(usuarioGrupoRepository).findAll();
     }
 }

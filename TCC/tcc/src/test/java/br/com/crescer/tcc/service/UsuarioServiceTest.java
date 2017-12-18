@@ -21,7 +21,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UsuarioTestService {
+public class UsuarioServiceTest {
     @Mock
     private UsuarioRepository usuarioRepository;
     

@@ -31,7 +31,7 @@ import static org.junit.Assert.assertTrue;
 @DataJpaTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-public class GrupoTestRepository {
+public class GrupoRepositoryTest {
     @Autowired
 	private TestEntityManager testEntityManager;
 

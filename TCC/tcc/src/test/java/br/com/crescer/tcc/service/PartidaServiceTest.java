@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
  * @author luanp
  */
 @RunWith(MockitoJUnitRunner.class)
-public class PartidaTestService {
+public class PartidaServiceTest {
     @Mock
     private PartidaRepository partidaRepository;
     
