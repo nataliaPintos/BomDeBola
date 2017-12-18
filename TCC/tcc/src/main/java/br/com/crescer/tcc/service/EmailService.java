@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EmailService {
     
-    public String grupo = "Você foi convidado para um novo grupo no Bom De Bola. Cadastre-se ou faça seu login marcar uma partida com seu amigo(a)s";
+    public String grupo = "- Você foi convidado para um novo grupo no Bom De Bola. Cadastre-se ou faça seu login marcar uma partida com seu amigo(a)s";
     public String partida = "Você foi convidado para uma nova partida no Bom De Bola. Faça seu login agora para confirmar";
     
     public void enviarEmail(String email, String mensagem){

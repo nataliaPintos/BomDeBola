@@ -34,7 +34,6 @@ C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\GrupoCo
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\service\UsuarioGrupoService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\utilitarios\LocalDateConverter.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\entity\Partida.java
-C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\UiController.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\controller\LoggedUserController.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\security\SocialUserDetailsService.java
 C:\dev-cwi\BomDeBola\TCC\tcc\src\main\java\br\com\crescer\tcc\config\SwaggerConfig.java

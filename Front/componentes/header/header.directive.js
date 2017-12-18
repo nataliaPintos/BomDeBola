@@ -26,14 +26,10 @@ angular.module('app')
 
         function atualizarUsuario() {
           $scope.usuario = authService.getUsuario();
-
-          UsuarioService.notificacoes($scope.usuario.id).then(response => {
-
-            $scope.notificacoes = response.data;
-
-
-          });
-
+            UsuarioService.notificacoes($scope.usuario.id).then(response => {
+              $scope.notificacoes = response.data;
+            });
+          
         }
 
         function confirmar(id) {

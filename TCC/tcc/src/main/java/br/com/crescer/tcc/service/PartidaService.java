@@ -23,7 +23,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import br.com.crescer.tcc.Repository.UsuarioGrupoRepository;
 import br.com.crescer.tcc.Repository.UsuarioPartidaRepository;
+import java.time.format.DateTimeFormatter;
 import static java.time.temporal.ChronoUnit.DAYS;
+import static org.aspectj.weaver.WeaverMessages.format;
 
 /**
  *
@@ -81,7 +83,10 @@ public class PartidaService {
                 cc.append(',');
             });
             cc.delete(cc.length()-1, cc.length()-1);
-            emailService.enviarEmail(cc.toString(), grupo.getNome()+emailService.partida);
+            emailService.enviarEmail(cc.toString(), grupo.getNome() + " criou uma nova partida no dia " 
+                    + partida.getDiaSemana().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                    + " às " + partida.getHoraInicio().getHour() + ":" + partida.getHoraInicio().getMinute() + "horas.\n\n" 
+                    + "Acesse BomDeBola para confirmar sua participação: http://localhost:8081/#!/dashboard.");
             return ResponseEntity.ok().body(partida);
         }
     }
@@ -152,7 +157,11 @@ public class PartidaService {
                 }
             });
             cc.delete(cc.length()-1, cc.length()-1);
-            emailService.enviarEmail(cc.toString(), partida.getGrupo().getNome()+ " confirmou sua partida no dia " + partida.getDiaSemana());
+            emailService.enviarEmail(cc.toString(), partida.getGrupo().getNome() 
+                    + " confirmou sua partida no dia " 
+                    + partida.getDiaSemana().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                    + " às " + partida.getHoraInicio().getHour() + ":" + partida.getHoraInicio().getMinute() + "horas.\n\n" 
+                    + "Acesse seu BomDeBola para informações: http://localhost:8081/#!/dashboard.");
             return partida;
         } else {
             return null;
